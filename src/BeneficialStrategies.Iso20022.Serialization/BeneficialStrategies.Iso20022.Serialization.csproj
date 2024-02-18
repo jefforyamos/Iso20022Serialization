@@ -7,7 +7,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="com.beneficialstrategies.iso20022.2024.02.09" Version="0.1.2-alpha" />
+    <PackageReference Include="com.beneficialstrategies.iso20022.2024.02.09" Version="0.1.3-alpha" />
   </ItemGroup>
 
 </Project>
