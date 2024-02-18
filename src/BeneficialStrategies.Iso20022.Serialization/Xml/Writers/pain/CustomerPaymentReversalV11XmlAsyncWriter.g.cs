@@ -6,6 +6,7 @@
 
 using BeneficialStrategies.Iso20022.Components;
 using BeneficialStrategies.Iso20022.pain;
+using System.Xml;
 
 namespace BeneficialStrategies.Iso20022.Serialization.Xml.Writers.pain
 {
@@ -14,6 +15,7 @@ namespace BeneficialStrategies.Iso20022.Serialization.Xml.Writers.pain
     /// </summary>
     public class CustomerPaymentReversalV11XmlAsyncWriter : ContainerXmlAsyncWriter<CustomerPaymentReversalV11>
             , ISubordinateXmlAsyncWriter<CustomerPaymentReversalV11>
+            , IXmlAsyncWriter<CustomerPaymentReversalV11>
     {
         public CustomerPaymentReversalV11XmlAsyncWriter(
             
@@ -58,6 +60,25 @@ namespace BeneficialStrategies.Iso20022.Serialization.Xml.Writers.pain
                 
         )
         {
+            // Constructor logic in base class
+        }
+        
+        /// <summary>
+        /// Writes the specified <seealso cref="CustomerPaymentReversalV11"/> message in ISO20022 compliant format.
+        /// Uses the conventions specified in constants in the message itself.
+        /// </summary>
+        /// <param name="writer">Xml writer to write to. Must have async enabled.</param>
+        /// <param name="message">The message with the contents to be serialized.</param>
+        /// <returns>The async task that writes the message.</returns>
+        public async Task WriteAsync( XmlWriter writer, CustomerPaymentReversalV11 message )
+        {
+            await writer.WriteStartElementAsync( null, 
+                CustomerPaymentReversalV11Document.DocumentElementName,
+                CustomerPaymentReversalV11Document.DocumentNamespace);
+            await writer.WriteStartElementAsync( null, CustomerPaymentReversalV11.XmlTag, CustomerPaymentReversalV11Document.DocumentNamespace );
+            await this.WriteAsync(writer, message, CustomerPaymentReversalV11Document.DocumentNamespace); // Use subordinate interface to write contents
+            await writer.WriteEndElementAsync(); // end of message
+            await writer.WriteEndElementAsync(); // end of document
         }
     }
 }

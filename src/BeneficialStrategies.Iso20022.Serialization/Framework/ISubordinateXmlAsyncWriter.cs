@@ -12,4 +12,3 @@ public interface ISubordinateXmlAsyncWriter<TValue>
 {
     Task WriteAsync(XmlWriter writer, TValue value, string isoNamespace);
 }
-
