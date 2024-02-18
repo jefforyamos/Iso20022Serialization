@@ -7,7 +7,7 @@
 using BeneficialStrategies.Iso20022.Components;
 using BeneficialStrategies.Iso20022.pain;
 
-namespace BeneficialStrategies.Iso20022.Serialization.Xml.Async.Writers.pain
+namespace BeneficialStrategies.Iso20022.Serialization.Xml.Writers.pain
 {
     /// <summary>
     /// Performs the XML serialization faithful to ISO20002 standards for <seealso cref="CustomerDirectDebitInitiationV10"/>.
