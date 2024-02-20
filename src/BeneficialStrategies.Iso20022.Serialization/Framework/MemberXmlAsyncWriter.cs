@@ -33,3 +33,29 @@ public class MemberXmlAsyncWriter<TParent, TMember> : ISubordinateXmlAsyncWriter
     }
 }
 
+public class MemberXmlAsyncStructWriter<TParent, TMember> : ISubordinateXmlAsyncWriter<TParent>
+    where TMember : struct
+{
+    private readonly string elementName;
+    private readonly ISubordinateXmlAsyncWriter<TMember> dataStateWriter;
+    private readonly Func<TParent, TMember?> propertyGetter;
+
+    public MemberXmlAsyncStructWriter(string elementName, ISubordinateXmlAsyncWriter<TMember> dataStateWriter, Func<TParent,TMember?> propertyGetter)
+    {
+        this.elementName = elementName;
+        this.dataStateWriter = dataStateWriter;
+        this.propertyGetter = propertyGetter;
+    }
+
+    public async Task WriteAsync(XmlWriter writer, TParent parent, string isoNamespace)
+    {
+        var optionalValue = propertyGetter(parent);
+        if ( optionalValue is TMember nonNullValue)
+        {
+            await writer.WriteStartElementAsync(null, this.elementName,isoNamespace);
+            await dataStateWriter.WriteAsync(writer, nonNullValue, isoNamespace);
+            await writer.WriteEndElementAsync();
+        }
+    }
+}
+
