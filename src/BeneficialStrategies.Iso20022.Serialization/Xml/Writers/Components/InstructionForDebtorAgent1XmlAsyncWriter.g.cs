@@ -16,13 +16,24 @@ namespace BeneficialStrategies.Iso20022.Serialization.Xml.Writers.Components
     /// <summary>
     /// Performs the XML serialization faithful to ISO20002 standards for <seealso cref="InstructionForDebtorAgent1"/>.
     /// </summary>
-    public class InstructionForDebtorAgent1XmlAsyncWriter
-    ( // primary constructor 
-        IExternalDebtorAgentInstruction1CodeXmlAsyncWriter code,
-        IMax140TextXmlAsyncWriter instructionInformation
-    ) // end primary constructor
-            : ISubordinateXmlAsyncWriter<InstructionForDebtorAgent1>
+    public class InstructionForDebtorAgent1XmlAsyncWriter : ISubordinateXmlAsyncWriter<InstructionForDebtorAgent1>
     {
+        // Injected dependencies for serialization of each member data type
+        private readonly IExternalDebtorAgentInstruction1CodeXmlAsyncWriter code;
+        private readonly IMax140TextXmlAsyncWriter instructionInformation;
+        
+        /// <summary>
+        /// Construct using an injected writer for each member.
+        /// </summary>
+        public InstructionForDebtorAgent1XmlAsyncWriter
+        (
+            IExternalDebtorAgentInstruction1CodeXmlAsyncWriter code,
+            IMax140TextXmlAsyncWriter instructionInformation
+        )
+        {
+            this.code = code;
+            this.instructionInformation = instructionInformation;
+        }
         public async Task WriteAsync(XmlWriter writer, InstructionForDebtorAgent1 value, string isoNamespace)
         {
             // Code Optional ExternalDebtorAgentInstruction1Code string

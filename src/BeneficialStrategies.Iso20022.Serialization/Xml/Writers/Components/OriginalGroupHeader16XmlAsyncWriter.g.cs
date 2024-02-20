@@ -16,15 +16,30 @@ namespace BeneficialStrategies.Iso20022.Serialization.Xml.Writers.Components
     /// <summary>
     /// Performs the XML serialization faithful to ISO20002 standards for <seealso cref="OriginalGroupHeader16"/>.
     /// </summary>
-    public class OriginalGroupHeader16XmlAsyncWriter
-    ( // primary constructor 
-        IMax35TextXmlAsyncWriter originalMessageIdentification,
-        IMax35TextXmlAsyncWriter originalMessageNameIdentification,
-        IISODateTimeXmlAsyncWriter originalCreationDateTime,
-        ISubordinateXmlAsyncWriter<PaymentReversalReason9> reversalReasonInformation
-    ) // end primary constructor
-            : ISubordinateXmlAsyncWriter<OriginalGroupHeader16>
+    public class OriginalGroupHeader16XmlAsyncWriter : ISubordinateXmlAsyncWriter<OriginalGroupHeader16>
     {
+        // Injected dependencies for serialization of each member data type
+        private readonly IMax35TextXmlAsyncWriter originalMessageIdentification;
+        private readonly IMax35TextXmlAsyncWriter originalMessageNameIdentification;
+        private readonly IISODateTimeXmlAsyncWriter originalCreationDateTime;
+        private readonly ISubordinateXmlAsyncWriter<PaymentReversalReason9> reversalReasonInformation;
+        
+        /// <summary>
+        /// Construct using an injected writer for each member.
+        /// </summary>
+        public OriginalGroupHeader16XmlAsyncWriter
+        (
+            IMax35TextXmlAsyncWriter originalMessageIdentification,
+            IMax35TextXmlAsyncWriter originalMessageNameIdentification,
+            IISODateTimeXmlAsyncWriter originalCreationDateTime,
+            ISubordinateXmlAsyncWriter<PaymentReversalReason9> reversalReasonInformation
+        )
+        {
+            this.originalMessageIdentification = originalMessageIdentification;
+            this.originalMessageNameIdentification = originalMessageNameIdentification;
+            this.originalCreationDateTime = originalCreationDateTime;
+            this.reversalReasonInformation = reversalReasonInformation;
+        }
         public async Task WriteAsync(XmlWriter writer, OriginalGroupHeader16 value, string isoNamespace)
         {
             // OriginalMessageIdentification Required Max35Text System.String

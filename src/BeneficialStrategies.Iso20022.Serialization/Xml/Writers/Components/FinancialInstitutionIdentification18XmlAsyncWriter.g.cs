@@ -16,17 +16,36 @@ namespace BeneficialStrategies.Iso20022.Serialization.Xml.Writers.Components
     /// <summary>
     /// Performs the XML serialization faithful to ISO20002 standards for <seealso cref="FinancialInstitutionIdentification18"/>.
     /// </summary>
-    public class FinancialInstitutionIdentification18XmlAsyncWriter
-    ( // primary constructor 
-        IBICFIDec2014IdentifierXmlAsyncWriter bICFI,
-        ISubordinateXmlAsyncWriter<ClearingSystemMemberIdentification2> clearingSystemMemberIdentification,
-        ILEIIdentifierXmlAsyncWriter lEI,
-        IMax140TextXmlAsyncWriter name,
-        ISubordinateXmlAsyncWriter<PostalAddress24> postalAddress,
-        ISubordinateXmlAsyncWriter<GenericFinancialIdentification1> other
-    ) // end primary constructor
-            : ISubordinateXmlAsyncWriter<FinancialInstitutionIdentification18>
+    public class FinancialInstitutionIdentification18XmlAsyncWriter : ISubordinateXmlAsyncWriter<FinancialInstitutionIdentification18>
     {
+        // Injected dependencies for serialization of each member data type
+        private readonly IBICFIDec2014IdentifierXmlAsyncWriter bICFI;
+        private readonly ISubordinateXmlAsyncWriter<ClearingSystemMemberIdentification2> clearingSystemMemberIdentification;
+        private readonly ILEIIdentifierXmlAsyncWriter lEI;
+        private readonly IMax140TextXmlAsyncWriter name;
+        private readonly ISubordinateXmlAsyncWriter<PostalAddress24> postalAddress;
+        private readonly ISubordinateXmlAsyncWriter<GenericFinancialIdentification1> other;
+        
+        /// <summary>
+        /// Construct using an injected writer for each member.
+        /// </summary>
+        public FinancialInstitutionIdentification18XmlAsyncWriter
+        (
+            IBICFIDec2014IdentifierXmlAsyncWriter bICFI,
+            ISubordinateXmlAsyncWriter<ClearingSystemMemberIdentification2> clearingSystemMemberIdentification,
+            ILEIIdentifierXmlAsyncWriter lEI,
+            IMax140TextXmlAsyncWriter name,
+            ISubordinateXmlAsyncWriter<PostalAddress24> postalAddress,
+            ISubordinateXmlAsyncWriter<GenericFinancialIdentification1> other
+        )
+        {
+            this.bICFI = bICFI;
+            this.clearingSystemMemberIdentification = clearingSystemMemberIdentification;
+            this.lEI = lEI;
+            this.name = name;
+            this.postalAddress = postalAddress;
+            this.other = other;
+        }
         public async Task WriteAsync(XmlWriter writer, FinancialInstitutionIdentification18 value, string isoNamespace)
         {
             // BICFI Optional BICFIDec2014Identifier System.String

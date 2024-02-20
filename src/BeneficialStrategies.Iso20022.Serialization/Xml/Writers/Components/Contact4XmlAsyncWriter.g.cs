@@ -16,23 +16,54 @@ namespace BeneficialStrategies.Iso20022.Serialization.Xml.Writers.Components
     /// <summary>
     /// Performs the XML serialization faithful to ISO20002 standards for <seealso cref="Contact4"/>.
     /// </summary>
-    public class Contact4XmlAsyncWriter
-    ( // primary constructor 
-        IEnumXmlAsyncWriter<NamePrefix2Code> namePrefix,
-        IMax140TextXmlAsyncWriter name,
-        IPhoneNumberXmlAsyncWriter phoneNumber,
-        IPhoneNumberXmlAsyncWriter mobileNumber,
-        IPhoneNumberXmlAsyncWriter faxNumber,
-        IMax2048TextXmlAsyncWriter emailAddress,
-        IMax35TextXmlAsyncWriter emailPurpose,
-        IMax35TextXmlAsyncWriter jobTitle,
-        IMax35TextXmlAsyncWriter responsibility,
-        IMax70TextXmlAsyncWriter department,
-        ISubordinateXmlAsyncWriter<OtherContact1> other,
-        IEnumXmlAsyncWriter<PreferredContactMethod1Code> preferredMethod
-    ) // end primary constructor
-            : ISubordinateXmlAsyncWriter<Contact4>
+    public class Contact4XmlAsyncWriter : ISubordinateXmlAsyncWriter<Contact4>
     {
+        // Injected dependencies for serialization of each member data type
+        private readonly IEnumXmlAsyncWriter<NamePrefix2Code> namePrefix;
+        private readonly IMax140TextXmlAsyncWriter name;
+        private readonly IPhoneNumberXmlAsyncWriter phoneNumber;
+        private readonly IPhoneNumberXmlAsyncWriter mobileNumber;
+        private readonly IPhoneNumberXmlAsyncWriter faxNumber;
+        private readonly IMax2048TextXmlAsyncWriter emailAddress;
+        private readonly IMax35TextXmlAsyncWriter emailPurpose;
+        private readonly IMax35TextXmlAsyncWriter jobTitle;
+        private readonly IMax35TextXmlAsyncWriter responsibility;
+        private readonly IMax70TextXmlAsyncWriter department;
+        private readonly ISubordinateXmlAsyncWriter<OtherContact1> other;
+        private readonly IEnumXmlAsyncWriter<PreferredContactMethod1Code> preferredMethod;
+        
+        /// <summary>
+        /// Construct using an injected writer for each member.
+        /// </summary>
+        public Contact4XmlAsyncWriter
+        (
+            IEnumXmlAsyncWriter<NamePrefix2Code> namePrefix,
+            IMax140TextXmlAsyncWriter name,
+            IPhoneNumberXmlAsyncWriter phoneNumber,
+            IPhoneNumberXmlAsyncWriter mobileNumber,
+            IPhoneNumberXmlAsyncWriter faxNumber,
+            IMax2048TextXmlAsyncWriter emailAddress,
+            IMax35TextXmlAsyncWriter emailPurpose,
+            IMax35TextXmlAsyncWriter jobTitle,
+            IMax35TextXmlAsyncWriter responsibility,
+            IMax70TextXmlAsyncWriter department,
+            ISubordinateXmlAsyncWriter<OtherContact1> other,
+            IEnumXmlAsyncWriter<PreferredContactMethod1Code> preferredMethod
+        )
+        {
+            this.namePrefix = namePrefix;
+            this.name = name;
+            this.phoneNumber = phoneNumber;
+            this.mobileNumber = mobileNumber;
+            this.faxNumber = faxNumber;
+            this.emailAddress = emailAddress;
+            this.emailPurpose = emailPurpose;
+            this.jobTitle = jobTitle;
+            this.responsibility = responsibility;
+            this.department = department;
+            this.other = other;
+            this.preferredMethod = preferredMethod;
+        }
         public async Task WriteAsync(XmlWriter writer, Contact4 value, string isoNamespace)
         {
             // NamePrefix Optional NamePrefix2Code NamePrefix2Code

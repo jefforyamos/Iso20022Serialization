@@ -16,20 +16,45 @@ namespace BeneficialStrategies.Iso20022.Serialization.Xml.Writers.Components
     /// <summary>
     /// Performs the XML serialization faithful to ISO20002 standards for <seealso cref="SettlementInstruction11"/>.
     /// </summary>
-    public class SettlementInstruction11XmlAsyncWriter
-    ( // primary constructor 
-        IEnumXmlAsyncWriter<SettlementMethod1Code> settlementMethod,
-        ISubordinateXmlAsyncWriter<CashAccount40> settlementAccount,
-        ISubordinateXmlAsyncWriter<ClearingSystemIdentification3Choice_> clearingSystem,
-        ISubordinateXmlAsyncWriter<BranchAndFinancialInstitutionIdentification6> instructingReimbursementAgent,
-        ISubordinateXmlAsyncWriter<CashAccount40> instructingReimbursementAgentAccount,
-        ISubordinateXmlAsyncWriter<BranchAndFinancialInstitutionIdentification6> instructedReimbursementAgent,
-        ISubordinateXmlAsyncWriter<CashAccount40> instructedReimbursementAgentAccount,
-        ISubordinateXmlAsyncWriter<BranchAndFinancialInstitutionIdentification6> thirdReimbursementAgent,
-        ISubordinateXmlAsyncWriter<CashAccount40> thirdReimbursementAgentAccount
-    ) // end primary constructor
-            : ISubordinateXmlAsyncWriter<SettlementInstruction11>
+    public class SettlementInstruction11XmlAsyncWriter : ISubordinateXmlAsyncWriter<SettlementInstruction11>
     {
+        // Injected dependencies for serialization of each member data type
+        private readonly IEnumXmlAsyncWriter<SettlementMethod1Code> settlementMethod;
+        private readonly ISubordinateXmlAsyncWriter<CashAccount40> settlementAccount;
+        private readonly ISubordinateXmlAsyncWriter<ClearingSystemIdentification3Choice_> clearingSystem;
+        private readonly ISubordinateXmlAsyncWriter<BranchAndFinancialInstitutionIdentification6> instructingReimbursementAgent;
+        private readonly ISubordinateXmlAsyncWriter<CashAccount40> instructingReimbursementAgentAccount;
+        private readonly ISubordinateXmlAsyncWriter<BranchAndFinancialInstitutionIdentification6> instructedReimbursementAgent;
+        private readonly ISubordinateXmlAsyncWriter<CashAccount40> instructedReimbursementAgentAccount;
+        private readonly ISubordinateXmlAsyncWriter<BranchAndFinancialInstitutionIdentification6> thirdReimbursementAgent;
+        private readonly ISubordinateXmlAsyncWriter<CashAccount40> thirdReimbursementAgentAccount;
+        
+        /// <summary>
+        /// Construct using an injected writer for each member.
+        /// </summary>
+        public SettlementInstruction11XmlAsyncWriter
+        (
+            IEnumXmlAsyncWriter<SettlementMethod1Code> settlementMethod,
+            ISubordinateXmlAsyncWriter<CashAccount40> settlementAccount,
+            ISubordinateXmlAsyncWriter<ClearingSystemIdentification3Choice_> clearingSystem,
+            ISubordinateXmlAsyncWriter<BranchAndFinancialInstitutionIdentification6> instructingReimbursementAgent,
+            ISubordinateXmlAsyncWriter<CashAccount40> instructingReimbursementAgentAccount,
+            ISubordinateXmlAsyncWriter<BranchAndFinancialInstitutionIdentification6> instructedReimbursementAgent,
+            ISubordinateXmlAsyncWriter<CashAccount40> instructedReimbursementAgentAccount,
+            ISubordinateXmlAsyncWriter<BranchAndFinancialInstitutionIdentification6> thirdReimbursementAgent,
+            ISubordinateXmlAsyncWriter<CashAccount40> thirdReimbursementAgentAccount
+        )
+        {
+            this.settlementMethod = settlementMethod;
+            this.settlementAccount = settlementAccount;
+            this.clearingSystem = clearingSystem;
+            this.instructingReimbursementAgent = instructingReimbursementAgent;
+            this.instructingReimbursementAgentAccount = instructingReimbursementAgentAccount;
+            this.instructedReimbursementAgent = instructedReimbursementAgent;
+            this.instructedReimbursementAgentAccount = instructedReimbursementAgentAccount;
+            this.thirdReimbursementAgent = thirdReimbursementAgent;
+            this.thirdReimbursementAgentAccount = thirdReimbursementAgentAccount;
+        }
         public async Task WriteAsync(XmlWriter writer, SettlementInstruction11 value, string isoNamespace)
         {
             // SettlementMethod Required SettlementMethod1Code SettlementMethod1Code

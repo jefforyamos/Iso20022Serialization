@@ -16,14 +16,27 @@ namespace BeneficialStrategies.Iso20022.Serialization.Xml.Writers.Components
     /// <summary>
     /// Performs the XML serialization faithful to ISO20002 standards for <seealso cref="PaymentReversalReason9"/>.
     /// </summary>
-    public class PaymentReversalReason9XmlAsyncWriter
-    ( // primary constructor 
-        ISubordinateXmlAsyncWriter<PartyIdentification135> originator,
-        ISubordinateXmlAsyncWriter<ReversalReason4Choice_> reason,
-        IMax105TextXmlAsyncWriter additionalInformation
-    ) // end primary constructor
-            : ISubordinateXmlAsyncWriter<PaymentReversalReason9>
+    public class PaymentReversalReason9XmlAsyncWriter : ISubordinateXmlAsyncWriter<PaymentReversalReason9>
     {
+        // Injected dependencies for serialization of each member data type
+        private readonly ISubordinateXmlAsyncWriter<PartyIdentification135> originator;
+        private readonly ISubordinateXmlAsyncWriter<ReversalReason4Choice_> reason;
+        private readonly IMax105TextXmlAsyncWriter additionalInformation;
+        
+        /// <summary>
+        /// Construct using an injected writer for each member.
+        /// </summary>
+        public PaymentReversalReason9XmlAsyncWriter
+        (
+            ISubordinateXmlAsyncWriter<PartyIdentification135> originator,
+            ISubordinateXmlAsyncWriter<ReversalReason4Choice_> reason,
+            IMax105TextXmlAsyncWriter additionalInformation
+        )
+        {
+            this.originator = originator;
+            this.reason = reason;
+            this.additionalInformation = additionalInformation;
+        }
         public async Task WriteAsync(XmlWriter writer, PaymentReversalReason9 value, string isoNamespace)
         {
             // Originator Optional PartyIdentification135 PartyIdentification135

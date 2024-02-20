@@ -16,19 +16,42 @@ namespace BeneficialStrategies.Iso20022.Serialization.Xml.Writers.Components
     /// <summary>
     /// Performs the XML serialization faithful to ISO20002 standards for <seealso cref="OriginalPaymentInstruction41"/>.
     /// </summary>
-    public class OriginalPaymentInstruction41XmlAsyncWriter
-    ( // primary constructor 
-        IMax35TextXmlAsyncWriter reversalPaymentInformationIdentification,
-        IMax35TextXmlAsyncWriter originalPaymentInformationIdentification,
-        IMax15NumericTextXmlAsyncWriter originalNumberOfTransactions,
-        IDecimalNumberXmlAsyncWriter originalControlSum,
-        IBatchBookingIndicatorXmlAsyncWriter batchBooking,
-        ITrueFalseIndicatorXmlAsyncWriter paymentInformationReversal,
-        ISubordinateXmlAsyncWriter<PaymentReversalReason9> reversalReasonInformation,
-        ISubordinateXmlAsyncWriter<PaymentTransaction134> transactionInformation
-    ) // end primary constructor
-            : ISubordinateXmlAsyncWriter<OriginalPaymentInstruction41>
+    public class OriginalPaymentInstruction41XmlAsyncWriter : ISubordinateXmlAsyncWriter<OriginalPaymentInstruction41>
     {
+        // Injected dependencies for serialization of each member data type
+        private readonly IMax35TextXmlAsyncWriter reversalPaymentInformationIdentification;
+        private readonly IMax35TextXmlAsyncWriter originalPaymentInformationIdentification;
+        private readonly IMax15NumericTextXmlAsyncWriter originalNumberOfTransactions;
+        private readonly IDecimalNumberXmlAsyncWriter originalControlSum;
+        private readonly IBatchBookingIndicatorXmlAsyncWriter batchBooking;
+        private readonly ITrueFalseIndicatorXmlAsyncWriter paymentInformationReversal;
+        private readonly ISubordinateXmlAsyncWriter<PaymentReversalReason9> reversalReasonInformation;
+        private readonly ISubordinateXmlAsyncWriter<PaymentTransaction134> transactionInformation;
+        
+        /// <summary>
+        /// Construct using an injected writer for each member.
+        /// </summary>
+        public OriginalPaymentInstruction41XmlAsyncWriter
+        (
+            IMax35TextXmlAsyncWriter reversalPaymentInformationIdentification,
+            IMax35TextXmlAsyncWriter originalPaymentInformationIdentification,
+            IMax15NumericTextXmlAsyncWriter originalNumberOfTransactions,
+            IDecimalNumberXmlAsyncWriter originalControlSum,
+            IBatchBookingIndicatorXmlAsyncWriter batchBooking,
+            ITrueFalseIndicatorXmlAsyncWriter paymentInformationReversal,
+            ISubordinateXmlAsyncWriter<PaymentReversalReason9> reversalReasonInformation,
+            ISubordinateXmlAsyncWriter<PaymentTransaction134> transactionInformation
+        )
+        {
+            this.reversalPaymentInformationIdentification = reversalPaymentInformationIdentification;
+            this.originalPaymentInformationIdentification = originalPaymentInformationIdentification;
+            this.originalNumberOfTransactions = originalNumberOfTransactions;
+            this.originalControlSum = originalControlSum;
+            this.batchBooking = batchBooking;
+            this.paymentInformationReversal = paymentInformationReversal;
+            this.reversalReasonInformation = reversalReasonInformation;
+            this.transactionInformation = transactionInformation;
+        }
         public async Task WriteAsync(XmlWriter writer, OriginalPaymentInstruction41 value, string isoNamespace)
         {
             // ReversalPaymentInformationIdentification Optional Max35Text System.String

@@ -16,27 +16,66 @@ namespace BeneficialStrategies.Iso20022.Serialization.Xml.Writers.Components
     /// <summary>
     /// Performs the XML serialization faithful to ISO20002 standards for <seealso cref="PostalAddress24"/>.
     /// </summary>
-    public class PostalAddress24XmlAsyncWriter
-    ( // primary constructor 
-        ISubordinateXmlAsyncWriter<AddressType3Choice_> addressType,
-        IMax70TextXmlAsyncWriter department,
-        IMax70TextXmlAsyncWriter subDepartment,
-        IMax70TextXmlAsyncWriter streetName,
-        IMax16TextXmlAsyncWriter buildingNumber,
-        IMax35TextXmlAsyncWriter buildingName,
-        IMax70TextXmlAsyncWriter floor,
-        IMax16TextXmlAsyncWriter postBox,
-        IMax70TextXmlAsyncWriter room,
-        IMax16TextXmlAsyncWriter postCode,
-        IMax35TextXmlAsyncWriter townName,
-        IMax35TextXmlAsyncWriter townLocationName,
-        IMax35TextXmlAsyncWriter districtName,
-        IMax35TextXmlAsyncWriter countrySubDivision,
-        ICountryCodeXmlAsyncWriter country,
-        IMax70TextXmlAsyncWriter addressLine
-    ) // end primary constructor
-            : ISubordinateXmlAsyncWriter<PostalAddress24>
+    public class PostalAddress24XmlAsyncWriter : ISubordinateXmlAsyncWriter<PostalAddress24>
     {
+        // Injected dependencies for serialization of each member data type
+        private readonly ISubordinateXmlAsyncWriter<AddressType3Choice_> addressType;
+        private readonly IMax70TextXmlAsyncWriter department;
+        private readonly IMax70TextXmlAsyncWriter subDepartment;
+        private readonly IMax70TextXmlAsyncWriter streetName;
+        private readonly IMax16TextXmlAsyncWriter buildingNumber;
+        private readonly IMax35TextXmlAsyncWriter buildingName;
+        private readonly IMax70TextXmlAsyncWriter floor;
+        private readonly IMax16TextXmlAsyncWriter postBox;
+        private readonly IMax70TextXmlAsyncWriter room;
+        private readonly IMax16TextXmlAsyncWriter postCode;
+        private readonly IMax35TextXmlAsyncWriter townName;
+        private readonly IMax35TextXmlAsyncWriter townLocationName;
+        private readonly IMax35TextXmlAsyncWriter districtName;
+        private readonly IMax35TextXmlAsyncWriter countrySubDivision;
+        private readonly ICountryCodeXmlAsyncWriter country;
+        private readonly IMax70TextXmlAsyncWriter addressLine;
+        
+        /// <summary>
+        /// Construct using an injected writer for each member.
+        /// </summary>
+        public PostalAddress24XmlAsyncWriter
+        (
+            ISubordinateXmlAsyncWriter<AddressType3Choice_> addressType,
+            IMax70TextXmlAsyncWriter department,
+            IMax70TextXmlAsyncWriter subDepartment,
+            IMax70TextXmlAsyncWriter streetName,
+            IMax16TextXmlAsyncWriter buildingNumber,
+            IMax35TextXmlAsyncWriter buildingName,
+            IMax70TextXmlAsyncWriter floor,
+            IMax16TextXmlAsyncWriter postBox,
+            IMax70TextXmlAsyncWriter room,
+            IMax16TextXmlAsyncWriter postCode,
+            IMax35TextXmlAsyncWriter townName,
+            IMax35TextXmlAsyncWriter townLocationName,
+            IMax35TextXmlAsyncWriter districtName,
+            IMax35TextXmlAsyncWriter countrySubDivision,
+            ICountryCodeXmlAsyncWriter country,
+            IMax70TextXmlAsyncWriter addressLine
+        )
+        {
+            this.addressType = addressType;
+            this.department = department;
+            this.subDepartment = subDepartment;
+            this.streetName = streetName;
+            this.buildingNumber = buildingNumber;
+            this.buildingName = buildingName;
+            this.floor = floor;
+            this.postBox = postBox;
+            this.room = room;
+            this.postCode = postCode;
+            this.townName = townName;
+            this.townLocationName = townLocationName;
+            this.districtName = districtName;
+            this.countrySubDivision = countrySubDivision;
+            this.country = country;
+            this.addressLine = addressLine;
+        }
         public async Task WriteAsync(XmlWriter writer, PostalAddress24 value, string isoNamespace)
         {
             // AddressType Optional AddressType3Choice AddressType3Choice_

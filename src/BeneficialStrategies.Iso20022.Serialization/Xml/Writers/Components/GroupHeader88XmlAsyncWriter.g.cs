@@ -16,21 +16,48 @@ namespace BeneficialStrategies.Iso20022.Serialization.Xml.Writers.Components
     /// <summary>
     /// Performs the XML serialization faithful to ISO20002 standards for <seealso cref="GroupHeader88"/>.
     /// </summary>
-    public class GroupHeader88XmlAsyncWriter
-    ( // primary constructor 
-        IMax35TextXmlAsyncWriter messageIdentification,
-        IISODateTimeXmlAsyncWriter creationDateTime,
-        ISubordinateXmlAsyncWriter<Authorisation1Choice_> authorisation,
-        IMax15NumericTextXmlAsyncWriter numberOfTransactions,
-        IDecimalNumberXmlAsyncWriter controlSum,
-        ITrueFalseIndicatorXmlAsyncWriter groupReversal,
-        ISubordinateXmlAsyncWriter<PartyIdentification135> initiatingParty,
-        ISubordinateXmlAsyncWriter<BranchAndFinancialInstitutionIdentification6> forwardingAgent,
-        ISubordinateXmlAsyncWriter<BranchAndFinancialInstitutionIdentification6> debtorAgent,
-        ISubordinateXmlAsyncWriter<BranchAndFinancialInstitutionIdentification6> creditorAgent
-    ) // end primary constructor
-            : ISubordinateXmlAsyncWriter<GroupHeader88>
+    public class GroupHeader88XmlAsyncWriter : ISubordinateXmlAsyncWriter<GroupHeader88>
     {
+        // Injected dependencies for serialization of each member data type
+        private readonly IMax35TextXmlAsyncWriter messageIdentification;
+        private readonly IISODateTimeXmlAsyncWriter creationDateTime;
+        private readonly ISubordinateXmlAsyncWriter<Authorisation1Choice_> authorisation;
+        private readonly IMax15NumericTextXmlAsyncWriter numberOfTransactions;
+        private readonly IDecimalNumberXmlAsyncWriter controlSum;
+        private readonly ITrueFalseIndicatorXmlAsyncWriter groupReversal;
+        private readonly ISubordinateXmlAsyncWriter<PartyIdentification135> initiatingParty;
+        private readonly ISubordinateXmlAsyncWriter<BranchAndFinancialInstitutionIdentification6> forwardingAgent;
+        private readonly ISubordinateXmlAsyncWriter<BranchAndFinancialInstitutionIdentification6> debtorAgent;
+        private readonly ISubordinateXmlAsyncWriter<BranchAndFinancialInstitutionIdentification6> creditorAgent;
+        
+        /// <summary>
+        /// Construct using an injected writer for each member.
+        /// </summary>
+        public GroupHeader88XmlAsyncWriter
+        (
+            IMax35TextXmlAsyncWriter messageIdentification,
+            IISODateTimeXmlAsyncWriter creationDateTime,
+            ISubordinateXmlAsyncWriter<Authorisation1Choice_> authorisation,
+            IMax15NumericTextXmlAsyncWriter numberOfTransactions,
+            IDecimalNumberXmlAsyncWriter controlSum,
+            ITrueFalseIndicatorXmlAsyncWriter groupReversal,
+            ISubordinateXmlAsyncWriter<PartyIdentification135> initiatingParty,
+            ISubordinateXmlAsyncWriter<BranchAndFinancialInstitutionIdentification6> forwardingAgent,
+            ISubordinateXmlAsyncWriter<BranchAndFinancialInstitutionIdentification6> debtorAgent,
+            ISubordinateXmlAsyncWriter<BranchAndFinancialInstitutionIdentification6> creditorAgent
+        )
+        {
+            this.messageIdentification = messageIdentification;
+            this.creationDateTime = creationDateTime;
+            this.authorisation = authorisation;
+            this.numberOfTransactions = numberOfTransactions;
+            this.controlSum = controlSum;
+            this.groupReversal = groupReversal;
+            this.initiatingParty = initiatingParty;
+            this.forwardingAgent = forwardingAgent;
+            this.debtorAgent = debtorAgent;
+            this.creditorAgent = creditorAgent;
+        }
         public async Task WriteAsync(XmlWriter writer, GroupHeader88 value, string isoNamespace)
         {
             // MessageIdentification Required Max35Text System.String

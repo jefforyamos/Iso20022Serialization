@@ -16,13 +16,24 @@ namespace BeneficialStrategies.Iso20022.Serialization.Xml.Writers.Components
     /// <summary>
     /// Performs the XML serialization faithful to ISO20002 standards for <seealso cref="ReferredDocumentType4"/>.
     /// </summary>
-    public class ReferredDocumentType4XmlAsyncWriter
-    ( // primary constructor 
-        ISubordinateXmlAsyncWriter<ReferredDocumentType3Choice_> codeOrProprietary,
-        IMax35TextXmlAsyncWriter issuer
-    ) // end primary constructor
-            : ISubordinateXmlAsyncWriter<ReferredDocumentType4>
+    public class ReferredDocumentType4XmlAsyncWriter : ISubordinateXmlAsyncWriter<ReferredDocumentType4>
     {
+        // Injected dependencies for serialization of each member data type
+        private readonly ISubordinateXmlAsyncWriter<ReferredDocumentType3Choice_> codeOrProprietary;
+        private readonly IMax35TextXmlAsyncWriter issuer;
+        
+        /// <summary>
+        /// Construct using an injected writer for each member.
+        /// </summary>
+        public ReferredDocumentType4XmlAsyncWriter
+        (
+            ISubordinateXmlAsyncWriter<ReferredDocumentType3Choice_> codeOrProprietary,
+            IMax35TextXmlAsyncWriter issuer
+        )
+        {
+            this.codeOrProprietary = codeOrProprietary;
+            this.issuer = issuer;
+        }
         public async Task WriteAsync(XmlWriter writer, ReferredDocumentType4 value, string isoNamespace)
         {
             // CodeOrProprietary Required ReferredDocumentType3Choice ReferredDocumentType3Choice_

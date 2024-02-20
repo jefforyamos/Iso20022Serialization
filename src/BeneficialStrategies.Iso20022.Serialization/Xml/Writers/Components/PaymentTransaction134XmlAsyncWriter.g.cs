@@ -16,21 +16,48 @@ namespace BeneficialStrategies.Iso20022.Serialization.Xml.Writers.Components
     /// <summary>
     /// Performs the XML serialization faithful to ISO20002 standards for <seealso cref="PaymentTransaction134"/>.
     /// </summary>
-    public class PaymentTransaction134XmlAsyncWriter
-    ( // primary constructor 
-        IMax35TextXmlAsyncWriter reversalIdentification,
-        IMax35TextXmlAsyncWriter originalInstructionIdentification,
-        IMax35TextXmlAsyncWriter originalEndToEndIdentification,
-        IUUIDv4IdentifierXmlAsyncWriter originalUETR,
-        IActiveOrHistoricCurrencyAndAmountXmlAsyncWriter originalInstructedAmount,
-        IActiveOrHistoricCurrencyAndAmountXmlAsyncWriter reversedInstructedAmount,
-        IEnumXmlAsyncWriter<ChargeBearerType1Code> chargeBearer,
-        ISubordinateXmlAsyncWriter<PaymentReversalReason9> reversalReasonInformation,
-        ISubordinateXmlAsyncWriter<OriginalTransactionReference35> originalTransactionReference,
-        ISubordinateXmlAsyncWriter<SupplementaryData1> supplementaryData
-    ) // end primary constructor
-            : ISubordinateXmlAsyncWriter<PaymentTransaction134>
+    public class PaymentTransaction134XmlAsyncWriter : ISubordinateXmlAsyncWriter<PaymentTransaction134>
     {
+        // Injected dependencies for serialization of each member data type
+        private readonly IMax35TextXmlAsyncWriter reversalIdentification;
+        private readonly IMax35TextXmlAsyncWriter originalInstructionIdentification;
+        private readonly IMax35TextXmlAsyncWriter originalEndToEndIdentification;
+        private readonly IUUIDv4IdentifierXmlAsyncWriter originalUETR;
+        private readonly IActiveOrHistoricCurrencyAndAmountXmlAsyncWriter originalInstructedAmount;
+        private readonly IActiveOrHistoricCurrencyAndAmountXmlAsyncWriter reversedInstructedAmount;
+        private readonly IEnumXmlAsyncWriter<ChargeBearerType1Code> chargeBearer;
+        private readonly ISubordinateXmlAsyncWriter<PaymentReversalReason9> reversalReasonInformation;
+        private readonly ISubordinateXmlAsyncWriter<OriginalTransactionReference35> originalTransactionReference;
+        private readonly ISubordinateXmlAsyncWriter<SupplementaryData1> supplementaryData;
+        
+        /// <summary>
+        /// Construct using an injected writer for each member.
+        /// </summary>
+        public PaymentTransaction134XmlAsyncWriter
+        (
+            IMax35TextXmlAsyncWriter reversalIdentification,
+            IMax35TextXmlAsyncWriter originalInstructionIdentification,
+            IMax35TextXmlAsyncWriter originalEndToEndIdentification,
+            IUUIDv4IdentifierXmlAsyncWriter originalUETR,
+            IActiveOrHistoricCurrencyAndAmountXmlAsyncWriter originalInstructedAmount,
+            IActiveOrHistoricCurrencyAndAmountXmlAsyncWriter reversedInstructedAmount,
+            IEnumXmlAsyncWriter<ChargeBearerType1Code> chargeBearer,
+            ISubordinateXmlAsyncWriter<PaymentReversalReason9> reversalReasonInformation,
+            ISubordinateXmlAsyncWriter<OriginalTransactionReference35> originalTransactionReference,
+            ISubordinateXmlAsyncWriter<SupplementaryData1> supplementaryData
+        )
+        {
+            this.reversalIdentification = reversalIdentification;
+            this.originalInstructionIdentification = originalInstructionIdentification;
+            this.originalEndToEndIdentification = originalEndToEndIdentification;
+            this.originalUETR = originalUETR;
+            this.originalInstructedAmount = originalInstructedAmount;
+            this.reversedInstructedAmount = reversedInstructedAmount;
+            this.chargeBearer = chargeBearer;
+            this.reversalReasonInformation = reversalReasonInformation;
+            this.originalTransactionReference = originalTransactionReference;
+            this.supplementaryData = supplementaryData;
+        }
         public async Task WriteAsync(XmlWriter writer, PaymentTransaction134 value, string isoNamespace)
         {
             // ReversalIdentification Optional Max35Text System.String

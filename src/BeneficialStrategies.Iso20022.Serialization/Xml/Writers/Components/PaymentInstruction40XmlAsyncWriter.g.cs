@@ -16,30 +16,75 @@ namespace BeneficialStrategies.Iso20022.Serialization.Xml.Writers.Components
     /// <summary>
     /// Performs the XML serialization faithful to ISO20002 standards for <seealso cref="PaymentInstruction40"/>.
     /// </summary>
-    public class PaymentInstruction40XmlAsyncWriter
-    ( // primary constructor 
-        IMax35TextXmlAsyncWriter paymentInformationIdentification,
-        IEnumXmlAsyncWriter<PaymentMethod3Code> paymentMethod,
-        ISubordinateXmlAsyncWriter<AdviceType1> requestedAdviceType,
-        IBatchBookingIndicatorXmlAsyncWriter batchBooking,
-        IMax15NumericTextXmlAsyncWriter numberOfTransactions,
-        IDecimalNumberXmlAsyncWriter controlSum,
-        ISubordinateXmlAsyncWriter<PaymentTypeInformation26> paymentTypeInformation,
-        ISubordinateXmlAsyncWriter<DateAndDateTime2Choice_> requestedExecutionDate,
-        IISODateXmlAsyncWriter poolingAdjustmentDate,
-        ISubordinateXmlAsyncWriter<PartyIdentification135> debtor,
-        ISubordinateXmlAsyncWriter<CashAccount40> debtorAccount,
-        ISubordinateXmlAsyncWriter<BranchAndFinancialInstitutionIdentification6> debtorAgent,
-        ISubordinateXmlAsyncWriter<CashAccount40> debtorAgentAccount,
-        IMax140TextXmlAsyncWriter instructionForDebtorAgent,
-        ISubordinateXmlAsyncWriter<PartyIdentification135> ultimateDebtor,
-        IEnumXmlAsyncWriter<ChargeBearerType1Code> chargeBearer,
-        ISubordinateXmlAsyncWriter<CashAccount40> chargesAccount,
-        ISubordinateXmlAsyncWriter<BranchAndFinancialInstitutionIdentification6> chargesAccountAgent,
-        ISubordinateXmlAsyncWriter<CreditTransferTransaction54> creditTransferTransactionInformation
-    ) // end primary constructor
-            : ISubordinateXmlAsyncWriter<PaymentInstruction40>
+    public class PaymentInstruction40XmlAsyncWriter : ISubordinateXmlAsyncWriter<PaymentInstruction40>
     {
+        // Injected dependencies for serialization of each member data type
+        private readonly IMax35TextXmlAsyncWriter paymentInformationIdentification;
+        private readonly IEnumXmlAsyncWriter<PaymentMethod3Code> paymentMethod;
+        private readonly ISubordinateXmlAsyncWriter<AdviceType1> requestedAdviceType;
+        private readonly IBatchBookingIndicatorXmlAsyncWriter batchBooking;
+        private readonly IMax15NumericTextXmlAsyncWriter numberOfTransactions;
+        private readonly IDecimalNumberXmlAsyncWriter controlSum;
+        private readonly ISubordinateXmlAsyncWriter<PaymentTypeInformation26> paymentTypeInformation;
+        private readonly ISubordinateXmlAsyncWriter<DateAndDateTime2Choice_> requestedExecutionDate;
+        private readonly IISODateXmlAsyncWriter poolingAdjustmentDate;
+        private readonly ISubordinateXmlAsyncWriter<PartyIdentification135> debtor;
+        private readonly ISubordinateXmlAsyncWriter<CashAccount40> debtorAccount;
+        private readonly ISubordinateXmlAsyncWriter<BranchAndFinancialInstitutionIdentification6> debtorAgent;
+        private readonly ISubordinateXmlAsyncWriter<CashAccount40> debtorAgentAccount;
+        private readonly IMax140TextXmlAsyncWriter instructionForDebtorAgent;
+        private readonly ISubordinateXmlAsyncWriter<PartyIdentification135> ultimateDebtor;
+        private readonly IEnumXmlAsyncWriter<ChargeBearerType1Code> chargeBearer;
+        private readonly ISubordinateXmlAsyncWriter<CashAccount40> chargesAccount;
+        private readonly ISubordinateXmlAsyncWriter<BranchAndFinancialInstitutionIdentification6> chargesAccountAgent;
+        private readonly ISubordinateXmlAsyncWriter<CreditTransferTransaction54> creditTransferTransactionInformation;
+        
+        /// <summary>
+        /// Construct using an injected writer for each member.
+        /// </summary>
+        public PaymentInstruction40XmlAsyncWriter
+        (
+            IMax35TextXmlAsyncWriter paymentInformationIdentification,
+            IEnumXmlAsyncWriter<PaymentMethod3Code> paymentMethod,
+            ISubordinateXmlAsyncWriter<AdviceType1> requestedAdviceType,
+            IBatchBookingIndicatorXmlAsyncWriter batchBooking,
+            IMax15NumericTextXmlAsyncWriter numberOfTransactions,
+            IDecimalNumberXmlAsyncWriter controlSum,
+            ISubordinateXmlAsyncWriter<PaymentTypeInformation26> paymentTypeInformation,
+            ISubordinateXmlAsyncWriter<DateAndDateTime2Choice_> requestedExecutionDate,
+            IISODateXmlAsyncWriter poolingAdjustmentDate,
+            ISubordinateXmlAsyncWriter<PartyIdentification135> debtor,
+            ISubordinateXmlAsyncWriter<CashAccount40> debtorAccount,
+            ISubordinateXmlAsyncWriter<BranchAndFinancialInstitutionIdentification6> debtorAgent,
+            ISubordinateXmlAsyncWriter<CashAccount40> debtorAgentAccount,
+            IMax140TextXmlAsyncWriter instructionForDebtorAgent,
+            ISubordinateXmlAsyncWriter<PartyIdentification135> ultimateDebtor,
+            IEnumXmlAsyncWriter<ChargeBearerType1Code> chargeBearer,
+            ISubordinateXmlAsyncWriter<CashAccount40> chargesAccount,
+            ISubordinateXmlAsyncWriter<BranchAndFinancialInstitutionIdentification6> chargesAccountAgent,
+            ISubordinateXmlAsyncWriter<CreditTransferTransaction54> creditTransferTransactionInformation
+        )
+        {
+            this.paymentInformationIdentification = paymentInformationIdentification;
+            this.paymentMethod = paymentMethod;
+            this.requestedAdviceType = requestedAdviceType;
+            this.batchBooking = batchBooking;
+            this.numberOfTransactions = numberOfTransactions;
+            this.controlSum = controlSum;
+            this.paymentTypeInformation = paymentTypeInformation;
+            this.requestedExecutionDate = requestedExecutionDate;
+            this.poolingAdjustmentDate = poolingAdjustmentDate;
+            this.debtor = debtor;
+            this.debtorAccount = debtorAccount;
+            this.debtorAgent = debtorAgent;
+            this.debtorAgentAccount = debtorAgentAccount;
+            this.instructionForDebtorAgent = instructionForDebtorAgent;
+            this.ultimateDebtor = ultimateDebtor;
+            this.chargeBearer = chargeBearer;
+            this.chargesAccount = chargesAccount;
+            this.chargesAccountAgent = chargesAccountAgent;
+            this.creditTransferTransactionInformation = creditTransferTransactionInformation;
+        }
         public async Task WriteAsync(XmlWriter writer, PaymentInstruction40 value, string isoNamespace)
         {
             // PaymentInformationIdentification Required Max35Text System.String

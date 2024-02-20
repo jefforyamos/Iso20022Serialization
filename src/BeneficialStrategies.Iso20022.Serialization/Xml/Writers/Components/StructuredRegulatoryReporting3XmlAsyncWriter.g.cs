@@ -16,17 +16,36 @@ namespace BeneficialStrategies.Iso20022.Serialization.Xml.Writers.Components
     /// <summary>
     /// Performs the XML serialization faithful to ISO20002 standards for <seealso cref="StructuredRegulatoryReporting3"/>.
     /// </summary>
-    public class StructuredRegulatoryReporting3XmlAsyncWriter
-    ( // primary constructor 
-        IMax35TextXmlAsyncWriter type,
-        IISODateXmlAsyncWriter date,
-        ICountryCodeXmlAsyncWriter country,
-        IMax10TextXmlAsyncWriter code,
-        IActiveOrHistoricCurrencyAndAmountXmlAsyncWriter amount,
-        IMax35TextXmlAsyncWriter information
-    ) // end primary constructor
-            : ISubordinateXmlAsyncWriter<StructuredRegulatoryReporting3>
+    public class StructuredRegulatoryReporting3XmlAsyncWriter : ISubordinateXmlAsyncWriter<StructuredRegulatoryReporting3>
     {
+        // Injected dependencies for serialization of each member data type
+        private readonly IMax35TextXmlAsyncWriter type;
+        private readonly IISODateXmlAsyncWriter date;
+        private readonly ICountryCodeXmlAsyncWriter country;
+        private readonly IMax10TextXmlAsyncWriter code;
+        private readonly IActiveOrHistoricCurrencyAndAmountXmlAsyncWriter amount;
+        private readonly IMax35TextXmlAsyncWriter information;
+        
+        /// <summary>
+        /// Construct using an injected writer for each member.
+        /// </summary>
+        public StructuredRegulatoryReporting3XmlAsyncWriter
+        (
+            IMax35TextXmlAsyncWriter type,
+            IISODateXmlAsyncWriter date,
+            ICountryCodeXmlAsyncWriter country,
+            IMax10TextXmlAsyncWriter code,
+            IActiveOrHistoricCurrencyAndAmountXmlAsyncWriter amount,
+            IMax35TextXmlAsyncWriter information
+        )
+        {
+            this.type = type;
+            this.date = date;
+            this.country = country;
+            this.code = code;
+            this.amount = amount;
+            this.information = information;
+        }
         public async Task WriteAsync(XmlWriter writer, StructuredRegulatoryReporting3 value, string isoNamespace)
         {
             // Type Optional Max35Text System.String

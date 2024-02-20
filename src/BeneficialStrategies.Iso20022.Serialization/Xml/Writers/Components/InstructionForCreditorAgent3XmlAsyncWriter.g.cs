@@ -16,13 +16,24 @@ namespace BeneficialStrategies.Iso20022.Serialization.Xml.Writers.Components
     /// <summary>
     /// Performs the XML serialization faithful to ISO20002 standards for <seealso cref="InstructionForCreditorAgent3"/>.
     /// </summary>
-    public class InstructionForCreditorAgent3XmlAsyncWriter
-    ( // primary constructor 
-        IEnumXmlAsyncWriter<ExternalCreditorAgentInstruction1Code> code,
-        IMax140TextXmlAsyncWriter instructionInformation
-    ) // end primary constructor
-            : ISubordinateXmlAsyncWriter<InstructionForCreditorAgent3>
+    public class InstructionForCreditorAgent3XmlAsyncWriter : ISubordinateXmlAsyncWriter<InstructionForCreditorAgent3>
     {
+        // Injected dependencies for serialization of each member data type
+        private readonly IEnumXmlAsyncWriter<ExternalCreditorAgentInstruction1Code> code;
+        private readonly IMax140TextXmlAsyncWriter instructionInformation;
+        
+        /// <summary>
+        /// Construct using an injected writer for each member.
+        /// </summary>
+        public InstructionForCreditorAgent3XmlAsyncWriter
+        (
+            IEnumXmlAsyncWriter<ExternalCreditorAgentInstruction1Code> code,
+            IMax140TextXmlAsyncWriter instructionInformation
+        )
+        {
+            this.code = code;
+            this.instructionInformation = instructionInformation;
+        }
         public async Task WriteAsync(XmlWriter writer, InstructionForCreditorAgent3 value, string isoNamespace)
         {
             // Code Optional ExternalCreditorAgentInstruction1Code ExternalCreditorAgentInstruction1Code

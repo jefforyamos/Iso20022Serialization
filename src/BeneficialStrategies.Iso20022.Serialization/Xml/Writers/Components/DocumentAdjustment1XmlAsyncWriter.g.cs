@@ -16,15 +16,30 @@ namespace BeneficialStrategies.Iso20022.Serialization.Xml.Writers.Components
     /// <summary>
     /// Performs the XML serialization faithful to ISO20002 standards for <seealso cref="DocumentAdjustment1"/>.
     /// </summary>
-    public class DocumentAdjustment1XmlAsyncWriter
-    ( // primary constructor 
-        IActiveOrHistoricCurrencyAndAmountXmlAsyncWriter amount,
-        IEnumXmlAsyncWriter<CreditDebitCode> creditDebitIndicator,
-        IMax4TextXmlAsyncWriter reason,
-        IMax140TextXmlAsyncWriter additionalInformation
-    ) // end primary constructor
-            : ISubordinateXmlAsyncWriter<DocumentAdjustment1>
+    public class DocumentAdjustment1XmlAsyncWriter : ISubordinateXmlAsyncWriter<DocumentAdjustment1>
     {
+        // Injected dependencies for serialization of each member data type
+        private readonly IActiveOrHistoricCurrencyAndAmountXmlAsyncWriter amount;
+        private readonly IEnumXmlAsyncWriter<CreditDebitCode> creditDebitIndicator;
+        private readonly IMax4TextXmlAsyncWriter reason;
+        private readonly IMax140TextXmlAsyncWriter additionalInformation;
+        
+        /// <summary>
+        /// Construct using an injected writer for each member.
+        /// </summary>
+        public DocumentAdjustment1XmlAsyncWriter
+        (
+            IActiveOrHistoricCurrencyAndAmountXmlAsyncWriter amount,
+            IEnumXmlAsyncWriter<CreditDebitCode> creditDebitIndicator,
+            IMax4TextXmlAsyncWriter reason,
+            IMax140TextXmlAsyncWriter additionalInformation
+        )
+        {
+            this.amount = amount;
+            this.creditDebitIndicator = creditDebitIndicator;
+            this.reason = reason;
+            this.additionalInformation = additionalInformation;
+        }
         public async Task WriteAsync(XmlWriter writer, DocumentAdjustment1 value, string isoNamespace)
         {
             // Amount Required ActiveOrHistoricCurrencyAndAmount System.Decimal

@@ -16,19 +16,42 @@ namespace BeneficialStrategies.Iso20022.Serialization.Xml.Writers.Components
     /// <summary>
     /// Performs the XML serialization faithful to ISO20002 standards for <seealso cref="StructuredRemittanceInformation17"/>.
     /// </summary>
-    public class StructuredRemittanceInformation17XmlAsyncWriter
-    ( // primary constructor 
-        ISubordinateXmlAsyncWriter<ReferredDocumentInformation7> referredDocumentInformation,
-        ISubordinateXmlAsyncWriter<RemittanceAmount2> referredDocumentAmount,
-        ISubordinateXmlAsyncWriter<CreditorReferenceInformation2> creditorReferenceInformation,
-        ISubordinateXmlAsyncWriter<PartyIdentification135> invoicer,
-        ISubordinateXmlAsyncWriter<PartyIdentification135> invoicee,
-        ISubordinateXmlAsyncWriter<TaxData1> taxRemittance,
-        ISubordinateXmlAsyncWriter<Garnishment3> garnishmentRemittance,
-        IMax140TextXmlAsyncWriter additionalRemittanceInformation
-    ) // end primary constructor
-            : ISubordinateXmlAsyncWriter<StructuredRemittanceInformation17>
+    public class StructuredRemittanceInformation17XmlAsyncWriter : ISubordinateXmlAsyncWriter<StructuredRemittanceInformation17>
     {
+        // Injected dependencies for serialization of each member data type
+        private readonly ISubordinateXmlAsyncWriter<ReferredDocumentInformation7> referredDocumentInformation;
+        private readonly ISubordinateXmlAsyncWriter<RemittanceAmount2> referredDocumentAmount;
+        private readonly ISubordinateXmlAsyncWriter<CreditorReferenceInformation2> creditorReferenceInformation;
+        private readonly ISubordinateXmlAsyncWriter<PartyIdentification135> invoicer;
+        private readonly ISubordinateXmlAsyncWriter<PartyIdentification135> invoicee;
+        private readonly ISubordinateXmlAsyncWriter<TaxData1> taxRemittance;
+        private readonly ISubordinateXmlAsyncWriter<Garnishment3> garnishmentRemittance;
+        private readonly IMax140TextXmlAsyncWriter additionalRemittanceInformation;
+        
+        /// <summary>
+        /// Construct using an injected writer for each member.
+        /// </summary>
+        public StructuredRemittanceInformation17XmlAsyncWriter
+        (
+            ISubordinateXmlAsyncWriter<ReferredDocumentInformation7> referredDocumentInformation,
+            ISubordinateXmlAsyncWriter<RemittanceAmount2> referredDocumentAmount,
+            ISubordinateXmlAsyncWriter<CreditorReferenceInformation2> creditorReferenceInformation,
+            ISubordinateXmlAsyncWriter<PartyIdentification135> invoicer,
+            ISubordinateXmlAsyncWriter<PartyIdentification135> invoicee,
+            ISubordinateXmlAsyncWriter<TaxData1> taxRemittance,
+            ISubordinateXmlAsyncWriter<Garnishment3> garnishmentRemittance,
+            IMax140TextXmlAsyncWriter additionalRemittanceInformation
+        )
+        {
+            this.referredDocumentInformation = referredDocumentInformation;
+            this.referredDocumentAmount = referredDocumentAmount;
+            this.creditorReferenceInformation = creditorReferenceInformation;
+            this.invoicer = invoicer;
+            this.invoicee = invoicee;
+            this.taxRemittance = taxRemittance;
+            this.garnishmentRemittance = garnishmentRemittance;
+            this.additionalRemittanceInformation = additionalRemittanceInformation;
+        }
         public async Task WriteAsync(XmlWriter writer, StructuredRemittanceInformation17 value, string isoNamespace)
         {
             // ReferredDocumentInformation Optional ReferredDocumentInformation7 ReferredDocumentInformation7

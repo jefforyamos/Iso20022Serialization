@@ -16,13 +16,24 @@ namespace BeneficialStrategies.Iso20022.Serialization.Xml.Writers.Components
     /// <summary>
     /// Performs the XML serialization faithful to ISO20002 standards for <seealso cref="ProxyAccountIdentification1"/>.
     /// </summary>
-    public class ProxyAccountIdentification1XmlAsyncWriter
-    ( // primary constructor 
-        ISubordinateXmlAsyncWriter<ProxyAccountType1Choice_> type,
-        IMax2048TextXmlAsyncWriter identification
-    ) // end primary constructor
-            : ISubordinateXmlAsyncWriter<ProxyAccountIdentification1>
+    public class ProxyAccountIdentification1XmlAsyncWriter : ISubordinateXmlAsyncWriter<ProxyAccountIdentification1>
     {
+        // Injected dependencies for serialization of each member data type
+        private readonly ISubordinateXmlAsyncWriter<ProxyAccountType1Choice_> type;
+        private readonly IMax2048TextXmlAsyncWriter identification;
+        
+        /// <summary>
+        /// Construct using an injected writer for each member.
+        /// </summary>
+        public ProxyAccountIdentification1XmlAsyncWriter
+        (
+            ISubordinateXmlAsyncWriter<ProxyAccountType1Choice_> type,
+            IMax2048TextXmlAsyncWriter identification
+        )
+        {
+            this.type = type;
+            this.identification = identification;
+        }
         public async Task WriteAsync(XmlWriter writer, ProxyAccountIdentification1 value, string isoNamespace)
         {
             // Type Optional ProxyAccountType1Choice ProxyAccountType1Choice_

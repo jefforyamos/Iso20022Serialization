@@ -16,14 +16,27 @@ namespace BeneficialStrategies.Iso20022.Serialization.Xml.Writers.Components
     /// <summary>
     /// Performs the XML serialization faithful to ISO20002 standards for <seealso cref="PaymentInitiationSource1"/>.
     /// </summary>
-    public class PaymentInitiationSource1XmlAsyncWriter
-    ( // primary constructor 
-        IMax140TextXmlAsyncWriter name,
-        IMax35TextXmlAsyncWriter provider,
-        IMax35TextXmlAsyncWriter version
-    ) // end primary constructor
-            : ISubordinateXmlAsyncWriter<PaymentInitiationSource1>
+    public class PaymentInitiationSource1XmlAsyncWriter : ISubordinateXmlAsyncWriter<PaymentInitiationSource1>
     {
+        // Injected dependencies for serialization of each member data type
+        private readonly IMax140TextXmlAsyncWriter name;
+        private readonly IMax35TextXmlAsyncWriter provider;
+        private readonly IMax35TextXmlAsyncWriter version;
+        
+        /// <summary>
+        /// Construct using an injected writer for each member.
+        /// </summary>
+        public PaymentInitiationSource1XmlAsyncWriter
+        (
+            IMax140TextXmlAsyncWriter name,
+            IMax35TextXmlAsyncWriter provider,
+            IMax35TextXmlAsyncWriter version
+        )
+        {
+            this.name = name;
+            this.provider = provider;
+            this.version = version;
+        }
         public async Task WriteAsync(XmlWriter writer, PaymentInitiationSource1 value, string isoNamespace)
         {
             // Name Required Max140Text System.String

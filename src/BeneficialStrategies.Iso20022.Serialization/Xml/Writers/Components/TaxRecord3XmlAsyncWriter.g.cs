@@ -16,20 +16,45 @@ namespace BeneficialStrategies.Iso20022.Serialization.Xml.Writers.Components
     /// <summary>
     /// Performs the XML serialization faithful to ISO20002 standards for <seealso cref="TaxRecord3"/>.
     /// </summary>
-    public class TaxRecord3XmlAsyncWriter
-    ( // primary constructor 
-        IMax35TextXmlAsyncWriter type,
-        IMax35TextXmlAsyncWriter category,
-        IMax35TextXmlAsyncWriter categoryDetails,
-        IMax35TextXmlAsyncWriter debtorStatus,
-        IMax35TextXmlAsyncWriter certificateIdentification,
-        IMax35TextXmlAsyncWriter formsCode,
-        ISubordinateXmlAsyncWriter<TaxPeriod3> period,
-        ISubordinateXmlAsyncWriter<TaxAmount3> taxAmount,
-        IMax140TextXmlAsyncWriter additionalInformation
-    ) // end primary constructor
-            : ISubordinateXmlAsyncWriter<TaxRecord3>
+    public class TaxRecord3XmlAsyncWriter : ISubordinateXmlAsyncWriter<TaxRecord3>
     {
+        // Injected dependencies for serialization of each member data type
+        private readonly IMax35TextXmlAsyncWriter type;
+        private readonly IMax35TextXmlAsyncWriter category;
+        private readonly IMax35TextXmlAsyncWriter categoryDetails;
+        private readonly IMax35TextXmlAsyncWriter debtorStatus;
+        private readonly IMax35TextXmlAsyncWriter certificateIdentification;
+        private readonly IMax35TextXmlAsyncWriter formsCode;
+        private readonly ISubordinateXmlAsyncWriter<TaxPeriod3> period;
+        private readonly ISubordinateXmlAsyncWriter<TaxAmount3> taxAmount;
+        private readonly IMax140TextXmlAsyncWriter additionalInformation;
+        
+        /// <summary>
+        /// Construct using an injected writer for each member.
+        /// </summary>
+        public TaxRecord3XmlAsyncWriter
+        (
+            IMax35TextXmlAsyncWriter type,
+            IMax35TextXmlAsyncWriter category,
+            IMax35TextXmlAsyncWriter categoryDetails,
+            IMax35TextXmlAsyncWriter debtorStatus,
+            IMax35TextXmlAsyncWriter certificateIdentification,
+            IMax35TextXmlAsyncWriter formsCode,
+            ISubordinateXmlAsyncWriter<TaxPeriod3> period,
+            ISubordinateXmlAsyncWriter<TaxAmount3> taxAmount,
+            IMax140TextXmlAsyncWriter additionalInformation
+        )
+        {
+            this.type = type;
+            this.category = category;
+            this.categoryDetails = categoryDetails;
+            this.debtorStatus = debtorStatus;
+            this.certificateIdentification = certificateIdentification;
+            this.formsCode = formsCode;
+            this.period = period;
+            this.taxAmount = taxAmount;
+            this.additionalInformation = additionalInformation;
+        }
         public async Task WriteAsync(XmlWriter writer, TaxRecord3 value, string isoNamespace)
         {
             // Type Optional Max35Text System.String

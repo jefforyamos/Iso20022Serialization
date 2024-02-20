@@ -16,21 +16,48 @@ namespace BeneficialStrategies.Iso20022.Serialization.Xml.Writers.Components
     /// <summary>
     /// Performs the XML serialization faithful to ISO20002 standards for <seealso cref="MandateRelatedInformation15"/>.
     /// </summary>
-    public class MandateRelatedInformation15XmlAsyncWriter
-    ( // primary constructor 
-        IMax35TextXmlAsyncWriter mandateIdentification,
-        IISODateXmlAsyncWriter dateOfSignature,
-        ITrueFalseIndicatorXmlAsyncWriter amendmentIndicator,
-        ISubordinateXmlAsyncWriter<AmendmentInformationDetails14> amendmentInformationDetails,
-        IMax1025TextXmlAsyncWriter electronicSignature,
-        IISODateXmlAsyncWriter firstCollectionDate,
-        IISODateXmlAsyncWriter finalCollectionDate,
-        ISubordinateXmlAsyncWriter<Frequency36Choice_> frequency,
-        ISubordinateXmlAsyncWriter<MandateSetupReason1Choice_> reason,
-        IExact2NumericTextXmlAsyncWriter trackingDays
-    ) // end primary constructor
-            : ISubordinateXmlAsyncWriter<MandateRelatedInformation15>
+    public class MandateRelatedInformation15XmlAsyncWriter : ISubordinateXmlAsyncWriter<MandateRelatedInformation15>
     {
+        // Injected dependencies for serialization of each member data type
+        private readonly IMax35TextXmlAsyncWriter mandateIdentification;
+        private readonly IISODateXmlAsyncWriter dateOfSignature;
+        private readonly ITrueFalseIndicatorXmlAsyncWriter amendmentIndicator;
+        private readonly ISubordinateXmlAsyncWriter<AmendmentInformationDetails14> amendmentInformationDetails;
+        private readonly IMax1025TextXmlAsyncWriter electronicSignature;
+        private readonly IISODateXmlAsyncWriter firstCollectionDate;
+        private readonly IISODateXmlAsyncWriter finalCollectionDate;
+        private readonly ISubordinateXmlAsyncWriter<Frequency36Choice_> frequency;
+        private readonly ISubordinateXmlAsyncWriter<MandateSetupReason1Choice_> reason;
+        private readonly IExact2NumericTextXmlAsyncWriter trackingDays;
+        
+        /// <summary>
+        /// Construct using an injected writer for each member.
+        /// </summary>
+        public MandateRelatedInformation15XmlAsyncWriter
+        (
+            IMax35TextXmlAsyncWriter mandateIdentification,
+            IISODateXmlAsyncWriter dateOfSignature,
+            ITrueFalseIndicatorXmlAsyncWriter amendmentIndicator,
+            ISubordinateXmlAsyncWriter<AmendmentInformationDetails14> amendmentInformationDetails,
+            IMax1025TextXmlAsyncWriter electronicSignature,
+            IISODateXmlAsyncWriter firstCollectionDate,
+            IISODateXmlAsyncWriter finalCollectionDate,
+            ISubordinateXmlAsyncWriter<Frequency36Choice_> frequency,
+            ISubordinateXmlAsyncWriter<MandateSetupReason1Choice_> reason,
+            IExact2NumericTextXmlAsyncWriter trackingDays
+        )
+        {
+            this.mandateIdentification = mandateIdentification;
+            this.dateOfSignature = dateOfSignature;
+            this.amendmentIndicator = amendmentIndicator;
+            this.amendmentInformationDetails = amendmentInformationDetails;
+            this.electronicSignature = electronicSignature;
+            this.firstCollectionDate = firstCollectionDate;
+            this.finalCollectionDate = finalCollectionDate;
+            this.frequency = frequency;
+            this.reason = reason;
+            this.trackingDays = trackingDays;
+        }
         public async Task WriteAsync(XmlWriter writer, MandateRelatedInformation15 value, string isoNamespace)
         {
             // MandateIdentification Optional Max35Text System.String

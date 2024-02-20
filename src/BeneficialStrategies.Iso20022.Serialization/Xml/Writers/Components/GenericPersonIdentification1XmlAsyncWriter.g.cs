@@ -16,14 +16,27 @@ namespace BeneficialStrategies.Iso20022.Serialization.Xml.Writers.Components
     /// <summary>
     /// Performs the XML serialization faithful to ISO20002 standards for <seealso cref="GenericPersonIdentification1"/>.
     /// </summary>
-    public class GenericPersonIdentification1XmlAsyncWriter
-    ( // primary constructor 
-        IMax35TextXmlAsyncWriter identification,
-        ISubordinateXmlAsyncWriter<PersonIdentificationSchemeName1Choice_> schemeName,
-        IMax35TextXmlAsyncWriter issuer
-    ) // end primary constructor
-            : ISubordinateXmlAsyncWriter<GenericPersonIdentification1>
+    public class GenericPersonIdentification1XmlAsyncWriter : ISubordinateXmlAsyncWriter<GenericPersonIdentification1>
     {
+        // Injected dependencies for serialization of each member data type
+        private readonly IMax35TextXmlAsyncWriter identification;
+        private readonly ISubordinateXmlAsyncWriter<PersonIdentificationSchemeName1Choice_> schemeName;
+        private readonly IMax35TextXmlAsyncWriter issuer;
+        
+        /// <summary>
+        /// Construct using an injected writer for each member.
+        /// </summary>
+        public GenericPersonIdentification1XmlAsyncWriter
+        (
+            IMax35TextXmlAsyncWriter identification,
+            ISubordinateXmlAsyncWriter<PersonIdentificationSchemeName1Choice_> schemeName,
+            IMax35TextXmlAsyncWriter issuer
+        )
+        {
+            this.identification = identification;
+            this.schemeName = schemeName;
+            this.issuer = issuer;
+        }
         public async Task WriteAsync(XmlWriter writer, GenericPersonIdentification1 value, string isoNamespace)
         {
             // Identification Required Max35Text System.String

@@ -16,33 +16,84 @@ namespace BeneficialStrategies.Iso20022.Serialization.Xml.Writers.Components
     /// <summary>
     /// Performs the XML serialization faithful to ISO20002 standards for <seealso cref="OriginalTransactionReference35"/>.
     /// </summary>
-    public class OriginalTransactionReference35XmlAsyncWriter
-    ( // primary constructor 
-        IActiveOrHistoricCurrencyAndAmountXmlAsyncWriter interbankSettlementAmount,
-        ISubordinateXmlAsyncWriter<AmountType4Choice_> amount,
-        IISODateXmlAsyncWriter interbankSettlementDate,
-        IISODateXmlAsyncWriter requestedCollectionDate,
-        ISubordinateXmlAsyncWriter<DateAndDateTime2Choice_> requestedExecutionDate,
-        ISubordinateXmlAsyncWriter<PartyIdentification135> creditorSchemeIdentification,
-        ISubordinateXmlAsyncWriter<SettlementInstruction11> settlementInformation,
-        ISubordinateXmlAsyncWriter<PaymentTypeInformation27> paymentTypeInformation,
-        IEnumXmlAsyncWriter<PaymentMethod4Code> paymentMethod,
-        ISubordinateXmlAsyncWriter<MandateRelatedData2Choice_> mandateRelatedInformation,
-        ISubordinateXmlAsyncWriter<RemittanceInformation21> remittanceInformation,
-        ISubordinateXmlAsyncWriter<Party40Choice_> ultimateDebtor,
-        ISubordinateXmlAsyncWriter<Party40Choice_> debtor,
-        ISubordinateXmlAsyncWriter<CashAccount40> debtorAccount,
-        ISubordinateXmlAsyncWriter<BranchAndFinancialInstitutionIdentification6> debtorAgent,
-        ISubordinateXmlAsyncWriter<CashAccount40> debtorAgentAccount,
-        ISubordinateXmlAsyncWriter<BranchAndFinancialInstitutionIdentification6> creditorAgent,
-        ISubordinateXmlAsyncWriter<CashAccount40> creditorAgentAccount,
-        ISubordinateXmlAsyncWriter<Party40Choice_> creditor,
-        ISubordinateXmlAsyncWriter<CashAccount40> creditorAccount,
-        ISubordinateXmlAsyncWriter<Party40Choice_> ultimateCreditor,
-        ISubordinateXmlAsyncWriter<Purpose2Choice_> purpose
-    ) // end primary constructor
-            : ISubordinateXmlAsyncWriter<OriginalTransactionReference35>
+    public class OriginalTransactionReference35XmlAsyncWriter : ISubordinateXmlAsyncWriter<OriginalTransactionReference35>
     {
+        // Injected dependencies for serialization of each member data type
+        private readonly IActiveOrHistoricCurrencyAndAmountXmlAsyncWriter interbankSettlementAmount;
+        private readonly ISubordinateXmlAsyncWriter<AmountType4Choice_> amount;
+        private readonly IISODateXmlAsyncWriter interbankSettlementDate;
+        private readonly IISODateXmlAsyncWriter requestedCollectionDate;
+        private readonly ISubordinateXmlAsyncWriter<DateAndDateTime2Choice_> requestedExecutionDate;
+        private readonly ISubordinateXmlAsyncWriter<PartyIdentification135> creditorSchemeIdentification;
+        private readonly ISubordinateXmlAsyncWriter<SettlementInstruction11> settlementInformation;
+        private readonly ISubordinateXmlAsyncWriter<PaymentTypeInformation27> paymentTypeInformation;
+        private readonly IEnumXmlAsyncWriter<PaymentMethod4Code> paymentMethod;
+        private readonly ISubordinateXmlAsyncWriter<MandateRelatedData2Choice_> mandateRelatedInformation;
+        private readonly ISubordinateXmlAsyncWriter<RemittanceInformation21> remittanceInformation;
+        private readonly ISubordinateXmlAsyncWriter<Party40Choice_> ultimateDebtor;
+        private readonly ISubordinateXmlAsyncWriter<Party40Choice_> debtor;
+        private readonly ISubordinateXmlAsyncWriter<CashAccount40> debtorAccount;
+        private readonly ISubordinateXmlAsyncWriter<BranchAndFinancialInstitutionIdentification6> debtorAgent;
+        private readonly ISubordinateXmlAsyncWriter<CashAccount40> debtorAgentAccount;
+        private readonly ISubordinateXmlAsyncWriter<BranchAndFinancialInstitutionIdentification6> creditorAgent;
+        private readonly ISubordinateXmlAsyncWriter<CashAccount40> creditorAgentAccount;
+        private readonly ISubordinateXmlAsyncWriter<Party40Choice_> creditor;
+        private readonly ISubordinateXmlAsyncWriter<CashAccount40> creditorAccount;
+        private readonly ISubordinateXmlAsyncWriter<Party40Choice_> ultimateCreditor;
+        private readonly ISubordinateXmlAsyncWriter<Purpose2Choice_> purpose;
+        
+        /// <summary>
+        /// Construct using an injected writer for each member.
+        /// </summary>
+        public OriginalTransactionReference35XmlAsyncWriter
+        (
+            IActiveOrHistoricCurrencyAndAmountXmlAsyncWriter interbankSettlementAmount,
+            ISubordinateXmlAsyncWriter<AmountType4Choice_> amount,
+            IISODateXmlAsyncWriter interbankSettlementDate,
+            IISODateXmlAsyncWriter requestedCollectionDate,
+            ISubordinateXmlAsyncWriter<DateAndDateTime2Choice_> requestedExecutionDate,
+            ISubordinateXmlAsyncWriter<PartyIdentification135> creditorSchemeIdentification,
+            ISubordinateXmlAsyncWriter<SettlementInstruction11> settlementInformation,
+            ISubordinateXmlAsyncWriter<PaymentTypeInformation27> paymentTypeInformation,
+            IEnumXmlAsyncWriter<PaymentMethod4Code> paymentMethod,
+            ISubordinateXmlAsyncWriter<MandateRelatedData2Choice_> mandateRelatedInformation,
+            ISubordinateXmlAsyncWriter<RemittanceInformation21> remittanceInformation,
+            ISubordinateXmlAsyncWriter<Party40Choice_> ultimateDebtor,
+            ISubordinateXmlAsyncWriter<Party40Choice_> debtor,
+            ISubordinateXmlAsyncWriter<CashAccount40> debtorAccount,
+            ISubordinateXmlAsyncWriter<BranchAndFinancialInstitutionIdentification6> debtorAgent,
+            ISubordinateXmlAsyncWriter<CashAccount40> debtorAgentAccount,
+            ISubordinateXmlAsyncWriter<BranchAndFinancialInstitutionIdentification6> creditorAgent,
+            ISubordinateXmlAsyncWriter<CashAccount40> creditorAgentAccount,
+            ISubordinateXmlAsyncWriter<Party40Choice_> creditor,
+            ISubordinateXmlAsyncWriter<CashAccount40> creditorAccount,
+            ISubordinateXmlAsyncWriter<Party40Choice_> ultimateCreditor,
+            ISubordinateXmlAsyncWriter<Purpose2Choice_> purpose
+        )
+        {
+            this.interbankSettlementAmount = interbankSettlementAmount;
+            this.amount = amount;
+            this.interbankSettlementDate = interbankSettlementDate;
+            this.requestedCollectionDate = requestedCollectionDate;
+            this.requestedExecutionDate = requestedExecutionDate;
+            this.creditorSchemeIdentification = creditorSchemeIdentification;
+            this.settlementInformation = settlementInformation;
+            this.paymentTypeInformation = paymentTypeInformation;
+            this.paymentMethod = paymentMethod;
+            this.mandateRelatedInformation = mandateRelatedInformation;
+            this.remittanceInformation = remittanceInformation;
+            this.ultimateDebtor = ultimateDebtor;
+            this.debtor = debtor;
+            this.debtorAccount = debtorAccount;
+            this.debtorAgent = debtorAgent;
+            this.debtorAgentAccount = debtorAgentAccount;
+            this.creditorAgent = creditorAgent;
+            this.creditorAgentAccount = creditorAgentAccount;
+            this.creditor = creditor;
+            this.creditorAccount = creditorAccount;
+            this.ultimateCreditor = ultimateCreditor;
+            this.purpose = purpose;
+        }
         public async Task WriteAsync(XmlWriter writer, OriginalTransactionReference35 value, string isoNamespace)
         {
             // InterbankSettlementAmount Optional ActiveOrHistoricCurrencyAndAmount System.Decimal

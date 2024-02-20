@@ -16,15 +16,30 @@ namespace BeneficialStrategies.Iso20022.Serialization.Xml.Writers.Components
     /// <summary>
     /// Performs the XML serialization faithful to ISO20002 standards for <seealso cref="DirectDebitTransaction11"/>.
     /// </summary>
-    public class DirectDebitTransaction11XmlAsyncWriter
-    ( // primary constructor 
-        ISubordinateXmlAsyncWriter<MandateRelatedInformation15> mandateRelatedInformation,
-        ISubordinateXmlAsyncWriter<PartyIdentification135> creditorSchemeIdentification,
-        IMax35TextXmlAsyncWriter preNotificationIdentification,
-        IISODateXmlAsyncWriter preNotificationDate
-    ) // end primary constructor
-            : ISubordinateXmlAsyncWriter<DirectDebitTransaction11>
+    public class DirectDebitTransaction11XmlAsyncWriter : ISubordinateXmlAsyncWriter<DirectDebitTransaction11>
     {
+        // Injected dependencies for serialization of each member data type
+        private readonly ISubordinateXmlAsyncWriter<MandateRelatedInformation15> mandateRelatedInformation;
+        private readonly ISubordinateXmlAsyncWriter<PartyIdentification135> creditorSchemeIdentification;
+        private readonly IMax35TextXmlAsyncWriter preNotificationIdentification;
+        private readonly IISODateXmlAsyncWriter preNotificationDate;
+        
+        /// <summary>
+        /// Construct using an injected writer for each member.
+        /// </summary>
+        public DirectDebitTransaction11XmlAsyncWriter
+        (
+            ISubordinateXmlAsyncWriter<MandateRelatedInformation15> mandateRelatedInformation,
+            ISubordinateXmlAsyncWriter<PartyIdentification135> creditorSchemeIdentification,
+            IMax35TextXmlAsyncWriter preNotificationIdentification,
+            IISODateXmlAsyncWriter preNotificationDate
+        )
+        {
+            this.mandateRelatedInformation = mandateRelatedInformation;
+            this.creditorSchemeIdentification = creditorSchemeIdentification;
+            this.preNotificationIdentification = preNotificationIdentification;
+            this.preNotificationDate = preNotificationDate;
+        }
         public async Task WriteAsync(XmlWriter writer, DirectDebitTransaction11 value, string isoNamespace)
         {
             // MandateRelatedInformation Optional MandateRelatedInformation15 MandateRelatedInformation15

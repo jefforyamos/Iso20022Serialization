@@ -16,19 +16,42 @@ namespace BeneficialStrategies.Iso20022.Serialization.Xml.Writers.Components
     /// <summary>
     /// Performs the XML serialization faithful to ISO20002 standards for <seealso cref="Garnishment3"/>.
     /// </summary>
-    public class Garnishment3XmlAsyncWriter
-    ( // primary constructor 
-        ISubordinateXmlAsyncWriter<GarnishmentType1> type,
-        ISubordinateXmlAsyncWriter<PartyIdentification135> garnishee,
-        ISubordinateXmlAsyncWriter<PartyIdentification135> garnishmentAdministrator,
-        IMax140TextXmlAsyncWriter referenceNumber,
-        IISODateXmlAsyncWriter date,
-        IActiveOrHistoricCurrencyAndAmountXmlAsyncWriter remittedAmount,
-        ITrueFalseIndicatorXmlAsyncWriter familyMedicalInsuranceIndicator,
-        ITrueFalseIndicatorXmlAsyncWriter employeeTerminationIndicator
-    ) // end primary constructor
-            : ISubordinateXmlAsyncWriter<Garnishment3>
+    public class Garnishment3XmlAsyncWriter : ISubordinateXmlAsyncWriter<Garnishment3>
     {
+        // Injected dependencies for serialization of each member data type
+        private readonly ISubordinateXmlAsyncWriter<GarnishmentType1> type;
+        private readonly ISubordinateXmlAsyncWriter<PartyIdentification135> garnishee;
+        private readonly ISubordinateXmlAsyncWriter<PartyIdentification135> garnishmentAdministrator;
+        private readonly IMax140TextXmlAsyncWriter referenceNumber;
+        private readonly IISODateXmlAsyncWriter date;
+        private readonly IActiveOrHistoricCurrencyAndAmountXmlAsyncWriter remittedAmount;
+        private readonly ITrueFalseIndicatorXmlAsyncWriter familyMedicalInsuranceIndicator;
+        private readonly ITrueFalseIndicatorXmlAsyncWriter employeeTerminationIndicator;
+        
+        /// <summary>
+        /// Construct using an injected writer for each member.
+        /// </summary>
+        public Garnishment3XmlAsyncWriter
+        (
+            ISubordinateXmlAsyncWriter<GarnishmentType1> type,
+            ISubordinateXmlAsyncWriter<PartyIdentification135> garnishee,
+            ISubordinateXmlAsyncWriter<PartyIdentification135> garnishmentAdministrator,
+            IMax140TextXmlAsyncWriter referenceNumber,
+            IISODateXmlAsyncWriter date,
+            IActiveOrHistoricCurrencyAndAmountXmlAsyncWriter remittedAmount,
+            ITrueFalseIndicatorXmlAsyncWriter familyMedicalInsuranceIndicator,
+            ITrueFalseIndicatorXmlAsyncWriter employeeTerminationIndicator
+        )
+        {
+            this.type = type;
+            this.garnishee = garnishee;
+            this.garnishmentAdministrator = garnishmentAdministrator;
+            this.referenceNumber = referenceNumber;
+            this.date = date;
+            this.remittedAmount = remittedAmount;
+            this.familyMedicalInsuranceIndicator = familyMedicalInsuranceIndicator;
+            this.employeeTerminationIndicator = employeeTerminationIndicator;
+        }
         public async Task WriteAsync(XmlWriter writer, Garnishment3 value, string isoNamespace)
         {
             // Type Required GarnishmentType1 GarnishmentType1

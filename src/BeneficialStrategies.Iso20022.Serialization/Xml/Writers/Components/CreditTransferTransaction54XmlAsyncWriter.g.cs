@@ -16,38 +16,99 @@ namespace BeneficialStrategies.Iso20022.Serialization.Xml.Writers.Components
     /// <summary>
     /// Performs the XML serialization faithful to ISO20002 standards for <seealso cref="CreditTransferTransaction54"/>.
     /// </summary>
-    public class CreditTransferTransaction54XmlAsyncWriter
-    ( // primary constructor 
-        ISubordinateXmlAsyncWriter<PaymentIdentification6> paymentIdentification,
-        ISubordinateXmlAsyncWriter<PaymentTypeInformation26> paymentTypeInformation,
-        ISubordinateXmlAsyncWriter<AmountType4Choice_> amount,
-        ISubordinateXmlAsyncWriter<ExchangeRate1> exchangeRateInformation,
-        IEnumXmlAsyncWriter<ChargeBearerType1Code> chargeBearer,
-        ISubordinateXmlAsyncWriter<CreditTransferMandateData1> mandateRelatedInformation,
-        ISubordinateXmlAsyncWriter<Cheque11> chequeInstruction,
-        ISubordinateXmlAsyncWriter<PartyIdentification135> ultimateDebtor,
-        ISubordinateXmlAsyncWriter<BranchAndFinancialInstitutionIdentification6> intermediaryAgent1,
-        ISubordinateXmlAsyncWriter<CashAccount40> intermediaryAgent1Account,
-        ISubordinateXmlAsyncWriter<BranchAndFinancialInstitutionIdentification6> intermediaryAgent2,
-        ISubordinateXmlAsyncWriter<CashAccount40> intermediaryAgent2Account,
-        ISubordinateXmlAsyncWriter<BranchAndFinancialInstitutionIdentification6> intermediaryAgent3,
-        ISubordinateXmlAsyncWriter<CashAccount40> intermediaryAgent3Account,
-        ISubordinateXmlAsyncWriter<BranchAndFinancialInstitutionIdentification6> creditorAgent,
-        ISubordinateXmlAsyncWriter<CashAccount40> creditorAgentAccount,
-        ISubordinateXmlAsyncWriter<PartyIdentification135> creditor,
-        ISubordinateXmlAsyncWriter<CashAccount40> creditorAccount,
-        ISubordinateXmlAsyncWriter<PartyIdentification135> ultimateCreditor,
-        ISubordinateXmlAsyncWriter<InstructionForCreditorAgent3> instructionForCreditorAgent,
-        ISubordinateXmlAsyncWriter<InstructionForDebtorAgent1> instructionForDebtorAgent,
-        ISubordinateXmlAsyncWriter<Purpose2Choice_> purpose,
-        ISubordinateXmlAsyncWriter<RegulatoryReporting3> regulatoryReporting,
-        ISubordinateXmlAsyncWriter<TaxInformation10> tax,
-        ISubordinateXmlAsyncWriter<RemittanceLocation7> relatedRemittanceInformation,
-        ISubordinateXmlAsyncWriter<RemittanceInformation21> remittanceInformation,
-        ISubordinateXmlAsyncWriter<SupplementaryData1> supplementaryData
-    ) // end primary constructor
-            : ISubordinateXmlAsyncWriter<CreditTransferTransaction54>
+    public class CreditTransferTransaction54XmlAsyncWriter : ISubordinateXmlAsyncWriter<CreditTransferTransaction54>
     {
+        // Injected dependencies for serialization of each member data type
+        private readonly ISubordinateXmlAsyncWriter<PaymentIdentification6> paymentIdentification;
+        private readonly ISubordinateXmlAsyncWriter<PaymentTypeInformation26> paymentTypeInformation;
+        private readonly ISubordinateXmlAsyncWriter<AmountType4Choice_> amount;
+        private readonly ISubordinateXmlAsyncWriter<ExchangeRate1> exchangeRateInformation;
+        private readonly IEnumXmlAsyncWriter<ChargeBearerType1Code> chargeBearer;
+        private readonly ISubordinateXmlAsyncWriter<CreditTransferMandateData1> mandateRelatedInformation;
+        private readonly ISubordinateXmlAsyncWriter<Cheque11> chequeInstruction;
+        private readonly ISubordinateXmlAsyncWriter<PartyIdentification135> ultimateDebtor;
+        private readonly ISubordinateXmlAsyncWriter<BranchAndFinancialInstitutionIdentification6> intermediaryAgent1;
+        private readonly ISubordinateXmlAsyncWriter<CashAccount40> intermediaryAgent1Account;
+        private readonly ISubordinateXmlAsyncWriter<BranchAndFinancialInstitutionIdentification6> intermediaryAgent2;
+        private readonly ISubordinateXmlAsyncWriter<CashAccount40> intermediaryAgent2Account;
+        private readonly ISubordinateXmlAsyncWriter<BranchAndFinancialInstitutionIdentification6> intermediaryAgent3;
+        private readonly ISubordinateXmlAsyncWriter<CashAccount40> intermediaryAgent3Account;
+        private readonly ISubordinateXmlAsyncWriter<BranchAndFinancialInstitutionIdentification6> creditorAgent;
+        private readonly ISubordinateXmlAsyncWriter<CashAccount40> creditorAgentAccount;
+        private readonly ISubordinateXmlAsyncWriter<PartyIdentification135> creditor;
+        private readonly ISubordinateXmlAsyncWriter<CashAccount40> creditorAccount;
+        private readonly ISubordinateXmlAsyncWriter<PartyIdentification135> ultimateCreditor;
+        private readonly ISubordinateXmlAsyncWriter<InstructionForCreditorAgent3> instructionForCreditorAgent;
+        private readonly ISubordinateXmlAsyncWriter<InstructionForDebtorAgent1> instructionForDebtorAgent;
+        private readonly ISubordinateXmlAsyncWriter<Purpose2Choice_> purpose;
+        private readonly ISubordinateXmlAsyncWriter<RegulatoryReporting3> regulatoryReporting;
+        private readonly ISubordinateXmlAsyncWriter<TaxInformation10> tax;
+        private readonly ISubordinateXmlAsyncWriter<RemittanceLocation7> relatedRemittanceInformation;
+        private readonly ISubordinateXmlAsyncWriter<RemittanceInformation21> remittanceInformation;
+        private readonly ISubordinateXmlAsyncWriter<SupplementaryData1> supplementaryData;
+        
+        /// <summary>
+        /// Construct using an injected writer for each member.
+        /// </summary>
+        public CreditTransferTransaction54XmlAsyncWriter
+        (
+            ISubordinateXmlAsyncWriter<PaymentIdentification6> paymentIdentification,
+            ISubordinateXmlAsyncWriter<PaymentTypeInformation26> paymentTypeInformation,
+            ISubordinateXmlAsyncWriter<AmountType4Choice_> amount,
+            ISubordinateXmlAsyncWriter<ExchangeRate1> exchangeRateInformation,
+            IEnumXmlAsyncWriter<ChargeBearerType1Code> chargeBearer,
+            ISubordinateXmlAsyncWriter<CreditTransferMandateData1> mandateRelatedInformation,
+            ISubordinateXmlAsyncWriter<Cheque11> chequeInstruction,
+            ISubordinateXmlAsyncWriter<PartyIdentification135> ultimateDebtor,
+            ISubordinateXmlAsyncWriter<BranchAndFinancialInstitutionIdentification6> intermediaryAgent1,
+            ISubordinateXmlAsyncWriter<CashAccount40> intermediaryAgent1Account,
+            ISubordinateXmlAsyncWriter<BranchAndFinancialInstitutionIdentification6> intermediaryAgent2,
+            ISubordinateXmlAsyncWriter<CashAccount40> intermediaryAgent2Account,
+            ISubordinateXmlAsyncWriter<BranchAndFinancialInstitutionIdentification6> intermediaryAgent3,
+            ISubordinateXmlAsyncWriter<CashAccount40> intermediaryAgent3Account,
+            ISubordinateXmlAsyncWriter<BranchAndFinancialInstitutionIdentification6> creditorAgent,
+            ISubordinateXmlAsyncWriter<CashAccount40> creditorAgentAccount,
+            ISubordinateXmlAsyncWriter<PartyIdentification135> creditor,
+            ISubordinateXmlAsyncWriter<CashAccount40> creditorAccount,
+            ISubordinateXmlAsyncWriter<PartyIdentification135> ultimateCreditor,
+            ISubordinateXmlAsyncWriter<InstructionForCreditorAgent3> instructionForCreditorAgent,
+            ISubordinateXmlAsyncWriter<InstructionForDebtorAgent1> instructionForDebtorAgent,
+            ISubordinateXmlAsyncWriter<Purpose2Choice_> purpose,
+            ISubordinateXmlAsyncWriter<RegulatoryReporting3> regulatoryReporting,
+            ISubordinateXmlAsyncWriter<TaxInformation10> tax,
+            ISubordinateXmlAsyncWriter<RemittanceLocation7> relatedRemittanceInformation,
+            ISubordinateXmlAsyncWriter<RemittanceInformation21> remittanceInformation,
+            ISubordinateXmlAsyncWriter<SupplementaryData1> supplementaryData
+        )
+        {
+            this.paymentIdentification = paymentIdentification;
+            this.paymentTypeInformation = paymentTypeInformation;
+            this.amount = amount;
+            this.exchangeRateInformation = exchangeRateInformation;
+            this.chargeBearer = chargeBearer;
+            this.mandateRelatedInformation = mandateRelatedInformation;
+            this.chequeInstruction = chequeInstruction;
+            this.ultimateDebtor = ultimateDebtor;
+            this.intermediaryAgent1 = intermediaryAgent1;
+            this.intermediaryAgent1Account = intermediaryAgent1Account;
+            this.intermediaryAgent2 = intermediaryAgent2;
+            this.intermediaryAgent2Account = intermediaryAgent2Account;
+            this.intermediaryAgent3 = intermediaryAgent3;
+            this.intermediaryAgent3Account = intermediaryAgent3Account;
+            this.creditorAgent = creditorAgent;
+            this.creditorAgentAccount = creditorAgentAccount;
+            this.creditor = creditor;
+            this.creditorAccount = creditorAccount;
+            this.ultimateCreditor = ultimateCreditor;
+            this.instructionForCreditorAgent = instructionForCreditorAgent;
+            this.instructionForDebtorAgent = instructionForDebtorAgent;
+            this.purpose = purpose;
+            this.regulatoryReporting = regulatoryReporting;
+            this.tax = tax;
+            this.relatedRemittanceInformation = relatedRemittanceInformation;
+            this.remittanceInformation = remittanceInformation;
+            this.supplementaryData = supplementaryData;
+        }
         public async Task WriteAsync(XmlWriter writer, CreditTransferTransaction54 value, string isoNamespace)
         {
             // PaymentIdentification Required PaymentIdentification6 PaymentIdentification6

@@ -16,17 +16,36 @@ namespace BeneficialStrategies.Iso20022.Serialization.Xml.Writers.Components
     /// <summary>
     /// Performs the XML serialization faithful to ISO20002 standards for <seealso cref="RemittanceAmount2"/>.
     /// </summary>
-    public class RemittanceAmount2XmlAsyncWriter
-    ( // primary constructor 
-        IActiveOrHistoricCurrencyAndAmountXmlAsyncWriter duePayableAmount,
-        ISubordinateXmlAsyncWriter<DiscountAmountAndType1> discountAppliedAmount,
-        IActiveOrHistoricCurrencyAndAmountXmlAsyncWriter creditNoteAmount,
-        ISubordinateXmlAsyncWriter<TaxAmountAndType1> taxAmount,
-        ISubordinateXmlAsyncWriter<DocumentAdjustment1> adjustmentAmountAndReason,
-        IActiveOrHistoricCurrencyAndAmountXmlAsyncWriter remittedAmount
-    ) // end primary constructor
-            : ISubordinateXmlAsyncWriter<RemittanceAmount2>
+    public class RemittanceAmount2XmlAsyncWriter : ISubordinateXmlAsyncWriter<RemittanceAmount2>
     {
+        // Injected dependencies for serialization of each member data type
+        private readonly IActiveOrHistoricCurrencyAndAmountXmlAsyncWriter duePayableAmount;
+        private readonly ISubordinateXmlAsyncWriter<DiscountAmountAndType1> discountAppliedAmount;
+        private readonly IActiveOrHistoricCurrencyAndAmountXmlAsyncWriter creditNoteAmount;
+        private readonly ISubordinateXmlAsyncWriter<TaxAmountAndType1> taxAmount;
+        private readonly ISubordinateXmlAsyncWriter<DocumentAdjustment1> adjustmentAmountAndReason;
+        private readonly IActiveOrHistoricCurrencyAndAmountXmlAsyncWriter remittedAmount;
+        
+        /// <summary>
+        /// Construct using an injected writer for each member.
+        /// </summary>
+        public RemittanceAmount2XmlAsyncWriter
+        (
+            IActiveOrHistoricCurrencyAndAmountXmlAsyncWriter duePayableAmount,
+            ISubordinateXmlAsyncWriter<DiscountAmountAndType1> discountAppliedAmount,
+            IActiveOrHistoricCurrencyAndAmountXmlAsyncWriter creditNoteAmount,
+            ISubordinateXmlAsyncWriter<TaxAmountAndType1> taxAmount,
+            ISubordinateXmlAsyncWriter<DocumentAdjustment1> adjustmentAmountAndReason,
+            IActiveOrHistoricCurrencyAndAmountXmlAsyncWriter remittedAmount
+        )
+        {
+            this.duePayableAmount = duePayableAmount;
+            this.discountAppliedAmount = discountAppliedAmount;
+            this.creditNoteAmount = creditNoteAmount;
+            this.taxAmount = taxAmount;
+            this.adjustmentAmountAndReason = adjustmentAmountAndReason;
+            this.remittedAmount = remittedAmount;
+        }
         public async Task WriteAsync(XmlWriter writer, RemittanceAmount2 value, string isoNamespace)
         {
             // DuePayableAmount Optional ActiveOrHistoricCurrencyAndAmount System.Decimal

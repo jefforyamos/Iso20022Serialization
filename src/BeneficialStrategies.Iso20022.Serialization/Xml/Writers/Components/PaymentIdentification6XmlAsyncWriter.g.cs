@@ -16,14 +16,27 @@ namespace BeneficialStrategies.Iso20022.Serialization.Xml.Writers.Components
     /// <summary>
     /// Performs the XML serialization faithful to ISO20002 standards for <seealso cref="PaymentIdentification6"/>.
     /// </summary>
-    public class PaymentIdentification6XmlAsyncWriter
-    ( // primary constructor 
-        IMax35TextXmlAsyncWriter instructionIdentification,
-        IMax35TextXmlAsyncWriter endToEndIdentification,
-        IUUIDv4IdentifierXmlAsyncWriter uETR
-    ) // end primary constructor
-            : ISubordinateXmlAsyncWriter<PaymentIdentification6>
+    public class PaymentIdentification6XmlAsyncWriter : ISubordinateXmlAsyncWriter<PaymentIdentification6>
     {
+        // Injected dependencies for serialization of each member data type
+        private readonly IMax35TextXmlAsyncWriter instructionIdentification;
+        private readonly IMax35TextXmlAsyncWriter endToEndIdentification;
+        private readonly IUUIDv4IdentifierXmlAsyncWriter uETR;
+        
+        /// <summary>
+        /// Construct using an injected writer for each member.
+        /// </summary>
+        public PaymentIdentification6XmlAsyncWriter
+        (
+            IMax35TextXmlAsyncWriter instructionIdentification,
+            IMax35TextXmlAsyncWriter endToEndIdentification,
+            IUUIDv4IdentifierXmlAsyncWriter uETR
+        )
+        {
+            this.instructionIdentification = instructionIdentification;
+            this.endToEndIdentification = endToEndIdentification;
+            this.uETR = uETR;
+        }
         public async Task WriteAsync(XmlWriter writer, PaymentIdentification6 value, string isoNamespace)
         {
             // InstructionIdentification Optional Max35Text System.String

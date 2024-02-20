@@ -16,15 +16,30 @@ namespace BeneficialStrategies.Iso20022.Serialization.Xml.Writers.Components
     /// <summary>
     /// Performs the XML serialization faithful to ISO20002 standards for <seealso cref="DateAndPlaceOfBirth1"/>.
     /// </summary>
-    public class DateAndPlaceOfBirth1XmlAsyncWriter
-    ( // primary constructor 
-        IISODateXmlAsyncWriter birthDate,
-        IMax35TextXmlAsyncWriter provinceOfBirth,
-        IMax35TextXmlAsyncWriter cityOfBirth,
-        ICountryCodeXmlAsyncWriter countryOfBirth
-    ) // end primary constructor
-            : ISubordinateXmlAsyncWriter<DateAndPlaceOfBirth1>
+    public class DateAndPlaceOfBirth1XmlAsyncWriter : ISubordinateXmlAsyncWriter<DateAndPlaceOfBirth1>
     {
+        // Injected dependencies for serialization of each member data type
+        private readonly IISODateXmlAsyncWriter birthDate;
+        private readonly IMax35TextXmlAsyncWriter provinceOfBirth;
+        private readonly IMax35TextXmlAsyncWriter cityOfBirth;
+        private readonly ICountryCodeXmlAsyncWriter countryOfBirth;
+        
+        /// <summary>
+        /// Construct using an injected writer for each member.
+        /// </summary>
+        public DateAndPlaceOfBirth1XmlAsyncWriter
+        (
+            IISODateXmlAsyncWriter birthDate,
+            IMax35TextXmlAsyncWriter provinceOfBirth,
+            IMax35TextXmlAsyncWriter cityOfBirth,
+            ICountryCodeXmlAsyncWriter countryOfBirth
+        )
+        {
+            this.birthDate = birthDate;
+            this.provinceOfBirth = provinceOfBirth;
+            this.cityOfBirth = cityOfBirth;
+            this.countryOfBirth = countryOfBirth;
+        }
         public async Task WriteAsync(XmlWriter writer, DateAndPlaceOfBirth1 value, string isoNamespace)
         {
             // BirthDate Required ISODate System.DateOnly

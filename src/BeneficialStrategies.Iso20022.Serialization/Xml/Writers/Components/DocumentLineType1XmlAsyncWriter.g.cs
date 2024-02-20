@@ -16,13 +16,24 @@ namespace BeneficialStrategies.Iso20022.Serialization.Xml.Writers.Components
     /// <summary>
     /// Performs the XML serialization faithful to ISO20002 standards for <seealso cref="DocumentLineType1"/>.
     /// </summary>
-    public class DocumentLineType1XmlAsyncWriter
-    ( // primary constructor 
-        ISubordinateXmlAsyncWriter<DocumentLineType1Choice_> codeOrProprietary,
-        IMax35TextXmlAsyncWriter issuer
-    ) // end primary constructor
-            : ISubordinateXmlAsyncWriter<DocumentLineType1>
+    public class DocumentLineType1XmlAsyncWriter : ISubordinateXmlAsyncWriter<DocumentLineType1>
     {
+        // Injected dependencies for serialization of each member data type
+        private readonly ISubordinateXmlAsyncWriter<DocumentLineType1Choice_> codeOrProprietary;
+        private readonly IMax35TextXmlAsyncWriter issuer;
+        
+        /// <summary>
+        /// Construct using an injected writer for each member.
+        /// </summary>
+        public DocumentLineType1XmlAsyncWriter
+        (
+            ISubordinateXmlAsyncWriter<DocumentLineType1Choice_> codeOrProprietary,
+            IMax35TextXmlAsyncWriter issuer
+        )
+        {
+            this.codeOrProprietary = codeOrProprietary;
+            this.issuer = issuer;
+        }
         public async Task WriteAsync(XmlWriter writer, DocumentLineType1 value, string isoNamespace)
         {
             // CodeOrProprietary Required DocumentLineType1Choice DocumentLineType1Choice_

@@ -16,14 +16,27 @@ namespace BeneficialStrategies.Iso20022.Serialization.Xml.Writers.Components
     /// <summary>
     /// Performs the XML serialization faithful to ISO20002 standards for <seealso cref="RegulatoryReporting3"/>.
     /// </summary>
-    public class RegulatoryReporting3XmlAsyncWriter
-    ( // primary constructor 
-        IEnumXmlAsyncWriter<RegulatoryReportingType1Code> debitCreditReportingIndicator,
-        ISubordinateXmlAsyncWriter<RegulatoryAuthority2> authority,
-        ISubordinateXmlAsyncWriter<StructuredRegulatoryReporting3> details
-    ) // end primary constructor
-            : ISubordinateXmlAsyncWriter<RegulatoryReporting3>
+    public class RegulatoryReporting3XmlAsyncWriter : ISubordinateXmlAsyncWriter<RegulatoryReporting3>
     {
+        // Injected dependencies for serialization of each member data type
+        private readonly IEnumXmlAsyncWriter<RegulatoryReportingType1Code> debitCreditReportingIndicator;
+        private readonly ISubordinateXmlAsyncWriter<RegulatoryAuthority2> authority;
+        private readonly ISubordinateXmlAsyncWriter<StructuredRegulatoryReporting3> details;
+        
+        /// <summary>
+        /// Construct using an injected writer for each member.
+        /// </summary>
+        public RegulatoryReporting3XmlAsyncWriter
+        (
+            IEnumXmlAsyncWriter<RegulatoryReportingType1Code> debitCreditReportingIndicator,
+            ISubordinateXmlAsyncWriter<RegulatoryAuthority2> authority,
+            ISubordinateXmlAsyncWriter<StructuredRegulatoryReporting3> details
+        )
+        {
+            this.debitCreditReportingIndicator = debitCreditReportingIndicator;
+            this.authority = authority;
+            this.details = details;
+        }
         public async Task WriteAsync(XmlWriter writer, RegulatoryReporting3 value, string isoNamespace)
         {
             // DebitCreditReportingIndicator Optional RegulatoryReportingType1Code RegulatoryReportingType1Code

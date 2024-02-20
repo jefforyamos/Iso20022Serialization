@@ -16,16 +16,33 @@ namespace BeneficialStrategies.Iso20022.Serialization.Xml.Writers.Components
     /// <summary>
     /// Performs the XML serialization faithful to ISO20002 standards for <seealso cref="CashAccount40"/>.
     /// </summary>
-    public class CashAccount40XmlAsyncWriter
-    ( // primary constructor 
-        ISubordinateXmlAsyncWriter<AccountIdentification4Choice_> identification,
-        ISubordinateXmlAsyncWriter<CashAccountType2Choice_> type,
-        IActiveOrHistoricCurrencyCodeXmlAsyncWriter currency,
-        IMax70TextXmlAsyncWriter name,
-        ISubordinateXmlAsyncWriter<ProxyAccountIdentification1> proxy
-    ) // end primary constructor
-            : ISubordinateXmlAsyncWriter<CashAccount40>
+    public class CashAccount40XmlAsyncWriter : ISubordinateXmlAsyncWriter<CashAccount40>
     {
+        // Injected dependencies for serialization of each member data type
+        private readonly ISubordinateXmlAsyncWriter<AccountIdentification4Choice_> identification;
+        private readonly ISubordinateXmlAsyncWriter<CashAccountType2Choice_> type;
+        private readonly IActiveOrHistoricCurrencyCodeXmlAsyncWriter currency;
+        private readonly IMax70TextXmlAsyncWriter name;
+        private readonly ISubordinateXmlAsyncWriter<ProxyAccountIdentification1> proxy;
+        
+        /// <summary>
+        /// Construct using an injected writer for each member.
+        /// </summary>
+        public CashAccount40XmlAsyncWriter
+        (
+            ISubordinateXmlAsyncWriter<AccountIdentification4Choice_> identification,
+            ISubordinateXmlAsyncWriter<CashAccountType2Choice_> type,
+            IActiveOrHistoricCurrencyCodeXmlAsyncWriter currency,
+            IMax70TextXmlAsyncWriter name,
+            ISubordinateXmlAsyncWriter<ProxyAccountIdentification1> proxy
+        )
+        {
+            this.identification = identification;
+            this.type = type;
+            this.currency = currency;
+            this.name = name;
+            this.proxy = proxy;
+        }
         public async Task WriteAsync(XmlWriter writer, CashAccount40 value, string isoNamespace)
         {
             // Identification Optional AccountIdentification4Choice AccountIdentification4Choice_

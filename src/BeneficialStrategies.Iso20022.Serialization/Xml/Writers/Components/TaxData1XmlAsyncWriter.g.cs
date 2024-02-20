@@ -16,22 +16,51 @@ namespace BeneficialStrategies.Iso20022.Serialization.Xml.Writers.Components
     /// <summary>
     /// Performs the XML serialization faithful to ISO20002 standards for <seealso cref="TaxData1"/>.
     /// </summary>
-    public class TaxData1XmlAsyncWriter
-    ( // primary constructor 
-        ISubordinateXmlAsyncWriter<TaxParty1> creditor,
-        ISubordinateXmlAsyncWriter<TaxParty2> debtor,
-        ISubordinateXmlAsyncWriter<TaxParty2> ultimateDebtor,
-        IMax35TextXmlAsyncWriter administrationZone,
-        IMax140TextXmlAsyncWriter referenceNumber,
-        IMax35TextXmlAsyncWriter method,
-        IActiveOrHistoricCurrencyAndAmountXmlAsyncWriter totalTaxableBaseAmount,
-        IActiveOrHistoricCurrencyAndAmountXmlAsyncWriter totalTaxAmount,
-        IISODateXmlAsyncWriter date,
-        INumberXmlAsyncWriter sequenceNumber,
-        ISubordinateXmlAsyncWriter<TaxRecord3> record
-    ) // end primary constructor
-            : ISubordinateXmlAsyncWriter<TaxData1>
+    public class TaxData1XmlAsyncWriter : ISubordinateXmlAsyncWriter<TaxData1>
     {
+        // Injected dependencies for serialization of each member data type
+        private readonly ISubordinateXmlAsyncWriter<TaxParty1> creditor;
+        private readonly ISubordinateXmlAsyncWriter<TaxParty2> debtor;
+        private readonly ISubordinateXmlAsyncWriter<TaxParty2> ultimateDebtor;
+        private readonly IMax35TextXmlAsyncWriter administrationZone;
+        private readonly IMax140TextXmlAsyncWriter referenceNumber;
+        private readonly IMax35TextXmlAsyncWriter method;
+        private readonly IActiveOrHistoricCurrencyAndAmountXmlAsyncWriter totalTaxableBaseAmount;
+        private readonly IActiveOrHistoricCurrencyAndAmountXmlAsyncWriter totalTaxAmount;
+        private readonly IISODateXmlAsyncWriter date;
+        private readonly INumberXmlAsyncWriter sequenceNumber;
+        private readonly ISubordinateXmlAsyncWriter<TaxRecord3> record;
+        
+        /// <summary>
+        /// Construct using an injected writer for each member.
+        /// </summary>
+        public TaxData1XmlAsyncWriter
+        (
+            ISubordinateXmlAsyncWriter<TaxParty1> creditor,
+            ISubordinateXmlAsyncWriter<TaxParty2> debtor,
+            ISubordinateXmlAsyncWriter<TaxParty2> ultimateDebtor,
+            IMax35TextXmlAsyncWriter administrationZone,
+            IMax140TextXmlAsyncWriter referenceNumber,
+            IMax35TextXmlAsyncWriter method,
+            IActiveOrHistoricCurrencyAndAmountXmlAsyncWriter totalTaxableBaseAmount,
+            IActiveOrHistoricCurrencyAndAmountXmlAsyncWriter totalTaxAmount,
+            IISODateXmlAsyncWriter date,
+            INumberXmlAsyncWriter sequenceNumber,
+            ISubordinateXmlAsyncWriter<TaxRecord3> record
+        )
+        {
+            this.creditor = creditor;
+            this.debtor = debtor;
+            this.ultimateDebtor = ultimateDebtor;
+            this.administrationZone = administrationZone;
+            this.referenceNumber = referenceNumber;
+            this.method = method;
+            this.totalTaxableBaseAmount = totalTaxableBaseAmount;
+            this.totalTaxAmount = totalTaxAmount;
+            this.date = date;
+            this.sequenceNumber = sequenceNumber;
+            this.record = record;
+        }
         public async Task WriteAsync(XmlWriter writer, TaxData1 value, string isoNamespace)
         {
             // Creditor Optional TaxParty1 TaxParty1

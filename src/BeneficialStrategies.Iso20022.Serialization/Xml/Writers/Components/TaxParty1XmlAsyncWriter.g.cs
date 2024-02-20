@@ -16,14 +16,27 @@ namespace BeneficialStrategies.Iso20022.Serialization.Xml.Writers.Components
     /// <summary>
     /// Performs the XML serialization faithful to ISO20002 standards for <seealso cref="TaxParty1"/>.
     /// </summary>
-    public class TaxParty1XmlAsyncWriter
-    ( // primary constructor 
-        IMax35TextXmlAsyncWriter taxIdentification,
-        IMax35TextXmlAsyncWriter registrationIdentification,
-        IMax35TextXmlAsyncWriter taxType
-    ) // end primary constructor
-            : ISubordinateXmlAsyncWriter<TaxParty1>
+    public class TaxParty1XmlAsyncWriter : ISubordinateXmlAsyncWriter<TaxParty1>
     {
+        // Injected dependencies for serialization of each member data type
+        private readonly IMax35TextXmlAsyncWriter taxIdentification;
+        private readonly IMax35TextXmlAsyncWriter registrationIdentification;
+        private readonly IMax35TextXmlAsyncWriter taxType;
+        
+        /// <summary>
+        /// Construct using an injected writer for each member.
+        /// </summary>
+        public TaxParty1XmlAsyncWriter
+        (
+            IMax35TextXmlAsyncWriter taxIdentification,
+            IMax35TextXmlAsyncWriter registrationIdentification,
+            IMax35TextXmlAsyncWriter taxType
+        )
+        {
+            this.taxIdentification = taxIdentification;
+            this.registrationIdentification = registrationIdentification;
+            this.taxType = taxType;
+        }
         public async Task WriteAsync(XmlWriter writer, TaxParty1 value, string isoNamespace)
         {
             // TaxIdentification Optional Max35Text System.String

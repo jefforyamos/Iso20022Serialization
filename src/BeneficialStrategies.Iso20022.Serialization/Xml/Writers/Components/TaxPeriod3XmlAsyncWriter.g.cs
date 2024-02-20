@@ -16,14 +16,27 @@ namespace BeneficialStrategies.Iso20022.Serialization.Xml.Writers.Components
     /// <summary>
     /// Performs the XML serialization faithful to ISO20002 standards for <seealso cref="TaxPeriod3"/>.
     /// </summary>
-    public class TaxPeriod3XmlAsyncWriter
-    ( // primary constructor 
-        IISOYearXmlAsyncWriter year,
-        IEnumXmlAsyncWriter<TaxRecordPeriod1Code> type,
-        ISubordinateXmlAsyncWriter<DatePeriod2> fromToDate
-    ) // end primary constructor
-            : ISubordinateXmlAsyncWriter<TaxPeriod3>
+    public class TaxPeriod3XmlAsyncWriter : ISubordinateXmlAsyncWriter<TaxPeriod3>
     {
+        // Injected dependencies for serialization of each member data type
+        private readonly IISOYearXmlAsyncWriter year;
+        private readonly IEnumXmlAsyncWriter<TaxRecordPeriod1Code> type;
+        private readonly ISubordinateXmlAsyncWriter<DatePeriod2> fromToDate;
+        
+        /// <summary>
+        /// Construct using an injected writer for each member.
+        /// </summary>
+        public TaxPeriod3XmlAsyncWriter
+        (
+            IISOYearXmlAsyncWriter year,
+            IEnumXmlAsyncWriter<TaxRecordPeriod1Code> type,
+            ISubordinateXmlAsyncWriter<DatePeriod2> fromToDate
+        )
+        {
+            this.year = year;
+            this.type = type;
+            this.fromToDate = fromToDate;
+        }
         public async Task WriteAsync(XmlWriter writer, TaxPeriod3 value, string isoNamespace)
         {
             // Year Optional ISOYear System.UInt16

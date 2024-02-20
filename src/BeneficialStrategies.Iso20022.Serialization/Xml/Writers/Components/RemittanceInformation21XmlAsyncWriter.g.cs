@@ -16,13 +16,24 @@ namespace BeneficialStrategies.Iso20022.Serialization.Xml.Writers.Components
     /// <summary>
     /// Performs the XML serialization faithful to ISO20002 standards for <seealso cref="RemittanceInformation21"/>.
     /// </summary>
-    public class RemittanceInformation21XmlAsyncWriter
-    ( // primary constructor 
-        IMax140TextXmlAsyncWriter unstructured,
-        ISubordinateXmlAsyncWriter<StructuredRemittanceInformation17> structured
-    ) // end primary constructor
-            : ISubordinateXmlAsyncWriter<RemittanceInformation21>
+    public class RemittanceInformation21XmlAsyncWriter : ISubordinateXmlAsyncWriter<RemittanceInformation21>
     {
+        // Injected dependencies for serialization of each member data type
+        private readonly IMax140TextXmlAsyncWriter unstructured;
+        private readonly ISubordinateXmlAsyncWriter<StructuredRemittanceInformation17> structured;
+        
+        /// <summary>
+        /// Construct using an injected writer for each member.
+        /// </summary>
+        public RemittanceInformation21XmlAsyncWriter
+        (
+            IMax140TextXmlAsyncWriter unstructured,
+            ISubordinateXmlAsyncWriter<StructuredRemittanceInformation17> structured
+        )
+        {
+            this.unstructured = unstructured;
+            this.structured = structured;
+        }
         public async Task WriteAsync(XmlWriter writer, RemittanceInformation21 value, string isoNamespace)
         {
             // Unstructured Optional Max140Text System.String

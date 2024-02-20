@@ -16,15 +16,30 @@ namespace BeneficialStrategies.Iso20022.Serialization.Xml.Writers.Components
     /// <summary>
     /// Performs the XML serialization faithful to ISO20002 standards for <seealso cref="PaymentTypeInformation26"/>.
     /// </summary>
-    public class PaymentTypeInformation26XmlAsyncWriter
-    ( // primary constructor 
-        IEnumXmlAsyncWriter<Priority2Code> instructionPriority,
-        ISubordinateXmlAsyncWriter<ServiceLevel8Choice_> serviceLevel,
-        ISubordinateXmlAsyncWriter<LocalInstrument2Choice_> localInstrument,
-        ISubordinateXmlAsyncWriter<CategoryPurpose1Choice_> categoryPurpose
-    ) // end primary constructor
-            : ISubordinateXmlAsyncWriter<PaymentTypeInformation26>
+    public class PaymentTypeInformation26XmlAsyncWriter : ISubordinateXmlAsyncWriter<PaymentTypeInformation26>
     {
+        // Injected dependencies for serialization of each member data type
+        private readonly IEnumXmlAsyncWriter<Priority2Code> instructionPriority;
+        private readonly ISubordinateXmlAsyncWriter<ServiceLevel8Choice_> serviceLevel;
+        private readonly ISubordinateXmlAsyncWriter<LocalInstrument2Choice_> localInstrument;
+        private readonly ISubordinateXmlAsyncWriter<CategoryPurpose1Choice_> categoryPurpose;
+        
+        /// <summary>
+        /// Construct using an injected writer for each member.
+        /// </summary>
+        public PaymentTypeInformation26XmlAsyncWriter
+        (
+            IEnumXmlAsyncWriter<Priority2Code> instructionPriority,
+            ISubordinateXmlAsyncWriter<ServiceLevel8Choice_> serviceLevel,
+            ISubordinateXmlAsyncWriter<LocalInstrument2Choice_> localInstrument,
+            ISubordinateXmlAsyncWriter<CategoryPurpose1Choice_> categoryPurpose
+        )
+        {
+            this.instructionPriority = instructionPriority;
+            this.serviceLevel = serviceLevel;
+            this.localInstrument = localInstrument;
+            this.categoryPurpose = categoryPurpose;
+        }
         public async Task WriteAsync(XmlWriter writer, PaymentTypeInformation26 value, string isoNamespace)
         {
             // InstructionPriority Optional Priority2Code Priority2Code

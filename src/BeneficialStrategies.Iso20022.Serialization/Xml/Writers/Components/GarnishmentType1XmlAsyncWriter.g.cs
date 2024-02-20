@@ -16,13 +16,24 @@ namespace BeneficialStrategies.Iso20022.Serialization.Xml.Writers.Components
     /// <summary>
     /// Performs the XML serialization faithful to ISO20002 standards for <seealso cref="GarnishmentType1"/>.
     /// </summary>
-    public class GarnishmentType1XmlAsyncWriter
-    ( // primary constructor 
-        ISubordinateXmlAsyncWriter<GarnishmentType1Choice_> codeOrProprietary,
-        IMax35TextXmlAsyncWriter issuer
-    ) // end primary constructor
-            : ISubordinateXmlAsyncWriter<GarnishmentType1>
+    public class GarnishmentType1XmlAsyncWriter : ISubordinateXmlAsyncWriter<GarnishmentType1>
     {
+        // Injected dependencies for serialization of each member data type
+        private readonly ISubordinateXmlAsyncWriter<GarnishmentType1Choice_> codeOrProprietary;
+        private readonly IMax35TextXmlAsyncWriter issuer;
+        
+        /// <summary>
+        /// Construct using an injected writer for each member.
+        /// </summary>
+        public GarnishmentType1XmlAsyncWriter
+        (
+            ISubordinateXmlAsyncWriter<GarnishmentType1Choice_> codeOrProprietary,
+            IMax35TextXmlAsyncWriter issuer
+        )
+        {
+            this.codeOrProprietary = codeOrProprietary;
+            this.issuer = issuer;
+        }
         public async Task WriteAsync(XmlWriter writer, GarnishmentType1 value, string isoNamespace)
         {
             // CodeOrProprietary Required GarnishmentType1Choice GarnishmentType1Choice_

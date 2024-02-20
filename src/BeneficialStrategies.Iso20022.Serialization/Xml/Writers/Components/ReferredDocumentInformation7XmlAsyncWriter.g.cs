@@ -16,15 +16,30 @@ namespace BeneficialStrategies.Iso20022.Serialization.Xml.Writers.Components
     /// <summary>
     /// Performs the XML serialization faithful to ISO20002 standards for <seealso cref="ReferredDocumentInformation7"/>.
     /// </summary>
-    public class ReferredDocumentInformation7XmlAsyncWriter
-    ( // primary constructor 
-        ISubordinateXmlAsyncWriter<ReferredDocumentType4> type,
-        IMax35TextXmlAsyncWriter number,
-        IISODateXmlAsyncWriter relatedDate,
-        ISubordinateXmlAsyncWriter<DocumentLineInformation1> lineDetails
-    ) // end primary constructor
-            : ISubordinateXmlAsyncWriter<ReferredDocumentInformation7>
+    public class ReferredDocumentInformation7XmlAsyncWriter : ISubordinateXmlAsyncWriter<ReferredDocumentInformation7>
     {
+        // Injected dependencies for serialization of each member data type
+        private readonly ISubordinateXmlAsyncWriter<ReferredDocumentType4> type;
+        private readonly IMax35TextXmlAsyncWriter number;
+        private readonly IISODateXmlAsyncWriter relatedDate;
+        private readonly ISubordinateXmlAsyncWriter<DocumentLineInformation1> lineDetails;
+        
+        /// <summary>
+        /// Construct using an injected writer for each member.
+        /// </summary>
+        public ReferredDocumentInformation7XmlAsyncWriter
+        (
+            ISubordinateXmlAsyncWriter<ReferredDocumentType4> type,
+            IMax35TextXmlAsyncWriter number,
+            IISODateXmlAsyncWriter relatedDate,
+            ISubordinateXmlAsyncWriter<DocumentLineInformation1> lineDetails
+        )
+        {
+            this.type = type;
+            this.number = number;
+            this.relatedDate = relatedDate;
+            this.lineDetails = lineDetails;
+        }
         public async Task WriteAsync(XmlWriter writer, ReferredDocumentInformation7 value, string isoNamespace)
         {
             // Type Optional ReferredDocumentType4 ReferredDocumentType4

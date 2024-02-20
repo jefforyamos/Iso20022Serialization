@@ -16,16 +16,33 @@ namespace BeneficialStrategies.Iso20022.Serialization.Xml.Writers.Components
     /// <summary>
     /// Performs the XML serialization faithful to ISO20002 standards for <seealso cref="PaymentTypeInformation29"/>.
     /// </summary>
-    public class PaymentTypeInformation29XmlAsyncWriter
-    ( // primary constructor 
-        IEnumXmlAsyncWriter<Priority2Code> instructionPriority,
-        ISubordinateXmlAsyncWriter<ServiceLevel8Choice_> serviceLevel,
-        ISubordinateXmlAsyncWriter<LocalInstrument2Choice_> localInstrument,
-        IEnumXmlAsyncWriter<SequenceType3Code> sequenceType,
-        ISubordinateXmlAsyncWriter<CategoryPurpose1Choice_> categoryPurpose
-    ) // end primary constructor
-            : ISubordinateXmlAsyncWriter<PaymentTypeInformation29>
+    public class PaymentTypeInformation29XmlAsyncWriter : ISubordinateXmlAsyncWriter<PaymentTypeInformation29>
     {
+        // Injected dependencies for serialization of each member data type
+        private readonly IEnumXmlAsyncWriter<Priority2Code> instructionPriority;
+        private readonly ISubordinateXmlAsyncWriter<ServiceLevel8Choice_> serviceLevel;
+        private readonly ISubordinateXmlAsyncWriter<LocalInstrument2Choice_> localInstrument;
+        private readonly IEnumXmlAsyncWriter<SequenceType3Code> sequenceType;
+        private readonly ISubordinateXmlAsyncWriter<CategoryPurpose1Choice_> categoryPurpose;
+        
+        /// <summary>
+        /// Construct using an injected writer for each member.
+        /// </summary>
+        public PaymentTypeInformation29XmlAsyncWriter
+        (
+            IEnumXmlAsyncWriter<Priority2Code> instructionPriority,
+            ISubordinateXmlAsyncWriter<ServiceLevel8Choice_> serviceLevel,
+            ISubordinateXmlAsyncWriter<LocalInstrument2Choice_> localInstrument,
+            IEnumXmlAsyncWriter<SequenceType3Code> sequenceType,
+            ISubordinateXmlAsyncWriter<CategoryPurpose1Choice_> categoryPurpose
+        )
+        {
+            this.instructionPriority = instructionPriority;
+            this.serviceLevel = serviceLevel;
+            this.localInstrument = localInstrument;
+            this.sequenceType = sequenceType;
+            this.categoryPurpose = categoryPurpose;
+        }
         public async Task WriteAsync(XmlWriter writer, PaymentTypeInformation29 value, string isoNamespace)
         {
             // InstructionPriority Optional Priority2Code Priority2Code

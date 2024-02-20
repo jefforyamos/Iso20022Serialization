@@ -16,14 +16,27 @@ namespace BeneficialStrategies.Iso20022.Serialization.Xml.Writers.Components
     /// <summary>
     /// Performs the XML serialization faithful to ISO20002 standards for <seealso cref="DocumentLineInformation1"/>.
     /// </summary>
-    public class DocumentLineInformation1XmlAsyncWriter
-    ( // primary constructor 
-        ISubordinateXmlAsyncWriter<DocumentLineIdentification1> identification,
-        IMax2048TextXmlAsyncWriter description,
-        ISubordinateXmlAsyncWriter<RemittanceAmount3> amount
-    ) // end primary constructor
-            : ISubordinateXmlAsyncWriter<DocumentLineInformation1>
+    public class DocumentLineInformation1XmlAsyncWriter : ISubordinateXmlAsyncWriter<DocumentLineInformation1>
     {
+        // Injected dependencies for serialization of each member data type
+        private readonly ISubordinateXmlAsyncWriter<DocumentLineIdentification1> identification;
+        private readonly IMax2048TextXmlAsyncWriter description;
+        private readonly ISubordinateXmlAsyncWriter<RemittanceAmount3> amount;
+        
+        /// <summary>
+        /// Construct using an injected writer for each member.
+        /// </summary>
+        public DocumentLineInformation1XmlAsyncWriter
+        (
+            ISubordinateXmlAsyncWriter<DocumentLineIdentification1> identification,
+            IMax2048TextXmlAsyncWriter description,
+            ISubordinateXmlAsyncWriter<RemittanceAmount3> amount
+        )
+        {
+            this.identification = identification;
+            this.description = description;
+            this.amount = amount;
+        }
         public async Task WriteAsync(XmlWriter writer, DocumentLineInformation1 value, string isoNamespace)
         {
             // Identification Unknown DocumentLineIdentification1 DocumentLineIdentification1

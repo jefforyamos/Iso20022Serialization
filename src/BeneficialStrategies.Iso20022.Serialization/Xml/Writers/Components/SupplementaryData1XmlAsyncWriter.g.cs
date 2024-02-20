@@ -16,13 +16,24 @@ namespace BeneficialStrategies.Iso20022.Serialization.Xml.Writers.Components
     /// <summary>
     /// Performs the XML serialization faithful to ISO20002 standards for <seealso cref="SupplementaryData1"/>.
     /// </summary>
-    public class SupplementaryData1XmlAsyncWriter
-    ( // primary constructor 
-        IMax350TextXmlAsyncWriter placeAndName,
-        ISubordinateXmlAsyncWriter<SupplementaryDataEnvelope1> envelope
-    ) // end primary constructor
-            : ISubordinateXmlAsyncWriter<SupplementaryData1>
+    public class SupplementaryData1XmlAsyncWriter : ISubordinateXmlAsyncWriter<SupplementaryData1>
     {
+        // Injected dependencies for serialization of each member data type
+        private readonly IMax350TextXmlAsyncWriter placeAndName;
+        private readonly ISubordinateXmlAsyncWriter<SupplementaryDataEnvelope1> envelope;
+        
+        /// <summary>
+        /// Construct using an injected writer for each member.
+        /// </summary>
+        public SupplementaryData1XmlAsyncWriter
+        (
+            IMax350TextXmlAsyncWriter placeAndName,
+            ISubordinateXmlAsyncWriter<SupplementaryDataEnvelope1> envelope
+        )
+        {
+            this.placeAndName = placeAndName;
+            this.envelope = envelope;
+        }
         public async Task WriteAsync(XmlWriter writer, SupplementaryData1 value, string isoNamespace)
         {
             // PlaceAndName Optional Max350Text System.String

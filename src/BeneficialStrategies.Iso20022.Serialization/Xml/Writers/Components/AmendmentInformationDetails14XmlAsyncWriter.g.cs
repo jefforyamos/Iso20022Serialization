@@ -16,23 +16,54 @@ namespace BeneficialStrategies.Iso20022.Serialization.Xml.Writers.Components
     /// <summary>
     /// Performs the XML serialization faithful to ISO20002 standards for <seealso cref="AmendmentInformationDetails14"/>.
     /// </summary>
-    public class AmendmentInformationDetails14XmlAsyncWriter
-    ( // primary constructor 
-        IMax35TextXmlAsyncWriter originalMandateIdentification,
-        ISubordinateXmlAsyncWriter<PartyIdentification135> originalCreditorSchemeIdentification,
-        ISubordinateXmlAsyncWriter<BranchAndFinancialInstitutionIdentification6> originalCreditorAgent,
-        ISubordinateXmlAsyncWriter<CashAccount40> originalCreditorAgentAccount,
-        ISubordinateXmlAsyncWriter<PartyIdentification135> originalDebtor,
-        ISubordinateXmlAsyncWriter<CashAccount40> originalDebtorAccount,
-        ISubordinateXmlAsyncWriter<BranchAndFinancialInstitutionIdentification6> originalDebtorAgent,
-        ISubordinateXmlAsyncWriter<CashAccount40> originalDebtorAgentAccount,
-        IISODateXmlAsyncWriter originalFinalCollectionDate,
-        ISubordinateXmlAsyncWriter<Frequency36Choice_> originalFrequency,
-        ISubordinateXmlAsyncWriter<MandateSetupReason1Choice_> originalReason,
-        IExact2NumericTextXmlAsyncWriter originalTrackingDays
-    ) // end primary constructor
-            : ISubordinateXmlAsyncWriter<AmendmentInformationDetails14>
+    public class AmendmentInformationDetails14XmlAsyncWriter : ISubordinateXmlAsyncWriter<AmendmentInformationDetails14>
     {
+        // Injected dependencies for serialization of each member data type
+        private readonly IMax35TextXmlAsyncWriter originalMandateIdentification;
+        private readonly ISubordinateXmlAsyncWriter<PartyIdentification135> originalCreditorSchemeIdentification;
+        private readonly ISubordinateXmlAsyncWriter<BranchAndFinancialInstitutionIdentification6> originalCreditorAgent;
+        private readonly ISubordinateXmlAsyncWriter<CashAccount40> originalCreditorAgentAccount;
+        private readonly ISubordinateXmlAsyncWriter<PartyIdentification135> originalDebtor;
+        private readonly ISubordinateXmlAsyncWriter<CashAccount40> originalDebtorAccount;
+        private readonly ISubordinateXmlAsyncWriter<BranchAndFinancialInstitutionIdentification6> originalDebtorAgent;
+        private readonly ISubordinateXmlAsyncWriter<CashAccount40> originalDebtorAgentAccount;
+        private readonly IISODateXmlAsyncWriter originalFinalCollectionDate;
+        private readonly ISubordinateXmlAsyncWriter<Frequency36Choice_> originalFrequency;
+        private readonly ISubordinateXmlAsyncWriter<MandateSetupReason1Choice_> originalReason;
+        private readonly IExact2NumericTextXmlAsyncWriter originalTrackingDays;
+        
+        /// <summary>
+        /// Construct using an injected writer for each member.
+        /// </summary>
+        public AmendmentInformationDetails14XmlAsyncWriter
+        (
+            IMax35TextXmlAsyncWriter originalMandateIdentification,
+            ISubordinateXmlAsyncWriter<PartyIdentification135> originalCreditorSchemeIdentification,
+            ISubordinateXmlAsyncWriter<BranchAndFinancialInstitutionIdentification6> originalCreditorAgent,
+            ISubordinateXmlAsyncWriter<CashAccount40> originalCreditorAgentAccount,
+            ISubordinateXmlAsyncWriter<PartyIdentification135> originalDebtor,
+            ISubordinateXmlAsyncWriter<CashAccount40> originalDebtorAccount,
+            ISubordinateXmlAsyncWriter<BranchAndFinancialInstitutionIdentification6> originalDebtorAgent,
+            ISubordinateXmlAsyncWriter<CashAccount40> originalDebtorAgentAccount,
+            IISODateXmlAsyncWriter originalFinalCollectionDate,
+            ISubordinateXmlAsyncWriter<Frequency36Choice_> originalFrequency,
+            ISubordinateXmlAsyncWriter<MandateSetupReason1Choice_> originalReason,
+            IExact2NumericTextXmlAsyncWriter originalTrackingDays
+        )
+        {
+            this.originalMandateIdentification = originalMandateIdentification;
+            this.originalCreditorSchemeIdentification = originalCreditorSchemeIdentification;
+            this.originalCreditorAgent = originalCreditorAgent;
+            this.originalCreditorAgentAccount = originalCreditorAgentAccount;
+            this.originalDebtor = originalDebtor;
+            this.originalDebtorAccount = originalDebtorAccount;
+            this.originalDebtorAgent = originalDebtorAgent;
+            this.originalDebtorAgentAccount = originalDebtorAgentAccount;
+            this.originalFinalCollectionDate = originalFinalCollectionDate;
+            this.originalFrequency = originalFrequency;
+            this.originalReason = originalReason;
+            this.originalTrackingDays = originalTrackingDays;
+        }
         public async Task WriteAsync(XmlWriter writer, AmendmentInformationDetails14 value, string isoNamespace)
         {
             // OriginalMandateIdentification Optional Max35Text System.String

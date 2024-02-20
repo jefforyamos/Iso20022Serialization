@@ -16,13 +16,24 @@ namespace BeneficialStrategies.Iso20022.Serialization.Xml.Writers.Components
     /// <summary>
     /// Performs the XML serialization faithful to ISO20002 standards for <seealso cref="RemittanceLocation7"/>.
     /// </summary>
-    public class RemittanceLocation7XmlAsyncWriter
-    ( // primary constructor 
-        IMax35TextXmlAsyncWriter remittanceIdentification,
-        ISubordinateXmlAsyncWriter<RemittanceLocationData1> remittanceLocationDetails
-    ) // end primary constructor
-            : ISubordinateXmlAsyncWriter<RemittanceLocation7>
+    public class RemittanceLocation7XmlAsyncWriter : ISubordinateXmlAsyncWriter<RemittanceLocation7>
     {
+        // Injected dependencies for serialization of each member data type
+        private readonly IMax35TextXmlAsyncWriter remittanceIdentification;
+        private readonly ISubordinateXmlAsyncWriter<RemittanceLocationData1> remittanceLocationDetails;
+        
+        /// <summary>
+        /// Construct using an injected writer for each member.
+        /// </summary>
+        public RemittanceLocation7XmlAsyncWriter
+        (
+            IMax35TextXmlAsyncWriter remittanceIdentification,
+            ISubordinateXmlAsyncWriter<RemittanceLocationData1> remittanceLocationDetails
+        )
+        {
+            this.remittanceIdentification = remittanceIdentification;
+            this.remittanceLocationDetails = remittanceLocationDetails;
+        }
         public async Task WriteAsync(XmlWriter writer, RemittanceLocation7 value, string isoNamespace)
         {
             // RemittanceIdentification Optional Max35Text System.String

@@ -16,13 +16,24 @@ namespace BeneficialStrategies.Iso20022.Serialization.Xml.Writers.Components
     /// <summary>
     /// Performs the XML serialization faithful to ISO20002 standards for <seealso cref="NameAndAddress16"/>.
     /// </summary>
-    public class NameAndAddress16XmlAsyncWriter
-    ( // primary constructor 
-        IMax140TextXmlAsyncWriter name,
-        ISubordinateXmlAsyncWriter<PostalAddress24> address
-    ) // end primary constructor
-            : ISubordinateXmlAsyncWriter<NameAndAddress16>
+    public class NameAndAddress16XmlAsyncWriter : ISubordinateXmlAsyncWriter<NameAndAddress16>
     {
+        // Injected dependencies for serialization of each member data type
+        private readonly IMax140TextXmlAsyncWriter name;
+        private readonly ISubordinateXmlAsyncWriter<PostalAddress24> address;
+        
+        /// <summary>
+        /// Construct using an injected writer for each member.
+        /// </summary>
+        public NameAndAddress16XmlAsyncWriter
+        (
+            IMax140TextXmlAsyncWriter name,
+            ISubordinateXmlAsyncWriter<PostalAddress24> address
+        )
+        {
+            this.name = name;
+            this.address = address;
+        }
         public async Task WriteAsync(XmlWriter writer, NameAndAddress16 value, string isoNamespace)
         {
             // Name Required Max140Text System.String

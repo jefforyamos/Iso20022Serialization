@@ -16,14 +16,27 @@ namespace BeneficialStrategies.Iso20022.Serialization.Xml.Writers.Components
     /// <summary>
     /// Performs the XML serialization faithful to ISO20002 standards for <seealso cref="RemittanceLocationData1"/>.
     /// </summary>
-    public class RemittanceLocationData1XmlAsyncWriter
-    ( // primary constructor 
-        IEnumXmlAsyncWriter<RemittanceLocationMethod2Code> method,
-        IMax2048TextXmlAsyncWriter electronicAddress,
-        ISubordinateXmlAsyncWriter<NameAndAddress16> postalAddress
-    ) // end primary constructor
-            : ISubordinateXmlAsyncWriter<RemittanceLocationData1>
+    public class RemittanceLocationData1XmlAsyncWriter : ISubordinateXmlAsyncWriter<RemittanceLocationData1>
     {
+        // Injected dependencies for serialization of each member data type
+        private readonly IEnumXmlAsyncWriter<RemittanceLocationMethod2Code> method;
+        private readonly IMax2048TextXmlAsyncWriter electronicAddress;
+        private readonly ISubordinateXmlAsyncWriter<NameAndAddress16> postalAddress;
+        
+        /// <summary>
+        /// Construct using an injected writer for each member.
+        /// </summary>
+        public RemittanceLocationData1XmlAsyncWriter
+        (
+            IEnumXmlAsyncWriter<RemittanceLocationMethod2Code> method,
+            IMax2048TextXmlAsyncWriter electronicAddress,
+            ISubordinateXmlAsyncWriter<NameAndAddress16> postalAddress
+        )
+        {
+            this.method = method;
+            this.electronicAddress = electronicAddress;
+            this.postalAddress = postalAddress;
+        }
         public async Task WriteAsync(XmlWriter writer, RemittanceLocationData1 value, string isoNamespace)
         {
             // Method Required RemittanceLocationMethod2Code RemittanceLocationMethod2Code

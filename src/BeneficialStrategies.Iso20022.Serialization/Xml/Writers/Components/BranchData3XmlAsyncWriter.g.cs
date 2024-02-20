@@ -16,15 +16,30 @@ namespace BeneficialStrategies.Iso20022.Serialization.Xml.Writers.Components
     /// <summary>
     /// Performs the XML serialization faithful to ISO20002 standards for <seealso cref="BranchData3"/>.
     /// </summary>
-    public class BranchData3XmlAsyncWriter
-    ( // primary constructor 
-        IMax35TextXmlAsyncWriter identification,
-        ILEIIdentifierXmlAsyncWriter lEI,
-        IMax140TextXmlAsyncWriter name,
-        ISubordinateXmlAsyncWriter<PostalAddress24> postalAddress
-    ) // end primary constructor
-            : ISubordinateXmlAsyncWriter<BranchData3>
+    public class BranchData3XmlAsyncWriter : ISubordinateXmlAsyncWriter<BranchData3>
     {
+        // Injected dependencies for serialization of each member data type
+        private readonly IMax35TextXmlAsyncWriter identification;
+        private readonly ILEIIdentifierXmlAsyncWriter lEI;
+        private readonly IMax140TextXmlAsyncWriter name;
+        private readonly ISubordinateXmlAsyncWriter<PostalAddress24> postalAddress;
+        
+        /// <summary>
+        /// Construct using an injected writer for each member.
+        /// </summary>
+        public BranchData3XmlAsyncWriter
+        (
+            IMax35TextXmlAsyncWriter identification,
+            ILEIIdentifierXmlAsyncWriter lEI,
+            IMax140TextXmlAsyncWriter name,
+            ISubordinateXmlAsyncWriter<PostalAddress24> postalAddress
+        )
+        {
+            this.identification = identification;
+            this.lEI = lEI;
+            this.name = name;
+            this.postalAddress = postalAddress;
+        }
         public async Task WriteAsync(XmlWriter writer, BranchData3 value, string isoNamespace)
         {
             // Identification Optional Max35Text System.String

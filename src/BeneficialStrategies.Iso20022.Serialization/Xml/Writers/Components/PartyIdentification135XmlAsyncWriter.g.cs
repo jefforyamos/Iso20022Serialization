@@ -16,16 +16,33 @@ namespace BeneficialStrategies.Iso20022.Serialization.Xml.Writers.Components
     /// <summary>
     /// Performs the XML serialization faithful to ISO20002 standards for <seealso cref="PartyIdentification135"/>.
     /// </summary>
-    public class PartyIdentification135XmlAsyncWriter
-    ( // primary constructor 
-        IMax140TextXmlAsyncWriter name,
-        ISubordinateXmlAsyncWriter<PostalAddress24> postalAddress,
-        ISubordinateXmlAsyncWriter<Party38Choice_> identification,
-        ICountryCodeXmlAsyncWriter countryOfResidence,
-        ISubordinateXmlAsyncWriter<Contact4> contactDetails
-    ) // end primary constructor
-            : ISubordinateXmlAsyncWriter<PartyIdentification135>
+    public class PartyIdentification135XmlAsyncWriter : ISubordinateXmlAsyncWriter<PartyIdentification135>
     {
+        // Injected dependencies for serialization of each member data type
+        private readonly IMax140TextXmlAsyncWriter name;
+        private readonly ISubordinateXmlAsyncWriter<PostalAddress24> postalAddress;
+        private readonly ISubordinateXmlAsyncWriter<Party38Choice_> identification;
+        private readonly ICountryCodeXmlAsyncWriter countryOfResidence;
+        private readonly ISubordinateXmlAsyncWriter<Contact4> contactDetails;
+        
+        /// <summary>
+        /// Construct using an injected writer for each member.
+        /// </summary>
+        public PartyIdentification135XmlAsyncWriter
+        (
+            IMax140TextXmlAsyncWriter name,
+            ISubordinateXmlAsyncWriter<PostalAddress24> postalAddress,
+            ISubordinateXmlAsyncWriter<Party38Choice_> identification,
+            ICountryCodeXmlAsyncWriter countryOfResidence,
+            ISubordinateXmlAsyncWriter<Contact4> contactDetails
+        )
+        {
+            this.name = name;
+            this.postalAddress = postalAddress;
+            this.identification = identification;
+            this.countryOfResidence = countryOfResidence;
+            this.contactDetails = contactDetails;
+        }
         public async Task WriteAsync(XmlWriter writer, PartyIdentification135 value, string isoNamespace)
         {
             // Name Optional Max140Text System.String

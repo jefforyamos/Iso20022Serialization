@@ -16,15 +16,30 @@ namespace BeneficialStrategies.Iso20022.Serialization.Xml.Writers.Components
     /// <summary>
     /// Performs the XML serialization faithful to ISO20002 standards for <seealso cref="TaxAmount3"/>.
     /// </summary>
-    public class TaxAmount3XmlAsyncWriter
-    ( // primary constructor 
-        IPercentageRateXmlAsyncWriter rate,
-        IActiveOrHistoricCurrencyAndAmountXmlAsyncWriter taxableBaseAmount,
-        IActiveOrHistoricCurrencyAndAmountXmlAsyncWriter totalAmount,
-        ISubordinateXmlAsyncWriter<TaxRecordDetails3> details
-    ) // end primary constructor
-            : ISubordinateXmlAsyncWriter<TaxAmount3>
+    public class TaxAmount3XmlAsyncWriter : ISubordinateXmlAsyncWriter<TaxAmount3>
     {
+        // Injected dependencies for serialization of each member data type
+        private readonly IPercentageRateXmlAsyncWriter rate;
+        private readonly IActiveOrHistoricCurrencyAndAmountXmlAsyncWriter taxableBaseAmount;
+        private readonly IActiveOrHistoricCurrencyAndAmountXmlAsyncWriter totalAmount;
+        private readonly ISubordinateXmlAsyncWriter<TaxRecordDetails3> details;
+        
+        /// <summary>
+        /// Construct using an injected writer for each member.
+        /// </summary>
+        public TaxAmount3XmlAsyncWriter
+        (
+            IPercentageRateXmlAsyncWriter rate,
+            IActiveOrHistoricCurrencyAndAmountXmlAsyncWriter taxableBaseAmount,
+            IActiveOrHistoricCurrencyAndAmountXmlAsyncWriter totalAmount,
+            ISubordinateXmlAsyncWriter<TaxRecordDetails3> details
+        )
+        {
+            this.rate = rate;
+            this.taxableBaseAmount = taxableBaseAmount;
+            this.totalAmount = totalAmount;
+            this.details = details;
+        }
         public async Task WriteAsync(XmlWriter writer, TaxAmount3 value, string isoNamespace)
         {
             // Rate Optional PercentageRate System.Decimal

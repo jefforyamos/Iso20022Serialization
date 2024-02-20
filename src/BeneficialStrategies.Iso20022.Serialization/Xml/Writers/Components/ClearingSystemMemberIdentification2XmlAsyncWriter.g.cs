@@ -16,13 +16,24 @@ namespace BeneficialStrategies.Iso20022.Serialization.Xml.Writers.Components
     /// <summary>
     /// Performs the XML serialization faithful to ISO20002 standards for <seealso cref="ClearingSystemMemberIdentification2"/>.
     /// </summary>
-    public class ClearingSystemMemberIdentification2XmlAsyncWriter
-    ( // primary constructor 
-        ISubordinateXmlAsyncWriter<ClearingSystemIdentification2Choice_> clearingSystemIdentification,
-        IMax35TextXmlAsyncWriter memberIdentification
-    ) // end primary constructor
-            : ISubordinateXmlAsyncWriter<ClearingSystemMemberIdentification2>
+    public class ClearingSystemMemberIdentification2XmlAsyncWriter : ISubordinateXmlAsyncWriter<ClearingSystemMemberIdentification2>
     {
+        // Injected dependencies for serialization of each member data type
+        private readonly ISubordinateXmlAsyncWriter<ClearingSystemIdentification2Choice_> clearingSystemIdentification;
+        private readonly IMax35TextXmlAsyncWriter memberIdentification;
+        
+        /// <summary>
+        /// Construct using an injected writer for each member.
+        /// </summary>
+        public ClearingSystemMemberIdentification2XmlAsyncWriter
+        (
+            ISubordinateXmlAsyncWriter<ClearingSystemIdentification2Choice_> clearingSystemIdentification,
+            IMax35TextXmlAsyncWriter memberIdentification
+        )
+        {
+            this.clearingSystemIdentification = clearingSystemIdentification;
+            this.memberIdentification = memberIdentification;
+        }
         public async Task WriteAsync(XmlWriter writer, ClearingSystemMemberIdentification2 value, string isoNamespace)
         {
             // ClearingSystemIdentification Optional ClearingSystemIdentification2Choice ClearingSystemIdentification2Choice_

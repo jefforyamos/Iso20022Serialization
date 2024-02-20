@@ -16,13 +16,24 @@ namespace BeneficialStrategies.Iso20022.Serialization.Xml.Writers.Components
     /// <summary>
     /// Performs the XML serialization faithful to ISO20002 standards for <seealso cref="DatePeriod2"/>.
     /// </summary>
-    public class DatePeriod2XmlAsyncWriter
-    ( // primary constructor 
-        IISODateXmlAsyncWriter fromDate,
-        IISODateXmlAsyncWriter toDate
-    ) // end primary constructor
-            : ISubordinateXmlAsyncWriter<DatePeriod2>
+    public class DatePeriod2XmlAsyncWriter : ISubordinateXmlAsyncWriter<DatePeriod2>
     {
+        // Injected dependencies for serialization of each member data type
+        private readonly IISODateXmlAsyncWriter fromDate;
+        private readonly IISODateXmlAsyncWriter toDate;
+        
+        /// <summary>
+        /// Construct using an injected writer for each member.
+        /// </summary>
+        public DatePeriod2XmlAsyncWriter
+        (
+            IISODateXmlAsyncWriter fromDate,
+            IISODateXmlAsyncWriter toDate
+        )
+        {
+            this.fromDate = fromDate;
+            this.toDate = toDate;
+        }
         public async Task WriteAsync(XmlWriter writer, DatePeriod2 value, string isoNamespace)
         {
             // FromDate Required ISODate System.DateOnly

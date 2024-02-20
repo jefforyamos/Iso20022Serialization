@@ -16,13 +16,24 @@ namespace BeneficialStrategies.Iso20022.Serialization.Xml.Writers.Components
     /// <summary>
     /// Performs the XML serialization faithful to ISO20002 standards for <seealso cref="BranchAndFinancialInstitutionIdentification6"/>.
     /// </summary>
-    public class BranchAndFinancialInstitutionIdentification6XmlAsyncWriter
-    ( // primary constructor 
-        ISubordinateXmlAsyncWriter<FinancialInstitutionIdentification18> financialInstitutionIdentification,
-        ISubordinateXmlAsyncWriter<BranchData3> branchIdentification
-    ) // end primary constructor
-            : ISubordinateXmlAsyncWriter<BranchAndFinancialInstitutionIdentification6>
+    public class BranchAndFinancialInstitutionIdentification6XmlAsyncWriter : ISubordinateXmlAsyncWriter<BranchAndFinancialInstitutionIdentification6>
     {
+        // Injected dependencies for serialization of each member data type
+        private readonly ISubordinateXmlAsyncWriter<FinancialInstitutionIdentification18> financialInstitutionIdentification;
+        private readonly ISubordinateXmlAsyncWriter<BranchData3> branchIdentification;
+        
+        /// <summary>
+        /// Construct using an injected writer for each member.
+        /// </summary>
+        public BranchAndFinancialInstitutionIdentification6XmlAsyncWriter
+        (
+            ISubordinateXmlAsyncWriter<FinancialInstitutionIdentification18> financialInstitutionIdentification,
+            ISubordinateXmlAsyncWriter<BranchData3> branchIdentification
+        )
+        {
+            this.financialInstitutionIdentification = financialInstitutionIdentification;
+            this.branchIdentification = branchIdentification;
+        }
         public async Task WriteAsync(XmlWriter writer, BranchAndFinancialInstitutionIdentification6 value, string isoNamespace)
         {
             // FinancialInstitutionIdentification Required FinancialInstitutionIdentification18 FinancialInstitutionIdentification18

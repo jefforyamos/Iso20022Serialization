@@ -16,20 +16,45 @@ namespace BeneficialStrategies.Iso20022.Serialization.Xml.Writers.Components
     /// <summary>
     /// Performs the XML serialization faithful to ISO20002 standards for <seealso cref="CreditTransferMandateData1"/>.
     /// </summary>
-    public class CreditTransferMandateData1XmlAsyncWriter
-    ( // primary constructor 
-        IMax35TextXmlAsyncWriter mandateIdentification,
-        ISubordinateXmlAsyncWriter<MandateTypeInformation2> type,
-        IISODateXmlAsyncWriter dateOfSignature,
-        IISODateTimeXmlAsyncWriter dateOfVerification,
-        IMax10KBinaryXmlAsyncWriter electronicSignature,
-        IISODateXmlAsyncWriter firstPaymentDate,
-        IISODateXmlAsyncWriter finalPaymentDate,
-        ISubordinateXmlAsyncWriter<Frequency36Choice_> frequency,
-        ISubordinateXmlAsyncWriter<MandateSetupReason1Choice_> reason
-    ) // end primary constructor
-            : ISubordinateXmlAsyncWriter<CreditTransferMandateData1>
+    public class CreditTransferMandateData1XmlAsyncWriter : ISubordinateXmlAsyncWriter<CreditTransferMandateData1>
     {
+        // Injected dependencies for serialization of each member data type
+        private readonly IMax35TextXmlAsyncWriter mandateIdentification;
+        private readonly ISubordinateXmlAsyncWriter<MandateTypeInformation2> type;
+        private readonly IISODateXmlAsyncWriter dateOfSignature;
+        private readonly IISODateTimeXmlAsyncWriter dateOfVerification;
+        private readonly IMax10KBinaryXmlAsyncWriter electronicSignature;
+        private readonly IISODateXmlAsyncWriter firstPaymentDate;
+        private readonly IISODateXmlAsyncWriter finalPaymentDate;
+        private readonly ISubordinateXmlAsyncWriter<Frequency36Choice_> frequency;
+        private readonly ISubordinateXmlAsyncWriter<MandateSetupReason1Choice_> reason;
+        
+        /// <summary>
+        /// Construct using an injected writer for each member.
+        /// </summary>
+        public CreditTransferMandateData1XmlAsyncWriter
+        (
+            IMax35TextXmlAsyncWriter mandateIdentification,
+            ISubordinateXmlAsyncWriter<MandateTypeInformation2> type,
+            IISODateXmlAsyncWriter dateOfSignature,
+            IISODateTimeXmlAsyncWriter dateOfVerification,
+            IMax10KBinaryXmlAsyncWriter electronicSignature,
+            IISODateXmlAsyncWriter firstPaymentDate,
+            IISODateXmlAsyncWriter finalPaymentDate,
+            ISubordinateXmlAsyncWriter<Frequency36Choice_> frequency,
+            ISubordinateXmlAsyncWriter<MandateSetupReason1Choice_> reason
+        )
+        {
+            this.mandateIdentification = mandateIdentification;
+            this.type = type;
+            this.dateOfSignature = dateOfSignature;
+            this.dateOfVerification = dateOfVerification;
+            this.electronicSignature = electronicSignature;
+            this.firstPaymentDate = firstPaymentDate;
+            this.finalPaymentDate = finalPaymentDate;
+            this.frequency = frequency;
+            this.reason = reason;
+        }
         public async Task WriteAsync(XmlWriter writer, CreditTransferMandateData1 value, string isoNamespace)
         {
             // MandateIdentification Optional Max35Text System.String

@@ -16,13 +16,24 @@ namespace BeneficialStrategies.Iso20022.Serialization.Xml.Writers.Components
     /// <summary>
     /// Performs the XML serialization faithful to ISO20002 standards for <seealso cref="RegulatoryAuthority2"/>.
     /// </summary>
-    public class RegulatoryAuthority2XmlAsyncWriter
-    ( // primary constructor 
-        IMax140TextXmlAsyncWriter name,
-        ICountryCodeXmlAsyncWriter country
-    ) // end primary constructor
-            : ISubordinateXmlAsyncWriter<RegulatoryAuthority2>
+    public class RegulatoryAuthority2XmlAsyncWriter : ISubordinateXmlAsyncWriter<RegulatoryAuthority2>
     {
+        // Injected dependencies for serialization of each member data type
+        private readonly IMax140TextXmlAsyncWriter name;
+        private readonly ICountryCodeXmlAsyncWriter country;
+        
+        /// <summary>
+        /// Construct using an injected writer for each member.
+        /// </summary>
+        public RegulatoryAuthority2XmlAsyncWriter
+        (
+            IMax140TextXmlAsyncWriter name,
+            ICountryCodeXmlAsyncWriter country
+        )
+        {
+            this.name = name;
+            this.country = country;
+        }
         public async Task WriteAsync(XmlWriter writer, RegulatoryAuthority2 value, string isoNamespace)
         {
             // Name Optional Max140Text System.String

@@ -16,13 +16,24 @@ namespace BeneficialStrategies.Iso20022.Serialization.Xml.Writers.Components
     /// <summary>
     /// Performs the XML serialization faithful to ISO20002 standards for <seealso cref="AdviceType1"/>.
     /// </summary>
-    public class AdviceType1XmlAsyncWriter
-    ( // primary constructor 
-        ISubordinateXmlAsyncWriter<AdviceType1Choice_> creditAdvice,
-        ISubordinateXmlAsyncWriter<AdviceType1Choice_> debitAdvice
-    ) // end primary constructor
-            : ISubordinateXmlAsyncWriter<AdviceType1>
+    public class AdviceType1XmlAsyncWriter : ISubordinateXmlAsyncWriter<AdviceType1>
     {
+        // Injected dependencies for serialization of each member data type
+        private readonly ISubordinateXmlAsyncWriter<AdviceType1Choice_> creditAdvice;
+        private readonly ISubordinateXmlAsyncWriter<AdviceType1Choice_> debitAdvice;
+        
+        /// <summary>
+        /// Construct using an injected writer for each member.
+        /// </summary>
+        public AdviceType1XmlAsyncWriter
+        (
+            ISubordinateXmlAsyncWriter<AdviceType1Choice_> creditAdvice,
+            ISubordinateXmlAsyncWriter<AdviceType1Choice_> debitAdvice
+        )
+        {
+            this.creditAdvice = creditAdvice;
+            this.debitAdvice = debitAdvice;
+        }
         public async Task WriteAsync(XmlWriter writer, AdviceType1 value, string isoNamespace)
         {
             // CreditAdvice Optional AdviceType1Choice AdviceType1Choice_

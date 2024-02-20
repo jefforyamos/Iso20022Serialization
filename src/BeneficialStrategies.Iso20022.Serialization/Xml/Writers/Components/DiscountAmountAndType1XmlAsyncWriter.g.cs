@@ -16,13 +16,24 @@ namespace BeneficialStrategies.Iso20022.Serialization.Xml.Writers.Components
     /// <summary>
     /// Performs the XML serialization faithful to ISO20002 standards for <seealso cref="DiscountAmountAndType1"/>.
     /// </summary>
-    public class DiscountAmountAndType1XmlAsyncWriter
-    ( // primary constructor 
-        ISubordinateXmlAsyncWriter<DiscountAmountType1Choice_> type,
-        IActiveOrHistoricCurrencyAndAmountXmlAsyncWriter amount
-    ) // end primary constructor
-            : ISubordinateXmlAsyncWriter<DiscountAmountAndType1>
+    public class DiscountAmountAndType1XmlAsyncWriter : ISubordinateXmlAsyncWriter<DiscountAmountAndType1>
     {
+        // Injected dependencies for serialization of each member data type
+        private readonly ISubordinateXmlAsyncWriter<DiscountAmountType1Choice_> type;
+        private readonly IActiveOrHistoricCurrencyAndAmountXmlAsyncWriter amount;
+        
+        /// <summary>
+        /// Construct using an injected writer for each member.
+        /// </summary>
+        public DiscountAmountAndType1XmlAsyncWriter
+        (
+            ISubordinateXmlAsyncWriter<DiscountAmountType1Choice_> type,
+            IActiveOrHistoricCurrencyAndAmountXmlAsyncWriter amount
+        )
+        {
+            this.type = type;
+            this.amount = amount;
+        }
         public async Task WriteAsync(XmlWriter writer, DiscountAmountAndType1 value, string isoNamespace)
         {
             // Type Optional DiscountAmountType1Choice DiscountAmountType1Choice_

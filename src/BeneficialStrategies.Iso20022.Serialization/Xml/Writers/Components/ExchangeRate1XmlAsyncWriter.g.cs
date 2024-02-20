@@ -16,15 +16,30 @@ namespace BeneficialStrategies.Iso20022.Serialization.Xml.Writers.Components
     /// <summary>
     /// Performs the XML serialization faithful to ISO20002 standards for <seealso cref="ExchangeRate1"/>.
     /// </summary>
-    public class ExchangeRate1XmlAsyncWriter
-    ( // primary constructor 
-        IActiveOrHistoricCurrencyCodeXmlAsyncWriter unitCurrency,
-        IBaseOneRateXmlAsyncWriter exchangeRate,
-        IEnumXmlAsyncWriter<ExchangeRateType1Code> rateType,
-        IMax35TextXmlAsyncWriter contractIdentification
-    ) // end primary constructor
-            : ISubordinateXmlAsyncWriter<ExchangeRate1>
+    public class ExchangeRate1XmlAsyncWriter : ISubordinateXmlAsyncWriter<ExchangeRate1>
     {
+        // Injected dependencies for serialization of each member data type
+        private readonly IActiveOrHistoricCurrencyCodeXmlAsyncWriter unitCurrency;
+        private readonly IBaseOneRateXmlAsyncWriter exchangeRate;
+        private readonly IEnumXmlAsyncWriter<ExchangeRateType1Code> rateType;
+        private readonly IMax35TextXmlAsyncWriter contractIdentification;
+        
+        /// <summary>
+        /// Construct using an injected writer for each member.
+        /// </summary>
+        public ExchangeRate1XmlAsyncWriter
+        (
+            IActiveOrHistoricCurrencyCodeXmlAsyncWriter unitCurrency,
+            IBaseOneRateXmlAsyncWriter exchangeRate,
+            IEnumXmlAsyncWriter<ExchangeRateType1Code> rateType,
+            IMax35TextXmlAsyncWriter contractIdentification
+        )
+        {
+            this.unitCurrency = unitCurrency;
+            this.exchangeRate = exchangeRate;
+            this.rateType = rateType;
+            this.contractIdentification = contractIdentification;
+        }
         public async Task WriteAsync(XmlWriter writer, ExchangeRate1 value, string isoNamespace)
         {
             // UnitCurrency Optional ActiveOrHistoricCurrencyCode string

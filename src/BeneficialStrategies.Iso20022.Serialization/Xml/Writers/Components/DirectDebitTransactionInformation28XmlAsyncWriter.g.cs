@@ -16,29 +16,72 @@ namespace BeneficialStrategies.Iso20022.Serialization.Xml.Writers.Components
     /// <summary>
     /// Performs the XML serialization faithful to ISO20002 standards for <seealso cref="DirectDebitTransactionInformation28"/>.
     /// </summary>
-    public class DirectDebitTransactionInformation28XmlAsyncWriter
-    ( // primary constructor 
-        ISubordinateXmlAsyncWriter<PaymentIdentification6> paymentIdentification,
-        ISubordinateXmlAsyncWriter<PaymentTypeInformation29> paymentTypeInformation,
-        IActiveOrHistoricCurrencyAndAmountXmlAsyncWriter instructedAmount,
-        IEnumXmlAsyncWriter<ChargeBearerType1Code> chargeBearer,
-        ISubordinateXmlAsyncWriter<DirectDebitTransaction11> directDebitTransaction,
-        ISubordinateXmlAsyncWriter<PartyIdentification135> ultimateCreditor,
-        ISubordinateXmlAsyncWriter<BranchAndFinancialInstitutionIdentification6> debtorAgent,
-        ISubordinateXmlAsyncWriter<CashAccount40> debtorAgentAccount,
-        ISubordinateXmlAsyncWriter<PartyIdentification135> debtor,
-        ISubordinateXmlAsyncWriter<CashAccount40> debtorAccount,
-        ISubordinateXmlAsyncWriter<PartyIdentification135> ultimateDebtor,
-        IMax140TextXmlAsyncWriter instructionForCreditorAgent,
-        ISubordinateXmlAsyncWriter<Purpose2Choice_> purpose,
-        ISubordinateXmlAsyncWriter<RegulatoryReporting3> regulatoryReporting,
-        ISubordinateXmlAsyncWriter<TaxInformation10> tax,
-        ISubordinateXmlAsyncWriter<RemittanceLocation7> relatedRemittanceInformation,
-        ISubordinateXmlAsyncWriter<RemittanceInformation21> remittanceInformation,
-        ISubordinateXmlAsyncWriter<SupplementaryData1> supplementaryData
-    ) // end primary constructor
-            : ISubordinateXmlAsyncWriter<DirectDebitTransactionInformation28>
+    public class DirectDebitTransactionInformation28XmlAsyncWriter : ISubordinateXmlAsyncWriter<DirectDebitTransactionInformation28>
     {
+        // Injected dependencies for serialization of each member data type
+        private readonly ISubordinateXmlAsyncWriter<PaymentIdentification6> paymentIdentification;
+        private readonly ISubordinateXmlAsyncWriter<PaymentTypeInformation29> paymentTypeInformation;
+        private readonly IActiveOrHistoricCurrencyAndAmountXmlAsyncWriter instructedAmount;
+        private readonly IEnumXmlAsyncWriter<ChargeBearerType1Code> chargeBearer;
+        private readonly ISubordinateXmlAsyncWriter<DirectDebitTransaction11> directDebitTransaction;
+        private readonly ISubordinateXmlAsyncWriter<PartyIdentification135> ultimateCreditor;
+        private readonly ISubordinateXmlAsyncWriter<BranchAndFinancialInstitutionIdentification6> debtorAgent;
+        private readonly ISubordinateXmlAsyncWriter<CashAccount40> debtorAgentAccount;
+        private readonly ISubordinateXmlAsyncWriter<PartyIdentification135> debtor;
+        private readonly ISubordinateXmlAsyncWriter<CashAccount40> debtorAccount;
+        private readonly ISubordinateXmlAsyncWriter<PartyIdentification135> ultimateDebtor;
+        private readonly IMax140TextXmlAsyncWriter instructionForCreditorAgent;
+        private readonly ISubordinateXmlAsyncWriter<Purpose2Choice_> purpose;
+        private readonly ISubordinateXmlAsyncWriter<RegulatoryReporting3> regulatoryReporting;
+        private readonly ISubordinateXmlAsyncWriter<TaxInformation10> tax;
+        private readonly ISubordinateXmlAsyncWriter<RemittanceLocation7> relatedRemittanceInformation;
+        private readonly ISubordinateXmlAsyncWriter<RemittanceInformation21> remittanceInformation;
+        private readonly ISubordinateXmlAsyncWriter<SupplementaryData1> supplementaryData;
+        
+        /// <summary>
+        /// Construct using an injected writer for each member.
+        /// </summary>
+        public DirectDebitTransactionInformation28XmlAsyncWriter
+        (
+            ISubordinateXmlAsyncWriter<PaymentIdentification6> paymentIdentification,
+            ISubordinateXmlAsyncWriter<PaymentTypeInformation29> paymentTypeInformation,
+            IActiveOrHistoricCurrencyAndAmountXmlAsyncWriter instructedAmount,
+            IEnumXmlAsyncWriter<ChargeBearerType1Code> chargeBearer,
+            ISubordinateXmlAsyncWriter<DirectDebitTransaction11> directDebitTransaction,
+            ISubordinateXmlAsyncWriter<PartyIdentification135> ultimateCreditor,
+            ISubordinateXmlAsyncWriter<BranchAndFinancialInstitutionIdentification6> debtorAgent,
+            ISubordinateXmlAsyncWriter<CashAccount40> debtorAgentAccount,
+            ISubordinateXmlAsyncWriter<PartyIdentification135> debtor,
+            ISubordinateXmlAsyncWriter<CashAccount40> debtorAccount,
+            ISubordinateXmlAsyncWriter<PartyIdentification135> ultimateDebtor,
+            IMax140TextXmlAsyncWriter instructionForCreditorAgent,
+            ISubordinateXmlAsyncWriter<Purpose2Choice_> purpose,
+            ISubordinateXmlAsyncWriter<RegulatoryReporting3> regulatoryReporting,
+            ISubordinateXmlAsyncWriter<TaxInformation10> tax,
+            ISubordinateXmlAsyncWriter<RemittanceLocation7> relatedRemittanceInformation,
+            ISubordinateXmlAsyncWriter<RemittanceInformation21> remittanceInformation,
+            ISubordinateXmlAsyncWriter<SupplementaryData1> supplementaryData
+        )
+        {
+            this.paymentIdentification = paymentIdentification;
+            this.paymentTypeInformation = paymentTypeInformation;
+            this.instructedAmount = instructedAmount;
+            this.chargeBearer = chargeBearer;
+            this.directDebitTransaction = directDebitTransaction;
+            this.ultimateCreditor = ultimateCreditor;
+            this.debtorAgent = debtorAgent;
+            this.debtorAgentAccount = debtorAgentAccount;
+            this.debtor = debtor;
+            this.debtorAccount = debtorAccount;
+            this.ultimateDebtor = ultimateDebtor;
+            this.instructionForCreditorAgent = instructionForCreditorAgent;
+            this.purpose = purpose;
+            this.regulatoryReporting = regulatoryReporting;
+            this.tax = tax;
+            this.relatedRemittanceInformation = relatedRemittanceInformation;
+            this.remittanceInformation = remittanceInformation;
+            this.supplementaryData = supplementaryData;
+        }
         public async Task WriteAsync(XmlWriter writer, DirectDebitTransactionInformation28 value, string isoNamespace)
         {
             // PaymentIdentification Required PaymentIdentification6 PaymentIdentification6

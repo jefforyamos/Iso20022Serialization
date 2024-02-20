@@ -16,15 +16,30 @@ namespace BeneficialStrategies.Iso20022.Serialization.Xml.Writers.Components
     /// <summary>
     /// Performs the XML serialization faithful to ISO20002 standards for <seealso cref="MandateTypeInformation2"/>.
     /// </summary>
-    public class MandateTypeInformation2XmlAsyncWriter
-    ( // primary constructor 
-        ISubordinateXmlAsyncWriter<ServiceLevel8Choice_> serviceLevel,
-        ISubordinateXmlAsyncWriter<LocalInstrument2Choice_> localInstrument,
-        ISubordinateXmlAsyncWriter<CategoryPurpose1Choice_> categoryPurpose,
-        ISubordinateXmlAsyncWriter<MandateClassification1Choice_> classification
-    ) // end primary constructor
-            : ISubordinateXmlAsyncWriter<MandateTypeInformation2>
+    public class MandateTypeInformation2XmlAsyncWriter : ISubordinateXmlAsyncWriter<MandateTypeInformation2>
     {
+        // Injected dependencies for serialization of each member data type
+        private readonly ISubordinateXmlAsyncWriter<ServiceLevel8Choice_> serviceLevel;
+        private readonly ISubordinateXmlAsyncWriter<LocalInstrument2Choice_> localInstrument;
+        private readonly ISubordinateXmlAsyncWriter<CategoryPurpose1Choice_> categoryPurpose;
+        private readonly ISubordinateXmlAsyncWriter<MandateClassification1Choice_> classification;
+        
+        /// <summary>
+        /// Construct using an injected writer for each member.
+        /// </summary>
+        public MandateTypeInformation2XmlAsyncWriter
+        (
+            ISubordinateXmlAsyncWriter<ServiceLevel8Choice_> serviceLevel,
+            ISubordinateXmlAsyncWriter<LocalInstrument2Choice_> localInstrument,
+            ISubordinateXmlAsyncWriter<CategoryPurpose1Choice_> categoryPurpose,
+            ISubordinateXmlAsyncWriter<MandateClassification1Choice_> classification
+        )
+        {
+            this.serviceLevel = serviceLevel;
+            this.localInstrument = localInstrument;
+            this.categoryPurpose = categoryPurpose;
+            this.classification = classification;
+        }
         public async Task WriteAsync(XmlWriter writer, MandateTypeInformation2 value, string isoNamespace)
         {
             // ServiceLevel Optional ServiceLevel8Choice ServiceLevel8Choice_

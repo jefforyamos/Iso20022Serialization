@@ -16,14 +16,27 @@ namespace BeneficialStrategies.Iso20022.Serialization.Xml.Writers.Components
     /// <summary>
     /// Performs the XML serialization faithful to ISO20002 standards for <seealso cref="GenericFinancialIdentification1"/>.
     /// </summary>
-    public class GenericFinancialIdentification1XmlAsyncWriter
-    ( // primary constructor 
-        IMax35TextXmlAsyncWriter identification,
-        ISubordinateXmlAsyncWriter<FinancialIdentificationSchemeName1Choice_> schemeName,
-        IMax35TextXmlAsyncWriter issuer
-    ) // end primary constructor
-            : ISubordinateXmlAsyncWriter<GenericFinancialIdentification1>
+    public class GenericFinancialIdentification1XmlAsyncWriter : ISubordinateXmlAsyncWriter<GenericFinancialIdentification1>
     {
+        // Injected dependencies for serialization of each member data type
+        private readonly IMax35TextXmlAsyncWriter identification;
+        private readonly ISubordinateXmlAsyncWriter<FinancialIdentificationSchemeName1Choice_> schemeName;
+        private readonly IMax35TextXmlAsyncWriter issuer;
+        
+        /// <summary>
+        /// Construct using an injected writer for each member.
+        /// </summary>
+        public GenericFinancialIdentification1XmlAsyncWriter
+        (
+            IMax35TextXmlAsyncWriter identification,
+            ISubordinateXmlAsyncWriter<FinancialIdentificationSchemeName1Choice_> schemeName,
+            IMax35TextXmlAsyncWriter issuer
+        )
+        {
+            this.identification = identification;
+            this.schemeName = schemeName;
+            this.issuer = issuer;
+        }
         public async Task WriteAsync(XmlWriter writer, GenericFinancialIdentification1 value, string isoNamespace)
         {
             // Identification Required Max35Text System.String

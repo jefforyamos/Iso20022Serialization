@@ -16,13 +16,24 @@ namespace BeneficialStrategies.Iso20022.Serialization.Xml.Writers.Components
     /// <summary>
     /// Performs the XML serialization faithful to ISO20002 standards for <seealso cref="CreditorReferenceType2"/>.
     /// </summary>
-    public class CreditorReferenceType2XmlAsyncWriter
-    ( // primary constructor 
-        ISubordinateXmlAsyncWriter<CreditorReferenceType1Choice_> codeOrProprietary,
-        IMax35TextXmlAsyncWriter issuer
-    ) // end primary constructor
-            : ISubordinateXmlAsyncWriter<CreditorReferenceType2>
+    public class CreditorReferenceType2XmlAsyncWriter : ISubordinateXmlAsyncWriter<CreditorReferenceType2>
     {
+        // Injected dependencies for serialization of each member data type
+        private readonly ISubordinateXmlAsyncWriter<CreditorReferenceType1Choice_> codeOrProprietary;
+        private readonly IMax35TextXmlAsyncWriter issuer;
+        
+        /// <summary>
+        /// Construct using an injected writer for each member.
+        /// </summary>
+        public CreditorReferenceType2XmlAsyncWriter
+        (
+            ISubordinateXmlAsyncWriter<CreditorReferenceType1Choice_> codeOrProprietary,
+            IMax35TextXmlAsyncWriter issuer
+        )
+        {
+            this.codeOrProprietary = codeOrProprietary;
+            this.issuer = issuer;
+        }
         public async Task WriteAsync(XmlWriter writer, CreditorReferenceType2 value, string isoNamespace)
         {
             // CodeOrProprietary Required CreditorReferenceType1Choice CreditorReferenceType1Choice_
