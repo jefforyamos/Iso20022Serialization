@@ -37,24 +37,24 @@ namespace BeneficialStrategies.Iso20022.Serialization.Xml.Writers.Components
             this.authority = authority;
             this.details = details;
         }
-        public async Task WriteAsync(XmlWriter writer, RegulatoryReporting3 value, string isoNamespace)
+        public async Task WriteAsync(XmlWriter writer, RegulatoryReporting3 valueBeingSerialized, string isoNamespace)
         {
             // DebitCreditReportingIndicator Optional RegulatoryReportingType1Code RegulatoryReportingType1Code
-            if ( value.DebitCreditReportingIndicator is RegulatoryReportingType1Code populatedDebitCreditReportingIndicator)
+            if ( valueBeingSerialized.DebitCreditReportingIndicator is RegulatoryReportingType1Code populatedDebitCreditReportingIndicator)
             {
                 await writer.WriteStartElementAsync(null, "DbtCdtRptgInd", isoNamespace );
                 await debitCreditReportingIndicator.WriteAsync(writer, populatedDebitCreditReportingIndicator, isoNamespace);
                 await writer.WriteEndElementAsync();
             }
             // Authority Optional RegulatoryAuthority2 RegulatoryAuthority2
-            if ( value.Authority is RegulatoryAuthority2 populatedAuthority)
+            if ( valueBeingSerialized.Authority is RegulatoryAuthority2 populatedAuthority)
             {
                 await writer.WriteStartElementAsync(null, "Authrty", isoNamespace );
                 await authority.WriteAsync(writer, populatedAuthority, isoNamespace);
                 await writer.WriteEndElementAsync();
             }
             // Details Optional StructuredRegulatoryReporting3 StructuredRegulatoryReporting3
-            if ( value.Details is StructuredRegulatoryReporting3 populatedDetails)
+            if ( valueBeingSerialized.Details is StructuredRegulatoryReporting3 populatedDetails)
             {
                 await writer.WriteStartElementAsync(null, "Dtls", isoNamespace );
                 await details.WriteAsync(writer, populatedDetails, isoNamespace);

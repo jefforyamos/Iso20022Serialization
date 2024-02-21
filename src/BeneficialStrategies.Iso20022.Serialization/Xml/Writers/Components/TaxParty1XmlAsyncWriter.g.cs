@@ -37,24 +37,24 @@ namespace BeneficialStrategies.Iso20022.Serialization.Xml.Writers.Components
             this.registrationIdentification = registrationIdentification;
             this.taxType = taxType;
         }
-        public async Task WriteAsync(XmlWriter writer, TaxParty1 value, string isoNamespace)
+        public async Task WriteAsync(XmlWriter writer, TaxParty1 valueBeingSerialized, string isoNamespace)
         {
             // TaxIdentification Optional Max35Text System.String
-            if ( value.TaxIdentification is System.String populatedTaxIdentification)
+            if ( valueBeingSerialized.TaxIdentification is System.String populatedTaxIdentification)
             {
                 await writer.WriteStartElementAsync(null, "TaxId", isoNamespace );
                 await taxIdentification.WriteAsync(writer, populatedTaxIdentification, isoNamespace);
                 await writer.WriteEndElementAsync();
             }
             // RegistrationIdentification Optional Max35Text System.String
-            if ( value.RegistrationIdentification is System.String populatedRegistrationIdentification)
+            if ( valueBeingSerialized.RegistrationIdentification is System.String populatedRegistrationIdentification)
             {
                 await writer.WriteStartElementAsync(null, "RegnId", isoNamespace );
                 await registrationIdentification.WriteAsync(writer, populatedRegistrationIdentification, isoNamespace);
                 await writer.WriteEndElementAsync();
             }
             // TaxType Optional Max35Text System.String
-            if ( value.TaxType is System.String populatedTaxType)
+            if ( valueBeingSerialized.TaxType is System.String populatedTaxType)
             {
                 await writer.WriteStartElementAsync(null, "TaxTp", isoNamespace );
                 await taxType.WriteAsync(writer, populatedTaxType, isoNamespace);

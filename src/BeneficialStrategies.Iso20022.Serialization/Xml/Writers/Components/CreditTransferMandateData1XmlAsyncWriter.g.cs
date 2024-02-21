@@ -55,66 +55,66 @@ namespace BeneficialStrategies.Iso20022.Serialization.Xml.Writers.Components
             this.frequency = frequency;
             this.reason = reason;
         }
-        public async Task WriteAsync(XmlWriter writer, CreditTransferMandateData1 value, string isoNamespace)
+        public async Task WriteAsync(XmlWriter writer, CreditTransferMandateData1 valueBeingSerialized, string isoNamespace)
         {
             // MandateIdentification Optional Max35Text System.String
-            if ( value.MandateIdentification is System.String populatedMandateIdentification)
+            if ( valueBeingSerialized.MandateIdentification is System.String populatedMandateIdentification)
             {
                 await writer.WriteStartElementAsync(null, "MndtId", isoNamespace );
                 await mandateIdentification.WriteAsync(writer, populatedMandateIdentification, isoNamespace);
                 await writer.WriteEndElementAsync();
             }
             // Type Optional MandateTypeInformation2 MandateTypeInformation2
-            if ( value.Type is MandateTypeInformation2 populatedType)
+            if ( valueBeingSerialized.Type is MandateTypeInformation2 populatedType)
             {
                 await writer.WriteStartElementAsync(null, "Tp", isoNamespace );
                 await type.WriteAsync(writer, populatedType, isoNamespace);
                 await writer.WriteEndElementAsync();
             }
             // DateOfSignature Optional ISODate System.DateOnly
-            if ( value.DateOfSignature is System.DateOnly populatedDateOfSignature)
+            if ( valueBeingSerialized.DateOfSignature is System.DateOnly populatedDateOfSignature)
             {
                 await writer.WriteStartElementAsync(null, "DtOfSgntr", isoNamespace );
                 await dateOfSignature.WriteAsync(writer, populatedDateOfSignature, isoNamespace);
                 await writer.WriteEndElementAsync();
             }
             // DateOfVerification Optional ISODateTime System.DateTime
-            if ( value.DateOfVerification is System.DateTime populatedDateOfVerification)
+            if ( valueBeingSerialized.DateOfVerification is System.DateTime populatedDateOfVerification)
             {
                 await writer.WriteStartElementAsync(null, "DtOfVrfctn", isoNamespace );
                 await dateOfVerification.WriteAsync(writer, populatedDateOfVerification, isoNamespace);
                 await writer.WriteEndElementAsync();
             }
             // ElectronicSignature Optional Max10KBinary System.Byte[]
-            if ( value.ElectronicSignature is System.Byte[] populatedElectronicSignature)
+            if ( valueBeingSerialized.ElectronicSignature is System.Byte[] populatedElectronicSignature)
             {
                 await writer.WriteStartElementAsync(null, "ElctrncSgntr", isoNamespace );
                 await electronicSignature.WriteAsync(writer, populatedElectronicSignature, isoNamespace);
                 await writer.WriteEndElementAsync();
             }
             // FirstPaymentDate Optional ISODate System.DateOnly
-            if ( value.FirstPaymentDate is System.DateOnly populatedFirstPaymentDate)
+            if ( valueBeingSerialized.FirstPaymentDate is System.DateOnly populatedFirstPaymentDate)
             {
                 await writer.WriteStartElementAsync(null, "FrstPmtDt", isoNamespace );
                 await firstPaymentDate.WriteAsync(writer, populatedFirstPaymentDate, isoNamespace);
                 await writer.WriteEndElementAsync();
             }
             // FinalPaymentDate Optional ISODate System.DateOnly
-            if ( value.FinalPaymentDate is System.DateOnly populatedFinalPaymentDate)
+            if ( valueBeingSerialized.FinalPaymentDate is System.DateOnly populatedFinalPaymentDate)
             {
                 await writer.WriteStartElementAsync(null, "FnlPmtDt", isoNamespace );
                 await finalPaymentDate.WriteAsync(writer, populatedFinalPaymentDate, isoNamespace);
                 await writer.WriteEndElementAsync();
             }
             // Frequency Optional Frequency36Choice Frequency36Choice_
-            if ( value.Frequency is Frequency36Choice_ populatedFrequency)
+            if ( valueBeingSerialized.Frequency is Frequency36Choice_ populatedFrequency)
             {
                 await writer.WriteStartElementAsync(null, "Frqcy", isoNamespace );
                 await frequency.WriteAsync(writer, populatedFrequency, isoNamespace);
                 await writer.WriteEndElementAsync();
             }
             // Reason Optional MandateSetupReason1Choice MandateSetupReason1Choice_
-            if ( value.Reason is MandateSetupReason1Choice_ populatedReason)
+            if ( valueBeingSerialized.Reason is MandateSetupReason1Choice_ populatedReason)
             {
                 await writer.WriteStartElementAsync(null, "Rsn", isoNamespace );
                 await reason.WriteAsync(writer, populatedReason, isoNamespace);

@@ -34,10 +34,10 @@ namespace BeneficialStrategies.Iso20022.Serialization.Xml.Writers.Components
             this.type = type;
             this.identification = identification;
         }
-        public async Task WriteAsync(XmlWriter writer, ProxyAccountIdentification1 value, string isoNamespace)
+        public async Task WriteAsync(XmlWriter writer, ProxyAccountIdentification1 valueBeingSerialized, string isoNamespace)
         {
             // Type Optional ProxyAccountType1Choice ProxyAccountType1Choice_
-            if ( value.Type is ProxyAccountType1Choice_ populatedType)
+            if ( valueBeingSerialized.Type is ProxyAccountType1Choice_ populatedType)
             {
                 await writer.WriteStartElementAsync(null, "Tp", isoNamespace );
                 await type.WriteAsync(writer, populatedType, isoNamespace);
@@ -45,7 +45,7 @@ namespace BeneficialStrategies.Iso20022.Serialization.Xml.Writers.Components
             }
             // Identification Required Max2048Text System.String
             await writer.WriteStartElementAsync(null, "Id", isoNamespace );
-            await identification.WriteAsync(writer, value.Identification, isoNamespace);
+            await identification.WriteAsync(writer, valueBeingSerialized.Identification, isoNamespace);
             await writer.WriteEndElementAsync();
         }
     }

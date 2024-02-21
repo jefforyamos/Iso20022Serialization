@@ -34,17 +34,17 @@ namespace BeneficialStrategies.Iso20022.Serialization.Xml.Writers.Components
             this.name = name;
             this.country = country;
         }
-        public async Task WriteAsync(XmlWriter writer, RegulatoryAuthority2 value, string isoNamespace)
+        public async Task WriteAsync(XmlWriter writer, RegulatoryAuthority2 valueBeingSerialized, string isoNamespace)
         {
             // Name Optional Max140Text System.String
-            if ( value.Name is System.String populatedName)
+            if ( valueBeingSerialized.Name is System.String populatedName)
             {
                 await writer.WriteStartElementAsync(null, "Nm", isoNamespace );
                 await name.WriteAsync(writer, populatedName, isoNamespace);
                 await writer.WriteEndElementAsync();
             }
             // Country Optional CountryCode string
-            if ( value.Country is string populatedCountry)
+            if ( valueBeingSerialized.Country is string populatedCountry)
             {
                 await writer.WriteStartElementAsync(null, "Ctry", isoNamespace );
                 await country.WriteAsync(writer, populatedCountry, isoNamespace);

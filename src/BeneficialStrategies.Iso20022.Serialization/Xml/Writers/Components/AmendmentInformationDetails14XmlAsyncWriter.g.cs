@@ -64,87 +64,87 @@ namespace BeneficialStrategies.Iso20022.Serialization.Xml.Writers.Components
             this.originalReason = originalReason;
             this.originalTrackingDays = originalTrackingDays;
         }
-        public async Task WriteAsync(XmlWriter writer, AmendmentInformationDetails14 value, string isoNamespace)
+        public async Task WriteAsync(XmlWriter writer, AmendmentInformationDetails14 valueBeingSerialized, string isoNamespace)
         {
             // OriginalMandateIdentification Optional Max35Text System.String
-            if ( value.OriginalMandateIdentification is System.String populatedOriginalMandateIdentification)
+            if ( valueBeingSerialized.OriginalMandateIdentification is System.String populatedOriginalMandateIdentification)
             {
                 await writer.WriteStartElementAsync(null, "OrgnlMndtId", isoNamespace );
                 await originalMandateIdentification.WriteAsync(writer, populatedOriginalMandateIdentification, isoNamespace);
                 await writer.WriteEndElementAsync();
             }
             // OriginalCreditorSchemeIdentification Optional PartyIdentification135 PartyIdentification135
-            if ( value.OriginalCreditorSchemeIdentification is PartyIdentification135 populatedOriginalCreditorSchemeIdentification)
+            if ( valueBeingSerialized.OriginalCreditorSchemeIdentification is PartyIdentification135 populatedOriginalCreditorSchemeIdentification)
             {
                 await writer.WriteStartElementAsync(null, "OrgnlCdtrSchmeId", isoNamespace );
                 await originalCreditorSchemeIdentification.WriteAsync(writer, populatedOriginalCreditorSchemeIdentification, isoNamespace);
                 await writer.WriteEndElementAsync();
             }
             // OriginalCreditorAgent Optional BranchAndFinancialInstitutionIdentification6 BranchAndFinancialInstitutionIdentification6
-            if ( value.OriginalCreditorAgent is BranchAndFinancialInstitutionIdentification6 populatedOriginalCreditorAgent)
+            if ( valueBeingSerialized.OriginalCreditorAgent is BranchAndFinancialInstitutionIdentification6 populatedOriginalCreditorAgent)
             {
                 await writer.WriteStartElementAsync(null, "OrgnlCdtrAgt", isoNamespace );
                 await originalCreditorAgent.WriteAsync(writer, populatedOriginalCreditorAgent, isoNamespace);
                 await writer.WriteEndElementAsync();
             }
             // OriginalCreditorAgentAccount Optional CashAccount40 CashAccount40
-            if ( value.OriginalCreditorAgentAccount is CashAccount40 populatedOriginalCreditorAgentAccount)
+            if ( valueBeingSerialized.OriginalCreditorAgentAccount is CashAccount40 populatedOriginalCreditorAgentAccount)
             {
                 await writer.WriteStartElementAsync(null, "OrgnlCdtrAgtAcct", isoNamespace );
                 await originalCreditorAgentAccount.WriteAsync(writer, populatedOriginalCreditorAgentAccount, isoNamespace);
                 await writer.WriteEndElementAsync();
             }
             // OriginalDebtor Optional PartyIdentification135 PartyIdentification135
-            if ( value.OriginalDebtor is PartyIdentification135 populatedOriginalDebtor)
+            if ( valueBeingSerialized.OriginalDebtor is PartyIdentification135 populatedOriginalDebtor)
             {
                 await writer.WriteStartElementAsync(null, "OrgnlDbtr", isoNamespace );
                 await originalDebtor.WriteAsync(writer, populatedOriginalDebtor, isoNamespace);
                 await writer.WriteEndElementAsync();
             }
             // OriginalDebtorAccount Optional CashAccount40 CashAccount40
-            if ( value.OriginalDebtorAccount is CashAccount40 populatedOriginalDebtorAccount)
+            if ( valueBeingSerialized.OriginalDebtorAccount is CashAccount40 populatedOriginalDebtorAccount)
             {
                 await writer.WriteStartElementAsync(null, "OrgnlDbtrAcct", isoNamespace );
                 await originalDebtorAccount.WriteAsync(writer, populatedOriginalDebtorAccount, isoNamespace);
                 await writer.WriteEndElementAsync();
             }
             // OriginalDebtorAgent Optional BranchAndFinancialInstitutionIdentification6 BranchAndFinancialInstitutionIdentification6
-            if ( value.OriginalDebtorAgent is BranchAndFinancialInstitutionIdentification6 populatedOriginalDebtorAgent)
+            if ( valueBeingSerialized.OriginalDebtorAgent is BranchAndFinancialInstitutionIdentification6 populatedOriginalDebtorAgent)
             {
                 await writer.WriteStartElementAsync(null, "OrgnlDbtrAgt", isoNamespace );
                 await originalDebtorAgent.WriteAsync(writer, populatedOriginalDebtorAgent, isoNamespace);
                 await writer.WriteEndElementAsync();
             }
             // OriginalDebtorAgentAccount Optional CashAccount40 CashAccount40
-            if ( value.OriginalDebtorAgentAccount is CashAccount40 populatedOriginalDebtorAgentAccount)
+            if ( valueBeingSerialized.OriginalDebtorAgentAccount is CashAccount40 populatedOriginalDebtorAgentAccount)
             {
                 await writer.WriteStartElementAsync(null, "OrgnlDbtrAgtAcct", isoNamespace );
                 await originalDebtorAgentAccount.WriteAsync(writer, populatedOriginalDebtorAgentAccount, isoNamespace);
                 await writer.WriteEndElementAsync();
             }
             // OriginalFinalCollectionDate Optional ISODate System.DateOnly
-            if ( value.OriginalFinalCollectionDate is System.DateOnly populatedOriginalFinalCollectionDate)
+            if ( valueBeingSerialized.OriginalFinalCollectionDate is System.DateOnly populatedOriginalFinalCollectionDate)
             {
                 await writer.WriteStartElementAsync(null, "OrgnlFnlColltnDt", isoNamespace );
                 await originalFinalCollectionDate.WriteAsync(writer, populatedOriginalFinalCollectionDate, isoNamespace);
                 await writer.WriteEndElementAsync();
             }
             // OriginalFrequency Optional Frequency36Choice Frequency36Choice_
-            if ( value.OriginalFrequency is Frequency36Choice_ populatedOriginalFrequency)
+            if ( valueBeingSerialized.OriginalFrequency is Frequency36Choice_ populatedOriginalFrequency)
             {
                 await writer.WriteStartElementAsync(null, "OrgnlFrqcy", isoNamespace );
                 await originalFrequency.WriteAsync(writer, populatedOriginalFrequency, isoNamespace);
                 await writer.WriteEndElementAsync();
             }
             // OriginalReason Optional MandateSetupReason1Choice MandateSetupReason1Choice_
-            if ( value.OriginalReason is MandateSetupReason1Choice_ populatedOriginalReason)
+            if ( valueBeingSerialized.OriginalReason is MandateSetupReason1Choice_ populatedOriginalReason)
             {
                 await writer.WriteStartElementAsync(null, "OrgnlRsn", isoNamespace );
                 await originalReason.WriteAsync(writer, populatedOriginalReason, isoNamespace);
                 await writer.WriteEndElementAsync();
             }
             // OriginalTrackingDays Optional Exact2NumericText System.String
-            if ( value.OriginalTrackingDays is System.String populatedOriginalTrackingDays)
+            if ( valueBeingSerialized.OriginalTrackingDays is System.String populatedOriginalTrackingDays)
             {
                 await writer.WriteStartElementAsync(null, "OrgnlTrckgDays", isoNamespace );
                 await originalTrackingDays.WriteAsync(writer, populatedOriginalTrackingDays, isoNamespace);

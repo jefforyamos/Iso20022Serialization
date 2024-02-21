@@ -34,17 +34,17 @@ namespace BeneficialStrategies.Iso20022.Serialization.Xml.Writers.Components
             this.type = type;
             this.reference = reference;
         }
-        public async Task WriteAsync(XmlWriter writer, CreditorReferenceInformation2 value, string isoNamespace)
+        public async Task WriteAsync(XmlWriter writer, CreditorReferenceInformation2 valueBeingSerialized, string isoNamespace)
         {
             // Type Optional CreditorReferenceType2 CreditorReferenceType2
-            if ( value.Type is CreditorReferenceType2 populatedType)
+            if ( valueBeingSerialized.Type is CreditorReferenceType2 populatedType)
             {
                 await writer.WriteStartElementAsync(null, "Tp", isoNamespace );
                 await type.WriteAsync(writer, populatedType, isoNamespace);
                 await writer.WriteEndElementAsync();
             }
             // Reference Optional Max35Text System.String
-            if ( value.Reference is System.String populatedReference)
+            if ( valueBeingSerialized.Reference is System.String populatedReference)
             {
                 await writer.WriteStartElementAsync(null, "Ref", isoNamespace );
                 await reference.WriteAsync(writer, populatedReference, isoNamespace);

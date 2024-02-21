@@ -34,14 +34,14 @@ namespace BeneficialStrategies.Iso20022.Serialization.Xml.Writers.Components
             this.codeOrProprietary = codeOrProprietary;
             this.issuer = issuer;
         }
-        public async Task WriteAsync(XmlWriter writer, CreditorReferenceType2 value, string isoNamespace)
+        public async Task WriteAsync(XmlWriter writer, CreditorReferenceType2 valueBeingSerialized, string isoNamespace)
         {
             // CodeOrProprietary Required CreditorReferenceType1Choice CreditorReferenceType1Choice_
             await writer.WriteStartElementAsync(null, "CdOrPrtry", isoNamespace );
-            await codeOrProprietary.WriteAsync(writer, value.CodeOrProprietary, isoNamespace);
+            await codeOrProprietary.WriteAsync(writer, valueBeingSerialized.CodeOrProprietary, isoNamespace);
             await writer.WriteEndElementAsync();
             // Issuer Optional Max35Text System.String
-            if ( value.Issuer is System.String populatedIssuer)
+            if ( valueBeingSerialized.Issuer is System.String populatedIssuer)
             {
                 await writer.WriteStartElementAsync(null, "Issr", isoNamespace );
                 await issuer.WriteAsync(writer, populatedIssuer, isoNamespace);

@@ -64,87 +64,87 @@ namespace BeneficialStrategies.Iso20022.Serialization.Xml.Writers.Components
             this.other = other;
             this.preferredMethod = preferredMethod;
         }
-        public async Task WriteAsync(XmlWriter writer, Contact4 value, string isoNamespace)
+        public async Task WriteAsync(XmlWriter writer, Contact4 valueBeingSerialized, string isoNamespace)
         {
             // NamePrefix Optional NamePrefix2Code NamePrefix2Code
-            if ( value.NamePrefix is NamePrefix2Code populatedNamePrefix)
+            if ( valueBeingSerialized.NamePrefix is NamePrefix2Code populatedNamePrefix)
             {
                 await writer.WriteStartElementAsync(null, "NmPrfx", isoNamespace );
                 await namePrefix.WriteAsync(writer, populatedNamePrefix, isoNamespace);
                 await writer.WriteEndElementAsync();
             }
             // Name Optional Max140Text System.String
-            if ( value.Name is System.String populatedName)
+            if ( valueBeingSerialized.Name is System.String populatedName)
             {
                 await writer.WriteStartElementAsync(null, "Nm", isoNamespace );
                 await name.WriteAsync(writer, populatedName, isoNamespace);
                 await writer.WriteEndElementAsync();
             }
             // PhoneNumber Optional PhoneNumber System.String
-            if ( value.PhoneNumber is System.String populatedPhoneNumber)
+            if ( valueBeingSerialized.PhoneNumber is System.String populatedPhoneNumber)
             {
                 await writer.WriteStartElementAsync(null, "PhneNb", isoNamespace );
                 await phoneNumber.WriteAsync(writer, populatedPhoneNumber, isoNamespace);
                 await writer.WriteEndElementAsync();
             }
             // MobileNumber Optional PhoneNumber System.String
-            if ( value.MobileNumber is System.String populatedMobileNumber)
+            if ( valueBeingSerialized.MobileNumber is System.String populatedMobileNumber)
             {
                 await writer.WriteStartElementAsync(null, "MobNb", isoNamespace );
                 await mobileNumber.WriteAsync(writer, populatedMobileNumber, isoNamespace);
                 await writer.WriteEndElementAsync();
             }
             // FaxNumber Optional PhoneNumber System.String
-            if ( value.FaxNumber is System.String populatedFaxNumber)
+            if ( valueBeingSerialized.FaxNumber is System.String populatedFaxNumber)
             {
                 await writer.WriteStartElementAsync(null, "FaxNb", isoNamespace );
                 await faxNumber.WriteAsync(writer, populatedFaxNumber, isoNamespace);
                 await writer.WriteEndElementAsync();
             }
             // EmailAddress Optional Max2048Text System.String
-            if ( value.EmailAddress is System.String populatedEmailAddress)
+            if ( valueBeingSerialized.EmailAddress is System.String populatedEmailAddress)
             {
                 await writer.WriteStartElementAsync(null, "EmailAdr", isoNamespace );
                 await emailAddress.WriteAsync(writer, populatedEmailAddress, isoNamespace);
                 await writer.WriteEndElementAsync();
             }
             // EmailPurpose Optional Max35Text System.String
-            if ( value.EmailPurpose is System.String populatedEmailPurpose)
+            if ( valueBeingSerialized.EmailPurpose is System.String populatedEmailPurpose)
             {
                 await writer.WriteStartElementAsync(null, "EmailPurp", isoNamespace );
                 await emailPurpose.WriteAsync(writer, populatedEmailPurpose, isoNamespace);
                 await writer.WriteEndElementAsync();
             }
             // JobTitle Optional Max35Text System.String
-            if ( value.JobTitle is System.String populatedJobTitle)
+            if ( valueBeingSerialized.JobTitle is System.String populatedJobTitle)
             {
                 await writer.WriteStartElementAsync(null, "JobTitl", isoNamespace );
                 await jobTitle.WriteAsync(writer, populatedJobTitle, isoNamespace);
                 await writer.WriteEndElementAsync();
             }
             // Responsibility Optional Max35Text System.String
-            if ( value.Responsibility is System.String populatedResponsibility)
+            if ( valueBeingSerialized.Responsibility is System.String populatedResponsibility)
             {
                 await writer.WriteStartElementAsync(null, "Rspnsblty", isoNamespace );
                 await responsibility.WriteAsync(writer, populatedResponsibility, isoNamespace);
                 await writer.WriteEndElementAsync();
             }
             // Department Optional Max70Text System.String
-            if ( value.Department is System.String populatedDepartment)
+            if ( valueBeingSerialized.Department is System.String populatedDepartment)
             {
                 await writer.WriteStartElementAsync(null, "Dept", isoNamespace );
                 await department.WriteAsync(writer, populatedDepartment, isoNamespace);
                 await writer.WriteEndElementAsync();
             }
             // Other Optional OtherContact1 OtherContact1
-            if ( value.Other is OtherContact1 populatedOther)
+            if ( valueBeingSerialized.Other is OtherContact1 populatedOther)
             {
                 await writer.WriteStartElementAsync(null, "Othr", isoNamespace );
                 await other.WriteAsync(writer, populatedOther, isoNamespace);
                 await writer.WriteEndElementAsync();
             }
             // PreferredMethod Optional PreferredContactMethod1Code PreferredContactMethod1Code
-            if ( value.PreferredMethod is PreferredContactMethod1Code populatedPreferredMethod)
+            if ( valueBeingSerialized.PreferredMethod is PreferredContactMethod1Code populatedPreferredMethod)
             {
                 await writer.WriteStartElementAsync(null, "PrefrdMtd", isoNamespace );
                 await preferredMethod.WriteAsync(writer, populatedPreferredMethod, isoNamespace);

@@ -82,14 +82,14 @@ namespace BeneficialStrategies.Iso20022.Serialization.Xml.Writers.Components
             this.remittanceInformation = remittanceInformation;
             this.supplementaryData = supplementaryData;
         }
-        public async Task WriteAsync(XmlWriter writer, DirectDebitTransactionInformation28 value, string isoNamespace)
+        public async Task WriteAsync(XmlWriter writer, DirectDebitTransactionInformation28 valueBeingSerialized, string isoNamespace)
         {
             // PaymentIdentification Required PaymentIdentification6 PaymentIdentification6
             await writer.WriteStartElementAsync(null, "PmtId", isoNamespace );
-            await paymentIdentification.WriteAsync(writer, value.PaymentIdentification, isoNamespace);
+            await paymentIdentification.WriteAsync(writer, valueBeingSerialized.PaymentIdentification, isoNamespace);
             await writer.WriteEndElementAsync();
             // PaymentTypeInformation Optional PaymentTypeInformation29 PaymentTypeInformation29
-            if ( value.PaymentTypeInformation is PaymentTypeInformation29 populatedPaymentTypeInformation)
+            if ( valueBeingSerialized.PaymentTypeInformation is PaymentTypeInformation29 populatedPaymentTypeInformation)
             {
                 await writer.WriteStartElementAsync(null, "PmtTpInf", isoNamespace );
                 await paymentTypeInformation.WriteAsync(writer, populatedPaymentTypeInformation, isoNamespace);
@@ -97,24 +97,24 @@ namespace BeneficialStrategies.Iso20022.Serialization.Xml.Writers.Components
             }
             // InstructedAmount Required ActiveOrHistoricCurrencyAndAmount System.Decimal
             await writer.WriteStartElementAsync(null, "InstdAmt", isoNamespace );
-            await instructedAmount.WriteAsync(writer, value.InstructedAmount, isoNamespace);
+            await instructedAmount.WriteAsync(writer, valueBeingSerialized.InstructedAmount, isoNamespace);
             await writer.WriteEndElementAsync();
             // ChargeBearer Optional ChargeBearerType1Code ChargeBearerType1Code
-            if ( value.ChargeBearer is ChargeBearerType1Code populatedChargeBearer)
+            if ( valueBeingSerialized.ChargeBearer is ChargeBearerType1Code populatedChargeBearer)
             {
                 await writer.WriteStartElementAsync(null, "ChrgBr", isoNamespace );
                 await chargeBearer.WriteAsync(writer, populatedChargeBearer, isoNamespace);
                 await writer.WriteEndElementAsync();
             }
             // DirectDebitTransaction Optional DirectDebitTransaction11 DirectDebitTransaction11
-            if ( value.DirectDebitTransaction is DirectDebitTransaction11 populatedDirectDebitTransaction)
+            if ( valueBeingSerialized.DirectDebitTransaction is DirectDebitTransaction11 populatedDirectDebitTransaction)
             {
                 await writer.WriteStartElementAsync(null, "DrctDbtTx", isoNamespace );
                 await directDebitTransaction.WriteAsync(writer, populatedDirectDebitTransaction, isoNamespace);
                 await writer.WriteEndElementAsync();
             }
             // UltimateCreditor Optional PartyIdentification135 PartyIdentification135
-            if ( value.UltimateCreditor is PartyIdentification135 populatedUltimateCreditor)
+            if ( valueBeingSerialized.UltimateCreditor is PartyIdentification135 populatedUltimateCreditor)
             {
                 await writer.WriteStartElementAsync(null, "UltmtCdtr", isoNamespace );
                 await ultimateCreditor.WriteAsync(writer, populatedUltimateCreditor, isoNamespace);
@@ -122,10 +122,10 @@ namespace BeneficialStrategies.Iso20022.Serialization.Xml.Writers.Components
             }
             // DebtorAgent Required BranchAndFinancialInstitutionIdentification6 BranchAndFinancialInstitutionIdentification6
             await writer.WriteStartElementAsync(null, "DbtrAgt", isoNamespace );
-            await debtorAgent.WriteAsync(writer, value.DebtorAgent, isoNamespace);
+            await debtorAgent.WriteAsync(writer, valueBeingSerialized.DebtorAgent, isoNamespace);
             await writer.WriteEndElementAsync();
             // DebtorAgentAccount Optional CashAccount40 CashAccount40
-            if ( value.DebtorAgentAccount is CashAccount40 populatedDebtorAgentAccount)
+            if ( valueBeingSerialized.DebtorAgentAccount is CashAccount40 populatedDebtorAgentAccount)
             {
                 await writer.WriteStartElementAsync(null, "DbtrAgtAcct", isoNamespace );
                 await debtorAgentAccount.WriteAsync(writer, populatedDebtorAgentAccount, isoNamespace);
@@ -133,63 +133,63 @@ namespace BeneficialStrategies.Iso20022.Serialization.Xml.Writers.Components
             }
             // Debtor Required PartyIdentification135 PartyIdentification135
             await writer.WriteStartElementAsync(null, "Dbtr", isoNamespace );
-            await debtor.WriteAsync(writer, value.Debtor, isoNamespace);
+            await debtor.WriteAsync(writer, valueBeingSerialized.Debtor, isoNamespace);
             await writer.WriteEndElementAsync();
             // DebtorAccount Required CashAccount40 CashAccount40
             await writer.WriteStartElementAsync(null, "DbtrAcct", isoNamespace );
-            await debtorAccount.WriteAsync(writer, value.DebtorAccount, isoNamespace);
+            await debtorAccount.WriteAsync(writer, valueBeingSerialized.DebtorAccount, isoNamespace);
             await writer.WriteEndElementAsync();
             // UltimateDebtor Optional PartyIdentification135 PartyIdentification135
-            if ( value.UltimateDebtor is PartyIdentification135 populatedUltimateDebtor)
+            if ( valueBeingSerialized.UltimateDebtor is PartyIdentification135 populatedUltimateDebtor)
             {
                 await writer.WriteStartElementAsync(null, "UltmtDbtr", isoNamespace );
                 await ultimateDebtor.WriteAsync(writer, populatedUltimateDebtor, isoNamespace);
                 await writer.WriteEndElementAsync();
             }
             // InstructionForCreditorAgent Optional Max140Text System.String
-            if ( value.InstructionForCreditorAgent is System.String populatedInstructionForCreditorAgent)
+            if ( valueBeingSerialized.InstructionForCreditorAgent is System.String populatedInstructionForCreditorAgent)
             {
                 await writer.WriteStartElementAsync(null, "InstrForCdtrAgt", isoNamespace );
                 await instructionForCreditorAgent.WriteAsync(writer, populatedInstructionForCreditorAgent, isoNamespace);
                 await writer.WriteEndElementAsync();
             }
             // Purpose Optional Purpose2Choice Purpose2Choice_
-            if ( value.Purpose is Purpose2Choice_ populatedPurpose)
+            if ( valueBeingSerialized.Purpose is Purpose2Choice_ populatedPurpose)
             {
                 await writer.WriteStartElementAsync(null, "Purp", isoNamespace );
                 await purpose.WriteAsync(writer, populatedPurpose, isoNamespace);
                 await writer.WriteEndElementAsync();
             }
             // RegulatoryReporting Collection RegulatoryReporting3 RegulatoryReporting3
-            foreach ( var item in value.RegulatoryReporting)
+            foreach ( var item in valueBeingSerialized.RegulatoryReporting)
             {
                 await writer.WriteStartElementAsync(null, "RgltryRptg", isoNamespace );
                 await regulatoryReporting.WriteAsync(writer, item , isoNamespace);
                 await writer.WriteEndElementAsync();
             }
             // Tax Optional TaxInformation10 TaxInformation10
-            if ( value.Tax is TaxInformation10 populatedTax)
+            if ( valueBeingSerialized.Tax is TaxInformation10 populatedTax)
             {
                 await writer.WriteStartElementAsync(null, "Tax", isoNamespace );
                 await tax.WriteAsync(writer, populatedTax, isoNamespace);
                 await writer.WriteEndElementAsync();
             }
             // RelatedRemittanceInformation Collection RemittanceLocation7 RemittanceLocation7
-            foreach ( var item in value.RelatedRemittanceInformation)
+            foreach ( var item in valueBeingSerialized.RelatedRemittanceInformation)
             {
                 await writer.WriteStartElementAsync(null, "RltdRmtInf", isoNamespace );
                 await relatedRemittanceInformation.WriteAsync(writer, item , isoNamespace);
                 await writer.WriteEndElementAsync();
             }
             // RemittanceInformation Optional RemittanceInformation21 RemittanceInformation21
-            if ( value.RemittanceInformation is RemittanceInformation21 populatedRemittanceInformation)
+            if ( valueBeingSerialized.RemittanceInformation is RemittanceInformation21 populatedRemittanceInformation)
             {
                 await writer.WriteStartElementAsync(null, "RmtInf", isoNamespace );
                 await remittanceInformation.WriteAsync(writer, populatedRemittanceInformation, isoNamespace);
                 await writer.WriteEndElementAsync();
             }
             // SupplementaryData Optional SupplementaryData1 SupplementaryData1
-            if ( value.SupplementaryData is SupplementaryData1 populatedSupplementaryData)
+            if ( valueBeingSerialized.SupplementaryData is SupplementaryData1 populatedSupplementaryData)
             {
                 await writer.WriteStartElementAsync(null, "SplmtryData", isoNamespace );
                 await supplementaryData.WriteAsync(writer, populatedSupplementaryData, isoNamespace);

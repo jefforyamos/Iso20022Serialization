@@ -37,24 +37,24 @@ namespace BeneficialStrategies.Iso20022.Serialization.Xml.Writers.Components
             this.reason = reason;
             this.additionalInformation = additionalInformation;
         }
-        public async Task WriteAsync(XmlWriter writer, PaymentReversalReason9 value, string isoNamespace)
+        public async Task WriteAsync(XmlWriter writer, PaymentReversalReason9 valueBeingSerialized, string isoNamespace)
         {
             // Originator Optional PartyIdentification135 PartyIdentification135
-            if ( value.Originator is PartyIdentification135 populatedOriginator)
+            if ( valueBeingSerialized.Originator is PartyIdentification135 populatedOriginator)
             {
                 await writer.WriteStartElementAsync(null, "Orgtr", isoNamespace );
                 await originator.WriteAsync(writer, populatedOriginator, isoNamespace);
                 await writer.WriteEndElementAsync();
             }
             // Reason Optional ReversalReason4Choice ReversalReason4Choice_
-            if ( value.Reason is ReversalReason4Choice_ populatedReason)
+            if ( valueBeingSerialized.Reason is ReversalReason4Choice_ populatedReason)
             {
                 await writer.WriteStartElementAsync(null, "Rsn", isoNamespace );
                 await reason.WriteAsync(writer, populatedReason, isoNamespace);
                 await writer.WriteEndElementAsync();
             }
             // AdditionalInformation Optional Max105Text System.String
-            if ( value.AdditionalInformation is System.String populatedAdditionalInformation)
+            if ( valueBeingSerialized.AdditionalInformation is System.String populatedAdditionalInformation)
             {
                 await writer.WriteStartElementAsync(null, "AddtlInf", isoNamespace );
                 await additionalInformation.WriteAsync(writer, populatedAdditionalInformation, isoNamespace);

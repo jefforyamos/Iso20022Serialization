@@ -40,31 +40,31 @@ namespace BeneficialStrategies.Iso20022.Serialization.Xml.Writers.Components
             this.preNotificationIdentification = preNotificationIdentification;
             this.preNotificationDate = preNotificationDate;
         }
-        public async Task WriteAsync(XmlWriter writer, DirectDebitTransaction11 value, string isoNamespace)
+        public async Task WriteAsync(XmlWriter writer, DirectDebitTransaction11 valueBeingSerialized, string isoNamespace)
         {
             // MandateRelatedInformation Optional MandateRelatedInformation15 MandateRelatedInformation15
-            if ( value.MandateRelatedInformation is MandateRelatedInformation15 populatedMandateRelatedInformation)
+            if ( valueBeingSerialized.MandateRelatedInformation is MandateRelatedInformation15 populatedMandateRelatedInformation)
             {
                 await writer.WriteStartElementAsync(null, "MndtRltdInf", isoNamespace );
                 await mandateRelatedInformation.WriteAsync(writer, populatedMandateRelatedInformation, isoNamespace);
                 await writer.WriteEndElementAsync();
             }
             // CreditorSchemeIdentification Optional PartyIdentification135 PartyIdentification135
-            if ( value.CreditorSchemeIdentification is PartyIdentification135 populatedCreditorSchemeIdentification)
+            if ( valueBeingSerialized.CreditorSchemeIdentification is PartyIdentification135 populatedCreditorSchemeIdentification)
             {
                 await writer.WriteStartElementAsync(null, "CdtrSchmeId", isoNamespace );
                 await creditorSchemeIdentification.WriteAsync(writer, populatedCreditorSchemeIdentification, isoNamespace);
                 await writer.WriteEndElementAsync();
             }
             // PreNotificationIdentification Optional Max35Text System.String
-            if ( value.PreNotificationIdentification is System.String populatedPreNotificationIdentification)
+            if ( valueBeingSerialized.PreNotificationIdentification is System.String populatedPreNotificationIdentification)
             {
                 await writer.WriteStartElementAsync(null, "PreNtfctnId", isoNamespace );
                 await preNotificationIdentification.WriteAsync(writer, populatedPreNotificationIdentification, isoNamespace);
                 await writer.WriteEndElementAsync();
             }
             // PreNotificationDate Optional ISODate System.DateOnly
-            if ( value.PreNotificationDate is System.DateOnly populatedPreNotificationDate)
+            if ( valueBeingSerialized.PreNotificationDate is System.DateOnly populatedPreNotificationDate)
             {
                 await writer.WriteStartElementAsync(null, "PreNtfctnDt", isoNamespace );
                 await preNotificationDate.WriteAsync(writer, populatedPreNotificationDate, isoNamespace);

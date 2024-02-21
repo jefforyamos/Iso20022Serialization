@@ -40,28 +40,28 @@ namespace BeneficialStrategies.Iso20022.Serialization.Xml.Writers.Components
             this.reason = reason;
             this.additionalInformation = additionalInformation;
         }
-        public async Task WriteAsync(XmlWriter writer, DocumentAdjustment1 value, string isoNamespace)
+        public async Task WriteAsync(XmlWriter writer, DocumentAdjustment1 valueBeingSerialized, string isoNamespace)
         {
             // Amount Required ActiveOrHistoricCurrencyAndAmount System.Decimal
             await writer.WriteStartElementAsync(null, "Amt", isoNamespace );
-            await amount.WriteAsync(writer, value.Amount, isoNamespace);
+            await amount.WriteAsync(writer, valueBeingSerialized.Amount, isoNamespace);
             await writer.WriteEndElementAsync();
             // CreditDebitIndicator Optional CreditDebitCode CreditDebitCode
-            if ( value.CreditDebitIndicator is CreditDebitCode populatedCreditDebitIndicator)
+            if ( valueBeingSerialized.CreditDebitIndicator is CreditDebitCode populatedCreditDebitIndicator)
             {
                 await writer.WriteStartElementAsync(null, "CdtDbtInd", isoNamespace );
                 await creditDebitIndicator.WriteAsync(writer, populatedCreditDebitIndicator, isoNamespace);
                 await writer.WriteEndElementAsync();
             }
             // Reason Optional Max4Text System.String
-            if ( value.Reason is System.String populatedReason)
+            if ( valueBeingSerialized.Reason is System.String populatedReason)
             {
                 await writer.WriteStartElementAsync(null, "Rsn", isoNamespace );
                 await reason.WriteAsync(writer, populatedReason, isoNamespace);
                 await writer.WriteEndElementAsync();
             }
             // AdditionalInformation Optional Max140Text System.String
-            if ( value.AdditionalInformation is System.String populatedAdditionalInformation)
+            if ( valueBeingSerialized.AdditionalInformation is System.String populatedAdditionalInformation)
             {
                 await writer.WriteStartElementAsync(null, "AddtlInf", isoNamespace );
                 await additionalInformation.WriteAsync(writer, populatedAdditionalInformation, isoNamespace);

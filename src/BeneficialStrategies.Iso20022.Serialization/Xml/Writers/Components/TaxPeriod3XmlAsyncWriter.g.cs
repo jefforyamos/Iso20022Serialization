@@ -37,24 +37,24 @@ namespace BeneficialStrategies.Iso20022.Serialization.Xml.Writers.Components
             this.type = type;
             this.fromToDate = fromToDate;
         }
-        public async Task WriteAsync(XmlWriter writer, TaxPeriod3 value, string isoNamespace)
+        public async Task WriteAsync(XmlWriter writer, TaxPeriod3 valueBeingSerialized, string isoNamespace)
         {
             // Year Optional ISOYear System.UInt16
-            if ( value.Year is System.UInt16 populatedYear)
+            if ( valueBeingSerialized.Year is System.UInt16 populatedYear)
             {
                 await writer.WriteStartElementAsync(null, "Yr", isoNamespace );
                 await year.WriteAsync(writer, populatedYear, isoNamespace);
                 await writer.WriteEndElementAsync();
             }
             // Type Optional TaxRecordPeriod1Code TaxRecordPeriod1Code
-            if ( value.Type is TaxRecordPeriod1Code populatedType)
+            if ( valueBeingSerialized.Type is TaxRecordPeriod1Code populatedType)
             {
                 await writer.WriteStartElementAsync(null, "Tp", isoNamespace );
                 await type.WriteAsync(writer, populatedType, isoNamespace);
                 await writer.WriteEndElementAsync();
             }
             // FromToDate Optional DatePeriod2 DatePeriod2
-            if ( value.FromToDate is DatePeriod2 populatedFromToDate)
+            if ( valueBeingSerialized.FromToDate is DatePeriod2 populatedFromToDate)
             {
                 await writer.WriteStartElementAsync(null, "FrToDt", isoNamespace );
                 await fromToDate.WriteAsync(writer, populatedFromToDate, isoNamespace);

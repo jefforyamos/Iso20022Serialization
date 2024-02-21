@@ -40,31 +40,31 @@ namespace BeneficialStrategies.Iso20022.Serialization.Xml.Writers.Components
             this.name = name;
             this.postalAddress = postalAddress;
         }
-        public async Task WriteAsync(XmlWriter writer, BranchData3 value, string isoNamespace)
+        public async Task WriteAsync(XmlWriter writer, BranchData3 valueBeingSerialized, string isoNamespace)
         {
             // Identification Optional Max35Text System.String
-            if ( value.Identification is System.String populatedIdentification)
+            if ( valueBeingSerialized.Identification is System.String populatedIdentification)
             {
                 await writer.WriteStartElementAsync(null, "Id", isoNamespace );
                 await identification.WriteAsync(writer, populatedIdentification, isoNamespace);
                 await writer.WriteEndElementAsync();
             }
             // LEI Optional LEIIdentifier System.String
-            if ( value.LEI is System.String populatedLEI)
+            if ( valueBeingSerialized.LEI is System.String populatedLEI)
             {
                 await writer.WriteStartElementAsync(null, "LEI", isoNamespace );
                 await lEI.WriteAsync(writer, populatedLEI, isoNamespace);
                 await writer.WriteEndElementAsync();
             }
             // Name Optional Max140Text System.String
-            if ( value.Name is System.String populatedName)
+            if ( valueBeingSerialized.Name is System.String populatedName)
             {
                 await writer.WriteStartElementAsync(null, "Nm", isoNamespace );
                 await name.WriteAsync(writer, populatedName, isoNamespace);
                 await writer.WriteEndElementAsync();
             }
             // PostalAddress Optional PostalAddress24 PostalAddress24
-            if ( value.PostalAddress is PostalAddress24 populatedPostalAddress)
+            if ( valueBeingSerialized.PostalAddress is PostalAddress24 populatedPostalAddress)
             {
                 await writer.WriteStartElementAsync(null, "PstlAdr", isoNamespace );
                 await postalAddress.WriteAsync(writer, populatedPostalAddress, isoNamespace);

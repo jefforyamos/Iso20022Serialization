@@ -40,31 +40,31 @@ namespace BeneficialStrategies.Iso20022.Serialization.Xml.Writers.Components
             this.localInstrument = localInstrument;
             this.categoryPurpose = categoryPurpose;
         }
-        public async Task WriteAsync(XmlWriter writer, PaymentTypeInformation26 value, string isoNamespace)
+        public async Task WriteAsync(XmlWriter writer, PaymentTypeInformation26 valueBeingSerialized, string isoNamespace)
         {
             // InstructionPriority Optional Priority2Code Priority2Code
-            if ( value.InstructionPriority is Priority2Code populatedInstructionPriority)
+            if ( valueBeingSerialized.InstructionPriority is Priority2Code populatedInstructionPriority)
             {
                 await writer.WriteStartElementAsync(null, "InstrPrty", isoNamespace );
                 await instructionPriority.WriteAsync(writer, populatedInstructionPriority, isoNamespace);
                 await writer.WriteEndElementAsync();
             }
             // ServiceLevel Optional ServiceLevel8Choice ServiceLevel8Choice_
-            if ( value.ServiceLevel is ServiceLevel8Choice_ populatedServiceLevel)
+            if ( valueBeingSerialized.ServiceLevel is ServiceLevel8Choice_ populatedServiceLevel)
             {
                 await writer.WriteStartElementAsync(null, "SvcLvl", isoNamespace );
                 await serviceLevel.WriteAsync(writer, populatedServiceLevel, isoNamespace);
                 await writer.WriteEndElementAsync();
             }
             // LocalInstrument Optional LocalInstrument2Choice LocalInstrument2Choice_
-            if ( value.LocalInstrument is LocalInstrument2Choice_ populatedLocalInstrument)
+            if ( valueBeingSerialized.LocalInstrument is LocalInstrument2Choice_ populatedLocalInstrument)
             {
                 await writer.WriteStartElementAsync(null, "LclInstrm", isoNamespace );
                 await localInstrument.WriteAsync(writer, populatedLocalInstrument, isoNamespace);
                 await writer.WriteEndElementAsync();
             }
             // CategoryPurpose Optional CategoryPurpose1Choice CategoryPurpose1Choice_
-            if ( value.CategoryPurpose is CategoryPurpose1Choice_ populatedCategoryPurpose)
+            if ( valueBeingSerialized.CategoryPurpose is CategoryPurpose1Choice_ populatedCategoryPurpose)
             {
                 await writer.WriteStartElementAsync(null, "CtgyPurp", isoNamespace );
                 await categoryPurpose.WriteAsync(writer, populatedCategoryPurpose, isoNamespace);

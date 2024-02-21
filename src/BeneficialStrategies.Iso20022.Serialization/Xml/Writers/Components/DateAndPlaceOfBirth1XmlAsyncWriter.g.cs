@@ -40,14 +40,14 @@ namespace BeneficialStrategies.Iso20022.Serialization.Xml.Writers.Components
             this.cityOfBirth = cityOfBirth;
             this.countryOfBirth = countryOfBirth;
         }
-        public async Task WriteAsync(XmlWriter writer, DateAndPlaceOfBirth1 value, string isoNamespace)
+        public async Task WriteAsync(XmlWriter writer, DateAndPlaceOfBirth1 valueBeingSerialized, string isoNamespace)
         {
             // BirthDate Required ISODate System.DateOnly
             await writer.WriteStartElementAsync(null, "BirthDt", isoNamespace );
-            await birthDate.WriteAsync(writer, value.BirthDate, isoNamespace);
+            await birthDate.WriteAsync(writer, valueBeingSerialized.BirthDate, isoNamespace);
             await writer.WriteEndElementAsync();
             // ProvinceOfBirth Optional Max35Text System.String
-            if ( value.ProvinceOfBirth is System.String populatedProvinceOfBirth)
+            if ( valueBeingSerialized.ProvinceOfBirth is System.String populatedProvinceOfBirth)
             {
                 await writer.WriteStartElementAsync(null, "PrvcOfBirth", isoNamespace );
                 await provinceOfBirth.WriteAsync(writer, populatedProvinceOfBirth, isoNamespace);
@@ -55,11 +55,11 @@ namespace BeneficialStrategies.Iso20022.Serialization.Xml.Writers.Components
             }
             // CityOfBirth Required Max35Text System.String
             await writer.WriteStartElementAsync(null, "CityOfBirth", isoNamespace );
-            await cityOfBirth.WriteAsync(writer, value.CityOfBirth, isoNamespace);
+            await cityOfBirth.WriteAsync(writer, valueBeingSerialized.CityOfBirth, isoNamespace);
             await writer.WriteEndElementAsync();
             // CountryOfBirth Required CountryCode string
             await writer.WriteStartElementAsync(null, "CtryOfBirth", isoNamespace );
-            await countryOfBirth.WriteAsync(writer, value.CountryOfBirth, isoNamespace);
+            await countryOfBirth.WriteAsync(writer, valueBeingSerialized.CountryOfBirth, isoNamespace);
             await writer.WriteEndElementAsync();
         }
     }

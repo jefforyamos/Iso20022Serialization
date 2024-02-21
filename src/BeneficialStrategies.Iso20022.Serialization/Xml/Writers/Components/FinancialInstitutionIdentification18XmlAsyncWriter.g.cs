@@ -46,45 +46,45 @@ namespace BeneficialStrategies.Iso20022.Serialization.Xml.Writers.Components
             this.postalAddress = postalAddress;
             this.other = other;
         }
-        public async Task WriteAsync(XmlWriter writer, FinancialInstitutionIdentification18 value, string isoNamespace)
+        public async Task WriteAsync(XmlWriter writer, FinancialInstitutionIdentification18 valueBeingSerialized, string isoNamespace)
         {
             // BICFI Optional BICFIDec2014Identifier System.String
-            if ( value.BICFI is System.String populatedBICFI)
+            if ( valueBeingSerialized.BICFI is System.String populatedBICFI)
             {
                 await writer.WriteStartElementAsync(null, "BICFI", isoNamespace );
                 await bICFI.WriteAsync(writer, populatedBICFI, isoNamespace);
                 await writer.WriteEndElementAsync();
             }
             // ClearingSystemMemberIdentification Optional ClearingSystemMemberIdentification2 ClearingSystemMemberIdentification2
-            if ( value.ClearingSystemMemberIdentification is ClearingSystemMemberIdentification2 populatedClearingSystemMemberIdentification)
+            if ( valueBeingSerialized.ClearingSystemMemberIdentification is ClearingSystemMemberIdentification2 populatedClearingSystemMemberIdentification)
             {
                 await writer.WriteStartElementAsync(null, "ClrSysMmbId", isoNamespace );
                 await clearingSystemMemberIdentification.WriteAsync(writer, populatedClearingSystemMemberIdentification, isoNamespace);
                 await writer.WriteEndElementAsync();
             }
             // LEI Optional LEIIdentifier System.String
-            if ( value.LEI is System.String populatedLEI)
+            if ( valueBeingSerialized.LEI is System.String populatedLEI)
             {
                 await writer.WriteStartElementAsync(null, "LEI", isoNamespace );
                 await lEI.WriteAsync(writer, populatedLEI, isoNamespace);
                 await writer.WriteEndElementAsync();
             }
             // Name Optional Max140Text System.String
-            if ( value.Name is System.String populatedName)
+            if ( valueBeingSerialized.Name is System.String populatedName)
             {
                 await writer.WriteStartElementAsync(null, "Nm", isoNamespace );
                 await name.WriteAsync(writer, populatedName, isoNamespace);
                 await writer.WriteEndElementAsync();
             }
             // PostalAddress Optional PostalAddress24 PostalAddress24
-            if ( value.PostalAddress is PostalAddress24 populatedPostalAddress)
+            if ( valueBeingSerialized.PostalAddress is PostalAddress24 populatedPostalAddress)
             {
                 await writer.WriteStartElementAsync(null, "PstlAdr", isoNamespace );
                 await postalAddress.WriteAsync(writer, populatedPostalAddress, isoNamespace);
                 await writer.WriteEndElementAsync();
             }
             // Other Optional GenericFinancialIdentification1 GenericFinancialIdentification1
-            if ( value.Other is GenericFinancialIdentification1 populatedOther)
+            if ( valueBeingSerialized.Other is GenericFinancialIdentification1 populatedOther)
             {
                 await writer.WriteStartElementAsync(null, "Othr", isoNamespace );
                 await other.WriteAsync(writer, populatedOther, isoNamespace);

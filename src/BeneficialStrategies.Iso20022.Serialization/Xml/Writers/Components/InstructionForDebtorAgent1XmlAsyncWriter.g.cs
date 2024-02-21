@@ -34,17 +34,17 @@ namespace BeneficialStrategies.Iso20022.Serialization.Xml.Writers.Components
             this.code = code;
             this.instructionInformation = instructionInformation;
         }
-        public async Task WriteAsync(XmlWriter writer, InstructionForDebtorAgent1 value, string isoNamespace)
+        public async Task WriteAsync(XmlWriter writer, InstructionForDebtorAgent1 valueBeingSerialized, string isoNamespace)
         {
             // Code Optional ExternalDebtorAgentInstruction1Code string
-            if ( value.Code is string populatedCode)
+            if ( valueBeingSerialized.Code is string populatedCode)
             {
                 await writer.WriteStartElementAsync(null, "Cd", isoNamespace );
                 await code.WriteAsync(writer, populatedCode, isoNamespace);
                 await writer.WriteEndElementAsync();
             }
             // InstructionInformation Optional Max140Text System.String
-            if ( value.InstructionInformation is System.String populatedInstructionInformation)
+            if ( valueBeingSerialized.InstructionInformation is System.String populatedInstructionInformation)
             {
                 await writer.WriteStartElementAsync(null, "InstrInf", isoNamespace );
                 await instructionInformation.WriteAsync(writer, populatedInstructionInformation, isoNamespace);

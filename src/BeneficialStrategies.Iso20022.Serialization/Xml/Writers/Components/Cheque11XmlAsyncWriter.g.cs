@@ -64,87 +64,87 @@ namespace BeneficialStrategies.Iso20022.Serialization.Xml.Writers.Components
             this.printLocation = printLocation;
             this.signature = signature;
         }
-        public async Task WriteAsync(XmlWriter writer, Cheque11 value, string isoNamespace)
+        public async Task WriteAsync(XmlWriter writer, Cheque11 valueBeingSerialized, string isoNamespace)
         {
             // ChequeType Optional ChequeType2Code ChequeType2Code
-            if ( value.ChequeType is ChequeType2Code populatedChequeType)
+            if ( valueBeingSerialized.ChequeType is ChequeType2Code populatedChequeType)
             {
                 await writer.WriteStartElementAsync(null, "ChqTp", isoNamespace );
                 await chequeType.WriteAsync(writer, populatedChequeType, isoNamespace);
                 await writer.WriteEndElementAsync();
             }
             // ChequeNumber Optional Max35Text System.String
-            if ( value.ChequeNumber is System.String populatedChequeNumber)
+            if ( valueBeingSerialized.ChequeNumber is System.String populatedChequeNumber)
             {
                 await writer.WriteStartElementAsync(null, "ChqNb", isoNamespace );
                 await chequeNumber.WriteAsync(writer, populatedChequeNumber, isoNamespace);
                 await writer.WriteEndElementAsync();
             }
             // ChequeFrom Optional NameAndAddress16 NameAndAddress16
-            if ( value.ChequeFrom is NameAndAddress16 populatedChequeFrom)
+            if ( valueBeingSerialized.ChequeFrom is NameAndAddress16 populatedChequeFrom)
             {
                 await writer.WriteStartElementAsync(null, "ChqFr", isoNamespace );
                 await chequeFrom.WriteAsync(writer, populatedChequeFrom, isoNamespace);
                 await writer.WriteEndElementAsync();
             }
             // DeliveryMethod Optional ChequeDeliveryMethod1Choice ChequeDeliveryMethod1Choice_
-            if ( value.DeliveryMethod is ChequeDeliveryMethod1Choice_ populatedDeliveryMethod)
+            if ( valueBeingSerialized.DeliveryMethod is ChequeDeliveryMethod1Choice_ populatedDeliveryMethod)
             {
                 await writer.WriteStartElementAsync(null, "DlvryMtd", isoNamespace );
                 await deliveryMethod.WriteAsync(writer, populatedDeliveryMethod, isoNamespace);
                 await writer.WriteEndElementAsync();
             }
             // DeliverTo Optional NameAndAddress16 NameAndAddress16
-            if ( value.DeliverTo is NameAndAddress16 populatedDeliverTo)
+            if ( valueBeingSerialized.DeliverTo is NameAndAddress16 populatedDeliverTo)
             {
                 await writer.WriteStartElementAsync(null, "DlvrTo", isoNamespace );
                 await deliverTo.WriteAsync(writer, populatedDeliverTo, isoNamespace);
                 await writer.WriteEndElementAsync();
             }
             // InstructionPriority Optional Priority2Code Priority2Code
-            if ( value.InstructionPriority is Priority2Code populatedInstructionPriority)
+            if ( valueBeingSerialized.InstructionPriority is Priority2Code populatedInstructionPriority)
             {
                 await writer.WriteStartElementAsync(null, "InstrPrty", isoNamespace );
                 await instructionPriority.WriteAsync(writer, populatedInstructionPriority, isoNamespace);
                 await writer.WriteEndElementAsync();
             }
             // ChequeMaturityDate Optional ISODate System.DateOnly
-            if ( value.ChequeMaturityDate is System.DateOnly populatedChequeMaturityDate)
+            if ( valueBeingSerialized.ChequeMaturityDate is System.DateOnly populatedChequeMaturityDate)
             {
                 await writer.WriteStartElementAsync(null, "ChqMtrtyDt", isoNamespace );
                 await chequeMaturityDate.WriteAsync(writer, populatedChequeMaturityDate, isoNamespace);
                 await writer.WriteEndElementAsync();
             }
             // FormsCode Optional Max35Text System.String
-            if ( value.FormsCode is System.String populatedFormsCode)
+            if ( valueBeingSerialized.FormsCode is System.String populatedFormsCode)
             {
                 await writer.WriteStartElementAsync(null, "FrmsCd", isoNamespace );
                 await formsCode.WriteAsync(writer, populatedFormsCode, isoNamespace);
                 await writer.WriteEndElementAsync();
             }
             // MemoField Collection Max35Text System.String
-            foreach ( var item in value.MemoField)
+            foreach ( var item in valueBeingSerialized.MemoField)
             {
                 await writer.WriteStartElementAsync(null, "MemoFld", isoNamespace );
                 await memoField.WriteAsync(writer, item , isoNamespace);
                 await writer.WriteEndElementAsync();
             }
             // RegionalClearingZone Optional Max35Text System.String
-            if ( value.RegionalClearingZone is System.String populatedRegionalClearingZone)
+            if ( valueBeingSerialized.RegionalClearingZone is System.String populatedRegionalClearingZone)
             {
                 await writer.WriteStartElementAsync(null, "RgnlClrZone", isoNamespace );
                 await regionalClearingZone.WriteAsync(writer, populatedRegionalClearingZone, isoNamespace);
                 await writer.WriteEndElementAsync();
             }
             // PrintLocation Optional Max35Text System.String
-            if ( value.PrintLocation is System.String populatedPrintLocation)
+            if ( valueBeingSerialized.PrintLocation is System.String populatedPrintLocation)
             {
                 await writer.WriteStartElementAsync(null, "PrtLctn", isoNamespace );
                 await printLocation.WriteAsync(writer, populatedPrintLocation, isoNamespace);
                 await writer.WriteEndElementAsync();
             }
             // Signature Collection Max70Text System.String
-            foreach ( var item in value.Signature)
+            foreach ( var item in valueBeingSerialized.Signature)
             {
                 await writer.WriteStartElementAsync(null, "Sgntr", isoNamespace );
                 await signature.WriteAsync(writer, item , isoNamespace);

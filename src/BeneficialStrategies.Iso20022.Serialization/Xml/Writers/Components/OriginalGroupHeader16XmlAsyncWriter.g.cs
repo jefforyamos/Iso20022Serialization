@@ -40,25 +40,25 @@ namespace BeneficialStrategies.Iso20022.Serialization.Xml.Writers.Components
             this.originalCreationDateTime = originalCreationDateTime;
             this.reversalReasonInformation = reversalReasonInformation;
         }
-        public async Task WriteAsync(XmlWriter writer, OriginalGroupHeader16 value, string isoNamespace)
+        public async Task WriteAsync(XmlWriter writer, OriginalGroupHeader16 valueBeingSerialized, string isoNamespace)
         {
             // OriginalMessageIdentification Required Max35Text System.String
             await writer.WriteStartElementAsync(null, "OrgnlMsgId", isoNamespace );
-            await originalMessageIdentification.WriteAsync(writer, value.OriginalMessageIdentification, isoNamespace);
+            await originalMessageIdentification.WriteAsync(writer, valueBeingSerialized.OriginalMessageIdentification, isoNamespace);
             await writer.WriteEndElementAsync();
             // OriginalMessageNameIdentification Required Max35Text System.String
             await writer.WriteStartElementAsync(null, "OrgnlMsgNmId", isoNamespace );
-            await originalMessageNameIdentification.WriteAsync(writer, value.OriginalMessageNameIdentification, isoNamespace);
+            await originalMessageNameIdentification.WriteAsync(writer, valueBeingSerialized.OriginalMessageNameIdentification, isoNamespace);
             await writer.WriteEndElementAsync();
             // OriginalCreationDateTime Optional ISODateTime System.DateTime
-            if ( value.OriginalCreationDateTime is System.DateTime populatedOriginalCreationDateTime)
+            if ( valueBeingSerialized.OriginalCreationDateTime is System.DateTime populatedOriginalCreationDateTime)
             {
                 await writer.WriteStartElementAsync(null, "OrgnlCreDtTm", isoNamespace );
                 await originalCreationDateTime.WriteAsync(writer, populatedOriginalCreationDateTime, isoNamespace);
                 await writer.WriteEndElementAsync();
             }
             // ReversalReasonInformation Optional PaymentReversalReason9 PaymentReversalReason9
-            if ( value.ReversalReasonInformation is PaymentReversalReason9 populatedReversalReasonInformation)
+            if ( valueBeingSerialized.ReversalReasonInformation is PaymentReversalReason9 populatedReversalReasonInformation)
             {
                 await writer.WriteStartElementAsync(null, "RvslRsnInf", isoNamespace );
                 await reversalReasonInformation.WriteAsync(writer, populatedReversalReasonInformation, isoNamespace);

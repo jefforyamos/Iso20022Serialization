@@ -37,10 +37,10 @@ namespace BeneficialStrategies.Iso20022.Serialization.Xml.Writers.Components
             this.endToEndIdentification = endToEndIdentification;
             this.uETR = uETR;
         }
-        public async Task WriteAsync(XmlWriter writer, PaymentIdentification6 value, string isoNamespace)
+        public async Task WriteAsync(XmlWriter writer, PaymentIdentification6 valueBeingSerialized, string isoNamespace)
         {
             // InstructionIdentification Optional Max35Text System.String
-            if ( value.InstructionIdentification is System.String populatedInstructionIdentification)
+            if ( valueBeingSerialized.InstructionIdentification is System.String populatedInstructionIdentification)
             {
                 await writer.WriteStartElementAsync(null, "InstrId", isoNamespace );
                 await instructionIdentification.WriteAsync(writer, populatedInstructionIdentification, isoNamespace);
@@ -48,10 +48,10 @@ namespace BeneficialStrategies.Iso20022.Serialization.Xml.Writers.Components
             }
             // EndToEndIdentification Required Max35Text System.String
             await writer.WriteStartElementAsync(null, "EndToEndId", isoNamespace );
-            await endToEndIdentification.WriteAsync(writer, value.EndToEndIdentification, isoNamespace);
+            await endToEndIdentification.WriteAsync(writer, valueBeingSerialized.EndToEndIdentification, isoNamespace);
             await writer.WriteEndElementAsync();
             // UETR Optional UUIDv4Identifier System.String
-            if ( value.UETR is System.String populatedUETR)
+            if ( valueBeingSerialized.UETR is System.String populatedUETR)
             {
                 await writer.WriteStartElementAsync(null, "UETR", isoNamespace );
                 await uETR.WriteAsync(writer, populatedUETR, isoNamespace);

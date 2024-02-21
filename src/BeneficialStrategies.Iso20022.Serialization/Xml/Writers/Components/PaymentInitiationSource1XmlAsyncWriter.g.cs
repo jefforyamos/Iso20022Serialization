@@ -37,21 +37,21 @@ namespace BeneficialStrategies.Iso20022.Serialization.Xml.Writers.Components
             this.provider = provider;
             this.version = version;
         }
-        public async Task WriteAsync(XmlWriter writer, PaymentInitiationSource1 value, string isoNamespace)
+        public async Task WriteAsync(XmlWriter writer, PaymentInitiationSource1 valueBeingSerialized, string isoNamespace)
         {
             // Name Required Max140Text System.String
             await writer.WriteStartElementAsync(null, "Nm", isoNamespace );
-            await name.WriteAsync(writer, value.Name, isoNamespace);
+            await name.WriteAsync(writer, valueBeingSerialized.Name, isoNamespace);
             await writer.WriteEndElementAsync();
             // Provider Optional Max35Text System.String
-            if ( value.Provider is System.String populatedProvider)
+            if ( valueBeingSerialized.Provider is System.String populatedProvider)
             {
                 await writer.WriteStartElementAsync(null, "Prvdr", isoNamespace );
                 await provider.WriteAsync(writer, populatedProvider, isoNamespace);
                 await writer.WriteEndElementAsync();
             }
             // Version Optional Max35Text System.String
-            if ( value.Version is System.String populatedVersion)
+            if ( valueBeingSerialized.Version is System.String populatedVersion)
             {
                 await writer.WriteStartElementAsync(null, "Vrsn", isoNamespace );
                 await version.WriteAsync(writer, populatedVersion, isoNamespace);

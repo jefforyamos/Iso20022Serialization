@@ -40,31 +40,31 @@ namespace BeneficialStrategies.Iso20022.Serialization.Xml.Writers.Components
             this.rateType = rateType;
             this.contractIdentification = contractIdentification;
         }
-        public async Task WriteAsync(XmlWriter writer, ExchangeRate1 value, string isoNamespace)
+        public async Task WriteAsync(XmlWriter writer, ExchangeRate1 valueBeingSerialized, string isoNamespace)
         {
             // UnitCurrency Optional ActiveOrHistoricCurrencyCode string
-            if ( value.UnitCurrency is string populatedUnitCurrency)
+            if ( valueBeingSerialized.UnitCurrency is string populatedUnitCurrency)
             {
                 await writer.WriteStartElementAsync(null, "UnitCcy", isoNamespace );
                 await unitCurrency.WriteAsync(writer, populatedUnitCurrency, isoNamespace);
                 await writer.WriteEndElementAsync();
             }
             // ExchangeRate Optional BaseOneRate System.Decimal
-            if ( value.ExchangeRate is System.Decimal populatedExchangeRate)
+            if ( valueBeingSerialized.ExchangeRate is System.Decimal populatedExchangeRate)
             {
                 await writer.WriteStartElementAsync(null, "XchgRate", isoNamespace );
                 await exchangeRate.WriteAsync(writer, populatedExchangeRate, isoNamespace);
                 await writer.WriteEndElementAsync();
             }
             // RateType Optional ExchangeRateType1Code ExchangeRateType1Code
-            if ( value.RateType is ExchangeRateType1Code populatedRateType)
+            if ( valueBeingSerialized.RateType is ExchangeRateType1Code populatedRateType)
             {
                 await writer.WriteStartElementAsync(null, "RateTp", isoNamespace );
                 await rateType.WriteAsync(writer, populatedRateType, isoNamespace);
                 await writer.WriteEndElementAsync();
             }
             // ContractIdentification Optional Max35Text System.String
-            if ( value.ContractIdentification is System.String populatedContractIdentification)
+            if ( valueBeingSerialized.ContractIdentification is System.String populatedContractIdentification)
             {
                 await writer.WriteStartElementAsync(null, "CtrctId", isoNamespace );
                 await contractIdentification.WriteAsync(writer, populatedContractIdentification, isoNamespace);

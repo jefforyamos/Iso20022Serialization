@@ -34,10 +34,10 @@ namespace BeneficialStrategies.Iso20022.Serialization.Xml.Writers.Components
             this.period = period;
             this.amount = amount;
         }
-        public async Task WriteAsync(XmlWriter writer, TaxRecordDetails3 value, string isoNamespace)
+        public async Task WriteAsync(XmlWriter writer, TaxRecordDetails3 valueBeingSerialized, string isoNamespace)
         {
             // Period Optional TaxPeriod3 TaxPeriod3
-            if ( value.Period is TaxPeriod3 populatedPeriod)
+            if ( valueBeingSerialized.Period is TaxPeriod3 populatedPeriod)
             {
                 await writer.WriteStartElementAsync(null, "Prd", isoNamespace );
                 await period.WriteAsync(writer, populatedPeriod, isoNamespace);
@@ -45,7 +45,7 @@ namespace BeneficialStrategies.Iso20022.Serialization.Xml.Writers.Components
             }
             // Amount Required ActiveOrHistoricCurrencyAndAmount System.Decimal
             await writer.WriteStartElementAsync(null, "Amt", isoNamespace );
-            await amount.WriteAsync(writer, value.Amount, isoNamespace);
+            await amount.WriteAsync(writer, valueBeingSerialized.Amount, isoNamespace);
             await writer.WriteEndElementAsync();
         }
     }

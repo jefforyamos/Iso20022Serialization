@@ -37,18 +37,18 @@ namespace BeneficialStrategies.Iso20022.Serialization.Xml.Writers.Components
             this.description = description;
             this.amount = amount;
         }
-        public async Task WriteAsync(XmlWriter writer, DocumentLineInformation1 value, string isoNamespace)
+        public async Task WriteAsync(XmlWriter writer, DocumentLineInformation1 valueBeingSerialized, string isoNamespace)
         {
             // Identification Unknown DocumentLineIdentification1 DocumentLineIdentification1
             // Description Optional Max2048Text System.String
-            if ( value.Description is System.String populatedDescription)
+            if ( valueBeingSerialized.Description is System.String populatedDescription)
             {
                 await writer.WriteStartElementAsync(null, "Desc", isoNamespace );
                 await description.WriteAsync(writer, populatedDescription, isoNamespace);
                 await writer.WriteEndElementAsync();
             }
             // Amount Optional RemittanceAmount3 RemittanceAmount3
-            if ( value.Amount is RemittanceAmount3 populatedAmount)
+            if ( valueBeingSerialized.Amount is RemittanceAmount3 populatedAmount)
             {
                 await writer.WriteStartElementAsync(null, "Amt", isoNamespace );
                 await amount.WriteAsync(writer, populatedAmount, isoNamespace);

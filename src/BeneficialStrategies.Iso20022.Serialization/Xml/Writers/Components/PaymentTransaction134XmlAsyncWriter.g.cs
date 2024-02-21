@@ -58,73 +58,73 @@ namespace BeneficialStrategies.Iso20022.Serialization.Xml.Writers.Components
             this.originalTransactionReference = originalTransactionReference;
             this.supplementaryData = supplementaryData;
         }
-        public async Task WriteAsync(XmlWriter writer, PaymentTransaction134 value, string isoNamespace)
+        public async Task WriteAsync(XmlWriter writer, PaymentTransaction134 valueBeingSerialized, string isoNamespace)
         {
             // ReversalIdentification Optional Max35Text System.String
-            if ( value.ReversalIdentification is System.String populatedReversalIdentification)
+            if ( valueBeingSerialized.ReversalIdentification is System.String populatedReversalIdentification)
             {
                 await writer.WriteStartElementAsync(null, "RvslId", isoNamespace );
                 await reversalIdentification.WriteAsync(writer, populatedReversalIdentification, isoNamespace);
                 await writer.WriteEndElementAsync();
             }
             // OriginalInstructionIdentification Optional Max35Text System.String
-            if ( value.OriginalInstructionIdentification is System.String populatedOriginalInstructionIdentification)
+            if ( valueBeingSerialized.OriginalInstructionIdentification is System.String populatedOriginalInstructionIdentification)
             {
                 await writer.WriteStartElementAsync(null, "OrgnlInstrId", isoNamespace );
                 await originalInstructionIdentification.WriteAsync(writer, populatedOriginalInstructionIdentification, isoNamespace);
                 await writer.WriteEndElementAsync();
             }
             // OriginalEndToEndIdentification Optional Max35Text System.String
-            if ( value.OriginalEndToEndIdentification is System.String populatedOriginalEndToEndIdentification)
+            if ( valueBeingSerialized.OriginalEndToEndIdentification is System.String populatedOriginalEndToEndIdentification)
             {
                 await writer.WriteStartElementAsync(null, "OrgnlEndToEndId", isoNamespace );
                 await originalEndToEndIdentification.WriteAsync(writer, populatedOriginalEndToEndIdentification, isoNamespace);
                 await writer.WriteEndElementAsync();
             }
             // OriginalUETR Optional UUIDv4Identifier System.String
-            if ( value.OriginalUETR is System.String populatedOriginalUETR)
+            if ( valueBeingSerialized.OriginalUETR is System.String populatedOriginalUETR)
             {
                 await writer.WriteStartElementAsync(null, "OrgnlUETR", isoNamespace );
                 await originalUETR.WriteAsync(writer, populatedOriginalUETR, isoNamespace);
                 await writer.WriteEndElementAsync();
             }
             // OriginalInstructedAmount Optional ActiveOrHistoricCurrencyAndAmount System.Decimal
-            if ( value.OriginalInstructedAmount is System.Decimal populatedOriginalInstructedAmount)
+            if ( valueBeingSerialized.OriginalInstructedAmount is System.Decimal populatedOriginalInstructedAmount)
             {
                 await writer.WriteStartElementAsync(null, "OrgnlInstdAmt", isoNamespace );
                 await originalInstructedAmount.WriteAsync(writer, populatedOriginalInstructedAmount, isoNamespace);
                 await writer.WriteEndElementAsync();
             }
             // ReversedInstructedAmount Optional ActiveOrHistoricCurrencyAndAmount System.Decimal
-            if ( value.ReversedInstructedAmount is System.Decimal populatedReversedInstructedAmount)
+            if ( valueBeingSerialized.ReversedInstructedAmount is System.Decimal populatedReversedInstructedAmount)
             {
                 await writer.WriteStartElementAsync(null, "RvsdInstdAmt", isoNamespace );
                 await reversedInstructedAmount.WriteAsync(writer, populatedReversedInstructedAmount, isoNamespace);
                 await writer.WriteEndElementAsync();
             }
             // ChargeBearer Optional ChargeBearerType1Code ChargeBearerType1Code
-            if ( value.ChargeBearer is ChargeBearerType1Code populatedChargeBearer)
+            if ( valueBeingSerialized.ChargeBearer is ChargeBearerType1Code populatedChargeBearer)
             {
                 await writer.WriteStartElementAsync(null, "ChrgBr", isoNamespace );
                 await chargeBearer.WriteAsync(writer, populatedChargeBearer, isoNamespace);
                 await writer.WriteEndElementAsync();
             }
             // ReversalReasonInformation Optional PaymentReversalReason9 PaymentReversalReason9
-            if ( value.ReversalReasonInformation is PaymentReversalReason9 populatedReversalReasonInformation)
+            if ( valueBeingSerialized.ReversalReasonInformation is PaymentReversalReason9 populatedReversalReasonInformation)
             {
                 await writer.WriteStartElementAsync(null, "RvslRsnInf", isoNamespace );
                 await reversalReasonInformation.WriteAsync(writer, populatedReversalReasonInformation, isoNamespace);
                 await writer.WriteEndElementAsync();
             }
             // OriginalTransactionReference Optional OriginalTransactionReference35 OriginalTransactionReference35
-            if ( value.OriginalTransactionReference is OriginalTransactionReference35 populatedOriginalTransactionReference)
+            if ( valueBeingSerialized.OriginalTransactionReference is OriginalTransactionReference35 populatedOriginalTransactionReference)
             {
                 await writer.WriteStartElementAsync(null, "OrgnlTxRef", isoNamespace );
                 await originalTransactionReference.WriteAsync(writer, populatedOriginalTransactionReference, isoNamespace);
                 await writer.WriteEndElementAsync();
             }
             // SupplementaryData Optional SupplementaryData1 SupplementaryData1
-            if ( value.SupplementaryData is SupplementaryData1 populatedSupplementaryData)
+            if ( valueBeingSerialized.SupplementaryData is SupplementaryData1 populatedSupplementaryData)
             {
                 await writer.WriteStartElementAsync(null, "SplmtryData", isoNamespace );
                 await supplementaryData.WriteAsync(writer, populatedSupplementaryData, isoNamespace);

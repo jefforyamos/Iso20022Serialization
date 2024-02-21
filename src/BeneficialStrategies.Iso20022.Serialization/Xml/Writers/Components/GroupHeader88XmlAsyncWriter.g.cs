@@ -58,18 +58,18 @@ namespace BeneficialStrategies.Iso20022.Serialization.Xml.Writers.Components
             this.debtorAgent = debtorAgent;
             this.creditorAgent = creditorAgent;
         }
-        public async Task WriteAsync(XmlWriter writer, GroupHeader88 value, string isoNamespace)
+        public async Task WriteAsync(XmlWriter writer, GroupHeader88 valueBeingSerialized, string isoNamespace)
         {
             // MessageIdentification Required Max35Text System.String
             await writer.WriteStartElementAsync(null, "MsgId", isoNamespace );
-            await messageIdentification.WriteAsync(writer, value.MessageIdentification, isoNamespace);
+            await messageIdentification.WriteAsync(writer, valueBeingSerialized.MessageIdentification, isoNamespace);
             await writer.WriteEndElementAsync();
             // CreationDateTime Required ISODateTime System.DateTime
             await writer.WriteStartElementAsync(null, "CreDtTm", isoNamespace );
-            await creationDateTime.WriteAsync(writer, value.CreationDateTime, isoNamespace);
+            await creationDateTime.WriteAsync(writer, valueBeingSerialized.CreationDateTime, isoNamespace);
             await writer.WriteEndElementAsync();
             // Authorisation Collection Authorisation1Choice Authorisation1Choice_
-            foreach ( var item in value.Authorisation)
+            foreach ( var item in valueBeingSerialized.Authorisation)
             {
                 await writer.WriteStartElementAsync(null, "Authstn", isoNamespace );
                 await authorisation.WriteAsync(writer, item , isoNamespace);
@@ -77,45 +77,45 @@ namespace BeneficialStrategies.Iso20022.Serialization.Xml.Writers.Components
             }
             // NumberOfTransactions Required Max15NumericText System.String
             await writer.WriteStartElementAsync(null, "NbOfTxs", isoNamespace );
-            await numberOfTransactions.WriteAsync(writer, value.NumberOfTransactions, isoNamespace);
+            await numberOfTransactions.WriteAsync(writer, valueBeingSerialized.NumberOfTransactions, isoNamespace);
             await writer.WriteEndElementAsync();
             // ControlSum Optional DecimalNumber System.UInt64
-            if ( value.ControlSum is System.UInt64 populatedControlSum)
+            if ( valueBeingSerialized.ControlSum is System.UInt64 populatedControlSum)
             {
                 await writer.WriteStartElementAsync(null, "CtrlSum", isoNamespace );
                 await controlSum.WriteAsync(writer, populatedControlSum, isoNamespace);
                 await writer.WriteEndElementAsync();
             }
             // GroupReversal Optional TrueFalseIndicator System.String
-            if ( value.GroupReversal is System.String populatedGroupReversal)
+            if ( valueBeingSerialized.GroupReversal is System.String populatedGroupReversal)
             {
                 await writer.WriteStartElementAsync(null, "GrpRvsl", isoNamespace );
                 await groupReversal.WriteAsync(writer, populatedGroupReversal, isoNamespace);
                 await writer.WriteEndElementAsync();
             }
             // InitiatingParty Optional PartyIdentification135 PartyIdentification135
-            if ( value.InitiatingParty is PartyIdentification135 populatedInitiatingParty)
+            if ( valueBeingSerialized.InitiatingParty is PartyIdentification135 populatedInitiatingParty)
             {
                 await writer.WriteStartElementAsync(null, "InitgPty", isoNamespace );
                 await initiatingParty.WriteAsync(writer, populatedInitiatingParty, isoNamespace);
                 await writer.WriteEndElementAsync();
             }
             // ForwardingAgent Optional BranchAndFinancialInstitutionIdentification6 BranchAndFinancialInstitutionIdentification6
-            if ( value.ForwardingAgent is BranchAndFinancialInstitutionIdentification6 populatedForwardingAgent)
+            if ( valueBeingSerialized.ForwardingAgent is BranchAndFinancialInstitutionIdentification6 populatedForwardingAgent)
             {
                 await writer.WriteStartElementAsync(null, "FwdgAgt", isoNamespace );
                 await forwardingAgent.WriteAsync(writer, populatedForwardingAgent, isoNamespace);
                 await writer.WriteEndElementAsync();
             }
             // DebtorAgent Optional BranchAndFinancialInstitutionIdentification6 BranchAndFinancialInstitutionIdentification6
-            if ( value.DebtorAgent is BranchAndFinancialInstitutionIdentification6 populatedDebtorAgent)
+            if ( valueBeingSerialized.DebtorAgent is BranchAndFinancialInstitutionIdentification6 populatedDebtorAgent)
             {
                 await writer.WriteStartElementAsync(null, "DbtrAgt", isoNamespace );
                 await debtorAgent.WriteAsync(writer, populatedDebtorAgent, isoNamespace);
                 await writer.WriteEndElementAsync();
             }
             // CreditorAgent Optional BranchAndFinancialInstitutionIdentification6 BranchAndFinancialInstitutionIdentification6
-            if ( value.CreditorAgent is BranchAndFinancialInstitutionIdentification6 populatedCreditorAgent)
+            if ( valueBeingSerialized.CreditorAgent is BranchAndFinancialInstitutionIdentification6 populatedCreditorAgent)
             {
                 await writer.WriteStartElementAsync(null, "CdtrAgt", isoNamespace );
                 await creditorAgent.WriteAsync(writer, populatedCreditorAgent, isoNamespace);

@@ -37,24 +37,24 @@ namespace BeneficialStrategies.Iso20022.Serialization.Xml.Writers.Components
             this.number = number;
             this.relatedDate = relatedDate;
         }
-        public async Task WriteAsync(XmlWriter writer, DocumentLineIdentification1 value, string isoNamespace)
+        public async Task WriteAsync(XmlWriter writer, DocumentLineIdentification1 valueBeingSerialized, string isoNamespace)
         {
             // Type Optional DocumentLineType1 DocumentLineType1
-            if ( value.Type is DocumentLineType1 populatedType)
+            if ( valueBeingSerialized.Type is DocumentLineType1 populatedType)
             {
                 await writer.WriteStartElementAsync(null, "Tp", isoNamespace );
                 await type.WriteAsync(writer, populatedType, isoNamespace);
                 await writer.WriteEndElementAsync();
             }
             // Number Optional Max35Text System.String
-            if ( value.Number is System.String populatedNumber)
+            if ( valueBeingSerialized.Number is System.String populatedNumber)
             {
                 await writer.WriteStartElementAsync(null, "Nb", isoNamespace );
                 await number.WriteAsync(writer, populatedNumber, isoNamespace);
                 await writer.WriteEndElementAsync();
             }
             // RelatedDate Optional ISODate System.DateOnly
-            if ( value.RelatedDate is System.DateOnly populatedRelatedDate)
+            if ( valueBeingSerialized.RelatedDate is System.DateOnly populatedRelatedDate)
             {
                 await writer.WriteStartElementAsync(null, "RltdDt", isoNamespace );
                 await relatedDate.WriteAsync(writer, populatedRelatedDate, isoNamespace);

@@ -34,17 +34,17 @@ namespace BeneficialStrategies.Iso20022.Serialization.Xml.Writers.Components
             this.unstructured = unstructured;
             this.structured = structured;
         }
-        public async Task WriteAsync(XmlWriter writer, RemittanceInformation21 value, string isoNamespace)
+        public async Task WriteAsync(XmlWriter writer, RemittanceInformation21 valueBeingSerialized, string isoNamespace)
         {
             // Unstructured Optional Max140Text System.String
-            if ( value.Unstructured is System.String populatedUnstructured)
+            if ( valueBeingSerialized.Unstructured is System.String populatedUnstructured)
             {
                 await writer.WriteStartElementAsync(null, "Ustrd", isoNamespace );
                 await unstructured.WriteAsync(writer, populatedUnstructured, isoNamespace);
                 await writer.WriteEndElementAsync();
             }
             // Structured Optional StructuredRemittanceInformation17 StructuredRemittanceInformation17
-            if ( value.Structured is StructuredRemittanceInformation17 populatedStructured)
+            if ( valueBeingSerialized.Structured is StructuredRemittanceInformation17 populatedStructured)
             {
                 await writer.WriteStartElementAsync(null, "Strd", isoNamespace );
                 await structured.WriteAsync(writer, populatedStructured, isoNamespace);

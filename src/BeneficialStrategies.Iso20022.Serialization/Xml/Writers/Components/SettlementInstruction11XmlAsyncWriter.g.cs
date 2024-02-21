@@ -55,63 +55,63 @@ namespace BeneficialStrategies.Iso20022.Serialization.Xml.Writers.Components
             this.thirdReimbursementAgent = thirdReimbursementAgent;
             this.thirdReimbursementAgentAccount = thirdReimbursementAgentAccount;
         }
-        public async Task WriteAsync(XmlWriter writer, SettlementInstruction11 value, string isoNamespace)
+        public async Task WriteAsync(XmlWriter writer, SettlementInstruction11 valueBeingSerialized, string isoNamespace)
         {
             // SettlementMethod Required SettlementMethod1Code SettlementMethod1Code
             await writer.WriteStartElementAsync(null, "SttlmMtd", isoNamespace );
-            await settlementMethod.WriteAsync(writer, value.SettlementMethod, isoNamespace);
+            await settlementMethod.WriteAsync(writer, valueBeingSerialized.SettlementMethod, isoNamespace);
             await writer.WriteEndElementAsync();
             // SettlementAccount Optional CashAccount40 CashAccount40
-            if ( value.SettlementAccount is CashAccount40 populatedSettlementAccount)
+            if ( valueBeingSerialized.SettlementAccount is CashAccount40 populatedSettlementAccount)
             {
                 await writer.WriteStartElementAsync(null, "SttlmAcct", isoNamespace );
                 await settlementAccount.WriteAsync(writer, populatedSettlementAccount, isoNamespace);
                 await writer.WriteEndElementAsync();
             }
             // ClearingSystem Optional ClearingSystemIdentification3Choice ClearingSystemIdentification3Choice_
-            if ( value.ClearingSystem is ClearingSystemIdentification3Choice_ populatedClearingSystem)
+            if ( valueBeingSerialized.ClearingSystem is ClearingSystemIdentification3Choice_ populatedClearingSystem)
             {
                 await writer.WriteStartElementAsync(null, "ClrSys", isoNamespace );
                 await clearingSystem.WriteAsync(writer, populatedClearingSystem, isoNamespace);
                 await writer.WriteEndElementAsync();
             }
             // InstructingReimbursementAgent Optional BranchAndFinancialInstitutionIdentification6 BranchAndFinancialInstitutionIdentification6
-            if ( value.InstructingReimbursementAgent is BranchAndFinancialInstitutionIdentification6 populatedInstructingReimbursementAgent)
+            if ( valueBeingSerialized.InstructingReimbursementAgent is BranchAndFinancialInstitutionIdentification6 populatedInstructingReimbursementAgent)
             {
                 await writer.WriteStartElementAsync(null, "InstgRmbrsmntAgt", isoNamespace );
                 await instructingReimbursementAgent.WriteAsync(writer, populatedInstructingReimbursementAgent, isoNamespace);
                 await writer.WriteEndElementAsync();
             }
             // InstructingReimbursementAgentAccount Optional CashAccount40 CashAccount40
-            if ( value.InstructingReimbursementAgentAccount is CashAccount40 populatedInstructingReimbursementAgentAccount)
+            if ( valueBeingSerialized.InstructingReimbursementAgentAccount is CashAccount40 populatedInstructingReimbursementAgentAccount)
             {
                 await writer.WriteStartElementAsync(null, "InstgRmbrsmntAgtAcct", isoNamespace );
                 await instructingReimbursementAgentAccount.WriteAsync(writer, populatedInstructingReimbursementAgentAccount, isoNamespace);
                 await writer.WriteEndElementAsync();
             }
             // InstructedReimbursementAgent Optional BranchAndFinancialInstitutionIdentification6 BranchAndFinancialInstitutionIdentification6
-            if ( value.InstructedReimbursementAgent is BranchAndFinancialInstitutionIdentification6 populatedInstructedReimbursementAgent)
+            if ( valueBeingSerialized.InstructedReimbursementAgent is BranchAndFinancialInstitutionIdentification6 populatedInstructedReimbursementAgent)
             {
                 await writer.WriteStartElementAsync(null, "InstdRmbrsmntAgt", isoNamespace );
                 await instructedReimbursementAgent.WriteAsync(writer, populatedInstructedReimbursementAgent, isoNamespace);
                 await writer.WriteEndElementAsync();
             }
             // InstructedReimbursementAgentAccount Optional CashAccount40 CashAccount40
-            if ( value.InstructedReimbursementAgentAccount is CashAccount40 populatedInstructedReimbursementAgentAccount)
+            if ( valueBeingSerialized.InstructedReimbursementAgentAccount is CashAccount40 populatedInstructedReimbursementAgentAccount)
             {
                 await writer.WriteStartElementAsync(null, "InstdRmbrsmntAgtAcct", isoNamespace );
                 await instructedReimbursementAgentAccount.WriteAsync(writer, populatedInstructedReimbursementAgentAccount, isoNamespace);
                 await writer.WriteEndElementAsync();
             }
             // ThirdReimbursementAgent Optional BranchAndFinancialInstitutionIdentification6 BranchAndFinancialInstitutionIdentification6
-            if ( value.ThirdReimbursementAgent is BranchAndFinancialInstitutionIdentification6 populatedThirdReimbursementAgent)
+            if ( valueBeingSerialized.ThirdReimbursementAgent is BranchAndFinancialInstitutionIdentification6 populatedThirdReimbursementAgent)
             {
                 await writer.WriteStartElementAsync(null, "ThrdRmbrsmntAgt", isoNamespace );
                 await thirdReimbursementAgent.WriteAsync(writer, populatedThirdReimbursementAgent, isoNamespace);
                 await writer.WriteEndElementAsync();
             }
             // ThirdReimbursementAgentAccount Optional CashAccount40 CashAccount40
-            if ( value.ThirdReimbursementAgentAccount is CashAccount40 populatedThirdReimbursementAgentAccount)
+            if ( valueBeingSerialized.ThirdReimbursementAgentAccount is CashAccount40 populatedThirdReimbursementAgentAccount)
             {
                 await writer.WriteStartElementAsync(null, "ThrdRmbrsmntAgtAcct", isoNamespace );
                 await thirdReimbursementAgentAccount.WriteAsync(writer, populatedThirdReimbursementAgentAccount, isoNamespace);

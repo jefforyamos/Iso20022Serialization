@@ -37,21 +37,21 @@ namespace BeneficialStrategies.Iso20022.Serialization.Xml.Writers.Components
             this.electronicAddress = electronicAddress;
             this.postalAddress = postalAddress;
         }
-        public async Task WriteAsync(XmlWriter writer, RemittanceLocationData1 value, string isoNamespace)
+        public async Task WriteAsync(XmlWriter writer, RemittanceLocationData1 valueBeingSerialized, string isoNamespace)
         {
             // Method Required RemittanceLocationMethod2Code RemittanceLocationMethod2Code
             await writer.WriteStartElementAsync(null, "Mtd", isoNamespace );
-            await method.WriteAsync(writer, value.Method, isoNamespace);
+            await method.WriteAsync(writer, valueBeingSerialized.Method, isoNamespace);
             await writer.WriteEndElementAsync();
             // ElectronicAddress Optional Max2048Text System.String
-            if ( value.ElectronicAddress is System.String populatedElectronicAddress)
+            if ( valueBeingSerialized.ElectronicAddress is System.String populatedElectronicAddress)
             {
                 await writer.WriteStartElementAsync(null, "ElctrncAdr", isoNamespace );
                 await electronicAddress.WriteAsync(writer, populatedElectronicAddress, isoNamespace);
                 await writer.WriteEndElementAsync();
             }
             // PostalAddress Optional NameAndAddress16 NameAndAddress16
-            if ( value.PostalAddress is NameAndAddress16 populatedPostalAddress)
+            if ( valueBeingSerialized.PostalAddress is NameAndAddress16 populatedPostalAddress)
             {
                 await writer.WriteStartElementAsync(null, "PstlAdr", isoNamespace );
                 await postalAddress.WriteAsync(writer, populatedPostalAddress, isoNamespace);

@@ -34,10 +34,10 @@ namespace BeneficialStrategies.Iso20022.Serialization.Xml.Writers.Components
             this.placeAndName = placeAndName;
             this.envelope = envelope;
         }
-        public async Task WriteAsync(XmlWriter writer, SupplementaryData1 value, string isoNamespace)
+        public async Task WriteAsync(XmlWriter writer, SupplementaryData1 valueBeingSerialized, string isoNamespace)
         {
             // PlaceAndName Optional Max350Text System.String
-            if ( value.PlaceAndName is System.String populatedPlaceAndName)
+            if ( valueBeingSerialized.PlaceAndName is System.String populatedPlaceAndName)
             {
                 await writer.WriteStartElementAsync(null, "PlcAndNm", isoNamespace );
                 await placeAndName.WriteAsync(writer, populatedPlaceAndName, isoNamespace);
@@ -45,7 +45,7 @@ namespace BeneficialStrategies.Iso20022.Serialization.Xml.Writers.Components
             }
             // Envelope Required SupplementaryDataEnvelope1 SupplementaryDataEnvelope1
             await writer.WriteStartElementAsync(null, "Envlp", isoNamespace );
-            await envelope.WriteAsync(writer, value.Envelope, isoNamespace);
+            await envelope.WriteAsync(writer, valueBeingSerialized.Envelope, isoNamespace);
             await writer.WriteEndElementAsync();
         }
     }

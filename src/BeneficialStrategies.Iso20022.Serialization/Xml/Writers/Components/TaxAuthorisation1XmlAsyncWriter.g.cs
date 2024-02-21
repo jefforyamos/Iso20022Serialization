@@ -34,17 +34,17 @@ namespace BeneficialStrategies.Iso20022.Serialization.Xml.Writers.Components
             this.title = title;
             this.name = name;
         }
-        public async Task WriteAsync(XmlWriter writer, TaxAuthorisation1 value, string isoNamespace)
+        public async Task WriteAsync(XmlWriter writer, TaxAuthorisation1 valueBeingSerialized, string isoNamespace)
         {
             // Title Optional Max35Text System.String
-            if ( value.Title is System.String populatedTitle)
+            if ( valueBeingSerialized.Title is System.String populatedTitle)
             {
                 await writer.WriteStartElementAsync(null, "Titl", isoNamespace );
                 await title.WriteAsync(writer, populatedTitle, isoNamespace);
                 await writer.WriteEndElementAsync();
             }
             // Name Optional Max140Text System.String
-            if ( value.Name is System.String populatedName)
+            if ( valueBeingSerialized.Name is System.String populatedName)
             {
                 await writer.WriteStartElementAsync(null, "Nm", isoNamespace );
                 await name.WriteAsync(writer, populatedName, isoNamespace);

@@ -34,10 +34,10 @@ namespace BeneficialStrategies.Iso20022.Serialization.Xml.Writers.Components
             this.type = type;
             this.amount = amount;
         }
-        public async Task WriteAsync(XmlWriter writer, DiscountAmountAndType1 value, string isoNamespace)
+        public async Task WriteAsync(XmlWriter writer, DiscountAmountAndType1 valueBeingSerialized, string isoNamespace)
         {
             // Type Optional DiscountAmountType1Choice DiscountAmountType1Choice_
-            if ( value.Type is DiscountAmountType1Choice_ populatedType)
+            if ( valueBeingSerialized.Type is DiscountAmountType1Choice_ populatedType)
             {
                 await writer.WriteStartElementAsync(null, "Tp", isoNamespace );
                 await type.WriteAsync(writer, populatedType, isoNamespace);
@@ -45,7 +45,7 @@ namespace BeneficialStrategies.Iso20022.Serialization.Xml.Writers.Components
             }
             // Amount Required ActiveOrHistoricCurrencyAndAmount System.Decimal
             await writer.WriteStartElementAsync(null, "Amt", isoNamespace );
-            await amount.WriteAsync(writer, value.Amount, isoNamespace);
+            await amount.WriteAsync(writer, valueBeingSerialized.Amount, isoNamespace);
             await writer.WriteEndElementAsync();
         }
     }

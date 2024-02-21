@@ -34,10 +34,10 @@ namespace BeneficialStrategies.Iso20022.Serialization.Xml.Writers.Components
             this.clearingSystemIdentification = clearingSystemIdentification;
             this.memberIdentification = memberIdentification;
         }
-        public async Task WriteAsync(XmlWriter writer, ClearingSystemMemberIdentification2 value, string isoNamespace)
+        public async Task WriteAsync(XmlWriter writer, ClearingSystemMemberIdentification2 valueBeingSerialized, string isoNamespace)
         {
             // ClearingSystemIdentification Optional ClearingSystemIdentification2Choice ClearingSystemIdentification2Choice_
-            if ( value.ClearingSystemIdentification is ClearingSystemIdentification2Choice_ populatedClearingSystemIdentification)
+            if ( valueBeingSerialized.ClearingSystemIdentification is ClearingSystemIdentification2Choice_ populatedClearingSystemIdentification)
             {
                 await writer.WriteStartElementAsync(null, "ClrSysId", isoNamespace );
                 await clearingSystemIdentification.WriteAsync(writer, populatedClearingSystemIdentification, isoNamespace);
@@ -45,7 +45,7 @@ namespace BeneficialStrategies.Iso20022.Serialization.Xml.Writers.Components
             }
             // MemberIdentification Required Max35Text System.String
             await writer.WriteStartElementAsync(null, "MmbId", isoNamespace );
-            await memberIdentification.WriteAsync(writer, value.MemberIdentification, isoNamespace);
+            await memberIdentification.WriteAsync(writer, valueBeingSerialized.MemberIdentification, isoNamespace);
             await writer.WriteEndElementAsync();
         }
     }

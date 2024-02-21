@@ -37,21 +37,21 @@ namespace BeneficialStrategies.Iso20022.Serialization.Xml.Writers.Components
             this.schemeName = schemeName;
             this.issuer = issuer;
         }
-        public async Task WriteAsync(XmlWriter writer, GenericPersonIdentification1 value, string isoNamespace)
+        public async Task WriteAsync(XmlWriter writer, GenericPersonIdentification1 valueBeingSerialized, string isoNamespace)
         {
             // Identification Required Max35Text System.String
             await writer.WriteStartElementAsync(null, "Id", isoNamespace );
-            await identification.WriteAsync(writer, value.Identification, isoNamespace);
+            await identification.WriteAsync(writer, valueBeingSerialized.Identification, isoNamespace);
             await writer.WriteEndElementAsync();
             // SchemeName Optional PersonIdentificationSchemeName1Choice PersonIdentificationSchemeName1Choice_
-            if ( value.SchemeName is PersonIdentificationSchemeName1Choice_ populatedSchemeName)
+            if ( valueBeingSerialized.SchemeName is PersonIdentificationSchemeName1Choice_ populatedSchemeName)
             {
                 await writer.WriteStartElementAsync(null, "SchmeNm", isoNamespace );
                 await schemeName.WriteAsync(writer, populatedSchemeName, isoNamespace);
                 await writer.WriteEndElementAsync();
             }
             // Issuer Optional Max35Text System.String
-            if ( value.Issuer is System.String populatedIssuer)
+            if ( valueBeingSerialized.Issuer is System.String populatedIssuer)
             {
                 await writer.WriteStartElementAsync(null, "Issr", isoNamespace );
                 await issuer.WriteAsync(writer, populatedIssuer, isoNamespace);

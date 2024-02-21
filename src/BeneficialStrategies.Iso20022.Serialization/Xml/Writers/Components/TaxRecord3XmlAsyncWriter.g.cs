@@ -55,66 +55,66 @@ namespace BeneficialStrategies.Iso20022.Serialization.Xml.Writers.Components
             this.taxAmount = taxAmount;
             this.additionalInformation = additionalInformation;
         }
-        public async Task WriteAsync(XmlWriter writer, TaxRecord3 value, string isoNamespace)
+        public async Task WriteAsync(XmlWriter writer, TaxRecord3 valueBeingSerialized, string isoNamespace)
         {
             // Type Optional Max35Text System.String
-            if ( value.Type is System.String populatedType)
+            if ( valueBeingSerialized.Type is System.String populatedType)
             {
                 await writer.WriteStartElementAsync(null, "Tp", isoNamespace );
                 await type.WriteAsync(writer, populatedType, isoNamespace);
                 await writer.WriteEndElementAsync();
             }
             // Category Optional Max35Text System.String
-            if ( value.Category is System.String populatedCategory)
+            if ( valueBeingSerialized.Category is System.String populatedCategory)
             {
                 await writer.WriteStartElementAsync(null, "Ctgy", isoNamespace );
                 await category.WriteAsync(writer, populatedCategory, isoNamespace);
                 await writer.WriteEndElementAsync();
             }
             // CategoryDetails Optional Max35Text System.String
-            if ( value.CategoryDetails is System.String populatedCategoryDetails)
+            if ( valueBeingSerialized.CategoryDetails is System.String populatedCategoryDetails)
             {
                 await writer.WriteStartElementAsync(null, "CtgyDtls", isoNamespace );
                 await categoryDetails.WriteAsync(writer, populatedCategoryDetails, isoNamespace);
                 await writer.WriteEndElementAsync();
             }
             // DebtorStatus Optional Max35Text System.String
-            if ( value.DebtorStatus is System.String populatedDebtorStatus)
+            if ( valueBeingSerialized.DebtorStatus is System.String populatedDebtorStatus)
             {
                 await writer.WriteStartElementAsync(null, "DbtrSts", isoNamespace );
                 await debtorStatus.WriteAsync(writer, populatedDebtorStatus, isoNamespace);
                 await writer.WriteEndElementAsync();
             }
             // CertificateIdentification Optional Max35Text System.String
-            if ( value.CertificateIdentification is System.String populatedCertificateIdentification)
+            if ( valueBeingSerialized.CertificateIdentification is System.String populatedCertificateIdentification)
             {
                 await writer.WriteStartElementAsync(null, "CertId", isoNamespace );
                 await certificateIdentification.WriteAsync(writer, populatedCertificateIdentification, isoNamespace);
                 await writer.WriteEndElementAsync();
             }
             // FormsCode Optional Max35Text System.String
-            if ( value.FormsCode is System.String populatedFormsCode)
+            if ( valueBeingSerialized.FormsCode is System.String populatedFormsCode)
             {
                 await writer.WriteStartElementAsync(null, "FrmsCd", isoNamespace );
                 await formsCode.WriteAsync(writer, populatedFormsCode, isoNamespace);
                 await writer.WriteEndElementAsync();
             }
             // Period Optional TaxPeriod3 TaxPeriod3
-            if ( value.Period is TaxPeriod3 populatedPeriod)
+            if ( valueBeingSerialized.Period is TaxPeriod3 populatedPeriod)
             {
                 await writer.WriteStartElementAsync(null, "Prd", isoNamespace );
                 await period.WriteAsync(writer, populatedPeriod, isoNamespace);
                 await writer.WriteEndElementAsync();
             }
             // TaxAmount Optional TaxAmount3 TaxAmount3
-            if ( value.TaxAmount is TaxAmount3 populatedTaxAmount)
+            if ( valueBeingSerialized.TaxAmount is TaxAmount3 populatedTaxAmount)
             {
                 await writer.WriteStartElementAsync(null, "TaxAmt", isoNamespace );
                 await taxAmount.WriteAsync(writer, populatedTaxAmount, isoNamespace);
                 await writer.WriteEndElementAsync();
             }
             // AdditionalInformation Optional Max140Text System.String
-            if ( value.AdditionalInformation is System.String populatedAdditionalInformation)
+            if ( valueBeingSerialized.AdditionalInformation is System.String populatedAdditionalInformation)
             {
                 await writer.WriteStartElementAsync(null, "AddtlInf", isoNamespace );
                 await additionalInformation.WriteAsync(writer, populatedAdditionalInformation, isoNamespace);

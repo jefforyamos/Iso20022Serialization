@@ -52,56 +52,56 @@ namespace BeneficialStrategies.Iso20022.Serialization.Xml.Writers.Components
             this.familyMedicalInsuranceIndicator = familyMedicalInsuranceIndicator;
             this.employeeTerminationIndicator = employeeTerminationIndicator;
         }
-        public async Task WriteAsync(XmlWriter writer, Garnishment3 value, string isoNamespace)
+        public async Task WriteAsync(XmlWriter writer, Garnishment3 valueBeingSerialized, string isoNamespace)
         {
             // Type Required GarnishmentType1 GarnishmentType1
             await writer.WriteStartElementAsync(null, "Tp", isoNamespace );
-            await type.WriteAsync(writer, value.Type, isoNamespace);
+            await type.WriteAsync(writer, valueBeingSerialized.Type, isoNamespace);
             await writer.WriteEndElementAsync();
             // Garnishee Optional PartyIdentification135 PartyIdentification135
-            if ( value.Garnishee is PartyIdentification135 populatedGarnishee)
+            if ( valueBeingSerialized.Garnishee is PartyIdentification135 populatedGarnishee)
             {
                 await writer.WriteStartElementAsync(null, "Grnshee", isoNamespace );
                 await garnishee.WriteAsync(writer, populatedGarnishee, isoNamespace);
                 await writer.WriteEndElementAsync();
             }
             // GarnishmentAdministrator Optional PartyIdentification135 PartyIdentification135
-            if ( value.GarnishmentAdministrator is PartyIdentification135 populatedGarnishmentAdministrator)
+            if ( valueBeingSerialized.GarnishmentAdministrator is PartyIdentification135 populatedGarnishmentAdministrator)
             {
                 await writer.WriteStartElementAsync(null, "GrnshmtAdmstr", isoNamespace );
                 await garnishmentAdministrator.WriteAsync(writer, populatedGarnishmentAdministrator, isoNamespace);
                 await writer.WriteEndElementAsync();
             }
             // ReferenceNumber Optional Max140Text System.String
-            if ( value.ReferenceNumber is System.String populatedReferenceNumber)
+            if ( valueBeingSerialized.ReferenceNumber is System.String populatedReferenceNumber)
             {
                 await writer.WriteStartElementAsync(null, "RefNb", isoNamespace );
                 await referenceNumber.WriteAsync(writer, populatedReferenceNumber, isoNamespace);
                 await writer.WriteEndElementAsync();
             }
             // Date Optional ISODate System.DateOnly
-            if ( value.Date is System.DateOnly populatedDate)
+            if ( valueBeingSerialized.Date is System.DateOnly populatedDate)
             {
                 await writer.WriteStartElementAsync(null, "Dt", isoNamespace );
                 await date.WriteAsync(writer, populatedDate, isoNamespace);
                 await writer.WriteEndElementAsync();
             }
             // RemittedAmount Optional ActiveOrHistoricCurrencyAndAmount System.Decimal
-            if ( value.RemittedAmount is System.Decimal populatedRemittedAmount)
+            if ( valueBeingSerialized.RemittedAmount is System.Decimal populatedRemittedAmount)
             {
                 await writer.WriteStartElementAsync(null, "RmtdAmt", isoNamespace );
                 await remittedAmount.WriteAsync(writer, populatedRemittedAmount, isoNamespace);
                 await writer.WriteEndElementAsync();
             }
             // FamilyMedicalInsuranceIndicator Optional TrueFalseIndicator System.String
-            if ( value.FamilyMedicalInsuranceIndicator is System.String populatedFamilyMedicalInsuranceIndicator)
+            if ( valueBeingSerialized.FamilyMedicalInsuranceIndicator is System.String populatedFamilyMedicalInsuranceIndicator)
             {
                 await writer.WriteStartElementAsync(null, "FmlyMdclInsrncInd", isoNamespace );
                 await familyMedicalInsuranceIndicator.WriteAsync(writer, populatedFamilyMedicalInsuranceIndicator, isoNamespace);
                 await writer.WriteEndElementAsync();
             }
             // EmployeeTerminationIndicator Optional TrueFalseIndicator System.String
-            if ( value.EmployeeTerminationIndicator is System.String populatedEmployeeTerminationIndicator)
+            if ( valueBeingSerialized.EmployeeTerminationIndicator is System.String populatedEmployeeTerminationIndicator)
             {
                 await writer.WriteStartElementAsync(null, "MplyeeTermntnInd", isoNamespace );
                 await employeeTerminationIndicator.WriteAsync(writer, populatedEmployeeTerminationIndicator, isoNamespace);

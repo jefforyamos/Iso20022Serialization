@@ -46,45 +46,45 @@ namespace BeneficialStrategies.Iso20022.Serialization.Xml.Writers.Components
             this.amount = amount;
             this.information = information;
         }
-        public async Task WriteAsync(XmlWriter writer, StructuredRegulatoryReporting3 value, string isoNamespace)
+        public async Task WriteAsync(XmlWriter writer, StructuredRegulatoryReporting3 valueBeingSerialized, string isoNamespace)
         {
             // Type Optional Max35Text System.String
-            if ( value.Type is System.String populatedType)
+            if ( valueBeingSerialized.Type is System.String populatedType)
             {
                 await writer.WriteStartElementAsync(null, "Tp", isoNamespace );
                 await type.WriteAsync(writer, populatedType, isoNamespace);
                 await writer.WriteEndElementAsync();
             }
             // Date Optional ISODate System.DateOnly
-            if ( value.Date is System.DateOnly populatedDate)
+            if ( valueBeingSerialized.Date is System.DateOnly populatedDate)
             {
                 await writer.WriteStartElementAsync(null, "Dt", isoNamespace );
                 await date.WriteAsync(writer, populatedDate, isoNamespace);
                 await writer.WriteEndElementAsync();
             }
             // Country Optional CountryCode string
-            if ( value.Country is string populatedCountry)
+            if ( valueBeingSerialized.Country is string populatedCountry)
             {
                 await writer.WriteStartElementAsync(null, "Ctry", isoNamespace );
                 await country.WriteAsync(writer, populatedCountry, isoNamespace);
                 await writer.WriteEndElementAsync();
             }
             // Code Optional Max10Text System.String
-            if ( value.Code is System.String populatedCode)
+            if ( valueBeingSerialized.Code is System.String populatedCode)
             {
                 await writer.WriteStartElementAsync(null, "Cd", isoNamespace );
                 await code.WriteAsync(writer, populatedCode, isoNamespace);
                 await writer.WriteEndElementAsync();
             }
             // Amount Optional ActiveOrHistoricCurrencyAndAmount System.Decimal
-            if ( value.Amount is System.Decimal populatedAmount)
+            if ( valueBeingSerialized.Amount is System.Decimal populatedAmount)
             {
                 await writer.WriteStartElementAsync(null, "Amt", isoNamespace );
                 await amount.WriteAsync(writer, populatedAmount, isoNamespace);
                 await writer.WriteEndElementAsync();
             }
             // Information Optional Max35Text System.String
-            if ( value.Information is System.String populatedInformation)
+            if ( valueBeingSerialized.Information is System.String populatedInformation)
             {
                 await writer.WriteStartElementAsync(null, "Inf", isoNamespace );
                 await information.WriteAsync(writer, populatedInformation, isoNamespace);

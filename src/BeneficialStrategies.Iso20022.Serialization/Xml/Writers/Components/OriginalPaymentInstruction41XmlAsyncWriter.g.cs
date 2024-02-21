@@ -52,10 +52,10 @@ namespace BeneficialStrategies.Iso20022.Serialization.Xml.Writers.Components
             this.reversalReasonInformation = reversalReasonInformation;
             this.transactionInformation = transactionInformation;
         }
-        public async Task WriteAsync(XmlWriter writer, OriginalPaymentInstruction41 value, string isoNamespace)
+        public async Task WriteAsync(XmlWriter writer, OriginalPaymentInstruction41 valueBeingSerialized, string isoNamespace)
         {
             // ReversalPaymentInformationIdentification Optional Max35Text System.String
-            if ( value.ReversalPaymentInformationIdentification is System.String populatedReversalPaymentInformationIdentification)
+            if ( valueBeingSerialized.ReversalPaymentInformationIdentification is System.String populatedReversalPaymentInformationIdentification)
             {
                 await writer.WriteStartElementAsync(null, "RvslPmtInfId", isoNamespace );
                 await reversalPaymentInformationIdentification.WriteAsync(writer, populatedReversalPaymentInformationIdentification, isoNamespace);
@@ -63,45 +63,45 @@ namespace BeneficialStrategies.Iso20022.Serialization.Xml.Writers.Components
             }
             // OriginalPaymentInformationIdentification Required Max35Text System.String
             await writer.WriteStartElementAsync(null, "OrgnlPmtInfId", isoNamespace );
-            await originalPaymentInformationIdentification.WriteAsync(writer, value.OriginalPaymentInformationIdentification, isoNamespace);
+            await originalPaymentInformationIdentification.WriteAsync(writer, valueBeingSerialized.OriginalPaymentInformationIdentification, isoNamespace);
             await writer.WriteEndElementAsync();
             // OriginalNumberOfTransactions Optional Max15NumericText System.String
-            if ( value.OriginalNumberOfTransactions is System.String populatedOriginalNumberOfTransactions)
+            if ( valueBeingSerialized.OriginalNumberOfTransactions is System.String populatedOriginalNumberOfTransactions)
             {
                 await writer.WriteStartElementAsync(null, "OrgnlNbOfTxs", isoNamespace );
                 await originalNumberOfTransactions.WriteAsync(writer, populatedOriginalNumberOfTransactions, isoNamespace);
                 await writer.WriteEndElementAsync();
             }
             // OriginalControlSum Optional DecimalNumber System.UInt64
-            if ( value.OriginalControlSum is System.UInt64 populatedOriginalControlSum)
+            if ( valueBeingSerialized.OriginalControlSum is System.UInt64 populatedOriginalControlSum)
             {
                 await writer.WriteStartElementAsync(null, "OrgnlCtrlSum", isoNamespace );
                 await originalControlSum.WriteAsync(writer, populatedOriginalControlSum, isoNamespace);
                 await writer.WriteEndElementAsync();
             }
             // BatchBooking Optional BatchBookingIndicator System.String
-            if ( value.BatchBooking is System.String populatedBatchBooking)
+            if ( valueBeingSerialized.BatchBooking is System.String populatedBatchBooking)
             {
                 await writer.WriteStartElementAsync(null, "BtchBookg", isoNamespace );
                 await batchBooking.WriteAsync(writer, populatedBatchBooking, isoNamespace);
                 await writer.WriteEndElementAsync();
             }
             // PaymentInformationReversal Optional TrueFalseIndicator System.String
-            if ( value.PaymentInformationReversal is System.String populatedPaymentInformationReversal)
+            if ( valueBeingSerialized.PaymentInformationReversal is System.String populatedPaymentInformationReversal)
             {
                 await writer.WriteStartElementAsync(null, "PmtInfRvsl", isoNamespace );
                 await paymentInformationReversal.WriteAsync(writer, populatedPaymentInformationReversal, isoNamespace);
                 await writer.WriteEndElementAsync();
             }
             // ReversalReasonInformation Optional PaymentReversalReason9 PaymentReversalReason9
-            if ( value.ReversalReasonInformation is PaymentReversalReason9 populatedReversalReasonInformation)
+            if ( valueBeingSerialized.ReversalReasonInformation is PaymentReversalReason9 populatedReversalReasonInformation)
             {
                 await writer.WriteStartElementAsync(null, "RvslRsnInf", isoNamespace );
                 await reversalReasonInformation.WriteAsync(writer, populatedReversalReasonInformation, isoNamespace);
                 await writer.WriteEndElementAsync();
             }
             // TransactionInformation Optional PaymentTransaction134 PaymentTransaction134
-            if ( value.TransactionInformation is PaymentTransaction134 populatedTransactionInformation)
+            if ( valueBeingSerialized.TransactionInformation is PaymentTransaction134 populatedTransactionInformation)
             {
                 await writer.WriteStartElementAsync(null, "TxInf", isoNamespace );
                 await transactionInformation.WriteAsync(writer, populatedTransactionInformation, isoNamespace);

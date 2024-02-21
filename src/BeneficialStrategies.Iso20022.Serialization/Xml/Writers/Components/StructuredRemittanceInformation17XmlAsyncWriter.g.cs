@@ -52,59 +52,59 @@ namespace BeneficialStrategies.Iso20022.Serialization.Xml.Writers.Components
             this.garnishmentRemittance = garnishmentRemittance;
             this.additionalRemittanceInformation = additionalRemittanceInformation;
         }
-        public async Task WriteAsync(XmlWriter writer, StructuredRemittanceInformation17 value, string isoNamespace)
+        public async Task WriteAsync(XmlWriter writer, StructuredRemittanceInformation17 valueBeingSerialized, string isoNamespace)
         {
             // ReferredDocumentInformation Optional ReferredDocumentInformation7 ReferredDocumentInformation7
-            if ( value.ReferredDocumentInformation is ReferredDocumentInformation7 populatedReferredDocumentInformation)
+            if ( valueBeingSerialized.ReferredDocumentInformation is ReferredDocumentInformation7 populatedReferredDocumentInformation)
             {
                 await writer.WriteStartElementAsync(null, "RfrdDocInf", isoNamespace );
                 await referredDocumentInformation.WriteAsync(writer, populatedReferredDocumentInformation, isoNamespace);
                 await writer.WriteEndElementAsync();
             }
             // ReferredDocumentAmount Optional RemittanceAmount2 RemittanceAmount2
-            if ( value.ReferredDocumentAmount is RemittanceAmount2 populatedReferredDocumentAmount)
+            if ( valueBeingSerialized.ReferredDocumentAmount is RemittanceAmount2 populatedReferredDocumentAmount)
             {
                 await writer.WriteStartElementAsync(null, "RfrdDocAmt", isoNamespace );
                 await referredDocumentAmount.WriteAsync(writer, populatedReferredDocumentAmount, isoNamespace);
                 await writer.WriteEndElementAsync();
             }
             // CreditorReferenceInformation Optional CreditorReferenceInformation2 CreditorReferenceInformation2
-            if ( value.CreditorReferenceInformation is CreditorReferenceInformation2 populatedCreditorReferenceInformation)
+            if ( valueBeingSerialized.CreditorReferenceInformation is CreditorReferenceInformation2 populatedCreditorReferenceInformation)
             {
                 await writer.WriteStartElementAsync(null, "CdtrRefInf", isoNamespace );
                 await creditorReferenceInformation.WriteAsync(writer, populatedCreditorReferenceInformation, isoNamespace);
                 await writer.WriteEndElementAsync();
             }
             // Invoicer Optional PartyIdentification135 PartyIdentification135
-            if ( value.Invoicer is PartyIdentification135 populatedInvoicer)
+            if ( valueBeingSerialized.Invoicer is PartyIdentification135 populatedInvoicer)
             {
                 await writer.WriteStartElementAsync(null, "Invcr", isoNamespace );
                 await invoicer.WriteAsync(writer, populatedInvoicer, isoNamespace);
                 await writer.WriteEndElementAsync();
             }
             // Invoicee Optional PartyIdentification135 PartyIdentification135
-            if ( value.Invoicee is PartyIdentification135 populatedInvoicee)
+            if ( valueBeingSerialized.Invoicee is PartyIdentification135 populatedInvoicee)
             {
                 await writer.WriteStartElementAsync(null, "Invcee", isoNamespace );
                 await invoicee.WriteAsync(writer, populatedInvoicee, isoNamespace);
                 await writer.WriteEndElementAsync();
             }
             // TaxRemittance Optional TaxData1 TaxData1
-            if ( value.TaxRemittance is TaxData1 populatedTaxRemittance)
+            if ( valueBeingSerialized.TaxRemittance is TaxData1 populatedTaxRemittance)
             {
                 await writer.WriteStartElementAsync(null, "TaxRmt", isoNamespace );
                 await taxRemittance.WriteAsync(writer, populatedTaxRemittance, isoNamespace);
                 await writer.WriteEndElementAsync();
             }
             // GarnishmentRemittance Optional Garnishment3 Garnishment3
-            if ( value.GarnishmentRemittance is Garnishment3 populatedGarnishmentRemittance)
+            if ( valueBeingSerialized.GarnishmentRemittance is Garnishment3 populatedGarnishmentRemittance)
             {
                 await writer.WriteStartElementAsync(null, "GrnshmtRmt", isoNamespace );
                 await garnishmentRemittance.WriteAsync(writer, populatedGarnishmentRemittance, isoNamespace);
                 await writer.WriteEndElementAsync();
             }
             // AdditionalRemittanceInformation Collection Max140Text System.String
-            foreach ( var item in value.AdditionalRemittanceInformation)
+            foreach ( var item in valueBeingSerialized.AdditionalRemittanceInformation)
             {
                 await writer.WriteStartElementAsync(null, "AddtlRmtInf", isoNamespace );
                 await additionalRemittanceInformation.WriteAsync(writer, item , isoNamespace);

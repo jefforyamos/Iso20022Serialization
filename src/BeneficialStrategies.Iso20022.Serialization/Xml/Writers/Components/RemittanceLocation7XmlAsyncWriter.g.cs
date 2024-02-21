@@ -34,17 +34,17 @@ namespace BeneficialStrategies.Iso20022.Serialization.Xml.Writers.Components
             this.remittanceIdentification = remittanceIdentification;
             this.remittanceLocationDetails = remittanceLocationDetails;
         }
-        public async Task WriteAsync(XmlWriter writer, RemittanceLocation7 value, string isoNamespace)
+        public async Task WriteAsync(XmlWriter writer, RemittanceLocation7 valueBeingSerialized, string isoNamespace)
         {
             // RemittanceIdentification Optional Max35Text System.String
-            if ( value.RemittanceIdentification is System.String populatedRemittanceIdentification)
+            if ( valueBeingSerialized.RemittanceIdentification is System.String populatedRemittanceIdentification)
             {
                 await writer.WriteStartElementAsync(null, "RmtId", isoNamespace );
                 await remittanceIdentification.WriteAsync(writer, populatedRemittanceIdentification, isoNamespace);
                 await writer.WriteEndElementAsync();
             }
             // RemittanceLocationDetails Optional RemittanceLocationData1 RemittanceLocationData1
-            if ( value.RemittanceLocationDetails is RemittanceLocationData1 populatedRemittanceLocationDetails)
+            if ( valueBeingSerialized.RemittanceLocationDetails is RemittanceLocationData1 populatedRemittanceLocationDetails)
             {
                 await writer.WriteStartElementAsync(null, "RmtLctnDtls", isoNamespace );
                 await remittanceLocationDetails.WriteAsync(writer, populatedRemittanceLocationDetails, isoNamespace);

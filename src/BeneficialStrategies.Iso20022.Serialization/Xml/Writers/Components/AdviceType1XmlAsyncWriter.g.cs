@@ -34,17 +34,17 @@ namespace BeneficialStrategies.Iso20022.Serialization.Xml.Writers.Components
             this.creditAdvice = creditAdvice;
             this.debitAdvice = debitAdvice;
         }
-        public async Task WriteAsync(XmlWriter writer, AdviceType1 value, string isoNamespace)
+        public async Task WriteAsync(XmlWriter writer, AdviceType1 valueBeingSerialized, string isoNamespace)
         {
             // CreditAdvice Optional AdviceType1Choice AdviceType1Choice_
-            if ( value.CreditAdvice is AdviceType1Choice_ populatedCreditAdvice)
+            if ( valueBeingSerialized.CreditAdvice is AdviceType1Choice_ populatedCreditAdvice)
             {
                 await writer.WriteStartElementAsync(null, "CdtAdvc", isoNamespace );
                 await creditAdvice.WriteAsync(writer, populatedCreditAdvice, isoNamespace);
                 await writer.WriteEndElementAsync();
             }
             // DebitAdvice Optional AdviceType1Choice AdviceType1Choice_
-            if ( value.DebitAdvice is AdviceType1Choice_ populatedDebitAdvice)
+            if ( valueBeingSerialized.DebitAdvice is AdviceType1Choice_ populatedDebitAdvice)
             {
                 await writer.WriteStartElementAsync(null, "DbtAdvc", isoNamespace );
                 await debitAdvice.WriteAsync(writer, populatedDebitAdvice, isoNamespace);

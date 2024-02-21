@@ -34,15 +34,15 @@ namespace BeneficialStrategies.Iso20022.Serialization.Xml.Writers.Components
             this.fromDate = fromDate;
             this.toDate = toDate;
         }
-        public async Task WriteAsync(XmlWriter writer, DatePeriod2 value, string isoNamespace)
+        public async Task WriteAsync(XmlWriter writer, DatePeriod2 valueBeingSerialized, string isoNamespace)
         {
             // FromDate Required ISODate System.DateOnly
             await writer.WriteStartElementAsync(null, "FrDt", isoNamespace );
-            await fromDate.WriteAsync(writer, value.FromDate, isoNamespace);
+            await fromDate.WriteAsync(writer, valueBeingSerialized.FromDate, isoNamespace);
             await writer.WriteEndElementAsync();
             // ToDate Required ISODate System.DateOnly
             await writer.WriteStartElementAsync(null, "ToDt", isoNamespace );
-            await toDate.WriteAsync(writer, value.ToDate, isoNamespace);
+            await toDate.WriteAsync(writer, valueBeingSerialized.ToDate, isoNamespace);
             await writer.WriteEndElementAsync();
         }
     }

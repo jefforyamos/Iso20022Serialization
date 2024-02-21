@@ -34,15 +34,15 @@ namespace BeneficialStrategies.Iso20022.Serialization.Xml.Writers.Components
             this.name = name;
             this.address = address;
         }
-        public async Task WriteAsync(XmlWriter writer, NameAndAddress16 value, string isoNamespace)
+        public async Task WriteAsync(XmlWriter writer, NameAndAddress16 valueBeingSerialized, string isoNamespace)
         {
             // Name Required Max140Text System.String
             await writer.WriteStartElementAsync(null, "Nm", isoNamespace );
-            await name.WriteAsync(writer, value.Name, isoNamespace);
+            await name.WriteAsync(writer, valueBeingSerialized.Name, isoNamespace);
             await writer.WriteEndElementAsync();
             // Address Required PostalAddress24 PostalAddress24
             await writer.WriteStartElementAsync(null, "Adr", isoNamespace );
-            await address.WriteAsync(writer, value.Address, isoNamespace);
+            await address.WriteAsync(writer, valueBeingSerialized.Address, isoNamespace);
             await writer.WriteEndElementAsync();
         }
     }

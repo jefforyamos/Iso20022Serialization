@@ -40,31 +40,31 @@ namespace BeneficialStrategies.Iso20022.Serialization.Xml.Writers.Components
             this.totalAmount = totalAmount;
             this.details = details;
         }
-        public async Task WriteAsync(XmlWriter writer, TaxAmount3 value, string isoNamespace)
+        public async Task WriteAsync(XmlWriter writer, TaxAmount3 valueBeingSerialized, string isoNamespace)
         {
             // Rate Optional PercentageRate System.Decimal
-            if ( value.Rate is System.Decimal populatedRate)
+            if ( valueBeingSerialized.Rate is System.Decimal populatedRate)
             {
                 await writer.WriteStartElementAsync(null, "Rate", isoNamespace );
                 await rate.WriteAsync(writer, populatedRate, isoNamespace);
                 await writer.WriteEndElementAsync();
             }
             // TaxableBaseAmount Optional ActiveOrHistoricCurrencyAndAmount System.Decimal
-            if ( value.TaxableBaseAmount is System.Decimal populatedTaxableBaseAmount)
+            if ( valueBeingSerialized.TaxableBaseAmount is System.Decimal populatedTaxableBaseAmount)
             {
                 await writer.WriteStartElementAsync(null, "TaxblBaseAmt", isoNamespace );
                 await taxableBaseAmount.WriteAsync(writer, populatedTaxableBaseAmount, isoNamespace);
                 await writer.WriteEndElementAsync();
             }
             // TotalAmount Optional ActiveOrHistoricCurrencyAndAmount System.Decimal
-            if ( value.TotalAmount is System.Decimal populatedTotalAmount)
+            if ( valueBeingSerialized.TotalAmount is System.Decimal populatedTotalAmount)
             {
                 await writer.WriteStartElementAsync(null, "TtlAmt", isoNamespace );
                 await totalAmount.WriteAsync(writer, populatedTotalAmount, isoNamespace);
                 await writer.WriteEndElementAsync();
             }
             // Details Optional TaxRecordDetails3 TaxRecordDetails3
-            if ( value.Details is TaxRecordDetails3 populatedDetails)
+            if ( valueBeingSerialized.Details is TaxRecordDetails3 populatedDetails)
             {
                 await writer.WriteStartElementAsync(null, "Dtls", isoNamespace );
                 await details.WriteAsync(writer, populatedDetails, isoNamespace);

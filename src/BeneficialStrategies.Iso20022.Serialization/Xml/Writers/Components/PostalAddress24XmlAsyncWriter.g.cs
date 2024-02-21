@@ -76,115 +76,115 @@ namespace BeneficialStrategies.Iso20022.Serialization.Xml.Writers.Components
             this.country = country;
             this.addressLine = addressLine;
         }
-        public async Task WriteAsync(XmlWriter writer, PostalAddress24 value, string isoNamespace)
+        public async Task WriteAsync(XmlWriter writer, PostalAddress24 valueBeingSerialized, string isoNamespace)
         {
             // AddressType Optional AddressType3Choice AddressType3Choice_
-            if ( value.AddressType is AddressType3Choice_ populatedAddressType)
+            if ( valueBeingSerialized.AddressType is AddressType3Choice_ populatedAddressType)
             {
                 await writer.WriteStartElementAsync(null, "AdrTp", isoNamespace );
                 await addressType.WriteAsync(writer, populatedAddressType, isoNamespace);
                 await writer.WriteEndElementAsync();
             }
             // Department Optional Max70Text System.String
-            if ( value.Department is System.String populatedDepartment)
+            if ( valueBeingSerialized.Department is System.String populatedDepartment)
             {
                 await writer.WriteStartElementAsync(null, "Dept", isoNamespace );
                 await department.WriteAsync(writer, populatedDepartment, isoNamespace);
                 await writer.WriteEndElementAsync();
             }
             // SubDepartment Optional Max70Text System.String
-            if ( value.SubDepartment is System.String populatedSubDepartment)
+            if ( valueBeingSerialized.SubDepartment is System.String populatedSubDepartment)
             {
                 await writer.WriteStartElementAsync(null, "SubDept", isoNamespace );
                 await subDepartment.WriteAsync(writer, populatedSubDepartment, isoNamespace);
                 await writer.WriteEndElementAsync();
             }
             // StreetName Optional Max70Text System.String
-            if ( value.StreetName is System.String populatedStreetName)
+            if ( valueBeingSerialized.StreetName is System.String populatedStreetName)
             {
                 await writer.WriteStartElementAsync(null, "StrtNm", isoNamespace );
                 await streetName.WriteAsync(writer, populatedStreetName, isoNamespace);
                 await writer.WriteEndElementAsync();
             }
             // BuildingNumber Optional Max16Text System.String
-            if ( value.BuildingNumber is System.String populatedBuildingNumber)
+            if ( valueBeingSerialized.BuildingNumber is System.String populatedBuildingNumber)
             {
                 await writer.WriteStartElementAsync(null, "BldgNb", isoNamespace );
                 await buildingNumber.WriteAsync(writer, populatedBuildingNumber, isoNamespace);
                 await writer.WriteEndElementAsync();
             }
             // BuildingName Optional Max35Text System.String
-            if ( value.BuildingName is System.String populatedBuildingName)
+            if ( valueBeingSerialized.BuildingName is System.String populatedBuildingName)
             {
                 await writer.WriteStartElementAsync(null, "BldgNm", isoNamespace );
                 await buildingName.WriteAsync(writer, populatedBuildingName, isoNamespace);
                 await writer.WriteEndElementAsync();
             }
             // Floor Optional Max70Text System.String
-            if ( value.Floor is System.String populatedFloor)
+            if ( valueBeingSerialized.Floor is System.String populatedFloor)
             {
                 await writer.WriteStartElementAsync(null, "Flr", isoNamespace );
                 await floor.WriteAsync(writer, populatedFloor, isoNamespace);
                 await writer.WriteEndElementAsync();
             }
             // PostBox Optional Max16Text System.String
-            if ( value.PostBox is System.String populatedPostBox)
+            if ( valueBeingSerialized.PostBox is System.String populatedPostBox)
             {
                 await writer.WriteStartElementAsync(null, "PstBx", isoNamespace );
                 await postBox.WriteAsync(writer, populatedPostBox, isoNamespace);
                 await writer.WriteEndElementAsync();
             }
             // Room Optional Max70Text System.String
-            if ( value.Room is System.String populatedRoom)
+            if ( valueBeingSerialized.Room is System.String populatedRoom)
             {
                 await writer.WriteStartElementAsync(null, "Room", isoNamespace );
                 await room.WriteAsync(writer, populatedRoom, isoNamespace);
                 await writer.WriteEndElementAsync();
             }
             // PostCode Optional Max16Text System.String
-            if ( value.PostCode is System.String populatedPostCode)
+            if ( valueBeingSerialized.PostCode is System.String populatedPostCode)
             {
                 await writer.WriteStartElementAsync(null, "PstCd", isoNamespace );
                 await postCode.WriteAsync(writer, populatedPostCode, isoNamespace);
                 await writer.WriteEndElementAsync();
             }
             // TownName Optional Max35Text System.String
-            if ( value.TownName is System.String populatedTownName)
+            if ( valueBeingSerialized.TownName is System.String populatedTownName)
             {
                 await writer.WriteStartElementAsync(null, "TwnNm", isoNamespace );
                 await townName.WriteAsync(writer, populatedTownName, isoNamespace);
                 await writer.WriteEndElementAsync();
             }
             // TownLocationName Optional Max35Text System.String
-            if ( value.TownLocationName is System.String populatedTownLocationName)
+            if ( valueBeingSerialized.TownLocationName is System.String populatedTownLocationName)
             {
                 await writer.WriteStartElementAsync(null, "TwnLctnNm", isoNamespace );
                 await townLocationName.WriteAsync(writer, populatedTownLocationName, isoNamespace);
                 await writer.WriteEndElementAsync();
             }
             // DistrictName Optional Max35Text System.String
-            if ( value.DistrictName is System.String populatedDistrictName)
+            if ( valueBeingSerialized.DistrictName is System.String populatedDistrictName)
             {
                 await writer.WriteStartElementAsync(null, "DstrctNm", isoNamespace );
                 await districtName.WriteAsync(writer, populatedDistrictName, isoNamespace);
                 await writer.WriteEndElementAsync();
             }
             // CountrySubDivision Optional Max35Text System.String
-            if ( value.CountrySubDivision is System.String populatedCountrySubDivision)
+            if ( valueBeingSerialized.CountrySubDivision is System.String populatedCountrySubDivision)
             {
                 await writer.WriteStartElementAsync(null, "CtrySubDvsn", isoNamespace );
                 await countrySubDivision.WriteAsync(writer, populatedCountrySubDivision, isoNamespace);
                 await writer.WriteEndElementAsync();
             }
             // Country Optional CountryCode string
-            if ( value.Country is string populatedCountry)
+            if ( valueBeingSerialized.Country is string populatedCountry)
             {
                 await writer.WriteStartElementAsync(null, "Ctry", isoNamespace );
                 await country.WriteAsync(writer, populatedCountry, isoNamespace);
                 await writer.WriteEndElementAsync();
             }
             // AddressLine Collection Max70Text System.String
-            foreach ( var item in value.AddressLine)
+            foreach ( var item in valueBeingSerialized.AddressLine)
             {
                 await writer.WriteStartElementAsync(null, "AdrLine", isoNamespace );
                 await addressLine.WriteAsync(writer, item , isoNamespace);

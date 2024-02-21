@@ -34,14 +34,14 @@ namespace BeneficialStrategies.Iso20022.Serialization.Xml.Writers.Components
             this.financialInstitutionIdentification = financialInstitutionIdentification;
             this.branchIdentification = branchIdentification;
         }
-        public async Task WriteAsync(XmlWriter writer, BranchAndFinancialInstitutionIdentification6 value, string isoNamespace)
+        public async Task WriteAsync(XmlWriter writer, BranchAndFinancialInstitutionIdentification6 valueBeingSerialized, string isoNamespace)
         {
             // FinancialInstitutionIdentification Required FinancialInstitutionIdentification18 FinancialInstitutionIdentification18
             await writer.WriteStartElementAsync(null, "FinInstnId", isoNamespace );
-            await financialInstitutionIdentification.WriteAsync(writer, value.FinancialInstitutionIdentification, isoNamespace);
+            await financialInstitutionIdentification.WriteAsync(writer, valueBeingSerialized.FinancialInstitutionIdentification, isoNamespace);
             await writer.WriteEndElementAsync();
             // BranchIdentification Optional BranchData3 BranchData3
-            if ( value.BranchIdentification is BranchData3 populatedBranchIdentification)
+            if ( valueBeingSerialized.BranchIdentification is BranchData3 populatedBranchIdentification)
             {
                 await writer.WriteStartElementAsync(null, "BrnchId", isoNamespace );
                 await branchIdentification.WriteAsync(writer, populatedBranchIdentification, isoNamespace);

@@ -52,18 +52,18 @@ namespace BeneficialStrategies.Iso20022.Serialization.Xml.Writers.Components
             this.forwardingAgent = forwardingAgent;
             this.initiationSource = initiationSource;
         }
-        public async Task WriteAsync(XmlWriter writer, GroupHeader95 value, string isoNamespace)
+        public async Task WriteAsync(XmlWriter writer, GroupHeader95 valueBeingSerialized, string isoNamespace)
         {
             // MessageIdentification Required Max35Text System.String
             await writer.WriteStartElementAsync(null, "MsgId", isoNamespace );
-            await messageIdentification.WriteAsync(writer, value.MessageIdentification, isoNamespace);
+            await messageIdentification.WriteAsync(writer, valueBeingSerialized.MessageIdentification, isoNamespace);
             await writer.WriteEndElementAsync();
             // CreationDateTime Required ISODateTime System.DateTime
             await writer.WriteStartElementAsync(null, "CreDtTm", isoNamespace );
-            await creationDateTime.WriteAsync(writer, value.CreationDateTime, isoNamespace);
+            await creationDateTime.WriteAsync(writer, valueBeingSerialized.CreationDateTime, isoNamespace);
             await writer.WriteEndElementAsync();
             // Authorisation Collection Authorisation1Choice Authorisation1Choice_
-            foreach ( var item in value.Authorisation)
+            foreach ( var item in valueBeingSerialized.Authorisation)
             {
                 await writer.WriteStartElementAsync(null, "Authstn", isoNamespace );
                 await authorisation.WriteAsync(writer, item , isoNamespace);
@@ -71,10 +71,10 @@ namespace BeneficialStrategies.Iso20022.Serialization.Xml.Writers.Components
             }
             // NumberOfTransactions Required Max15NumericText System.String
             await writer.WriteStartElementAsync(null, "NbOfTxs", isoNamespace );
-            await numberOfTransactions.WriteAsync(writer, value.NumberOfTransactions, isoNamespace);
+            await numberOfTransactions.WriteAsync(writer, valueBeingSerialized.NumberOfTransactions, isoNamespace);
             await writer.WriteEndElementAsync();
             // ControlSum Optional DecimalNumber System.UInt64
-            if ( value.ControlSum is System.UInt64 populatedControlSum)
+            if ( valueBeingSerialized.ControlSum is System.UInt64 populatedControlSum)
             {
                 await writer.WriteStartElementAsync(null, "CtrlSum", isoNamespace );
                 await controlSum.WriteAsync(writer, populatedControlSum, isoNamespace);
@@ -82,17 +82,17 @@ namespace BeneficialStrategies.Iso20022.Serialization.Xml.Writers.Components
             }
             // InitiatingParty Required PartyIdentification135 PartyIdentification135
             await writer.WriteStartElementAsync(null, "InitgPty", isoNamespace );
-            await initiatingParty.WriteAsync(writer, value.InitiatingParty, isoNamespace);
+            await initiatingParty.WriteAsync(writer, valueBeingSerialized.InitiatingParty, isoNamespace);
             await writer.WriteEndElementAsync();
             // ForwardingAgent Optional BranchAndFinancialInstitutionIdentification6 BranchAndFinancialInstitutionIdentification6
-            if ( value.ForwardingAgent is BranchAndFinancialInstitutionIdentification6 populatedForwardingAgent)
+            if ( valueBeingSerialized.ForwardingAgent is BranchAndFinancialInstitutionIdentification6 populatedForwardingAgent)
             {
                 await writer.WriteStartElementAsync(null, "FwdgAgt", isoNamespace );
                 await forwardingAgent.WriteAsync(writer, populatedForwardingAgent, isoNamespace);
                 await writer.WriteEndElementAsync();
             }
             // InitiationSource Optional PaymentInitiationSource1 PaymentInitiationSource1
-            if ( value.InitiationSource is PaymentInitiationSource1 populatedInitiationSource)
+            if ( valueBeingSerialized.InitiationSource is PaymentInitiationSource1 populatedInitiationSource)
             {
                 await writer.WriteStartElementAsync(null, "InitnSrc", isoNamespace );
                 await initiationSource.WriteAsync(writer, populatedInitiationSource, isoNamespace);

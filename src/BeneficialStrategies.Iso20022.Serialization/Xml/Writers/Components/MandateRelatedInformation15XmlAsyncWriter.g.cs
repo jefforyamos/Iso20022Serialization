@@ -58,73 +58,73 @@ namespace BeneficialStrategies.Iso20022.Serialization.Xml.Writers.Components
             this.reason = reason;
             this.trackingDays = trackingDays;
         }
-        public async Task WriteAsync(XmlWriter writer, MandateRelatedInformation15 value, string isoNamespace)
+        public async Task WriteAsync(XmlWriter writer, MandateRelatedInformation15 valueBeingSerialized, string isoNamespace)
         {
             // MandateIdentification Optional Max35Text System.String
-            if ( value.MandateIdentification is System.String populatedMandateIdentification)
+            if ( valueBeingSerialized.MandateIdentification is System.String populatedMandateIdentification)
             {
                 await writer.WriteStartElementAsync(null, "MndtId", isoNamespace );
                 await mandateIdentification.WriteAsync(writer, populatedMandateIdentification, isoNamespace);
                 await writer.WriteEndElementAsync();
             }
             // DateOfSignature Optional ISODate System.DateOnly
-            if ( value.DateOfSignature is System.DateOnly populatedDateOfSignature)
+            if ( valueBeingSerialized.DateOfSignature is System.DateOnly populatedDateOfSignature)
             {
                 await writer.WriteStartElementAsync(null, "DtOfSgntr", isoNamespace );
                 await dateOfSignature.WriteAsync(writer, populatedDateOfSignature, isoNamespace);
                 await writer.WriteEndElementAsync();
             }
             // AmendmentIndicator Optional TrueFalseIndicator System.String
-            if ( value.AmendmentIndicator is System.String populatedAmendmentIndicator)
+            if ( valueBeingSerialized.AmendmentIndicator is System.String populatedAmendmentIndicator)
             {
                 await writer.WriteStartElementAsync(null, "AmdmntInd", isoNamespace );
                 await amendmentIndicator.WriteAsync(writer, populatedAmendmentIndicator, isoNamespace);
                 await writer.WriteEndElementAsync();
             }
             // AmendmentInformationDetails Optional AmendmentInformationDetails14 AmendmentInformationDetails14
-            if ( value.AmendmentInformationDetails is AmendmentInformationDetails14 populatedAmendmentInformationDetails)
+            if ( valueBeingSerialized.AmendmentInformationDetails is AmendmentInformationDetails14 populatedAmendmentInformationDetails)
             {
                 await writer.WriteStartElementAsync(null, "AmdmntInfDtls", isoNamespace );
                 await amendmentInformationDetails.WriteAsync(writer, populatedAmendmentInformationDetails, isoNamespace);
                 await writer.WriteEndElementAsync();
             }
             // ElectronicSignature Optional Max1025Text System.String
-            if ( value.ElectronicSignature is System.String populatedElectronicSignature)
+            if ( valueBeingSerialized.ElectronicSignature is System.String populatedElectronicSignature)
             {
                 await writer.WriteStartElementAsync(null, "ElctrncSgntr", isoNamespace );
                 await electronicSignature.WriteAsync(writer, populatedElectronicSignature, isoNamespace);
                 await writer.WriteEndElementAsync();
             }
             // FirstCollectionDate Optional ISODate System.DateOnly
-            if ( value.FirstCollectionDate is System.DateOnly populatedFirstCollectionDate)
+            if ( valueBeingSerialized.FirstCollectionDate is System.DateOnly populatedFirstCollectionDate)
             {
                 await writer.WriteStartElementAsync(null, "FrstColltnDt", isoNamespace );
                 await firstCollectionDate.WriteAsync(writer, populatedFirstCollectionDate, isoNamespace);
                 await writer.WriteEndElementAsync();
             }
             // FinalCollectionDate Optional ISODate System.DateOnly
-            if ( value.FinalCollectionDate is System.DateOnly populatedFinalCollectionDate)
+            if ( valueBeingSerialized.FinalCollectionDate is System.DateOnly populatedFinalCollectionDate)
             {
                 await writer.WriteStartElementAsync(null, "FnlColltnDt", isoNamespace );
                 await finalCollectionDate.WriteAsync(writer, populatedFinalCollectionDate, isoNamespace);
                 await writer.WriteEndElementAsync();
             }
             // Frequency Optional Frequency36Choice Frequency36Choice_
-            if ( value.Frequency is Frequency36Choice_ populatedFrequency)
+            if ( valueBeingSerialized.Frequency is Frequency36Choice_ populatedFrequency)
             {
                 await writer.WriteStartElementAsync(null, "Frqcy", isoNamespace );
                 await frequency.WriteAsync(writer, populatedFrequency, isoNamespace);
                 await writer.WriteEndElementAsync();
             }
             // Reason Optional MandateSetupReason1Choice MandateSetupReason1Choice_
-            if ( value.Reason is MandateSetupReason1Choice_ populatedReason)
+            if ( valueBeingSerialized.Reason is MandateSetupReason1Choice_ populatedReason)
             {
                 await writer.WriteStartElementAsync(null, "Rsn", isoNamespace );
                 await reason.WriteAsync(writer, populatedReason, isoNamespace);
                 await writer.WriteEndElementAsync();
             }
             // TrackingDays Optional Exact2NumericText System.String
-            if ( value.TrackingDays is System.String populatedTrackingDays)
+            if ( valueBeingSerialized.TrackingDays is System.String populatedTrackingDays)
             {
                 await writer.WriteStartElementAsync(null, "TrckgDays", isoNamespace );
                 await trackingDays.WriteAsync(writer, populatedTrackingDays, isoNamespace);

@@ -46,45 +46,45 @@ namespace BeneficialStrategies.Iso20022.Serialization.Xml.Writers.Components
             this.adjustmentAmountAndReason = adjustmentAmountAndReason;
             this.remittedAmount = remittedAmount;
         }
-        public async Task WriteAsync(XmlWriter writer, RemittanceAmount3 value, string isoNamespace)
+        public async Task WriteAsync(XmlWriter writer, RemittanceAmount3 valueBeingSerialized, string isoNamespace)
         {
             // DuePayableAmount Optional ActiveOrHistoricCurrencyAndAmount System.Decimal
-            if ( value.DuePayableAmount is System.Decimal populatedDuePayableAmount)
+            if ( valueBeingSerialized.DuePayableAmount is System.Decimal populatedDuePayableAmount)
             {
                 await writer.WriteStartElementAsync(null, "DuePyblAmt", isoNamespace );
                 await duePayableAmount.WriteAsync(writer, populatedDuePayableAmount, isoNamespace);
                 await writer.WriteEndElementAsync();
             }
             // DiscountAppliedAmount Optional DiscountAmountAndType1 DiscountAmountAndType1
-            if ( value.DiscountAppliedAmount is DiscountAmountAndType1 populatedDiscountAppliedAmount)
+            if ( valueBeingSerialized.DiscountAppliedAmount is DiscountAmountAndType1 populatedDiscountAppliedAmount)
             {
                 await writer.WriteStartElementAsync(null, "DscntApldAmt", isoNamespace );
                 await discountAppliedAmount.WriteAsync(writer, populatedDiscountAppliedAmount, isoNamespace);
                 await writer.WriteEndElementAsync();
             }
             // CreditNoteAmount Optional ActiveOrHistoricCurrencyAndAmount System.Decimal
-            if ( value.CreditNoteAmount is System.Decimal populatedCreditNoteAmount)
+            if ( valueBeingSerialized.CreditNoteAmount is System.Decimal populatedCreditNoteAmount)
             {
                 await writer.WriteStartElementAsync(null, "CdtNoteAmt", isoNamespace );
                 await creditNoteAmount.WriteAsync(writer, populatedCreditNoteAmount, isoNamespace);
                 await writer.WriteEndElementAsync();
             }
             // TaxAmount Optional TaxAmountAndType1 TaxAmountAndType1
-            if ( value.TaxAmount is TaxAmountAndType1 populatedTaxAmount)
+            if ( valueBeingSerialized.TaxAmount is TaxAmountAndType1 populatedTaxAmount)
             {
                 await writer.WriteStartElementAsync(null, "TaxAmt", isoNamespace );
                 await taxAmount.WriteAsync(writer, populatedTaxAmount, isoNamespace);
                 await writer.WriteEndElementAsync();
             }
             // AdjustmentAmountAndReason Optional DocumentAdjustment1 DocumentAdjustment1
-            if ( value.AdjustmentAmountAndReason is DocumentAdjustment1 populatedAdjustmentAmountAndReason)
+            if ( valueBeingSerialized.AdjustmentAmountAndReason is DocumentAdjustment1 populatedAdjustmentAmountAndReason)
             {
                 await writer.WriteStartElementAsync(null, "AdjstmntAmtAndRsn", isoNamespace );
                 await adjustmentAmountAndReason.WriteAsync(writer, populatedAdjustmentAmountAndReason, isoNamespace);
                 await writer.WriteEndElementAsync();
             }
             // RemittedAmount Optional ActiveOrHistoricCurrencyAndAmount System.Decimal
-            if ( value.RemittedAmount is System.Decimal populatedRemittedAmount)
+            if ( valueBeingSerialized.RemittedAmount is System.Decimal populatedRemittedAmount)
             {
                 await writer.WriteStartElementAsync(null, "RmtdAmt", isoNamespace );
                 await remittedAmount.WriteAsync(writer, populatedRemittedAmount, isoNamespace);

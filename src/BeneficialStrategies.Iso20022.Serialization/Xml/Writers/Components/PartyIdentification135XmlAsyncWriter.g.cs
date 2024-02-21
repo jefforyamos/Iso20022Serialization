@@ -43,38 +43,38 @@ namespace BeneficialStrategies.Iso20022.Serialization.Xml.Writers.Components
             this.countryOfResidence = countryOfResidence;
             this.contactDetails = contactDetails;
         }
-        public async Task WriteAsync(XmlWriter writer, PartyIdentification135 value, string isoNamespace)
+        public async Task WriteAsync(XmlWriter writer, PartyIdentification135 valueBeingSerialized, string isoNamespace)
         {
             // Name Optional Max140Text System.String
-            if ( value.Name is System.String populatedName)
+            if ( valueBeingSerialized.Name is System.String populatedName)
             {
                 await writer.WriteStartElementAsync(null, "Nm", isoNamespace );
                 await name.WriteAsync(writer, populatedName, isoNamespace);
                 await writer.WriteEndElementAsync();
             }
             // PostalAddress Optional PostalAddress24 PostalAddress24
-            if ( value.PostalAddress is PostalAddress24 populatedPostalAddress)
+            if ( valueBeingSerialized.PostalAddress is PostalAddress24 populatedPostalAddress)
             {
                 await writer.WriteStartElementAsync(null, "PstlAdr", isoNamespace );
                 await postalAddress.WriteAsync(writer, populatedPostalAddress, isoNamespace);
                 await writer.WriteEndElementAsync();
             }
             // Identification Optional Party38Choice Party38Choice_
-            if ( value.Identification is Party38Choice_ populatedIdentification)
+            if ( valueBeingSerialized.Identification is Party38Choice_ populatedIdentification)
             {
                 await writer.WriteStartElementAsync(null, "Id", isoNamespace );
                 await identification.WriteAsync(writer, populatedIdentification, isoNamespace);
                 await writer.WriteEndElementAsync();
             }
             // CountryOfResidence Optional CountryCode string
-            if ( value.CountryOfResidence is string populatedCountryOfResidence)
+            if ( valueBeingSerialized.CountryOfResidence is string populatedCountryOfResidence)
             {
                 await writer.WriteStartElementAsync(null, "CtryOfRes", isoNamespace );
                 await countryOfResidence.WriteAsync(writer, populatedCountryOfResidence, isoNamespace);
                 await writer.WriteEndElementAsync();
             }
             // ContactDetails Optional Contact4 Contact4
-            if ( value.ContactDetails is Contact4 populatedContactDetails)
+            if ( valueBeingSerialized.ContactDetails is Contact4 populatedContactDetails)
             {
                 await writer.WriteStartElementAsync(null, "CtctDtls", isoNamespace );
                 await contactDetails.WriteAsync(writer, populatedContactDetails, isoNamespace);

@@ -34,14 +34,14 @@ namespace BeneficialStrategies.Iso20022.Serialization.Xml.Writers.Components
             this.channelType = channelType;
             this.identification = identification;
         }
-        public async Task WriteAsync(XmlWriter writer, OtherContact1 value, string isoNamespace)
+        public async Task WriteAsync(XmlWriter writer, OtherContact1 valueBeingSerialized, string isoNamespace)
         {
             // ChannelType Required Max4Text System.String
             await writer.WriteStartElementAsync(null, "ChanlTp", isoNamespace );
-            await channelType.WriteAsync(writer, value.ChannelType, isoNamespace);
+            await channelType.WriteAsync(writer, valueBeingSerialized.ChannelType, isoNamespace);
             await writer.WriteEndElementAsync();
             // Identification Optional Max128Text System.String
-            if ( value.Identification is System.String populatedIdentification)
+            if ( valueBeingSerialized.Identification is System.String populatedIdentification)
             {
                 await writer.WriteStartElementAsync(null, "Id", isoNamespace );
                 await identification.WriteAsync(writer, populatedIdentification, isoNamespace);
