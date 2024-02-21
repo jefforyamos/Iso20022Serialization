@@ -14,46 +14,40 @@ namespace BeneficialStrategies.Iso20022.Serialization.Xml.Writers.pain
     /// <summary>
     /// Performs the XML serialization faithful to ISO20002 standards for <seealso cref="CustomerCreditTransferInitiationV11"/>.
     /// </summary>
-    public class CustomerCreditTransferInitiationV11XmlAsyncWriter : ContainerXmlAsyncWriter<CustomerCreditTransferInitiationV11>
-            , ISubordinateXmlAsyncWriter<CustomerCreditTransferInitiationV11>
+    public class CustomerCreditTransferInitiationV11XmlAsyncWriter : ISubordinateXmlAsyncWriter<CustomerCreditTransferInitiationV11>
             , IXmlAsyncWriter<CustomerCreditTransferInitiationV11>
     {
+        // Injected dependencies for serialization of each member data type
+        private readonly ISubordinateXmlAsyncWriter<GroupHeader95> groupHeader;
+        private readonly ISubordinateXmlAsyncWriter<PaymentInstruction40> paymentInformation;
+        private readonly ISubordinateXmlAsyncWriter<SupplementaryData1> supplementaryData;
         public CustomerCreditTransferInitiationV11XmlAsyncWriter(
-            
-            // Injected dependencies
-            
-            ISubordinateXmlAsyncWriter<GroupHeader95> groupHeader,
-            ISubordinateXmlAsyncWriter<PaymentInstruction40> paymentInformation,
-            ISubordinateXmlAsyncWriter<SupplementaryData1> supplementaryData
-        )
-        : base (
-            
-            // Initalizing constituent members
-            
-                new MemberXmlAsyncWriter<CustomerCreditTransferInitiationV11,GroupHeader95>
-                (
-                    "GrpHdr",
-                    groupHeader,
-                    parent => parent.GroupHeader
-                ),
-                
-                new MemberXmlAsyncWriter<CustomerCreditTransferInitiationV11,PaymentInstruction40>
-                (
-                    "PmtInf",
-                    paymentInformation,
-                    parent => parent.PaymentInformation
-                ),
-                
-                new MemberXmlAsyncWriter<CustomerCreditTransferInitiationV11,SupplementaryData1>
-                (
-                    "SplmtryData",
-                    supplementaryData,
-                    parent => parent.SupplementaryData
-                )
-                
+                ISubordinateXmlAsyncWriter<GroupHeader95> groupHeader,
+                ISubordinateXmlAsyncWriter<PaymentInstruction40> paymentInformation,
+                ISubordinateXmlAsyncWriter<SupplementaryData1> supplementaryData
         )
         {
-            // Constructor logic in base class
+            this.groupHeader = groupHeader;
+            this.paymentInformation = paymentInformation;
+            this.supplementaryData = supplementaryData;
+        }
+        public async Task WriteAsync(XmlWriter writer, CustomerCreditTransferInitiationV11 valueBeingSerialized, string isoNamespace)
+        {
+            // GroupHeader Required GroupHeader95 GroupHeader95
+            await writer.WriteStartElementAsync(null, "GrpHdr", isoNamespace );
+            await groupHeader.WriteAsync(writer, valueBeingSerialized.GroupHeader, isoNamespace);
+            await writer.WriteEndElementAsync();
+            // PaymentInformation Required PaymentInstruction40 PaymentInstruction40
+            await writer.WriteStartElementAsync(null, "PmtInf", isoNamespace );
+            await paymentInformation.WriteAsync(writer, valueBeingSerialized.PaymentInformation, isoNamespace);
+            await writer.WriteEndElementAsync();
+            // SupplementaryData Optional SupplementaryData1 SupplementaryData1
+            if ( valueBeingSerialized.SupplementaryData is SupplementaryData1 populatedSupplementaryData)
+            {
+                await writer.WriteStartElementAsync(null, "SplmtryData", isoNamespace );
+                await supplementaryData.WriteAsync(writer, populatedSupplementaryData, isoNamespace);
+                await writer.WriteEndElementAsync();
+            }
         }
         
         /// <summary>

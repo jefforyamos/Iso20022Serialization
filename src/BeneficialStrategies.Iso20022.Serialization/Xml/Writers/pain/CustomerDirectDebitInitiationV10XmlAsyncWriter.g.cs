@@ -14,46 +14,40 @@ namespace BeneficialStrategies.Iso20022.Serialization.Xml.Writers.pain
     /// <summary>
     /// Performs the XML serialization faithful to ISO20002 standards for <seealso cref="CustomerDirectDebitInitiationV10"/>.
     /// </summary>
-    public class CustomerDirectDebitInitiationV10XmlAsyncWriter : ContainerXmlAsyncWriter<CustomerDirectDebitInitiationV10>
-            , ISubordinateXmlAsyncWriter<CustomerDirectDebitInitiationV10>
+    public class CustomerDirectDebitInitiationV10XmlAsyncWriter : ISubordinateXmlAsyncWriter<CustomerDirectDebitInitiationV10>
             , IXmlAsyncWriter<CustomerDirectDebitInitiationV10>
     {
+        // Injected dependencies for serialization of each member data type
+        private readonly ISubordinateXmlAsyncWriter<GroupHeader83> groupHeader;
+        private readonly ISubordinateXmlAsyncWriter<PaymentInstruction39> paymentInformation;
+        private readonly ISubordinateXmlAsyncWriter<SupplementaryData1> supplementaryData;
         public CustomerDirectDebitInitiationV10XmlAsyncWriter(
-            
-            // Injected dependencies
-            
-            ISubordinateXmlAsyncWriter<GroupHeader83> groupHeader,
-            ISubordinateXmlAsyncWriter<PaymentInstruction39> paymentInformation,
-            ISubordinateXmlAsyncWriter<SupplementaryData1> supplementaryData
-        )
-        : base (
-            
-            // Initalizing constituent members
-            
-                new MemberXmlAsyncWriter<CustomerDirectDebitInitiationV10,GroupHeader83>
-                (
-                    "GrpHdr",
-                    groupHeader,
-                    parent => parent.GroupHeader
-                ),
-                
-                new MemberXmlAsyncWriter<CustomerDirectDebitInitiationV10,PaymentInstruction39>
-                (
-                    "PmtInf",
-                    paymentInformation,
-                    parent => parent.PaymentInformation
-                ),
-                
-                new MemberXmlAsyncWriter<CustomerDirectDebitInitiationV10,SupplementaryData1>
-                (
-                    "SplmtryData",
-                    supplementaryData,
-                    parent => parent.SupplementaryData
-                )
-                
+                ISubordinateXmlAsyncWriter<GroupHeader83> groupHeader,
+                ISubordinateXmlAsyncWriter<PaymentInstruction39> paymentInformation,
+                ISubordinateXmlAsyncWriter<SupplementaryData1> supplementaryData
         )
         {
-            // Constructor logic in base class
+            this.groupHeader = groupHeader;
+            this.paymentInformation = paymentInformation;
+            this.supplementaryData = supplementaryData;
+        }
+        public async Task WriteAsync(XmlWriter writer, CustomerDirectDebitInitiationV10 valueBeingSerialized, string isoNamespace)
+        {
+            // GroupHeader Required GroupHeader83 GroupHeader83
+            await writer.WriteStartElementAsync(null, "GrpHdr", isoNamespace );
+            await groupHeader.WriteAsync(writer, valueBeingSerialized.GroupHeader, isoNamespace);
+            await writer.WriteEndElementAsync();
+            // PaymentInformation Required PaymentInstruction39 PaymentInstruction39
+            await writer.WriteStartElementAsync(null, "PmtInf", isoNamespace );
+            await paymentInformation.WriteAsync(writer, valueBeingSerialized.PaymentInformation, isoNamespace);
+            await writer.WriteEndElementAsync();
+            // SupplementaryData Optional SupplementaryData1 SupplementaryData1
+            if ( valueBeingSerialized.SupplementaryData is SupplementaryData1 populatedSupplementaryData)
+            {
+                await writer.WriteStartElementAsync(null, "SplmtryData", isoNamespace );
+                await supplementaryData.WriteAsync(writer, populatedSupplementaryData, isoNamespace);
+                await writer.WriteEndElementAsync();
+            }
         }
         
         /// <summary>

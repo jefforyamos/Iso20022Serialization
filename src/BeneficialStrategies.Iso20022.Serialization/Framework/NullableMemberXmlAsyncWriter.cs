@@ -7,6 +7,7 @@ namespace BeneficialStrategies.Iso20022.Serialization;
 /// If the value is populated, it writes the value.  If null, it does nothing.
 /// </summary>
 /// <typeparam name="T">Data type of the member.</typeparam>
+[Obsolete]
 public class NullableMemberXmlAsyncWriter<T> : ISubordinateXmlAsyncWriter<T?>
     where T : struct
 {

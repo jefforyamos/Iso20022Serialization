@@ -6,6 +6,7 @@ namespace BeneficialStrategies.Iso20022.Serialization;
 /// This will be the class from which most component serializers will inherit.
 /// </summary>
 /// <typeparam name="TParent">Data type of the item being serialized.</typeparam>
+[Obsolete]
 public abstract class ContainerXmlAsyncWriter<TParent> : ISubordinateXmlAsyncWriter<TParent>
 {
     private readonly ISubordinateXmlAsyncWriter<TParent>[] memberWriters;

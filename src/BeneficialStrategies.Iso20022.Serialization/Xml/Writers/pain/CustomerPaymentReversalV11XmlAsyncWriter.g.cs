@@ -14,54 +14,50 @@ namespace BeneficialStrategies.Iso20022.Serialization.Xml.Writers.pain
     /// <summary>
     /// Performs the XML serialization faithful to ISO20002 standards for <seealso cref="CustomerPaymentReversalV11"/>.
     /// </summary>
-    public class CustomerPaymentReversalV11XmlAsyncWriter : ContainerXmlAsyncWriter<CustomerPaymentReversalV11>
-            , ISubordinateXmlAsyncWriter<CustomerPaymentReversalV11>
+    public class CustomerPaymentReversalV11XmlAsyncWriter : ISubordinateXmlAsyncWriter<CustomerPaymentReversalV11>
             , IXmlAsyncWriter<CustomerPaymentReversalV11>
     {
+        // Injected dependencies for serialization of each member data type
+        private readonly ISubordinateXmlAsyncWriter<GroupHeader88> groupHeader;
+        private readonly ISubordinateXmlAsyncWriter<OriginalGroupHeader16> originalGroupInformation;
+        private readonly ISubordinateXmlAsyncWriter<OriginalPaymentInstruction41> originalPaymentInformationAndReversal;
+        private readonly ISubordinateXmlAsyncWriter<SupplementaryData1> supplementaryData;
         public CustomerPaymentReversalV11XmlAsyncWriter(
-            
-            // Injected dependencies
-            
-            ISubordinateXmlAsyncWriter<GroupHeader88> groupHeader,
-            ISubordinateXmlAsyncWriter<OriginalGroupHeader16> originalGroupInformation,
-            ISubordinateXmlAsyncWriter<OriginalPaymentInstruction41> originalPaymentInformationAndReversal,
-            ISubordinateXmlAsyncWriter<SupplementaryData1> supplementaryData
-        )
-        : base (
-            
-            // Initalizing constituent members
-            
-                new MemberXmlAsyncWriter<CustomerPaymentReversalV11,GroupHeader88>
-                (
-                    "GrpHdr",
-                    groupHeader,
-                    parent => parent.GroupHeader
-                ),
-                
-                new MemberXmlAsyncWriter<CustomerPaymentReversalV11,OriginalGroupHeader16>
-                (
-                    "OrgnlGrpInf",
-                    originalGroupInformation,
-                    parent => parent.OriginalGroupInformation
-                ),
-                
-                new MemberXmlAsyncWriter<CustomerPaymentReversalV11,OriginalPaymentInstruction41>
-                (
-                    "OrgnlPmtInfAndRvsl",
-                    originalPaymentInformationAndReversal,
-                    parent => parent.OriginalPaymentInformationAndReversal
-                ),
-                
-                new MemberXmlAsyncWriter<CustomerPaymentReversalV11,SupplementaryData1>
-                (
-                    "SplmtryData",
-                    supplementaryData,
-                    parent => parent.SupplementaryData
-                )
-                
+                ISubordinateXmlAsyncWriter<GroupHeader88> groupHeader,
+                ISubordinateXmlAsyncWriter<OriginalGroupHeader16> originalGroupInformation,
+                ISubordinateXmlAsyncWriter<OriginalPaymentInstruction41> originalPaymentInformationAndReversal,
+                ISubordinateXmlAsyncWriter<SupplementaryData1> supplementaryData
         )
         {
-            // Constructor logic in base class
+            this.groupHeader = groupHeader;
+            this.originalGroupInformation = originalGroupInformation;
+            this.originalPaymentInformationAndReversal = originalPaymentInformationAndReversal;
+            this.supplementaryData = supplementaryData;
+        }
+        public async Task WriteAsync(XmlWriter writer, CustomerPaymentReversalV11 valueBeingSerialized, string isoNamespace)
+        {
+            // GroupHeader Required GroupHeader88 GroupHeader88
+            await writer.WriteStartElementAsync(null, "GrpHdr", isoNamespace );
+            await groupHeader.WriteAsync(writer, valueBeingSerialized.GroupHeader, isoNamespace);
+            await writer.WriteEndElementAsync();
+            // OriginalGroupInformation Required OriginalGroupHeader16 OriginalGroupHeader16
+            await writer.WriteStartElementAsync(null, "OrgnlGrpInf", isoNamespace );
+            await originalGroupInformation.WriteAsync(writer, valueBeingSerialized.OriginalGroupInformation, isoNamespace);
+            await writer.WriteEndElementAsync();
+            // OriginalPaymentInformationAndReversal Optional OriginalPaymentInstruction41 OriginalPaymentInstruction41
+            if ( valueBeingSerialized.OriginalPaymentInformationAndReversal is OriginalPaymentInstruction41 populatedOriginalPaymentInformationAndReversal)
+            {
+                await writer.WriteStartElementAsync(null, "OrgnlPmtInfAndRvsl", isoNamespace );
+                await originalPaymentInformationAndReversal.WriteAsync(writer, populatedOriginalPaymentInformationAndReversal, isoNamespace);
+                await writer.WriteEndElementAsync();
+            }
+            // SupplementaryData Optional SupplementaryData1 SupplementaryData1
+            if ( valueBeingSerialized.SupplementaryData is SupplementaryData1 populatedSupplementaryData)
+            {
+                await writer.WriteStartElementAsync(null, "SplmtryData", isoNamespace );
+                await supplementaryData.WriteAsync(writer, populatedSupplementaryData, isoNamespace);
+                await writer.WriteEndElementAsync();
+            }
         }
         
         /// <summary>

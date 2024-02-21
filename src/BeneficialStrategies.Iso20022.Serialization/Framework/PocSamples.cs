@@ -3,7 +3,7 @@ using BeneficialStrategies.Iso20022.pain;
 
 namespace BeneficialStrategies.Iso20022.Serialization.Poc.Sample;
 
-
+[Obsolete]
 public class CustomerCreditTransferInitiationV11Serializer : ContainerXmlAsyncWriter<CustomerCreditTransferInitiationV11>
 {
     public CustomerCreditTransferInitiationV11Serializer(
