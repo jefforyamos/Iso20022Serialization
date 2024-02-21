@@ -19,12 +19,12 @@ namespace BeneficialStrategies.Iso20022.Serialization.Xml.Writers.Components
     public class Cheque11XmlAsyncWriter : ISubordinateXmlAsyncWriter<Cheque11>
     {
         // Injected dependencies for serialization of each member data type
-        private readonly IEnumXmlAsyncWriter<ChequeType2Code> chequeType;
+        private readonly ChequeType2CodeXmlAsyncWriter chequeType;
         private readonly Max35TextXmlAsyncWriter chequeNumber;
         private readonly ISubordinateXmlAsyncWriter<NameAndAddress16> chequeFrom;
         private readonly ISubordinateXmlAsyncWriter<ChequeDeliveryMethod1Choice_> deliveryMethod;
         private readonly ISubordinateXmlAsyncWriter<NameAndAddress16> deliverTo;
-        private readonly IEnumXmlAsyncWriter<Priority2Code> instructionPriority;
+        private readonly Priority2CodeXmlAsyncWriter instructionPriority;
         private readonly ISODateXmlAsyncWriter chequeMaturityDate;
         private readonly Max35TextXmlAsyncWriter formsCode;
         private readonly Max35TextXmlAsyncWriter memoField;
@@ -37,12 +37,12 @@ namespace BeneficialStrategies.Iso20022.Serialization.Xml.Writers.Components
         /// </summary>
         public Cheque11XmlAsyncWriter
         (
-            IEnumXmlAsyncWriter<ChequeType2Code> chequeType,
+            ChequeType2CodeXmlAsyncWriter chequeType,
             Max35TextXmlAsyncWriter chequeNumber,
             ISubordinateXmlAsyncWriter<NameAndAddress16> chequeFrom,
             ISubordinateXmlAsyncWriter<ChequeDeliveryMethod1Choice_> deliveryMethod,
             ISubordinateXmlAsyncWriter<NameAndAddress16> deliverTo,
-            IEnumXmlAsyncWriter<Priority2Code> instructionPriority,
+            Priority2CodeXmlAsyncWriter instructionPriority,
             ISODateXmlAsyncWriter chequeMaturityDate,
             Max35TextXmlAsyncWriter formsCode,
             Max35TextXmlAsyncWriter memoField,

@@ -21,7 +21,7 @@ namespace BeneficialStrategies.Iso20022.Serialization.Xml.Writers.Components
         // Injected dependencies for serialization of each member data type
         private readonly ActiveOrHistoricCurrencyCodeXmlAsyncWriter unitCurrency;
         private readonly BaseOneRateXmlAsyncWriter exchangeRate;
-        private readonly IEnumXmlAsyncWriter<ExchangeRateType1Code> rateType;
+        private readonly ExchangeRateType1CodeXmlAsyncWriter rateType;
         private readonly Max35TextXmlAsyncWriter contractIdentification;
         
         /// <summary>
@@ -31,7 +31,7 @@ namespace BeneficialStrategies.Iso20022.Serialization.Xml.Writers.Components
         (
             ActiveOrHistoricCurrencyCodeXmlAsyncWriter unitCurrency,
             BaseOneRateXmlAsyncWriter exchangeRate,
-            IEnumXmlAsyncWriter<ExchangeRateType1Code> rateType,
+            ExchangeRateType1CodeXmlAsyncWriter rateType,
             Max35TextXmlAsyncWriter contractIdentification
         )
         {

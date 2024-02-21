@@ -19,7 +19,7 @@ namespace BeneficialStrategies.Iso20022.Serialization.Xml.Writers.Components
     public class RegulatoryReporting3XmlAsyncWriter : ISubordinateXmlAsyncWriter<RegulatoryReporting3>
     {
         // Injected dependencies for serialization of each member data type
-        private readonly IEnumXmlAsyncWriter<RegulatoryReportingType1Code> debitCreditReportingIndicator;
+        private readonly RegulatoryReportingType1CodeXmlAsyncWriter debitCreditReportingIndicator;
         private readonly ISubordinateXmlAsyncWriter<RegulatoryAuthority2> authority;
         private readonly ISubordinateXmlAsyncWriter<StructuredRegulatoryReporting3> details;
         
@@ -28,7 +28,7 @@ namespace BeneficialStrategies.Iso20022.Serialization.Xml.Writers.Components
         /// </summary>
         public RegulatoryReporting3XmlAsyncWriter
         (
-            IEnumXmlAsyncWriter<RegulatoryReportingType1Code> debitCreditReportingIndicator,
+            RegulatoryReportingType1CodeXmlAsyncWriter debitCreditReportingIndicator,
             ISubordinateXmlAsyncWriter<RegulatoryAuthority2> authority,
             ISubordinateXmlAsyncWriter<StructuredRegulatoryReporting3> details
         )

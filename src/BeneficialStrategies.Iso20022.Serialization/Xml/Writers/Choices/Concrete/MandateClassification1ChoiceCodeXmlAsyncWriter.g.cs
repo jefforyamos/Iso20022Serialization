@@ -8,6 +8,7 @@
 using BeneficialStrategies.Iso20022.Choices;
 using BeneficialStrategies.Iso20022.Choices.MandateClassification1Choice;
 using BeneficialStrategies.Iso20022.Codesets;
+using BeneficialStrategies.Iso20022.Serialization.Xml.Codesets;
 using BeneficialStrategies.Iso20022.Serialization.Xml.Writers.SimpleTypes;
 using System.Xml;
 
@@ -19,14 +20,14 @@ namespace BeneficialStrategies.Iso20022.Serialization.Xml.Writers.Choices.Mandat
     public class MandateClassification1ChoiceCodeXmlAsyncWriter : ISubordinateXmlAsyncWriter<Code>
     {
         // Injected dependencies for serialization of each member data type
-        private readonly IEnumXmlAsyncWriter<MandateClassification1Code> value;
+        private readonly MandateClassification1CodeXmlAsyncWriter value;
         
         /// <summary>
         /// Construct using an injected writer for each member.
         /// </summary>
         public MandateClassification1ChoiceCodeXmlAsyncWriter
         (
-            IEnumXmlAsyncWriter<MandateClassification1Code> value
+            MandateClassification1CodeXmlAsyncWriter value
         )
         {
             this.value = value;

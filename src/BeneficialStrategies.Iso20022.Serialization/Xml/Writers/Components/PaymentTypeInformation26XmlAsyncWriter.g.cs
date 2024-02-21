@@ -19,7 +19,7 @@ namespace BeneficialStrategies.Iso20022.Serialization.Xml.Writers.Components
     public class PaymentTypeInformation26XmlAsyncWriter : ISubordinateXmlAsyncWriter<PaymentTypeInformation26>
     {
         // Injected dependencies for serialization of each member data type
-        private readonly IEnumXmlAsyncWriter<Priority2Code> instructionPriority;
+        private readonly Priority2CodeXmlAsyncWriter instructionPriority;
         private readonly ISubordinateXmlAsyncWriter<ServiceLevel8Choice_> serviceLevel;
         private readonly ISubordinateXmlAsyncWriter<LocalInstrument2Choice_> localInstrument;
         private readonly ISubordinateXmlAsyncWriter<CategoryPurpose1Choice_> categoryPurpose;
@@ -29,7 +29,7 @@ namespace BeneficialStrategies.Iso20022.Serialization.Xml.Writers.Components
         /// </summary>
         public PaymentTypeInformation26XmlAsyncWriter
         (
-            IEnumXmlAsyncWriter<Priority2Code> instructionPriority,
+            Priority2CodeXmlAsyncWriter instructionPriority,
             ISubordinateXmlAsyncWriter<ServiceLevel8Choice_> serviceLevel,
             ISubordinateXmlAsyncWriter<LocalInstrument2Choice_> localInstrument,
             ISubordinateXmlAsyncWriter<CategoryPurpose1Choice_> categoryPurpose

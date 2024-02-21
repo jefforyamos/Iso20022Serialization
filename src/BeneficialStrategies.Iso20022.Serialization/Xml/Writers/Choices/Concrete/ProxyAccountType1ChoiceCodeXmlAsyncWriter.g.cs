@@ -8,6 +8,7 @@
 using BeneficialStrategies.Iso20022.Choices;
 using BeneficialStrategies.Iso20022.Choices.ProxyAccountType1Choice;
 using BeneficialStrategies.Iso20022.Codesets;
+using BeneficialStrategies.Iso20022.Serialization.Xml.Codesets;
 using BeneficialStrategies.Iso20022.Serialization.Xml.Writers.SimpleTypes;
 using System.Xml;
 
@@ -19,14 +20,14 @@ namespace BeneficialStrategies.Iso20022.Serialization.Xml.Writers.Choices.ProxyA
     public class ProxyAccountType1ChoiceCodeXmlAsyncWriter : ISubordinateXmlAsyncWriter<Code>
     {
         // Injected dependencies for serialization of each member data type
-        private readonly IEnumXmlAsyncWriter<ExternalProxyAccountType1Code> value;
+        private readonly ExternalProxyAccountType1CodeXmlAsyncWriter value;
         
         /// <summary>
         /// Construct using an injected writer for each member.
         /// </summary>
         public ProxyAccountType1ChoiceCodeXmlAsyncWriter
         (
-            IEnumXmlAsyncWriter<ExternalProxyAccountType1Code> value
+            ExternalProxyAccountType1CodeXmlAsyncWriter value
         )
         {
             this.value = value;

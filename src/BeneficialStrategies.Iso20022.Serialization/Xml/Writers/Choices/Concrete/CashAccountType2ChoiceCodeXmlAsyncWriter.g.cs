@@ -8,6 +8,7 @@
 using BeneficialStrategies.Iso20022.Choices;
 using BeneficialStrategies.Iso20022.Choices.CashAccountType2Choice;
 using BeneficialStrategies.Iso20022.Codesets;
+using BeneficialStrategies.Iso20022.Serialization.Xml.Codesets;
 using BeneficialStrategies.Iso20022.Serialization.Xml.Writers.SimpleTypes;
 using System.Xml;
 
@@ -19,14 +20,14 @@ namespace BeneficialStrategies.Iso20022.Serialization.Xml.Writers.Choices.CashAc
     public class CashAccountType2ChoiceCodeXmlAsyncWriter : ISubordinateXmlAsyncWriter<Code>
     {
         // Injected dependencies for serialization of each member data type
-        private readonly IEnumXmlAsyncWriter<ExternalCashAccountType1Code> value;
+        private readonly ExternalCashAccountType1CodeXmlAsyncWriter value;
         
         /// <summary>
         /// Construct using an injected writer for each member.
         /// </summary>
         public CashAccountType2ChoiceCodeXmlAsyncWriter
         (
-            IEnumXmlAsyncWriter<ExternalCashAccountType1Code> value
+            ExternalCashAccountType1CodeXmlAsyncWriter value
         )
         {
             this.value = value;

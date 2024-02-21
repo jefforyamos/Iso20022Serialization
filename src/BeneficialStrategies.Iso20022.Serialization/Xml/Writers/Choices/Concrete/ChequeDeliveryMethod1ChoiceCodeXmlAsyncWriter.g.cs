@@ -8,6 +8,7 @@
 using BeneficialStrategies.Iso20022.Choices;
 using BeneficialStrategies.Iso20022.Choices.ChequeDeliveryMethod1Choice;
 using BeneficialStrategies.Iso20022.Codesets;
+using BeneficialStrategies.Iso20022.Serialization.Xml.Codesets;
 using BeneficialStrategies.Iso20022.Serialization.Xml.Writers.SimpleTypes;
 using System.Xml;
 
@@ -19,14 +20,14 @@ namespace BeneficialStrategies.Iso20022.Serialization.Xml.Writers.Choices.Cheque
     public class ChequeDeliveryMethod1ChoiceCodeXmlAsyncWriter : ISubordinateXmlAsyncWriter<Code>
     {
         // Injected dependencies for serialization of each member data type
-        private readonly IEnumXmlAsyncWriter<ChequeDelivery1Code> value;
+        private readonly ChequeDelivery1CodeXmlAsyncWriter value;
         
         /// <summary>
         /// Construct using an injected writer for each member.
         /// </summary>
         public ChequeDeliveryMethod1ChoiceCodeXmlAsyncWriter
         (
-            IEnumXmlAsyncWriter<ChequeDelivery1Code> value
+            ChequeDelivery1CodeXmlAsyncWriter value
         )
         {
             this.value = value;

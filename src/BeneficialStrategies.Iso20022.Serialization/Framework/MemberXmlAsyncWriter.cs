@@ -8,6 +8,7 @@ namespace BeneficialStrategies.Iso20022.Serialization;
 /// </summary>
 /// <typeparam name="TParent">Data type of the parent.</typeparam>
 /// <typeparam name="TMember">Data type of the member.</typeparam>
+[Obsolete]
 public class MemberXmlAsyncWriter<TParent, TMember> : ISubordinateXmlAsyncWriter<TParent>
 {
     private readonly string elementName;
@@ -33,6 +34,7 @@ public class MemberXmlAsyncWriter<TParent, TMember> : ISubordinateXmlAsyncWriter
     }
 }
 
+[Obsolete]
 public class MemberXmlAsyncStructWriter<TParent, TMember> : ISubordinateXmlAsyncWriter<TParent>
     where TMember : struct
 {

@@ -8,6 +8,7 @@
 using BeneficialStrategies.Iso20022.Choices;
 using BeneficialStrategies.Iso20022.Choices.Frequency36Choice;
 using BeneficialStrategies.Iso20022.Codesets;
+using BeneficialStrategies.Iso20022.Serialization.Xml.Codesets;
 using BeneficialStrategies.Iso20022.Serialization.Xml.Writers.SimpleTypes;
 using System.Xml;
 
@@ -19,7 +20,7 @@ namespace BeneficialStrategies.Iso20022.Serialization.Xml.Writers.Choices.Freque
     public class Frequency36ChoicePeriodXmlAsyncWriter : ISubordinateXmlAsyncWriter<Period>
     {
         // Injected dependencies for serialization of each member data type
-        private readonly IEnumXmlAsyncWriter<Frequency6Code> type;
+        private readonly Frequency6CodeXmlAsyncWriter type;
         private readonly DecimalNumberXmlAsyncWriter countPerPeriod;
         
         /// <summary>
@@ -27,7 +28,7 @@ namespace BeneficialStrategies.Iso20022.Serialization.Xml.Writers.Choices.Freque
         /// </summary>
         public Frequency36ChoicePeriodXmlAsyncWriter
         (
-            IEnumXmlAsyncWriter<Frequency6Code> type,
+            Frequency6CodeXmlAsyncWriter type,
             DecimalNumberXmlAsyncWriter countPerPeriod
         )
         {

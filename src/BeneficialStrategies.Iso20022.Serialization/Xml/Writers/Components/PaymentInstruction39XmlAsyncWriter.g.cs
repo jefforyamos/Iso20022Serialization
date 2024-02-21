@@ -20,7 +20,7 @@ namespace BeneficialStrategies.Iso20022.Serialization.Xml.Writers.Components
     {
         // Injected dependencies for serialization of each member data type
         private readonly Max35TextXmlAsyncWriter paymentInformationIdentification;
-        private readonly IEnumXmlAsyncWriter<PaymentMethod2Code> paymentMethod;
+        private readonly PaymentMethod2CodeXmlAsyncWriter paymentMethod;
         private readonly ISubordinateXmlAsyncWriter<AdviceType1> requestedAdviceType;
         private readonly BatchBookingIndicatorXmlAsyncWriter batchBooking;
         private readonly Max15NumericTextXmlAsyncWriter numberOfTransactions;
@@ -32,7 +32,7 @@ namespace BeneficialStrategies.Iso20022.Serialization.Xml.Writers.Components
         private readonly ISubordinateXmlAsyncWriter<BranchAndFinancialInstitutionIdentification6> creditorAgent;
         private readonly ISubordinateXmlAsyncWriter<CashAccount40> creditorAgentAccount;
         private readonly ISubordinateXmlAsyncWriter<PartyIdentification135> ultimateCreditor;
-        private readonly IEnumXmlAsyncWriter<ChargeBearerType1Code> chargeBearer;
+        private readonly ChargeBearerType1CodeXmlAsyncWriter chargeBearer;
         private readonly ISubordinateXmlAsyncWriter<CashAccount40> chargesAccount;
         private readonly ISubordinateXmlAsyncWriter<BranchAndFinancialInstitutionIdentification6> chargesAccountAgent;
         private readonly ISubordinateXmlAsyncWriter<PartyIdentification135> creditorSchemeIdentification;
@@ -44,7 +44,7 @@ namespace BeneficialStrategies.Iso20022.Serialization.Xml.Writers.Components
         public PaymentInstruction39XmlAsyncWriter
         (
             Max35TextXmlAsyncWriter paymentInformationIdentification,
-            IEnumXmlAsyncWriter<PaymentMethod2Code> paymentMethod,
+            PaymentMethod2CodeXmlAsyncWriter paymentMethod,
             ISubordinateXmlAsyncWriter<AdviceType1> requestedAdviceType,
             BatchBookingIndicatorXmlAsyncWriter batchBooking,
             Max15NumericTextXmlAsyncWriter numberOfTransactions,
@@ -56,7 +56,7 @@ namespace BeneficialStrategies.Iso20022.Serialization.Xml.Writers.Components
             ISubordinateXmlAsyncWriter<BranchAndFinancialInstitutionIdentification6> creditorAgent,
             ISubordinateXmlAsyncWriter<CashAccount40> creditorAgentAccount,
             ISubordinateXmlAsyncWriter<PartyIdentification135> ultimateCreditor,
-            IEnumXmlAsyncWriter<ChargeBearerType1Code> chargeBearer,
+            ChargeBearerType1CodeXmlAsyncWriter chargeBearer,
             ISubordinateXmlAsyncWriter<CashAccount40> chargesAccount,
             ISubordinateXmlAsyncWriter<BranchAndFinancialInstitutionIdentification6> chargesAccountAgent,
             ISubordinateXmlAsyncWriter<PartyIdentification135> creditorSchemeIdentification,

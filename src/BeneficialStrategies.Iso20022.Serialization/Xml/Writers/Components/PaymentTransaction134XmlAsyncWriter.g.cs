@@ -25,7 +25,7 @@ namespace BeneficialStrategies.Iso20022.Serialization.Xml.Writers.Components
         private readonly UUIDv4IdentifierXmlAsyncWriter originalUETR;
         private readonly ActiveOrHistoricCurrencyAndAmountXmlAsyncWriter originalInstructedAmount;
         private readonly ActiveOrHistoricCurrencyAndAmountXmlAsyncWriter reversedInstructedAmount;
-        private readonly IEnumXmlAsyncWriter<ChargeBearerType1Code> chargeBearer;
+        private readonly ChargeBearerType1CodeXmlAsyncWriter chargeBearer;
         private readonly ISubordinateXmlAsyncWriter<PaymentReversalReason9> reversalReasonInformation;
         private readonly ISubordinateXmlAsyncWriter<OriginalTransactionReference35> originalTransactionReference;
         private readonly ISubordinateXmlAsyncWriter<SupplementaryData1> supplementaryData;
@@ -41,7 +41,7 @@ namespace BeneficialStrategies.Iso20022.Serialization.Xml.Writers.Components
             UUIDv4IdentifierXmlAsyncWriter originalUETR,
             ActiveOrHistoricCurrencyAndAmountXmlAsyncWriter originalInstructedAmount,
             ActiveOrHistoricCurrencyAndAmountXmlAsyncWriter reversedInstructedAmount,
-            IEnumXmlAsyncWriter<ChargeBearerType1Code> chargeBearer,
+            ChargeBearerType1CodeXmlAsyncWriter chargeBearer,
             ISubordinateXmlAsyncWriter<PaymentReversalReason9> reversalReasonInformation,
             ISubordinateXmlAsyncWriter<OriginalTransactionReference35> originalTransactionReference,
             ISubordinateXmlAsyncWriter<SupplementaryData1> supplementaryData

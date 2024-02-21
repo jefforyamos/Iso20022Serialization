@@ -27,7 +27,7 @@ namespace BeneficialStrategies.Iso20022.Serialization.Xml.Writers.Components
         private readonly ISubordinateXmlAsyncWriter<PartyIdentification135> creditorSchemeIdentification;
         private readonly ISubordinateXmlAsyncWriter<SettlementInstruction11> settlementInformation;
         private readonly ISubordinateXmlAsyncWriter<PaymentTypeInformation27> paymentTypeInformation;
-        private readonly IEnumXmlAsyncWriter<PaymentMethod4Code> paymentMethod;
+        private readonly PaymentMethod4CodeXmlAsyncWriter paymentMethod;
         private readonly ISubordinateXmlAsyncWriter<MandateRelatedData2Choice_> mandateRelatedInformation;
         private readonly ISubordinateXmlAsyncWriter<RemittanceInformation21> remittanceInformation;
         private readonly ISubordinateXmlAsyncWriter<Party40Choice_> ultimateDebtor;
@@ -55,7 +55,7 @@ namespace BeneficialStrategies.Iso20022.Serialization.Xml.Writers.Components
             ISubordinateXmlAsyncWriter<PartyIdentification135> creditorSchemeIdentification,
             ISubordinateXmlAsyncWriter<SettlementInstruction11> settlementInformation,
             ISubordinateXmlAsyncWriter<PaymentTypeInformation27> paymentTypeInformation,
-            IEnumXmlAsyncWriter<PaymentMethod4Code> paymentMethod,
+            PaymentMethod4CodeXmlAsyncWriter paymentMethod,
             ISubordinateXmlAsyncWriter<MandateRelatedData2Choice_> mandateRelatedInformation,
             ISubordinateXmlAsyncWriter<RemittanceInformation21> remittanceInformation,
             ISubordinateXmlAsyncWriter<Party40Choice_> ultimateDebtor,

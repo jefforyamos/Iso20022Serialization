@@ -19,7 +19,7 @@ namespace BeneficialStrategies.Iso20022.Serialization.Xml.Writers.Components
     public class Contact4XmlAsyncWriter : ISubordinateXmlAsyncWriter<Contact4>
     {
         // Injected dependencies for serialization of each member data type
-        private readonly IEnumXmlAsyncWriter<NamePrefix2Code> namePrefix;
+        private readonly NamePrefix2CodeXmlAsyncWriter namePrefix;
         private readonly Max140TextXmlAsyncWriter name;
         private readonly PhoneNumberXmlAsyncWriter phoneNumber;
         private readonly PhoneNumberXmlAsyncWriter mobileNumber;
@@ -30,14 +30,14 @@ namespace BeneficialStrategies.Iso20022.Serialization.Xml.Writers.Components
         private readonly Max35TextXmlAsyncWriter responsibility;
         private readonly Max70TextXmlAsyncWriter department;
         private readonly ISubordinateXmlAsyncWriter<OtherContact1> other;
-        private readonly IEnumXmlAsyncWriter<PreferredContactMethod1Code> preferredMethod;
+        private readonly PreferredContactMethod1CodeXmlAsyncWriter preferredMethod;
         
         /// <summary>
         /// Construct using an injected writer for each member.
         /// </summary>
         public Contact4XmlAsyncWriter
         (
-            IEnumXmlAsyncWriter<NamePrefix2Code> namePrefix,
+            NamePrefix2CodeXmlAsyncWriter namePrefix,
             Max140TextXmlAsyncWriter name,
             PhoneNumberXmlAsyncWriter phoneNumber,
             PhoneNumberXmlAsyncWriter mobileNumber,
@@ -48,7 +48,7 @@ namespace BeneficialStrategies.Iso20022.Serialization.Xml.Writers.Components
             Max35TextXmlAsyncWriter responsibility,
             Max70TextXmlAsyncWriter department,
             ISubordinateXmlAsyncWriter<OtherContact1> other,
-            IEnumXmlAsyncWriter<PreferredContactMethod1Code> preferredMethod
+            PreferredContactMethod1CodeXmlAsyncWriter preferredMethod
         )
         {
             this.namePrefix = namePrefix;

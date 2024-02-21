@@ -19,7 +19,7 @@ namespace BeneficialStrategies.Iso20022.Serialization.Xml.Writers.Components
     public class SettlementInstruction11XmlAsyncWriter : ISubordinateXmlAsyncWriter<SettlementInstruction11>
     {
         // Injected dependencies for serialization of each member data type
-        private readonly IEnumXmlAsyncWriter<SettlementMethod1Code> settlementMethod;
+        private readonly SettlementMethod1CodeXmlAsyncWriter settlementMethod;
         private readonly ISubordinateXmlAsyncWriter<CashAccount40> settlementAccount;
         private readonly ISubordinateXmlAsyncWriter<ClearingSystemIdentification3Choice_> clearingSystem;
         private readonly ISubordinateXmlAsyncWriter<BranchAndFinancialInstitutionIdentification6> instructingReimbursementAgent;
@@ -34,7 +34,7 @@ namespace BeneficialStrategies.Iso20022.Serialization.Xml.Writers.Components
         /// </summary>
         public SettlementInstruction11XmlAsyncWriter
         (
-            IEnumXmlAsyncWriter<SettlementMethod1Code> settlementMethod,
+            SettlementMethod1CodeXmlAsyncWriter settlementMethod,
             ISubordinateXmlAsyncWriter<CashAccount40> settlementAccount,
             ISubordinateXmlAsyncWriter<ClearingSystemIdentification3Choice_> clearingSystem,
             ISubordinateXmlAsyncWriter<BranchAndFinancialInstitutionIdentification6> instructingReimbursementAgent,

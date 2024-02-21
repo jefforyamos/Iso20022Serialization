@@ -8,6 +8,7 @@
 using BeneficialStrategies.Iso20022.Choices;
 using BeneficialStrategies.Iso20022.Choices.PersonIdentificationSchemeName1Choice;
 using BeneficialStrategies.Iso20022.Codesets;
+using BeneficialStrategies.Iso20022.Serialization.Xml.Codesets;
 using BeneficialStrategies.Iso20022.Serialization.Xml.Writers.SimpleTypes;
 using System.Xml;
 
@@ -19,14 +20,14 @@ namespace BeneficialStrategies.Iso20022.Serialization.Xml.Writers.Choices.Person
     public class PersonIdentificationSchemeName1ChoiceCodeXmlAsyncWriter : ISubordinateXmlAsyncWriter<Code>
     {
         // Injected dependencies for serialization of each member data type
-        private readonly IEnumXmlAsyncWriter<ExternalPersonIdentification1Code> value;
+        private readonly ExternalPersonIdentification1CodeXmlAsyncWriter value;
         
         /// <summary>
         /// Construct using an injected writer for each member.
         /// </summary>
         public PersonIdentificationSchemeName1ChoiceCodeXmlAsyncWriter
         (
-            IEnumXmlAsyncWriter<ExternalPersonIdentification1Code> value
+            ExternalPersonIdentification1CodeXmlAsyncWriter value
         )
         {
             this.value = value;

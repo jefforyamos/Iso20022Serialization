@@ -22,7 +22,7 @@ namespace BeneficialStrategies.Iso20022.Serialization.Xml.Writers.Components
         private readonly ISubordinateXmlAsyncWriter<PaymentIdentification6> paymentIdentification;
         private readonly ISubordinateXmlAsyncWriter<PaymentTypeInformation29> paymentTypeInformation;
         private readonly ActiveOrHistoricCurrencyAndAmountXmlAsyncWriter instructedAmount;
-        private readonly IEnumXmlAsyncWriter<ChargeBearerType1Code> chargeBearer;
+        private readonly ChargeBearerType1CodeXmlAsyncWriter chargeBearer;
         private readonly ISubordinateXmlAsyncWriter<DirectDebitTransaction11> directDebitTransaction;
         private readonly ISubordinateXmlAsyncWriter<PartyIdentification135> ultimateCreditor;
         private readonly ISubordinateXmlAsyncWriter<BranchAndFinancialInstitutionIdentification6> debtorAgent;
@@ -46,7 +46,7 @@ namespace BeneficialStrategies.Iso20022.Serialization.Xml.Writers.Components
             ISubordinateXmlAsyncWriter<PaymentIdentification6> paymentIdentification,
             ISubordinateXmlAsyncWriter<PaymentTypeInformation29> paymentTypeInformation,
             ActiveOrHistoricCurrencyAndAmountXmlAsyncWriter instructedAmount,
-            IEnumXmlAsyncWriter<ChargeBearerType1Code> chargeBearer,
+            ChargeBearerType1CodeXmlAsyncWriter chargeBearer,
             ISubordinateXmlAsyncWriter<DirectDebitTransaction11> directDebitTransaction,
             ISubordinateXmlAsyncWriter<PartyIdentification135> ultimateCreditor,
             ISubordinateXmlAsyncWriter<BranchAndFinancialInstitutionIdentification6> debtorAgent,

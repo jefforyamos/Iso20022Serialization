@@ -20,7 +20,7 @@ namespace BeneficialStrategies.Iso20022.Serialization.Xml.Writers.Components
     {
         // Injected dependencies for serialization of each member data type
         private readonly ISOYearXmlAsyncWriter year;
-        private readonly IEnumXmlAsyncWriter<TaxRecordPeriod1Code> type;
+        private readonly TaxRecordPeriod1CodeXmlAsyncWriter type;
         private readonly ISubordinateXmlAsyncWriter<DatePeriod2> fromToDate;
         
         /// <summary>
@@ -29,7 +29,7 @@ namespace BeneficialStrategies.Iso20022.Serialization.Xml.Writers.Components
         public TaxPeriod3XmlAsyncWriter
         (
             ISOYearXmlAsyncWriter year,
-            IEnumXmlAsyncWriter<TaxRecordPeriod1Code> type,
+            TaxRecordPeriod1CodeXmlAsyncWriter type,
             ISubordinateXmlAsyncWriter<DatePeriod2> fromToDate
         )
         {

@@ -19,11 +19,11 @@ namespace BeneficialStrategies.Iso20022.Serialization.Xml.Writers.Components
     public class PaymentTypeInformation27XmlAsyncWriter : ISubordinateXmlAsyncWriter<PaymentTypeInformation27>
     {
         // Injected dependencies for serialization of each member data type
-        private readonly IEnumXmlAsyncWriter<Priority2Code> instructionPriority;
-        private readonly IEnumXmlAsyncWriter<ClearingChannel2Code> clearingChannel;
+        private readonly Priority2CodeXmlAsyncWriter instructionPriority;
+        private readonly ClearingChannel2CodeXmlAsyncWriter clearingChannel;
         private readonly ISubordinateXmlAsyncWriter<ServiceLevel8Choice_> serviceLevel;
         private readonly ISubordinateXmlAsyncWriter<LocalInstrument2Choice_> localInstrument;
-        private readonly IEnumXmlAsyncWriter<SequenceType3Code> sequenceType;
+        private readonly SequenceType3CodeXmlAsyncWriter sequenceType;
         private readonly ISubordinateXmlAsyncWriter<CategoryPurpose1Choice_> categoryPurpose;
         
         /// <summary>
@@ -31,11 +31,11 @@ namespace BeneficialStrategies.Iso20022.Serialization.Xml.Writers.Components
         /// </summary>
         public PaymentTypeInformation27XmlAsyncWriter
         (
-            IEnumXmlAsyncWriter<Priority2Code> instructionPriority,
-            IEnumXmlAsyncWriter<ClearingChannel2Code> clearingChannel,
+            Priority2CodeXmlAsyncWriter instructionPriority,
+            ClearingChannel2CodeXmlAsyncWriter clearingChannel,
             ISubordinateXmlAsyncWriter<ServiceLevel8Choice_> serviceLevel,
             ISubordinateXmlAsyncWriter<LocalInstrument2Choice_> localInstrument,
-            IEnumXmlAsyncWriter<SequenceType3Code> sequenceType,
+            SequenceType3CodeXmlAsyncWriter sequenceType,
             ISubordinateXmlAsyncWriter<CategoryPurpose1Choice_> categoryPurpose
         )
         {

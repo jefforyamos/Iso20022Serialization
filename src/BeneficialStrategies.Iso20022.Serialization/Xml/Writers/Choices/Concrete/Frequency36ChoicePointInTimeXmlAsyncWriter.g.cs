@@ -8,6 +8,7 @@
 using BeneficialStrategies.Iso20022.Choices;
 using BeneficialStrategies.Iso20022.Choices.Frequency36Choice;
 using BeneficialStrategies.Iso20022.Codesets;
+using BeneficialStrategies.Iso20022.Serialization.Xml.Codesets;
 using BeneficialStrategies.Iso20022.Serialization.Xml.Writers.SimpleTypes;
 using System.Xml;
 
@@ -19,7 +20,7 @@ namespace BeneficialStrategies.Iso20022.Serialization.Xml.Writers.Choices.Freque
     public class Frequency36ChoicePointInTimeXmlAsyncWriter : ISubordinateXmlAsyncWriter<PointInTime>
     {
         // Injected dependencies for serialization of each member data type
-        private readonly IEnumXmlAsyncWriter<Frequency6Code> type;
+        private readonly Frequency6CodeXmlAsyncWriter type;
         private readonly Exact2NumericTextXmlAsyncWriter value;
         
         /// <summary>
@@ -27,8 +28,8 @@ namespace BeneficialStrategies.Iso20022.Serialization.Xml.Writers.Choices.Freque
         /// </summary>
         public Frequency36ChoicePointInTimeXmlAsyncWriter
         (
-            IEnumXmlAsyncWriter<Frequency6Code> type,
-            Exact2NumericTextXmlAsyncWriter value,
+            Frequency6CodeXmlAsyncWriter type,
+            Exact2NumericTextXmlAsyncWriter value
         )
         {
             this.type = type;

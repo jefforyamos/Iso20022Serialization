@@ -8,6 +8,7 @@
 using BeneficialStrategies.Iso20022.Choices;
 using BeneficialStrategies.Iso20022.Choices.DocumentLineType1Choice;
 using BeneficialStrategies.Iso20022.Codesets;
+using BeneficialStrategies.Iso20022.Serialization.Xml.Codesets;
 using BeneficialStrategies.Iso20022.Serialization.Xml.Writers.SimpleTypes;
 using System.Xml;
 
@@ -19,14 +20,14 @@ namespace BeneficialStrategies.Iso20022.Serialization.Xml.Writers.Choices.Docume
     public class DocumentLineType1ChoiceCodeXmlAsyncWriter : ISubordinateXmlAsyncWriter<Code>
     {
         // Injected dependencies for serialization of each member data type
-        private readonly IEnumXmlAsyncWriter<ExternalDocumentLineType1Code> value;
+        private readonly ExternalDocumentLineType1CodeXmlAsyncWriter value;
         
         /// <summary>
         /// Construct using an injected writer for each member.
         /// </summary>
         public DocumentLineType1ChoiceCodeXmlAsyncWriter
         (
-            IEnumXmlAsyncWriter<ExternalDocumentLineType1Code> value
+            ExternalDocumentLineType1CodeXmlAsyncWriter value
         )
         {
             this.value = value;

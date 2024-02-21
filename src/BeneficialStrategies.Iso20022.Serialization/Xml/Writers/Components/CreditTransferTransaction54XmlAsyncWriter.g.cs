@@ -23,7 +23,7 @@ namespace BeneficialStrategies.Iso20022.Serialization.Xml.Writers.Components
         private readonly ISubordinateXmlAsyncWriter<PaymentTypeInformation26> paymentTypeInformation;
         private readonly ISubordinateXmlAsyncWriter<AmountType4Choice_> amount;
         private readonly ISubordinateXmlAsyncWriter<ExchangeRate1> exchangeRateInformation;
-        private readonly IEnumXmlAsyncWriter<ChargeBearerType1Code> chargeBearer;
+        private readonly ChargeBearerType1CodeXmlAsyncWriter chargeBearer;
         private readonly ISubordinateXmlAsyncWriter<CreditTransferMandateData1> mandateRelatedInformation;
         private readonly ISubordinateXmlAsyncWriter<Cheque11> chequeInstruction;
         private readonly ISubordinateXmlAsyncWriter<PartyIdentification135> ultimateDebtor;
@@ -56,7 +56,7 @@ namespace BeneficialStrategies.Iso20022.Serialization.Xml.Writers.Components
             ISubordinateXmlAsyncWriter<PaymentTypeInformation26> paymentTypeInformation,
             ISubordinateXmlAsyncWriter<AmountType4Choice_> amount,
             ISubordinateXmlAsyncWriter<ExchangeRate1> exchangeRateInformation,
-            IEnumXmlAsyncWriter<ChargeBearerType1Code> chargeBearer,
+            ChargeBearerType1CodeXmlAsyncWriter chargeBearer,
             ISubordinateXmlAsyncWriter<CreditTransferMandateData1> mandateRelatedInformation,
             ISubordinateXmlAsyncWriter<Cheque11> chequeInstruction,
             ISubordinateXmlAsyncWriter<PartyIdentification135> ultimateDebtor,

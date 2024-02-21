@@ -8,6 +8,7 @@
 using BeneficialStrategies.Iso20022.Choices;
 using BeneficialStrategies.Iso20022.Choices.TaxAmountType1Choice;
 using BeneficialStrategies.Iso20022.Codesets;
+using BeneficialStrategies.Iso20022.Serialization.Xml.Codesets;
 using BeneficialStrategies.Iso20022.Serialization.Xml.Writers.SimpleTypes;
 using System.Xml;
 
@@ -19,14 +20,14 @@ namespace BeneficialStrategies.Iso20022.Serialization.Xml.Writers.Choices.TaxAmo
     public class TaxAmountType1ChoiceCodeXmlAsyncWriter : ISubordinateXmlAsyncWriter<Code>
     {
         // Injected dependencies for serialization of each member data type
-        private readonly IEnumXmlAsyncWriter<ExternalTaxAmountType1Code> value;
+        private readonly ExternalTaxAmountType1CodeXmlAsyncWriter value;
         
         /// <summary>
         /// Construct using an injected writer for each member.
         /// </summary>
         public TaxAmountType1ChoiceCodeXmlAsyncWriter
         (
-            IEnumXmlAsyncWriter<ExternalTaxAmountType1Code> value
+            ExternalTaxAmountType1CodeXmlAsyncWriter value
         )
         {
             this.value = value;

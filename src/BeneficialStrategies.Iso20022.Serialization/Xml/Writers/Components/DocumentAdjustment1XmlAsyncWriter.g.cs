@@ -20,7 +20,7 @@ namespace BeneficialStrategies.Iso20022.Serialization.Xml.Writers.Components
     {
         // Injected dependencies for serialization of each member data type
         private readonly ActiveOrHistoricCurrencyAndAmountXmlAsyncWriter amount;
-        private readonly IEnumXmlAsyncWriter<CreditDebitCode> creditDebitIndicator;
+        private readonly CreditDebitCodeXmlAsyncWriter creditDebitIndicator;
         private readonly Max4TextXmlAsyncWriter reason;
         private readonly Max140TextXmlAsyncWriter additionalInformation;
         
@@ -30,7 +30,7 @@ namespace BeneficialStrategies.Iso20022.Serialization.Xml.Writers.Components
         public DocumentAdjustment1XmlAsyncWriter
         (
             ActiveOrHistoricCurrencyAndAmountXmlAsyncWriter amount,
-            IEnumXmlAsyncWriter<CreditDebitCode> creditDebitIndicator,
+            CreditDebitCodeXmlAsyncWriter creditDebitIndicator,
             Max4TextXmlAsyncWriter reason,
             Max140TextXmlAsyncWriter additionalInformation
         )

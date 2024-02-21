@@ -8,6 +8,7 @@
 using BeneficialStrategies.Iso20022.Choices;
 using BeneficialStrategies.Iso20022.Choices.Frequency36Choice;
 using BeneficialStrategies.Iso20022.Codesets;
+using BeneficialStrategies.Iso20022.Serialization.Xml.Codesets;
 using BeneficialStrategies.Iso20022.Serialization.Xml.Writers.SimpleTypes;
 using System.Xml;
 
@@ -19,14 +20,14 @@ namespace BeneficialStrategies.Iso20022.Serialization.Xml.Writers.Choices.Freque
     public class Frequency36ChoiceTypeXmlAsyncWriter : ISubordinateXmlAsyncWriter<Type>
     {
         // Injected dependencies for serialization of each member data type
-        private readonly IEnumXmlAsyncWriter<Frequency6Code> value;
+        private readonly Frequency6CodeXmlAsyncWriter value;
         
         /// <summary>
         /// Construct using an injected writer for each member.
         /// </summary>
         public Frequency36ChoiceTypeXmlAsyncWriter
         (
-            IEnumXmlAsyncWriter<Frequency6Code> value
+            Frequency6CodeXmlAsyncWriter value
         )
         {
             this.value = value;

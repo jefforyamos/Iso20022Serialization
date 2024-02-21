@@ -12,9 +12,3 @@ public interface ISubordinateXmlAsyncWriter<TValue>
 {
     Task WriteAsync(XmlWriter writer, TValue value, string isoNamespace);
 }
-
-public interface IEnumXmlAsyncWriter<TValue> : ISubordinateXmlAsyncWriter<TValue>
-    where TValue : struct
-    {
-
-    }
