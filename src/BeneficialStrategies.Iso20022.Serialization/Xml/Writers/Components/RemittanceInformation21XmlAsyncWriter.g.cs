@@ -19,7 +19,7 @@ namespace BeneficialStrategies.Iso20022.Serialization.Xml.Writers.Components
     public class RemittanceInformation21XmlAsyncWriter : ISubordinateXmlAsyncWriter<RemittanceInformation21>
     {
         // Injected dependencies for serialization of each member data type
-        private readonly IMax140TextXmlAsyncWriter unstructured;
+        private readonly Max140TextXmlAsyncWriter unstructured;
         private readonly ISubordinateXmlAsyncWriter<StructuredRemittanceInformation17> structured;
         
         /// <summary>
@@ -27,7 +27,7 @@ namespace BeneficialStrategies.Iso20022.Serialization.Xml.Writers.Components
         /// </summary>
         public RemittanceInformation21XmlAsyncWriter
         (
-            IMax140TextXmlAsyncWriter unstructured,
+            Max140TextXmlAsyncWriter unstructured,
             ISubordinateXmlAsyncWriter<StructuredRemittanceInformation17> structured
         )
         {

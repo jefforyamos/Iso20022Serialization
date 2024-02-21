@@ -19,9 +19,9 @@ namespace BeneficialStrategies.Iso20022.Serialization.Xml.Writers.Components
     public class OriginalGroupHeader16XmlAsyncWriter : ISubordinateXmlAsyncWriter<OriginalGroupHeader16>
     {
         // Injected dependencies for serialization of each member data type
-        private readonly IMax35TextXmlAsyncWriter originalMessageIdentification;
-        private readonly IMax35TextXmlAsyncWriter originalMessageNameIdentification;
-        private readonly IISODateTimeXmlAsyncWriter originalCreationDateTime;
+        private readonly Max35TextXmlAsyncWriter originalMessageIdentification;
+        private readonly Max35TextXmlAsyncWriter originalMessageNameIdentification;
+        private readonly ISODateTimeXmlAsyncWriter originalCreationDateTime;
         private readonly ISubordinateXmlAsyncWriter<PaymentReversalReason9> reversalReasonInformation;
         
         /// <summary>
@@ -29,9 +29,9 @@ namespace BeneficialStrategies.Iso20022.Serialization.Xml.Writers.Components
         /// </summary>
         public OriginalGroupHeader16XmlAsyncWriter
         (
-            IMax35TextXmlAsyncWriter originalMessageIdentification,
-            IMax35TextXmlAsyncWriter originalMessageNameIdentification,
-            IISODateTimeXmlAsyncWriter originalCreationDateTime,
+            Max35TextXmlAsyncWriter originalMessageIdentification,
+            Max35TextXmlAsyncWriter originalMessageNameIdentification,
+            ISODateTimeXmlAsyncWriter originalCreationDateTime,
             ISubordinateXmlAsyncWriter<PaymentReversalReason9> reversalReasonInformation
         )
         {

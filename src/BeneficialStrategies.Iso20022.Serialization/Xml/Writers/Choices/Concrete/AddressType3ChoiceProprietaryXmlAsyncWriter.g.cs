@@ -19,18 +19,18 @@ namespace BeneficialStrategies.Iso20022.Serialization.Xml.Writers.Choices.Addres
     public class AddressType3ChoiceProprietaryXmlAsyncWriter : ISubordinateXmlAsyncWriter<Proprietary>
     {
         // Injected dependencies for serialization of each member data type
-        private readonly IExact4AlphaNumericTextXmlAsyncWriter identification;
-        private readonly IMax35TextXmlAsyncWriter issuer;
-        private readonly IMax35TextXmlAsyncWriter schemeName;
+        private readonly Exact4AlphaNumericTextXmlAsyncWriter identification;
+        private readonly Max35TextXmlAsyncWriter issuer;
+        private readonly Max35TextXmlAsyncWriter schemeName;
         
         /// <summary>
         /// Construct using an injected writer for each member.
         /// </summary>
         public AddressType3ChoiceProprietaryXmlAsyncWriter
         (
-            IExact4AlphaNumericTextXmlAsyncWriter identification,
-            IMax35TextXmlAsyncWriter issuer,
-            IMax35TextXmlAsyncWriter schemeName
+            Exact4AlphaNumericTextXmlAsyncWriter identification,
+            Max35TextXmlAsyncWriter issuer,
+            Max35TextXmlAsyncWriter schemeName
         )
         {
             this.identification = identification;

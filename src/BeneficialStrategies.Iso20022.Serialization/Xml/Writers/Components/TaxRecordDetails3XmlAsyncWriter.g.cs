@@ -20,7 +20,7 @@ namespace BeneficialStrategies.Iso20022.Serialization.Xml.Writers.Components
     {
         // Injected dependencies for serialization of each member data type
         private readonly ISubordinateXmlAsyncWriter<TaxPeriod3> period;
-        private readonly IActiveOrHistoricCurrencyAndAmountXmlAsyncWriter amount;
+        private readonly ActiveOrHistoricCurrencyAndAmountXmlAsyncWriter amount;
         
         /// <summary>
         /// Construct using an injected writer for each member.
@@ -28,7 +28,7 @@ namespace BeneficialStrategies.Iso20022.Serialization.Xml.Writers.Components
         public TaxRecordDetails3XmlAsyncWriter
         (
             ISubordinateXmlAsyncWriter<TaxPeriod3> period,
-            IActiveOrHistoricCurrencyAndAmountXmlAsyncWriter amount
+            ActiveOrHistoricCurrencyAndAmountXmlAsyncWriter amount
         )
         {
             this.period = period;

@@ -19,16 +19,16 @@ namespace BeneficialStrategies.Iso20022.Serialization.Xml.Writers.Choices.Amount
     public class AmountType4ChoiceEquivalentAmountXmlAsyncWriter : ISubordinateXmlAsyncWriter<EquivalentAmount>
     {
         // Injected dependencies for serialization of each member data type
-        private readonly IActiveOrHistoricCurrencyAndAmountXmlAsyncWriter amount;
-        private readonly IActiveOrHistoricCurrencyCodeXmlAsyncWriter currencyOfTransfer;
+        private readonly ActiveOrHistoricCurrencyAndAmountXmlAsyncWriter amount;
+        private readonly ActiveOrHistoricCurrencyCodeXmlAsyncWriter currencyOfTransfer;
         
         /// <summary>
         /// Construct using an injected writer for each member.
         /// </summary>
         public AmountType4ChoiceEquivalentAmountXmlAsyncWriter
         (
-            IActiveOrHistoricCurrencyAndAmountXmlAsyncWriter amount,
-            IActiveOrHistoricCurrencyCodeXmlAsyncWriter currencyOfTransfer
+            ActiveOrHistoricCurrencyAndAmountXmlAsyncWriter amount,
+            ActiveOrHistoricCurrencyCodeXmlAsyncWriter currencyOfTransfer
         )
         {
             this.amount = amount;

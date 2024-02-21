@@ -21,8 +21,8 @@ namespace BeneficialStrategies.Iso20022.Serialization.Xml.Writers.Components
         // Injected dependencies for serialization of each member data type
         private readonly ISubordinateXmlAsyncWriter<MandateRelatedInformation15> mandateRelatedInformation;
         private readonly ISubordinateXmlAsyncWriter<PartyIdentification135> creditorSchemeIdentification;
-        private readonly IMax35TextXmlAsyncWriter preNotificationIdentification;
-        private readonly IISODateXmlAsyncWriter preNotificationDate;
+        private readonly Max35TextXmlAsyncWriter preNotificationIdentification;
+        private readonly ISODateXmlAsyncWriter preNotificationDate;
         
         /// <summary>
         /// Construct using an injected writer for each member.
@@ -31,8 +31,8 @@ namespace BeneficialStrategies.Iso20022.Serialization.Xml.Writers.Components
         (
             ISubordinateXmlAsyncWriter<MandateRelatedInformation15> mandateRelatedInformation,
             ISubordinateXmlAsyncWriter<PartyIdentification135> creditorSchemeIdentification,
-            IMax35TextXmlAsyncWriter preNotificationIdentification,
-            IISODateXmlAsyncWriter preNotificationDate
+            Max35TextXmlAsyncWriter preNotificationIdentification,
+            ISODateXmlAsyncWriter preNotificationDate
         )
         {
             this.mandateRelatedInformation = mandateRelatedInformation;

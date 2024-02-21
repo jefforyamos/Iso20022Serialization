@@ -19,13 +19,13 @@ namespace BeneficialStrategies.Iso20022.Serialization.Xml.Writers.Choices.Mandat
     public class MandateRelatedData2ChoiceCreditTransferMandateXmlAsyncWriter : ISubordinateXmlAsyncWriter<CreditTransferMandate>
     {
         // Injected dependencies for serialization of each member data type
-        private readonly IMax35TextXmlAsyncWriter mandateIdentification;
+        private readonly Max35TextXmlAsyncWriter mandateIdentification;
         private readonly ISubordinateXmlAsyncWriter<MandateTypeInformation2> type;
-        private readonly IISODateXmlAsyncWriter dateOfSignature;
-        private readonly IISODateTimeXmlAsyncWriter dateOfVerification;
-        private readonly IMax10KBinaryXmlAsyncWriter electronicSignature;
-        private readonly IISODateXmlAsyncWriter firstPaymentDate;
-        private readonly IISODateXmlAsyncWriter finalPaymentDate;
+        private readonly ISODateXmlAsyncWriter dateOfSignature;
+        private readonly ISODateTimeXmlAsyncWriter dateOfVerification;
+        private readonly Max10KBinaryXmlAsyncWriter electronicSignature;
+        private readonly ISODateXmlAsyncWriter firstPaymentDate;
+        private readonly ISODateXmlAsyncWriter finalPaymentDate;
         private readonly ISubordinateXmlAsyncWriter<Frequency36Choice_> frequency;
         private readonly ISubordinateXmlAsyncWriter<MandateSetupReason1Choice_> reason;
         
@@ -34,13 +34,13 @@ namespace BeneficialStrategies.Iso20022.Serialization.Xml.Writers.Choices.Mandat
         /// </summary>
         public MandateRelatedData2ChoiceCreditTransferMandateXmlAsyncWriter
         (
-            IMax35TextXmlAsyncWriter mandateIdentification,
+            Max35TextXmlAsyncWriter mandateIdentification,
             ISubordinateXmlAsyncWriter<MandateTypeInformation2> type,
-            IISODateXmlAsyncWriter dateOfSignature,
-            IISODateTimeXmlAsyncWriter dateOfVerification,
-            IMax10KBinaryXmlAsyncWriter electronicSignature,
-            IISODateXmlAsyncWriter firstPaymentDate,
-            IISODateXmlAsyncWriter finalPaymentDate,
+            ISODateXmlAsyncWriter dateOfSignature,
+            ISODateTimeXmlAsyncWriter dateOfVerification,
+            Max10KBinaryXmlAsyncWriter electronicSignature,
+            ISODateXmlAsyncWriter firstPaymentDate,
+            ISODateXmlAsyncWriter finalPaymentDate,
             ISubordinateXmlAsyncWriter<Frequency36Choice_> frequency,
             ISubordinateXmlAsyncWriter<MandateSetupReason1Choice_> reason
         )

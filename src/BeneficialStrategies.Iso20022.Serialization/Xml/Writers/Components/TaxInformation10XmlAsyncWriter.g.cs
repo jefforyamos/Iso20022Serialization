@@ -21,13 +21,13 @@ namespace BeneficialStrategies.Iso20022.Serialization.Xml.Writers.Components
         // Injected dependencies for serialization of each member data type
         private readonly ISubordinateXmlAsyncWriter<TaxParty1> creditor;
         private readonly ISubordinateXmlAsyncWriter<TaxParty2> debtor;
-        private readonly IMax35TextXmlAsyncWriter administrationZone;
-        private readonly IMax140TextXmlAsyncWriter referenceNumber;
-        private readonly IMax35TextXmlAsyncWriter method;
-        private readonly IActiveOrHistoricCurrencyAndAmountXmlAsyncWriter totalTaxableBaseAmount;
-        private readonly IActiveOrHistoricCurrencyAndAmountXmlAsyncWriter totalTaxAmount;
-        private readonly IISODateXmlAsyncWriter date;
-        private readonly INumberXmlAsyncWriter sequenceNumber;
+        private readonly Max35TextXmlAsyncWriter administrationZone;
+        private readonly Max140TextXmlAsyncWriter referenceNumber;
+        private readonly Max35TextXmlAsyncWriter method;
+        private readonly ActiveOrHistoricCurrencyAndAmountXmlAsyncWriter totalTaxableBaseAmount;
+        private readonly ActiveOrHistoricCurrencyAndAmountXmlAsyncWriter totalTaxAmount;
+        private readonly ISODateXmlAsyncWriter date;
+        private readonly NumberXmlAsyncWriter sequenceNumber;
         private readonly ISubordinateXmlAsyncWriter<TaxRecord3> record;
         
         /// <summary>
@@ -37,13 +37,13 @@ namespace BeneficialStrategies.Iso20022.Serialization.Xml.Writers.Components
         (
             ISubordinateXmlAsyncWriter<TaxParty1> creditor,
             ISubordinateXmlAsyncWriter<TaxParty2> debtor,
-            IMax35TextXmlAsyncWriter administrationZone,
-            IMax140TextXmlAsyncWriter referenceNumber,
-            IMax35TextXmlAsyncWriter method,
-            IActiveOrHistoricCurrencyAndAmountXmlAsyncWriter totalTaxableBaseAmount,
-            IActiveOrHistoricCurrencyAndAmountXmlAsyncWriter totalTaxAmount,
-            IISODateXmlAsyncWriter date,
-            INumberXmlAsyncWriter sequenceNumber,
+            Max35TextXmlAsyncWriter administrationZone,
+            Max140TextXmlAsyncWriter referenceNumber,
+            Max35TextXmlAsyncWriter method,
+            ActiveOrHistoricCurrencyAndAmountXmlAsyncWriter totalTaxableBaseAmount,
+            ActiveOrHistoricCurrencyAndAmountXmlAsyncWriter totalTaxAmount,
+            ISODateXmlAsyncWriter date,
+            NumberXmlAsyncWriter sequenceNumber,
             ISubordinateXmlAsyncWriter<TaxRecord3> record
         )
         {

@@ -19,24 +19,24 @@ namespace BeneficialStrategies.Iso20022.Serialization.Xml.Writers.Components
     public class StructuredRegulatoryReporting3XmlAsyncWriter : ISubordinateXmlAsyncWriter<StructuredRegulatoryReporting3>
     {
         // Injected dependencies for serialization of each member data type
-        private readonly IMax35TextXmlAsyncWriter type;
-        private readonly IISODateXmlAsyncWriter date;
-        private readonly ICountryCodeXmlAsyncWriter country;
-        private readonly IMax10TextXmlAsyncWriter code;
-        private readonly IActiveOrHistoricCurrencyAndAmountXmlAsyncWriter amount;
-        private readonly IMax35TextXmlAsyncWriter information;
+        private readonly Max35TextXmlAsyncWriter type;
+        private readonly ISODateXmlAsyncWriter date;
+        private readonly CountryCodeXmlAsyncWriter country;
+        private readonly Max10TextXmlAsyncWriter code;
+        private readonly ActiveOrHistoricCurrencyAndAmountXmlAsyncWriter amount;
+        private readonly Max35TextXmlAsyncWriter information;
         
         /// <summary>
         /// Construct using an injected writer for each member.
         /// </summary>
         public StructuredRegulatoryReporting3XmlAsyncWriter
         (
-            IMax35TextXmlAsyncWriter type,
-            IISODateXmlAsyncWriter date,
-            ICountryCodeXmlAsyncWriter country,
-            IMax10TextXmlAsyncWriter code,
-            IActiveOrHistoricCurrencyAndAmountXmlAsyncWriter amount,
-            IMax35TextXmlAsyncWriter information
+            Max35TextXmlAsyncWriter type,
+            ISODateXmlAsyncWriter date,
+            CountryCodeXmlAsyncWriter country,
+            Max10TextXmlAsyncWriter code,
+            ActiveOrHistoricCurrencyAndAmountXmlAsyncWriter amount,
+            Max35TextXmlAsyncWriter information
         )
         {
             this.type = type;

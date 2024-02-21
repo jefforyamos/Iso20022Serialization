@@ -19,18 +19,18 @@ namespace BeneficialStrategies.Iso20022.Serialization.Xml.Writers.Components
     public class PaymentInitiationSource1XmlAsyncWriter : ISubordinateXmlAsyncWriter<PaymentInitiationSource1>
     {
         // Injected dependencies for serialization of each member data type
-        private readonly IMax140TextXmlAsyncWriter name;
-        private readonly IMax35TextXmlAsyncWriter provider;
-        private readonly IMax35TextXmlAsyncWriter version;
+        private readonly Max140TextXmlAsyncWriter name;
+        private readonly Max35TextXmlAsyncWriter provider;
+        private readonly Max35TextXmlAsyncWriter version;
         
         /// <summary>
         /// Construct using an injected writer for each member.
         /// </summary>
         public PaymentInitiationSource1XmlAsyncWriter
         (
-            IMax140TextXmlAsyncWriter name,
-            IMax35TextXmlAsyncWriter provider,
-            IMax35TextXmlAsyncWriter version
+            Max140TextXmlAsyncWriter name,
+            Max35TextXmlAsyncWriter provider,
+            Max35TextXmlAsyncWriter version
         )
         {
             this.name = name;

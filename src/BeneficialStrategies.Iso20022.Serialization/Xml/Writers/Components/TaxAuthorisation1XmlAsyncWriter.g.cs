@@ -19,16 +19,16 @@ namespace BeneficialStrategies.Iso20022.Serialization.Xml.Writers.Components
     public class TaxAuthorisation1XmlAsyncWriter : ISubordinateXmlAsyncWriter<TaxAuthorisation1>
     {
         // Injected dependencies for serialization of each member data type
-        private readonly IMax35TextXmlAsyncWriter title;
-        private readonly IMax140TextXmlAsyncWriter name;
+        private readonly Max35TextXmlAsyncWriter title;
+        private readonly Max140TextXmlAsyncWriter name;
         
         /// <summary>
         /// Construct using an injected writer for each member.
         /// </summary>
         public TaxAuthorisation1XmlAsyncWriter
         (
-            IMax35TextXmlAsyncWriter title,
-            IMax140TextXmlAsyncWriter name
+            Max35TextXmlAsyncWriter title,
+            Max140TextXmlAsyncWriter name
         )
         {
             this.title = title;

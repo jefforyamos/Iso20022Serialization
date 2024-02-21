@@ -19,14 +19,14 @@ namespace BeneficialStrategies.Iso20022.Serialization.Xml.Writers.Choices.Accoun
     public class AccountIdentification4ChoiceIBANXmlAsyncWriter : ISubordinateXmlAsyncWriter<IBAN>
     {
         // Injected dependencies for serialization of each member data type
-        private readonly IIBAN2007IdentifierXmlAsyncWriter value;
+        private readonly IBAN2007IdentifierXmlAsyncWriter value;
         
         /// <summary>
         /// Construct using an injected writer for each member.
         /// </summary>
         public AccountIdentification4ChoiceIBANXmlAsyncWriter
         (
-            IIBAN2007IdentifierXmlAsyncWriter value
+            IBAN2007IdentifierXmlAsyncWriter value
         )
         {
             this.value = value;

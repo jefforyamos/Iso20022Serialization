@@ -19,7 +19,7 @@ namespace BeneficialStrategies.Iso20022.Serialization.Xml.Writers.Components
     public class NameAndAddress16XmlAsyncWriter : ISubordinateXmlAsyncWriter<NameAndAddress16>
     {
         // Injected dependencies for serialization of each member data type
-        private readonly IMax140TextXmlAsyncWriter name;
+        private readonly Max140TextXmlAsyncWriter name;
         private readonly ISubordinateXmlAsyncWriter<PostalAddress24> address;
         
         /// <summary>
@@ -27,7 +27,7 @@ namespace BeneficialStrategies.Iso20022.Serialization.Xml.Writers.Components
         /// </summary>
         public NameAndAddress16XmlAsyncWriter
         (
-            IMax140TextXmlAsyncWriter name,
+            Max140TextXmlAsyncWriter name,
             ISubordinateXmlAsyncWriter<PostalAddress24> address
         )
         {

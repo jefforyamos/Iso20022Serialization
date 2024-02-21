@@ -19,14 +19,14 @@ namespace BeneficialStrategies.Iso20022.Serialization.Xml.Writers.Choices.Financ
     public class FinancialIdentificationSchemeName1ChoiceCodeXmlAsyncWriter : ISubordinateXmlAsyncWriter<Code>
     {
         // Injected dependencies for serialization of each member data type
-        private readonly IExternalFinancialInstitutionIdentification1CodeXmlAsyncWriter value;
+        private readonly ExternalFinancialInstitutionIdentification1CodeXmlAsyncWriter value;
         
         /// <summary>
         /// Construct using an injected writer for each member.
         /// </summary>
         public FinancialIdentificationSchemeName1ChoiceCodeXmlAsyncWriter
         (
-            IExternalFinancialInstitutionIdentification1CodeXmlAsyncWriter value
+            ExternalFinancialInstitutionIdentification1CodeXmlAsyncWriter value
         )
         {
             this.value = value;

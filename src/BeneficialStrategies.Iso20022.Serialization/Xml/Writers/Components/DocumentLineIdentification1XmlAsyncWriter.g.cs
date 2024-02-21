@@ -20,8 +20,8 @@ namespace BeneficialStrategies.Iso20022.Serialization.Xml.Writers.Components
     {
         // Injected dependencies for serialization of each member data type
         private readonly ISubordinateXmlAsyncWriter<DocumentLineType1> type;
-        private readonly IMax35TextXmlAsyncWriter number;
-        private readonly IISODateXmlAsyncWriter relatedDate;
+        private readonly Max35TextXmlAsyncWriter number;
+        private readonly ISODateXmlAsyncWriter relatedDate;
         
         /// <summary>
         /// Construct using an injected writer for each member.
@@ -29,8 +29,8 @@ namespace BeneficialStrategies.Iso20022.Serialization.Xml.Writers.Components
         public DocumentLineIdentification1XmlAsyncWriter
         (
             ISubordinateXmlAsyncWriter<DocumentLineType1> type,
-            IMax35TextXmlAsyncWriter number,
-            IISODateXmlAsyncWriter relatedDate
+            Max35TextXmlAsyncWriter number,
+            ISODateXmlAsyncWriter relatedDate
         )
         {
             this.type = type;

@@ -20,7 +20,7 @@ namespace BeneficialStrategies.Iso20022.Serialization.Xml.Writers.Components
     {
         // Injected dependencies for serialization of each member data type
         private readonly ISubordinateXmlAsyncWriter<ClearingSystemIdentification2Choice_> clearingSystemIdentification;
-        private readonly IMax35TextXmlAsyncWriter memberIdentification;
+        private readonly Max35TextXmlAsyncWriter memberIdentification;
         
         /// <summary>
         /// Construct using an injected writer for each member.
@@ -28,7 +28,7 @@ namespace BeneficialStrategies.Iso20022.Serialization.Xml.Writers.Components
         public ClearingSystemMemberIdentification2XmlAsyncWriter
         (
             ISubordinateXmlAsyncWriter<ClearingSystemIdentification2Choice_> clearingSystemIdentification,
-            IMax35TextXmlAsyncWriter memberIdentification
+            Max35TextXmlAsyncWriter memberIdentification
         )
         {
             this.clearingSystemIdentification = clearingSystemIdentification;

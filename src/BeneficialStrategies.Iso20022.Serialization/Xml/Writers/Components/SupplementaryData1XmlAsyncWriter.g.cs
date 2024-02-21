@@ -19,7 +19,7 @@ namespace BeneficialStrategies.Iso20022.Serialization.Xml.Writers.Components
     public class SupplementaryData1XmlAsyncWriter : ISubordinateXmlAsyncWriter<SupplementaryData1>
     {
         // Injected dependencies for serialization of each member data type
-        private readonly IMax350TextXmlAsyncWriter placeAndName;
+        private readonly Max350TextXmlAsyncWriter placeAndName;
         private readonly ISubordinateXmlAsyncWriter<SupplementaryDataEnvelope1> envelope;
         
         /// <summary>
@@ -27,7 +27,7 @@ namespace BeneficialStrategies.Iso20022.Serialization.Xml.Writers.Components
         /// </summary>
         public SupplementaryData1XmlAsyncWriter
         (
-            IMax350TextXmlAsyncWriter placeAndName,
+            Max350TextXmlAsyncWriter placeAndName,
             ISubordinateXmlAsyncWriter<SupplementaryDataEnvelope1> envelope
         )
         {

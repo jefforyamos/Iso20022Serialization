@@ -20,7 +20,7 @@ namespace BeneficialStrategies.Iso20022.Serialization.Xml.Writers.Components
     {
         // Injected dependencies for serialization of each member data type
         private readonly ISubordinateXmlAsyncWriter<DocumentLineIdentification1> identification;
-        private readonly IMax2048TextXmlAsyncWriter description;
+        private readonly Max2048TextXmlAsyncWriter description;
         private readonly ISubordinateXmlAsyncWriter<RemittanceAmount3> amount;
         
         /// <summary>
@@ -29,7 +29,7 @@ namespace BeneficialStrategies.Iso20022.Serialization.Xml.Writers.Components
         public DocumentLineInformation1XmlAsyncWriter
         (
             ISubordinateXmlAsyncWriter<DocumentLineIdentification1> identification,
-            IMax2048TextXmlAsyncWriter description,
+            Max2048TextXmlAsyncWriter description,
             ISubordinateXmlAsyncWriter<RemittanceAmount3> amount
         )
         {

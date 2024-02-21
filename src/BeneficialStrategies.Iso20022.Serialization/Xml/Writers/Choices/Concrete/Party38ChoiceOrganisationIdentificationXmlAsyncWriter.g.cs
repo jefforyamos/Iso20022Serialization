@@ -19,8 +19,8 @@ namespace BeneficialStrategies.Iso20022.Serialization.Xml.Writers.Choices.Party3
     public class Party38ChoiceOrganisationIdentificationXmlAsyncWriter : ISubordinateXmlAsyncWriter<OrganisationIdentification>
     {
         // Injected dependencies for serialization of each member data type
-        private readonly IAnyBICDec2014IdentifierXmlAsyncWriter anyBIC;
-        private readonly ILEIIdentifierXmlAsyncWriter lEI;
+        private readonly AnyBICDec2014IdentifierXmlAsyncWriter anyBIC;
+        private readonly LEIIdentifierXmlAsyncWriter lEI;
         private readonly ISubordinateXmlAsyncWriter<GenericOrganisationIdentification1> other;
         
         /// <summary>
@@ -28,8 +28,8 @@ namespace BeneficialStrategies.Iso20022.Serialization.Xml.Writers.Choices.Party3
         /// </summary>
         public Party38ChoiceOrganisationIdentificationXmlAsyncWriter
         (
-            IAnyBICDec2014IdentifierXmlAsyncWriter anyBIC,
-            ILEIIdentifierXmlAsyncWriter lEI,
+            AnyBICDec2014IdentifierXmlAsyncWriter anyBIC,
+            LEIIdentifierXmlAsyncWriter lEI,
             ISubordinateXmlAsyncWriter<GenericOrganisationIdentification1> other
         )
         {

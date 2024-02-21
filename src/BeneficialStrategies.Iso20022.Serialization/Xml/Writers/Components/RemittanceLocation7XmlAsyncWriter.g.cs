@@ -19,7 +19,7 @@ namespace BeneficialStrategies.Iso20022.Serialization.Xml.Writers.Components
     public class RemittanceLocation7XmlAsyncWriter : ISubordinateXmlAsyncWriter<RemittanceLocation7>
     {
         // Injected dependencies for serialization of each member data type
-        private readonly IMax35TextXmlAsyncWriter remittanceIdentification;
+        private readonly Max35TextXmlAsyncWriter remittanceIdentification;
         private readonly ISubordinateXmlAsyncWriter<RemittanceLocationData1> remittanceLocationDetails;
         
         /// <summary>
@@ -27,7 +27,7 @@ namespace BeneficialStrategies.Iso20022.Serialization.Xml.Writers.Components
         /// </summary>
         public RemittanceLocation7XmlAsyncWriter
         (
-            IMax35TextXmlAsyncWriter remittanceIdentification,
+            Max35TextXmlAsyncWriter remittanceIdentification,
             ISubordinateXmlAsyncWriter<RemittanceLocationData1> remittanceLocationDetails
         )
         {

@@ -19,14 +19,14 @@ namespace BeneficialStrategies.Iso20022.Serialization.Xml.Writers.Choices.Mandat
     public class MandateSetupReason1ChoiceCodeXmlAsyncWriter : ISubordinateXmlAsyncWriter<Code>
     {
         // Injected dependencies for serialization of each member data type
-        private readonly IExternalMandateSetupReason1CodeXmlAsyncWriter value;
+        private readonly ExternalMandateSetupReason1CodeXmlAsyncWriter value;
         
         /// <summary>
         /// Construct using an injected writer for each member.
         /// </summary>
         public MandateSetupReason1ChoiceCodeXmlAsyncWriter
         (
-            IExternalMandateSetupReason1CodeXmlAsyncWriter value
+            ExternalMandateSetupReason1CodeXmlAsyncWriter value
         )
         {
             this.value = value;

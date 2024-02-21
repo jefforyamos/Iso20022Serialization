@@ -19,18 +19,18 @@ namespace BeneficialStrategies.Iso20022.Serialization.Xml.Writers.Choices.Accoun
     public class AccountIdentification4ChoiceOtherXmlAsyncWriter : ISubordinateXmlAsyncWriter<Other>
     {
         // Injected dependencies for serialization of each member data type
-        private readonly IMax34TextXmlAsyncWriter identification;
+        private readonly Max34TextXmlAsyncWriter identification;
         private readonly ISubordinateXmlAsyncWriter<AccountSchemeName1Choice_> schemeName;
-        private readonly IMax35TextXmlAsyncWriter issuer;
+        private readonly Max35TextXmlAsyncWriter issuer;
         
         /// <summary>
         /// Construct using an injected writer for each member.
         /// </summary>
         public AccountIdentification4ChoiceOtherXmlAsyncWriter
         (
-            IMax34TextXmlAsyncWriter identification,
+            Max34TextXmlAsyncWriter identification,
             ISubordinateXmlAsyncWriter<AccountSchemeName1Choice_> schemeName,
-            IMax35TextXmlAsyncWriter issuer
+            Max35TextXmlAsyncWriter issuer
         )
         {
             this.identification = identification;

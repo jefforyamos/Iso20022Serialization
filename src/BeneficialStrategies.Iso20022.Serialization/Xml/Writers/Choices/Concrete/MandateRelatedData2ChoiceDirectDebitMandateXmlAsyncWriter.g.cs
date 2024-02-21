@@ -19,32 +19,32 @@ namespace BeneficialStrategies.Iso20022.Serialization.Xml.Writers.Choices.Mandat
     public class MandateRelatedData2ChoiceDirectDebitMandateXmlAsyncWriter : ISubordinateXmlAsyncWriter<DirectDebitMandate>
     {
         // Injected dependencies for serialization of each member data type
-        private readonly IMax35TextXmlAsyncWriter mandateIdentification;
-        private readonly IISODateXmlAsyncWriter dateOfSignature;
-        private readonly ITrueFalseIndicatorXmlAsyncWriter amendmentIndicator;
+        private readonly Max35TextXmlAsyncWriter mandateIdentification;
+        private readonly ISODateXmlAsyncWriter dateOfSignature;
+        private readonly TrueFalseIndicatorXmlAsyncWriter amendmentIndicator;
         private readonly ISubordinateXmlAsyncWriter<AmendmentInformationDetails14> amendmentInformationDetails;
-        private readonly IMax1025TextXmlAsyncWriter electronicSignature;
-        private readonly IISODateXmlAsyncWriter firstCollectionDate;
-        private readonly IISODateXmlAsyncWriter finalCollectionDate;
+        private readonly Max1025TextXmlAsyncWriter electronicSignature;
+        private readonly ISODateXmlAsyncWriter firstCollectionDate;
+        private readonly ISODateXmlAsyncWriter finalCollectionDate;
         private readonly ISubordinateXmlAsyncWriter<Frequency36Choice_> frequency;
         private readonly ISubordinateXmlAsyncWriter<MandateSetupReason1Choice_> reason;
-        private readonly IExact2NumericTextXmlAsyncWriter trackingDays;
+        private readonly Exact2NumericTextXmlAsyncWriter trackingDays;
         
         /// <summary>
         /// Construct using an injected writer for each member.
         /// </summary>
         public MandateRelatedData2ChoiceDirectDebitMandateXmlAsyncWriter
         (
-            IMax35TextXmlAsyncWriter mandateIdentification,
-            IISODateXmlAsyncWriter dateOfSignature,
-            ITrueFalseIndicatorXmlAsyncWriter amendmentIndicator,
+            Max35TextXmlAsyncWriter mandateIdentification,
+            ISODateXmlAsyncWriter dateOfSignature,
+            TrueFalseIndicatorXmlAsyncWriter amendmentIndicator,
             ISubordinateXmlAsyncWriter<AmendmentInformationDetails14> amendmentInformationDetails,
-            IMax1025TextXmlAsyncWriter electronicSignature,
-            IISODateXmlAsyncWriter firstCollectionDate,
-            IISODateXmlAsyncWriter finalCollectionDate,
+            Max1025TextXmlAsyncWriter electronicSignature,
+            ISODateXmlAsyncWriter firstCollectionDate,
+            ISODateXmlAsyncWriter finalCollectionDate,
             ISubordinateXmlAsyncWriter<Frequency36Choice_> frequency,
             ISubordinateXmlAsyncWriter<MandateSetupReason1Choice_> reason,
-            IExact2NumericTextXmlAsyncWriter trackingDays
+            Exact2NumericTextXmlAsyncWriter trackingDays
         )
         {
             this.mandateIdentification = mandateIdentification;

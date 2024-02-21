@@ -19,9 +19,9 @@ namespace BeneficialStrategies.Iso20022.Serialization.Xml.Writers.Components
     public class BranchData3XmlAsyncWriter : ISubordinateXmlAsyncWriter<BranchData3>
     {
         // Injected dependencies for serialization of each member data type
-        private readonly IMax35TextXmlAsyncWriter identification;
-        private readonly ILEIIdentifierXmlAsyncWriter lEI;
-        private readonly IMax140TextXmlAsyncWriter name;
+        private readonly Max35TextXmlAsyncWriter identification;
+        private readonly LEIIdentifierXmlAsyncWriter lEI;
+        private readonly Max140TextXmlAsyncWriter name;
         private readonly ISubordinateXmlAsyncWriter<PostalAddress24> postalAddress;
         
         /// <summary>
@@ -29,9 +29,9 @@ namespace BeneficialStrategies.Iso20022.Serialization.Xml.Writers.Components
         /// </summary>
         public BranchData3XmlAsyncWriter
         (
-            IMax35TextXmlAsyncWriter identification,
-            ILEIIdentifierXmlAsyncWriter lEI,
-            IMax140TextXmlAsyncWriter name,
+            Max35TextXmlAsyncWriter identification,
+            LEIIdentifierXmlAsyncWriter lEI,
+            Max140TextXmlAsyncWriter name,
             ISubordinateXmlAsyncWriter<PostalAddress24> postalAddress
         )
         {

@@ -19,20 +19,20 @@ namespace BeneficialStrategies.Iso20022.Serialization.Xml.Writers.Components
     public class DocumentAdjustment1XmlAsyncWriter : ISubordinateXmlAsyncWriter<DocumentAdjustment1>
     {
         // Injected dependencies for serialization of each member data type
-        private readonly IActiveOrHistoricCurrencyAndAmountXmlAsyncWriter amount;
+        private readonly ActiveOrHistoricCurrencyAndAmountXmlAsyncWriter amount;
         private readonly IEnumXmlAsyncWriter<CreditDebitCode> creditDebitIndicator;
-        private readonly IMax4TextXmlAsyncWriter reason;
-        private readonly IMax140TextXmlAsyncWriter additionalInformation;
+        private readonly Max4TextXmlAsyncWriter reason;
+        private readonly Max140TextXmlAsyncWriter additionalInformation;
         
         /// <summary>
         /// Construct using an injected writer for each member.
         /// </summary>
         public DocumentAdjustment1XmlAsyncWriter
         (
-            IActiveOrHistoricCurrencyAndAmountXmlAsyncWriter amount,
+            ActiveOrHistoricCurrencyAndAmountXmlAsyncWriter amount,
             IEnumXmlAsyncWriter<CreditDebitCode> creditDebitIndicator,
-            IMax4TextXmlAsyncWriter reason,
-            IMax140TextXmlAsyncWriter additionalInformation
+            Max4TextXmlAsyncWriter reason,
+            Max140TextXmlAsyncWriter additionalInformation
         )
         {
             this.amount = amount;

@@ -19,18 +19,18 @@ namespace BeneficialStrategies.Iso20022.Serialization.Xml.Writers.Components
     public class PaymentIdentification6XmlAsyncWriter : ISubordinateXmlAsyncWriter<PaymentIdentification6>
     {
         // Injected dependencies for serialization of each member data type
-        private readonly IMax35TextXmlAsyncWriter instructionIdentification;
-        private readonly IMax35TextXmlAsyncWriter endToEndIdentification;
-        private readonly IUUIDv4IdentifierXmlAsyncWriter uETR;
+        private readonly Max35TextXmlAsyncWriter instructionIdentification;
+        private readonly Max35TextXmlAsyncWriter endToEndIdentification;
+        private readonly UUIDv4IdentifierXmlAsyncWriter uETR;
         
         /// <summary>
         /// Construct using an injected writer for each member.
         /// </summary>
         public PaymentIdentification6XmlAsyncWriter
         (
-            IMax35TextXmlAsyncWriter instructionIdentification,
-            IMax35TextXmlAsyncWriter endToEndIdentification,
-            IUUIDv4IdentifierXmlAsyncWriter uETR
+            Max35TextXmlAsyncWriter instructionIdentification,
+            Max35TextXmlAsyncWriter endToEndIdentification,
+            UUIDv4IdentifierXmlAsyncWriter uETR
         )
         {
             this.instructionIdentification = instructionIdentification;

@@ -19,10 +19,10 @@ namespace BeneficialStrategies.Iso20022.Serialization.Xml.Writers.Components
     public class PartyIdentification135XmlAsyncWriter : ISubordinateXmlAsyncWriter<PartyIdentification135>
     {
         // Injected dependencies for serialization of each member data type
-        private readonly IMax140TextXmlAsyncWriter name;
+        private readonly Max140TextXmlAsyncWriter name;
         private readonly ISubordinateXmlAsyncWriter<PostalAddress24> postalAddress;
         private readonly ISubordinateXmlAsyncWriter<Party38Choice_> identification;
-        private readonly ICountryCodeXmlAsyncWriter countryOfResidence;
+        private readonly CountryCodeXmlAsyncWriter countryOfResidence;
         private readonly ISubordinateXmlAsyncWriter<Contact4> contactDetails;
         
         /// <summary>
@@ -30,10 +30,10 @@ namespace BeneficialStrategies.Iso20022.Serialization.Xml.Writers.Components
         /// </summary>
         public PartyIdentification135XmlAsyncWriter
         (
-            IMax140TextXmlAsyncWriter name,
+            Max140TextXmlAsyncWriter name,
             ISubordinateXmlAsyncWriter<PostalAddress24> postalAddress,
             ISubordinateXmlAsyncWriter<Party38Choice_> identification,
-            ICountryCodeXmlAsyncWriter countryOfResidence,
+            CountryCodeXmlAsyncWriter countryOfResidence,
             ISubordinateXmlAsyncWriter<Contact4> contactDetails
         )
         {

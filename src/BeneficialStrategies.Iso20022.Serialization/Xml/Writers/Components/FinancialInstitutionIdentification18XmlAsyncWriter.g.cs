@@ -19,10 +19,10 @@ namespace BeneficialStrategies.Iso20022.Serialization.Xml.Writers.Components
     public class FinancialInstitutionIdentification18XmlAsyncWriter : ISubordinateXmlAsyncWriter<FinancialInstitutionIdentification18>
     {
         // Injected dependencies for serialization of each member data type
-        private readonly IBICFIDec2014IdentifierXmlAsyncWriter bICFI;
+        private readonly BICFIDec2014IdentifierXmlAsyncWriter bICFI;
         private readonly ISubordinateXmlAsyncWriter<ClearingSystemMemberIdentification2> clearingSystemMemberIdentification;
-        private readonly ILEIIdentifierXmlAsyncWriter lEI;
-        private readonly IMax140TextXmlAsyncWriter name;
+        private readonly LEIIdentifierXmlAsyncWriter lEI;
+        private readonly Max140TextXmlAsyncWriter name;
         private readonly ISubordinateXmlAsyncWriter<PostalAddress24> postalAddress;
         private readonly ISubordinateXmlAsyncWriter<GenericFinancialIdentification1> other;
         
@@ -31,10 +31,10 @@ namespace BeneficialStrategies.Iso20022.Serialization.Xml.Writers.Components
         /// </summary>
         public FinancialInstitutionIdentification18XmlAsyncWriter
         (
-            IBICFIDec2014IdentifierXmlAsyncWriter bICFI,
+            BICFIDec2014IdentifierXmlAsyncWriter bICFI,
             ISubordinateXmlAsyncWriter<ClearingSystemMemberIdentification2> clearingSystemMemberIdentification,
-            ILEIIdentifierXmlAsyncWriter lEI,
-            IMax140TextXmlAsyncWriter name,
+            LEIIdentifierXmlAsyncWriter lEI,
+            Max140TextXmlAsyncWriter name,
             ISubordinateXmlAsyncWriter<PostalAddress24> postalAddress,
             ISubordinateXmlAsyncWriter<GenericFinancialIdentification1> other
         )

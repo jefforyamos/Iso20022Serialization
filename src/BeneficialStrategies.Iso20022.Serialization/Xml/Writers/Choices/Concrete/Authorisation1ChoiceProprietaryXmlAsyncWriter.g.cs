@@ -19,14 +19,14 @@ namespace BeneficialStrategies.Iso20022.Serialization.Xml.Writers.Choices.Author
     public class Authorisation1ChoiceProprietaryXmlAsyncWriter : ISubordinateXmlAsyncWriter<Proprietary>
     {
         // Injected dependencies for serialization of each member data type
-        private readonly IMax128TextXmlAsyncWriter value;
+        private readonly Max128TextXmlAsyncWriter value;
         
         /// <summary>
         /// Construct using an injected writer for each member.
         /// </summary>
         public Authorisation1ChoiceProprietaryXmlAsyncWriter
         (
-            IMax128TextXmlAsyncWriter value
+            Max128TextXmlAsyncWriter value
         )
         {
             this.value = value;

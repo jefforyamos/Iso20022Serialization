@@ -19,12 +19,12 @@ namespace BeneficialStrategies.Iso20022.Serialization.Xml.Writers.Components
     public class GroupHeader88XmlAsyncWriter : ISubordinateXmlAsyncWriter<GroupHeader88>
     {
         // Injected dependencies for serialization of each member data type
-        private readonly IMax35TextXmlAsyncWriter messageIdentification;
-        private readonly IISODateTimeXmlAsyncWriter creationDateTime;
+        private readonly Max35TextXmlAsyncWriter messageIdentification;
+        private readonly ISODateTimeXmlAsyncWriter creationDateTime;
         private readonly ISubordinateXmlAsyncWriter<Authorisation1Choice_> authorisation;
-        private readonly IMax15NumericTextXmlAsyncWriter numberOfTransactions;
-        private readonly IDecimalNumberXmlAsyncWriter controlSum;
-        private readonly ITrueFalseIndicatorXmlAsyncWriter groupReversal;
+        private readonly Max15NumericTextXmlAsyncWriter numberOfTransactions;
+        private readonly DecimalNumberXmlAsyncWriter controlSum;
+        private readonly TrueFalseIndicatorXmlAsyncWriter groupReversal;
         private readonly ISubordinateXmlAsyncWriter<PartyIdentification135> initiatingParty;
         private readonly ISubordinateXmlAsyncWriter<BranchAndFinancialInstitutionIdentification6> forwardingAgent;
         private readonly ISubordinateXmlAsyncWriter<BranchAndFinancialInstitutionIdentification6> debtorAgent;
@@ -35,12 +35,12 @@ namespace BeneficialStrategies.Iso20022.Serialization.Xml.Writers.Components
         /// </summary>
         public GroupHeader88XmlAsyncWriter
         (
-            IMax35TextXmlAsyncWriter messageIdentification,
-            IISODateTimeXmlAsyncWriter creationDateTime,
+            Max35TextXmlAsyncWriter messageIdentification,
+            ISODateTimeXmlAsyncWriter creationDateTime,
             ISubordinateXmlAsyncWriter<Authorisation1Choice_> authorisation,
-            IMax15NumericTextXmlAsyncWriter numberOfTransactions,
-            IDecimalNumberXmlAsyncWriter controlSum,
-            ITrueFalseIndicatorXmlAsyncWriter groupReversal,
+            Max15NumericTextXmlAsyncWriter numberOfTransactions,
+            DecimalNumberXmlAsyncWriter controlSum,
+            TrueFalseIndicatorXmlAsyncWriter groupReversal,
             ISubordinateXmlAsyncWriter<PartyIdentification135> initiatingParty,
             ISubordinateXmlAsyncWriter<BranchAndFinancialInstitutionIdentification6> forwardingAgent,
             ISubordinateXmlAsyncWriter<BranchAndFinancialInstitutionIdentification6> debtorAgent,

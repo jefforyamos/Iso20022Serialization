@@ -20,7 +20,7 @@ namespace BeneficialStrategies.Iso20022.Serialization.Xml.Writers.Components
     {
         // Injected dependencies for serialization of each member data type
         private readonly ISubordinateXmlAsyncWriter<ProxyAccountType1Choice_> type;
-        private readonly IMax2048TextXmlAsyncWriter identification;
+        private readonly Max2048TextXmlAsyncWriter identification;
         
         /// <summary>
         /// Construct using an injected writer for each member.
@@ -28,7 +28,7 @@ namespace BeneficialStrategies.Iso20022.Serialization.Xml.Writers.Components
         public ProxyAccountIdentification1XmlAsyncWriter
         (
             ISubordinateXmlAsyncWriter<ProxyAccountType1Choice_> type,
-            IMax2048TextXmlAsyncWriter identification
+            Max2048TextXmlAsyncWriter identification
         )
         {
             this.type = type;

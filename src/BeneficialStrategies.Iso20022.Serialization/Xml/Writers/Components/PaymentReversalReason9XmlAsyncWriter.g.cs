@@ -21,7 +21,7 @@ namespace BeneficialStrategies.Iso20022.Serialization.Xml.Writers.Components
         // Injected dependencies for serialization of each member data type
         private readonly ISubordinateXmlAsyncWriter<PartyIdentification135> originator;
         private readonly ISubordinateXmlAsyncWriter<ReversalReason4Choice_> reason;
-        private readonly IMax105TextXmlAsyncWriter additionalInformation;
+        private readonly Max105TextXmlAsyncWriter additionalInformation;
         
         /// <summary>
         /// Construct using an injected writer for each member.
@@ -30,7 +30,7 @@ namespace BeneficialStrategies.Iso20022.Serialization.Xml.Writers.Components
         (
             ISubordinateXmlAsyncWriter<PartyIdentification135> originator,
             ISubordinateXmlAsyncWriter<ReversalReason4Choice_> reason,
-            IMax105TextXmlAsyncWriter additionalInformation
+            Max105TextXmlAsyncWriter additionalInformation
         )
         {
             this.originator = originator;

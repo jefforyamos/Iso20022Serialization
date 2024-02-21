@@ -20,7 +20,7 @@ namespace BeneficialStrategies.Iso20022.Serialization.Xml.Writers.Choices.Freque
     {
         // Injected dependencies for serialization of each member data type
         private readonly IEnumXmlAsyncWriter<Frequency6Code> type;
-        private readonly IDecimalNumberXmlAsyncWriter countPerPeriod;
+        private readonly DecimalNumberXmlAsyncWriter countPerPeriod;
         
         /// <summary>
         /// Construct using an injected writer for each member.
@@ -28,7 +28,7 @@ namespace BeneficialStrategies.Iso20022.Serialization.Xml.Writers.Choices.Freque
         public Frequency36ChoicePeriodXmlAsyncWriter
         (
             IEnumXmlAsyncWriter<Frequency6Code> type,
-            IDecimalNumberXmlAsyncWriter countPerPeriod
+            DecimalNumberXmlAsyncWriter countPerPeriod
         )
         {
             this.type = type;

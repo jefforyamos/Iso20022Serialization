@@ -19,11 +19,11 @@ namespace BeneficialStrategies.Iso20022.Serialization.Xml.Writers.Components
     public class GroupHeader95XmlAsyncWriter : ISubordinateXmlAsyncWriter<GroupHeader95>
     {
         // Injected dependencies for serialization of each member data type
-        private readonly IMax35TextXmlAsyncWriter messageIdentification;
-        private readonly IISODateTimeXmlAsyncWriter creationDateTime;
+        private readonly Max35TextXmlAsyncWriter messageIdentification;
+        private readonly ISODateTimeXmlAsyncWriter creationDateTime;
         private readonly ISubordinateXmlAsyncWriter<Authorisation1Choice_> authorisation;
-        private readonly IMax15NumericTextXmlAsyncWriter numberOfTransactions;
-        private readonly IDecimalNumberXmlAsyncWriter controlSum;
+        private readonly Max15NumericTextXmlAsyncWriter numberOfTransactions;
+        private readonly DecimalNumberXmlAsyncWriter controlSum;
         private readonly ISubordinateXmlAsyncWriter<PartyIdentification135> initiatingParty;
         private readonly ISubordinateXmlAsyncWriter<BranchAndFinancialInstitutionIdentification6> forwardingAgent;
         private readonly ISubordinateXmlAsyncWriter<PaymentInitiationSource1> initiationSource;
@@ -33,11 +33,11 @@ namespace BeneficialStrategies.Iso20022.Serialization.Xml.Writers.Components
         /// </summary>
         public GroupHeader95XmlAsyncWriter
         (
-            IMax35TextXmlAsyncWriter messageIdentification,
-            IISODateTimeXmlAsyncWriter creationDateTime,
+            Max35TextXmlAsyncWriter messageIdentification,
+            ISODateTimeXmlAsyncWriter creationDateTime,
             ISubordinateXmlAsyncWriter<Authorisation1Choice_> authorisation,
-            IMax15NumericTextXmlAsyncWriter numberOfTransactions,
-            IDecimalNumberXmlAsyncWriter controlSum,
+            Max15NumericTextXmlAsyncWriter numberOfTransactions,
+            DecimalNumberXmlAsyncWriter controlSum,
             ISubordinateXmlAsyncWriter<PartyIdentification135> initiatingParty,
             ISubordinateXmlAsyncWriter<BranchAndFinancialInstitutionIdentification6> forwardingAgent,
             ISubordinateXmlAsyncWriter<PaymentInitiationSource1> initiationSource

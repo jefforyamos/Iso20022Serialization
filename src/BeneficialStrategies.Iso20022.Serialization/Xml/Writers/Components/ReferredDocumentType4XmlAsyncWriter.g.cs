@@ -20,7 +20,7 @@ namespace BeneficialStrategies.Iso20022.Serialization.Xml.Writers.Components
     {
         // Injected dependencies for serialization of each member data type
         private readonly ISubordinateXmlAsyncWriter<ReferredDocumentType3Choice_> codeOrProprietary;
-        private readonly IMax35TextXmlAsyncWriter issuer;
+        private readonly Max35TextXmlAsyncWriter issuer;
         
         /// <summary>
         /// Construct using an injected writer for each member.
@@ -28,7 +28,7 @@ namespace BeneficialStrategies.Iso20022.Serialization.Xml.Writers.Components
         public ReferredDocumentType4XmlAsyncWriter
         (
             ISubordinateXmlAsyncWriter<ReferredDocumentType3Choice_> codeOrProprietary,
-            IMax35TextXmlAsyncWriter issuer
+            Max35TextXmlAsyncWriter issuer
         )
         {
             this.codeOrProprietary = codeOrProprietary;

@@ -26,7 +26,7 @@ namespace BeneficialStrategies.Iso20022.Serialization.Xml.Writers.Components
         private readonly ISubordinateXmlAsyncWriter<PartyIdentification135> invoicee;
         private readonly ISubordinateXmlAsyncWriter<TaxData1> taxRemittance;
         private readonly ISubordinateXmlAsyncWriter<Garnishment3> garnishmentRemittance;
-        private readonly IMax140TextXmlAsyncWriter additionalRemittanceInformation;
+        private readonly Max140TextXmlAsyncWriter additionalRemittanceInformation;
         
         /// <summary>
         /// Construct using an injected writer for each member.
@@ -40,7 +40,7 @@ namespace BeneficialStrategies.Iso20022.Serialization.Xml.Writers.Components
             ISubordinateXmlAsyncWriter<PartyIdentification135> invoicee,
             ISubordinateXmlAsyncWriter<TaxData1> taxRemittance,
             ISubordinateXmlAsyncWriter<Garnishment3> garnishmentRemittance,
-            IMax140TextXmlAsyncWriter additionalRemittanceInformation
+            Max140TextXmlAsyncWriter additionalRemittanceInformation
         )
         {
             this.referredDocumentInformation = referredDocumentInformation;

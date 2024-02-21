@@ -20,15 +20,15 @@ namespace BeneficialStrategies.Iso20022.Serialization.Xml.Writers.Components
     {
         // Injected dependencies for serialization of each member data type
         private readonly IEnumXmlAsyncWriter<NamePrefix2Code> namePrefix;
-        private readonly IMax140TextXmlAsyncWriter name;
-        private readonly IPhoneNumberXmlAsyncWriter phoneNumber;
-        private readonly IPhoneNumberXmlAsyncWriter mobileNumber;
-        private readonly IPhoneNumberXmlAsyncWriter faxNumber;
-        private readonly IMax2048TextXmlAsyncWriter emailAddress;
-        private readonly IMax35TextXmlAsyncWriter emailPurpose;
-        private readonly IMax35TextXmlAsyncWriter jobTitle;
-        private readonly IMax35TextXmlAsyncWriter responsibility;
-        private readonly IMax70TextXmlAsyncWriter department;
+        private readonly Max140TextXmlAsyncWriter name;
+        private readonly PhoneNumberXmlAsyncWriter phoneNumber;
+        private readonly PhoneNumberXmlAsyncWriter mobileNumber;
+        private readonly PhoneNumberXmlAsyncWriter faxNumber;
+        private readonly Max2048TextXmlAsyncWriter emailAddress;
+        private readonly Max35TextXmlAsyncWriter emailPurpose;
+        private readonly Max35TextXmlAsyncWriter jobTitle;
+        private readonly Max35TextXmlAsyncWriter responsibility;
+        private readonly Max70TextXmlAsyncWriter department;
         private readonly ISubordinateXmlAsyncWriter<OtherContact1> other;
         private readonly IEnumXmlAsyncWriter<PreferredContactMethod1Code> preferredMethod;
         
@@ -38,15 +38,15 @@ namespace BeneficialStrategies.Iso20022.Serialization.Xml.Writers.Components
         public Contact4XmlAsyncWriter
         (
             IEnumXmlAsyncWriter<NamePrefix2Code> namePrefix,
-            IMax140TextXmlAsyncWriter name,
-            IPhoneNumberXmlAsyncWriter phoneNumber,
-            IPhoneNumberXmlAsyncWriter mobileNumber,
-            IPhoneNumberXmlAsyncWriter faxNumber,
-            IMax2048TextXmlAsyncWriter emailAddress,
-            IMax35TextXmlAsyncWriter emailPurpose,
-            IMax35TextXmlAsyncWriter jobTitle,
-            IMax35TextXmlAsyncWriter responsibility,
-            IMax70TextXmlAsyncWriter department,
+            Max140TextXmlAsyncWriter name,
+            PhoneNumberXmlAsyncWriter phoneNumber,
+            PhoneNumberXmlAsyncWriter mobileNumber,
+            PhoneNumberXmlAsyncWriter faxNumber,
+            Max2048TextXmlAsyncWriter emailAddress,
+            Max35TextXmlAsyncWriter emailPurpose,
+            Max35TextXmlAsyncWriter jobTitle,
+            Max35TextXmlAsyncWriter responsibility,
+            Max70TextXmlAsyncWriter department,
             ISubordinateXmlAsyncWriter<OtherContact1> other,
             IEnumXmlAsyncWriter<PreferredContactMethod1Code> preferredMethod
         )

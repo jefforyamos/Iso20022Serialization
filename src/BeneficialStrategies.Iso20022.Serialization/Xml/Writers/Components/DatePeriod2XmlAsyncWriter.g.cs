@@ -19,16 +19,16 @@ namespace BeneficialStrategies.Iso20022.Serialization.Xml.Writers.Components
     public class DatePeriod2XmlAsyncWriter : ISubordinateXmlAsyncWriter<DatePeriod2>
     {
         // Injected dependencies for serialization of each member data type
-        private readonly IISODateXmlAsyncWriter fromDate;
-        private readonly IISODateXmlAsyncWriter toDate;
+        private readonly ISODateXmlAsyncWriter fromDate;
+        private readonly ISODateXmlAsyncWriter toDate;
         
         /// <summary>
         /// Construct using an injected writer for each member.
         /// </summary>
         public DatePeriod2XmlAsyncWriter
         (
-            IISODateXmlAsyncWriter fromDate,
-            IISODateXmlAsyncWriter toDate
+            ISODateXmlAsyncWriter fromDate,
+            ISODateXmlAsyncWriter toDate
         )
         {
             this.fromDate = fromDate;

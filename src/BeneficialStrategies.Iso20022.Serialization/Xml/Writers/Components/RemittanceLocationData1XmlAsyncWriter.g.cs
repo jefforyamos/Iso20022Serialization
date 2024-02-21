@@ -20,7 +20,7 @@ namespace BeneficialStrategies.Iso20022.Serialization.Xml.Writers.Components
     {
         // Injected dependencies for serialization of each member data type
         private readonly IEnumXmlAsyncWriter<RemittanceLocationMethod2Code> method;
-        private readonly IMax2048TextXmlAsyncWriter electronicAddress;
+        private readonly Max2048TextXmlAsyncWriter electronicAddress;
         private readonly ISubordinateXmlAsyncWriter<NameAndAddress16> postalAddress;
         
         /// <summary>
@@ -29,7 +29,7 @@ namespace BeneficialStrategies.Iso20022.Serialization.Xml.Writers.Components
         public RemittanceLocationData1XmlAsyncWriter
         (
             IEnumXmlAsyncWriter<RemittanceLocationMethod2Code> method,
-            IMax2048TextXmlAsyncWriter electronicAddress,
+            Max2048TextXmlAsyncWriter electronicAddress,
             ISubordinateXmlAsyncWriter<NameAndAddress16> postalAddress
         )
         {

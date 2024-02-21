@@ -19,12 +19,12 @@ namespace BeneficialStrategies.Iso20022.Serialization.Xml.Writers.Components
     public class OriginalPaymentInstruction41XmlAsyncWriter : ISubordinateXmlAsyncWriter<OriginalPaymentInstruction41>
     {
         // Injected dependencies for serialization of each member data type
-        private readonly IMax35TextXmlAsyncWriter reversalPaymentInformationIdentification;
-        private readonly IMax35TextXmlAsyncWriter originalPaymentInformationIdentification;
-        private readonly IMax15NumericTextXmlAsyncWriter originalNumberOfTransactions;
-        private readonly IDecimalNumberXmlAsyncWriter originalControlSum;
-        private readonly IBatchBookingIndicatorXmlAsyncWriter batchBooking;
-        private readonly ITrueFalseIndicatorXmlAsyncWriter paymentInformationReversal;
+        private readonly Max35TextXmlAsyncWriter reversalPaymentInformationIdentification;
+        private readonly Max35TextXmlAsyncWriter originalPaymentInformationIdentification;
+        private readonly Max15NumericTextXmlAsyncWriter originalNumberOfTransactions;
+        private readonly DecimalNumberXmlAsyncWriter originalControlSum;
+        private readonly BatchBookingIndicatorXmlAsyncWriter batchBooking;
+        private readonly TrueFalseIndicatorXmlAsyncWriter paymentInformationReversal;
         private readonly ISubordinateXmlAsyncWriter<PaymentReversalReason9> reversalReasonInformation;
         private readonly ISubordinateXmlAsyncWriter<PaymentTransaction134> transactionInformation;
         
@@ -33,12 +33,12 @@ namespace BeneficialStrategies.Iso20022.Serialization.Xml.Writers.Components
         /// </summary>
         public OriginalPaymentInstruction41XmlAsyncWriter
         (
-            IMax35TextXmlAsyncWriter reversalPaymentInformationIdentification,
-            IMax35TextXmlAsyncWriter originalPaymentInformationIdentification,
-            IMax15NumericTextXmlAsyncWriter originalNumberOfTransactions,
-            IDecimalNumberXmlAsyncWriter originalControlSum,
-            IBatchBookingIndicatorXmlAsyncWriter batchBooking,
-            ITrueFalseIndicatorXmlAsyncWriter paymentInformationReversal,
+            Max35TextXmlAsyncWriter reversalPaymentInformationIdentification,
+            Max35TextXmlAsyncWriter originalPaymentInformationIdentification,
+            Max15NumericTextXmlAsyncWriter originalNumberOfTransactions,
+            DecimalNumberXmlAsyncWriter originalControlSum,
+            BatchBookingIndicatorXmlAsyncWriter batchBooking,
+            TrueFalseIndicatorXmlAsyncWriter paymentInformationReversal,
             ISubordinateXmlAsyncWriter<PaymentReversalReason9> reversalReasonInformation,
             ISubordinateXmlAsyncWriter<PaymentTransaction134> transactionInformation
         )

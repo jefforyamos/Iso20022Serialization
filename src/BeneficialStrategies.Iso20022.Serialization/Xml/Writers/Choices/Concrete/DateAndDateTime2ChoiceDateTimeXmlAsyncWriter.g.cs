@@ -19,14 +19,14 @@ namespace BeneficialStrategies.Iso20022.Serialization.Xml.Writers.Choices.DateAn
     public class DateAndDateTime2ChoiceDateTimeXmlAsyncWriter : ISubordinateXmlAsyncWriter<DateTime>
     {
         // Injected dependencies for serialization of each member data type
-        private readonly IISODateTimeXmlAsyncWriter value;
+        private readonly ISODateTimeXmlAsyncWriter value;
         
         /// <summary>
         /// Construct using an injected writer for each member.
         /// </summary>
         public DateAndDateTime2ChoiceDateTimeXmlAsyncWriter
         (
-            IISODateTimeXmlAsyncWriter value
+            ISODateTimeXmlAsyncWriter value
         )
         {
             this.value = value;

@@ -19,20 +19,20 @@ namespace BeneficialStrategies.Iso20022.Serialization.Xml.Writers.Components
     public class ExchangeRate1XmlAsyncWriter : ISubordinateXmlAsyncWriter<ExchangeRate1>
     {
         // Injected dependencies for serialization of each member data type
-        private readonly IActiveOrHistoricCurrencyCodeXmlAsyncWriter unitCurrency;
-        private readonly IBaseOneRateXmlAsyncWriter exchangeRate;
+        private readonly ActiveOrHistoricCurrencyCodeXmlAsyncWriter unitCurrency;
+        private readonly BaseOneRateXmlAsyncWriter exchangeRate;
         private readonly IEnumXmlAsyncWriter<ExchangeRateType1Code> rateType;
-        private readonly IMax35TextXmlAsyncWriter contractIdentification;
+        private readonly Max35TextXmlAsyncWriter contractIdentification;
         
         /// <summary>
         /// Construct using an injected writer for each member.
         /// </summary>
         public ExchangeRate1XmlAsyncWriter
         (
-            IActiveOrHistoricCurrencyCodeXmlAsyncWriter unitCurrency,
-            IBaseOneRateXmlAsyncWriter exchangeRate,
+            ActiveOrHistoricCurrencyCodeXmlAsyncWriter unitCurrency,
+            BaseOneRateXmlAsyncWriter exchangeRate,
             IEnumXmlAsyncWriter<ExchangeRateType1Code> rateType,
-            IMax35TextXmlAsyncWriter contractIdentification
+            Max35TextXmlAsyncWriter contractIdentification
         )
         {
             this.unitCurrency = unitCurrency;

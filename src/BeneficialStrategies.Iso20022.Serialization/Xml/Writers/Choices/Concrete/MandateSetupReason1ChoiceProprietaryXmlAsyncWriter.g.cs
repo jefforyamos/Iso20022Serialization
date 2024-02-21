@@ -19,14 +19,14 @@ namespace BeneficialStrategies.Iso20022.Serialization.Xml.Writers.Choices.Mandat
     public class MandateSetupReason1ChoiceProprietaryXmlAsyncWriter : ISubordinateXmlAsyncWriter<Proprietary>
     {
         // Injected dependencies for serialization of each member data type
-        private readonly IMax70TextXmlAsyncWriter value;
+        private readonly Max70TextXmlAsyncWriter value;
         
         /// <summary>
         /// Construct using an injected writer for each member.
         /// </summary>
         public MandateSetupReason1ChoiceProprietaryXmlAsyncWriter
         (
-            IMax70TextXmlAsyncWriter value
+            Max70TextXmlAsyncWriter value
         )
         {
             this.value = value;

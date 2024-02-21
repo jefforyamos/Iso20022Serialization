@@ -19,20 +19,20 @@ namespace BeneficialStrategies.Iso20022.Serialization.Xml.Writers.Components
     public class DateAndPlaceOfBirth1XmlAsyncWriter : ISubordinateXmlAsyncWriter<DateAndPlaceOfBirth1>
     {
         // Injected dependencies for serialization of each member data type
-        private readonly IISODateXmlAsyncWriter birthDate;
-        private readonly IMax35TextXmlAsyncWriter provinceOfBirth;
-        private readonly IMax35TextXmlAsyncWriter cityOfBirth;
-        private readonly ICountryCodeXmlAsyncWriter countryOfBirth;
+        private readonly ISODateXmlAsyncWriter birthDate;
+        private readonly Max35TextXmlAsyncWriter provinceOfBirth;
+        private readonly Max35TextXmlAsyncWriter cityOfBirth;
+        private readonly CountryCodeXmlAsyncWriter countryOfBirth;
         
         /// <summary>
         /// Construct using an injected writer for each member.
         /// </summary>
         public DateAndPlaceOfBirth1XmlAsyncWriter
         (
-            IISODateXmlAsyncWriter birthDate,
-            IMax35TextXmlAsyncWriter provinceOfBirth,
-            IMax35TextXmlAsyncWriter cityOfBirth,
-            ICountryCodeXmlAsyncWriter countryOfBirth
+            ISODateXmlAsyncWriter birthDate,
+            Max35TextXmlAsyncWriter provinceOfBirth,
+            Max35TextXmlAsyncWriter cityOfBirth,
+            CountryCodeXmlAsyncWriter countryOfBirth
         )
         {
             this.birthDate = birthDate;

@@ -19,20 +19,20 @@ namespace BeneficialStrategies.Iso20022.Serialization.Xml.Writers.Components
     public class PaymentInstruction40XmlAsyncWriter : ISubordinateXmlAsyncWriter<PaymentInstruction40>
     {
         // Injected dependencies for serialization of each member data type
-        private readonly IMax35TextXmlAsyncWriter paymentInformationIdentification;
+        private readonly Max35TextXmlAsyncWriter paymentInformationIdentification;
         private readonly IEnumXmlAsyncWriter<PaymentMethod3Code> paymentMethod;
         private readonly ISubordinateXmlAsyncWriter<AdviceType1> requestedAdviceType;
-        private readonly IBatchBookingIndicatorXmlAsyncWriter batchBooking;
-        private readonly IMax15NumericTextXmlAsyncWriter numberOfTransactions;
-        private readonly IDecimalNumberXmlAsyncWriter controlSum;
+        private readonly BatchBookingIndicatorXmlAsyncWriter batchBooking;
+        private readonly Max15NumericTextXmlAsyncWriter numberOfTransactions;
+        private readonly DecimalNumberXmlAsyncWriter controlSum;
         private readonly ISubordinateXmlAsyncWriter<PaymentTypeInformation26> paymentTypeInformation;
         private readonly ISubordinateXmlAsyncWriter<DateAndDateTime2Choice_> requestedExecutionDate;
-        private readonly IISODateXmlAsyncWriter poolingAdjustmentDate;
+        private readonly ISODateXmlAsyncWriter poolingAdjustmentDate;
         private readonly ISubordinateXmlAsyncWriter<PartyIdentification135> debtor;
         private readonly ISubordinateXmlAsyncWriter<CashAccount40> debtorAccount;
         private readonly ISubordinateXmlAsyncWriter<BranchAndFinancialInstitutionIdentification6> debtorAgent;
         private readonly ISubordinateXmlAsyncWriter<CashAccount40> debtorAgentAccount;
-        private readonly IMax140TextXmlAsyncWriter instructionForDebtorAgent;
+        private readonly Max140TextXmlAsyncWriter instructionForDebtorAgent;
         private readonly ISubordinateXmlAsyncWriter<PartyIdentification135> ultimateDebtor;
         private readonly IEnumXmlAsyncWriter<ChargeBearerType1Code> chargeBearer;
         private readonly ISubordinateXmlAsyncWriter<CashAccount40> chargesAccount;
@@ -44,20 +44,20 @@ namespace BeneficialStrategies.Iso20022.Serialization.Xml.Writers.Components
         /// </summary>
         public PaymentInstruction40XmlAsyncWriter
         (
-            IMax35TextXmlAsyncWriter paymentInformationIdentification,
+            Max35TextXmlAsyncWriter paymentInformationIdentification,
             IEnumXmlAsyncWriter<PaymentMethod3Code> paymentMethod,
             ISubordinateXmlAsyncWriter<AdviceType1> requestedAdviceType,
-            IBatchBookingIndicatorXmlAsyncWriter batchBooking,
-            IMax15NumericTextXmlAsyncWriter numberOfTransactions,
-            IDecimalNumberXmlAsyncWriter controlSum,
+            BatchBookingIndicatorXmlAsyncWriter batchBooking,
+            Max15NumericTextXmlAsyncWriter numberOfTransactions,
+            DecimalNumberXmlAsyncWriter controlSum,
             ISubordinateXmlAsyncWriter<PaymentTypeInformation26> paymentTypeInformation,
             ISubordinateXmlAsyncWriter<DateAndDateTime2Choice_> requestedExecutionDate,
-            IISODateXmlAsyncWriter poolingAdjustmentDate,
+            ISODateXmlAsyncWriter poolingAdjustmentDate,
             ISubordinateXmlAsyncWriter<PartyIdentification135> debtor,
             ISubordinateXmlAsyncWriter<CashAccount40> debtorAccount,
             ISubordinateXmlAsyncWriter<BranchAndFinancialInstitutionIdentification6> debtorAgent,
             ISubordinateXmlAsyncWriter<CashAccount40> debtorAgentAccount,
-            IMax140TextXmlAsyncWriter instructionForDebtorAgent,
+            Max140TextXmlAsyncWriter instructionForDebtorAgent,
             ISubordinateXmlAsyncWriter<PartyIdentification135> ultimateDebtor,
             IEnumXmlAsyncWriter<ChargeBearerType1Code> chargeBearer,
             ISubordinateXmlAsyncWriter<CashAccount40> chargesAccount,

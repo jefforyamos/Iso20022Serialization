@@ -20,17 +20,17 @@ namespace BeneficialStrategies.Iso20022.Serialization.Xml.Writers.Components
     {
         // Injected dependencies for serialization of each member data type
         private readonly IEnumXmlAsyncWriter<ChequeType2Code> chequeType;
-        private readonly IMax35TextXmlAsyncWriter chequeNumber;
+        private readonly Max35TextXmlAsyncWriter chequeNumber;
         private readonly ISubordinateXmlAsyncWriter<NameAndAddress16> chequeFrom;
         private readonly ISubordinateXmlAsyncWriter<ChequeDeliveryMethod1Choice_> deliveryMethod;
         private readonly ISubordinateXmlAsyncWriter<NameAndAddress16> deliverTo;
         private readonly IEnumXmlAsyncWriter<Priority2Code> instructionPriority;
-        private readonly IISODateXmlAsyncWriter chequeMaturityDate;
-        private readonly IMax35TextXmlAsyncWriter formsCode;
-        private readonly IMax35TextXmlAsyncWriter memoField;
-        private readonly IMax35TextXmlAsyncWriter regionalClearingZone;
-        private readonly IMax35TextXmlAsyncWriter printLocation;
-        private readonly IMax70TextXmlAsyncWriter signature;
+        private readonly ISODateXmlAsyncWriter chequeMaturityDate;
+        private readonly Max35TextXmlAsyncWriter formsCode;
+        private readonly Max35TextXmlAsyncWriter memoField;
+        private readonly Max35TextXmlAsyncWriter regionalClearingZone;
+        private readonly Max35TextXmlAsyncWriter printLocation;
+        private readonly Max70TextXmlAsyncWriter signature;
         
         /// <summary>
         /// Construct using an injected writer for each member.
@@ -38,17 +38,17 @@ namespace BeneficialStrategies.Iso20022.Serialization.Xml.Writers.Components
         public Cheque11XmlAsyncWriter
         (
             IEnumXmlAsyncWriter<ChequeType2Code> chequeType,
-            IMax35TextXmlAsyncWriter chequeNumber,
+            Max35TextXmlAsyncWriter chequeNumber,
             ISubordinateXmlAsyncWriter<NameAndAddress16> chequeFrom,
             ISubordinateXmlAsyncWriter<ChequeDeliveryMethod1Choice_> deliveryMethod,
             ISubordinateXmlAsyncWriter<NameAndAddress16> deliverTo,
             IEnumXmlAsyncWriter<Priority2Code> instructionPriority,
-            IISODateXmlAsyncWriter chequeMaturityDate,
-            IMax35TextXmlAsyncWriter formsCode,
-            IMax35TextXmlAsyncWriter memoField,
-            IMax35TextXmlAsyncWriter regionalClearingZone,
-            IMax35TextXmlAsyncWriter printLocation,
-            IMax70TextXmlAsyncWriter signature
+            ISODateXmlAsyncWriter chequeMaturityDate,
+            Max35TextXmlAsyncWriter formsCode,
+            Max35TextXmlAsyncWriter memoField,
+            Max35TextXmlAsyncWriter regionalClearingZone,
+            Max35TextXmlAsyncWriter printLocation,
+            Max70TextXmlAsyncWriter signature
         )
         {
             this.chequeType = chequeType;

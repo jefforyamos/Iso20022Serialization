@@ -19,12 +19,12 @@ namespace BeneficialStrategies.Iso20022.Serialization.Xml.Writers.Components
     public class PaymentTransaction134XmlAsyncWriter : ISubordinateXmlAsyncWriter<PaymentTransaction134>
     {
         // Injected dependencies for serialization of each member data type
-        private readonly IMax35TextXmlAsyncWriter reversalIdentification;
-        private readonly IMax35TextXmlAsyncWriter originalInstructionIdentification;
-        private readonly IMax35TextXmlAsyncWriter originalEndToEndIdentification;
-        private readonly IUUIDv4IdentifierXmlAsyncWriter originalUETR;
-        private readonly IActiveOrHistoricCurrencyAndAmountXmlAsyncWriter originalInstructedAmount;
-        private readonly IActiveOrHistoricCurrencyAndAmountXmlAsyncWriter reversedInstructedAmount;
+        private readonly Max35TextXmlAsyncWriter reversalIdentification;
+        private readonly Max35TextXmlAsyncWriter originalInstructionIdentification;
+        private readonly Max35TextXmlAsyncWriter originalEndToEndIdentification;
+        private readonly UUIDv4IdentifierXmlAsyncWriter originalUETR;
+        private readonly ActiveOrHistoricCurrencyAndAmountXmlAsyncWriter originalInstructedAmount;
+        private readonly ActiveOrHistoricCurrencyAndAmountXmlAsyncWriter reversedInstructedAmount;
         private readonly IEnumXmlAsyncWriter<ChargeBearerType1Code> chargeBearer;
         private readonly ISubordinateXmlAsyncWriter<PaymentReversalReason9> reversalReasonInformation;
         private readonly ISubordinateXmlAsyncWriter<OriginalTransactionReference35> originalTransactionReference;
@@ -35,12 +35,12 @@ namespace BeneficialStrategies.Iso20022.Serialization.Xml.Writers.Components
         /// </summary>
         public PaymentTransaction134XmlAsyncWriter
         (
-            IMax35TextXmlAsyncWriter reversalIdentification,
-            IMax35TextXmlAsyncWriter originalInstructionIdentification,
-            IMax35TextXmlAsyncWriter originalEndToEndIdentification,
-            IUUIDv4IdentifierXmlAsyncWriter originalUETR,
-            IActiveOrHistoricCurrencyAndAmountXmlAsyncWriter originalInstructedAmount,
-            IActiveOrHistoricCurrencyAndAmountXmlAsyncWriter reversedInstructedAmount,
+            Max35TextXmlAsyncWriter reversalIdentification,
+            Max35TextXmlAsyncWriter originalInstructionIdentification,
+            Max35TextXmlAsyncWriter originalEndToEndIdentification,
+            UUIDv4IdentifierXmlAsyncWriter originalUETR,
+            ActiveOrHistoricCurrencyAndAmountXmlAsyncWriter originalInstructedAmount,
+            ActiveOrHistoricCurrencyAndAmountXmlAsyncWriter reversedInstructedAmount,
             IEnumXmlAsyncWriter<ChargeBearerType1Code> chargeBearer,
             ISubordinateXmlAsyncWriter<PaymentReversalReason9> reversalReasonInformation,
             ISubordinateXmlAsyncWriter<OriginalTransactionReference35> originalTransactionReference,

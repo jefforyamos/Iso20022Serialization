@@ -19,10 +19,10 @@ namespace BeneficialStrategies.Iso20022.Serialization.Xml.Writers.Components
     public class OriginalTransactionReference35XmlAsyncWriter : ISubordinateXmlAsyncWriter<OriginalTransactionReference35>
     {
         // Injected dependencies for serialization of each member data type
-        private readonly IActiveOrHistoricCurrencyAndAmountXmlAsyncWriter interbankSettlementAmount;
+        private readonly ActiveOrHistoricCurrencyAndAmountXmlAsyncWriter interbankSettlementAmount;
         private readonly ISubordinateXmlAsyncWriter<AmountType4Choice_> amount;
-        private readonly IISODateXmlAsyncWriter interbankSettlementDate;
-        private readonly IISODateXmlAsyncWriter requestedCollectionDate;
+        private readonly ISODateXmlAsyncWriter interbankSettlementDate;
+        private readonly ISODateXmlAsyncWriter requestedCollectionDate;
         private readonly ISubordinateXmlAsyncWriter<DateAndDateTime2Choice_> requestedExecutionDate;
         private readonly ISubordinateXmlAsyncWriter<PartyIdentification135> creditorSchemeIdentification;
         private readonly ISubordinateXmlAsyncWriter<SettlementInstruction11> settlementInformation;
@@ -47,10 +47,10 @@ namespace BeneficialStrategies.Iso20022.Serialization.Xml.Writers.Components
         /// </summary>
         public OriginalTransactionReference35XmlAsyncWriter
         (
-            IActiveOrHistoricCurrencyAndAmountXmlAsyncWriter interbankSettlementAmount,
+            ActiveOrHistoricCurrencyAndAmountXmlAsyncWriter interbankSettlementAmount,
             ISubordinateXmlAsyncWriter<AmountType4Choice_> amount,
-            IISODateXmlAsyncWriter interbankSettlementDate,
-            IISODateXmlAsyncWriter requestedCollectionDate,
+            ISODateXmlAsyncWriter interbankSettlementDate,
+            ISODateXmlAsyncWriter requestedCollectionDate,
             ISubordinateXmlAsyncWriter<DateAndDateTime2Choice_> requestedExecutionDate,
             ISubordinateXmlAsyncWriter<PartyIdentification135> creditorSchemeIdentification,
             ISubordinateXmlAsyncWriter<SettlementInstruction11> settlementInformation,

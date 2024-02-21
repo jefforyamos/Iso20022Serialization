@@ -22,11 +22,11 @@ namespace BeneficialStrategies.Iso20022.Serialization.Xml.Writers.Components
         private readonly ISubordinateXmlAsyncWriter<GarnishmentType1> type;
         private readonly ISubordinateXmlAsyncWriter<PartyIdentification135> garnishee;
         private readonly ISubordinateXmlAsyncWriter<PartyIdentification135> garnishmentAdministrator;
-        private readonly IMax140TextXmlAsyncWriter referenceNumber;
-        private readonly IISODateXmlAsyncWriter date;
-        private readonly IActiveOrHistoricCurrencyAndAmountXmlAsyncWriter remittedAmount;
-        private readonly ITrueFalseIndicatorXmlAsyncWriter familyMedicalInsuranceIndicator;
-        private readonly ITrueFalseIndicatorXmlAsyncWriter employeeTerminationIndicator;
+        private readonly Max140TextXmlAsyncWriter referenceNumber;
+        private readonly ISODateXmlAsyncWriter date;
+        private readonly ActiveOrHistoricCurrencyAndAmountXmlAsyncWriter remittedAmount;
+        private readonly TrueFalseIndicatorXmlAsyncWriter familyMedicalInsuranceIndicator;
+        private readonly TrueFalseIndicatorXmlAsyncWriter employeeTerminationIndicator;
         
         /// <summary>
         /// Construct using an injected writer for each member.
@@ -36,11 +36,11 @@ namespace BeneficialStrategies.Iso20022.Serialization.Xml.Writers.Components
             ISubordinateXmlAsyncWriter<GarnishmentType1> type,
             ISubordinateXmlAsyncWriter<PartyIdentification135> garnishee,
             ISubordinateXmlAsyncWriter<PartyIdentification135> garnishmentAdministrator,
-            IMax140TextXmlAsyncWriter referenceNumber,
-            IISODateXmlAsyncWriter date,
-            IActiveOrHistoricCurrencyAndAmountXmlAsyncWriter remittedAmount,
-            ITrueFalseIndicatorXmlAsyncWriter familyMedicalInsuranceIndicator,
-            ITrueFalseIndicatorXmlAsyncWriter employeeTerminationIndicator
+            Max140TextXmlAsyncWriter referenceNumber,
+            ISODateXmlAsyncWriter date,
+            ActiveOrHistoricCurrencyAndAmountXmlAsyncWriter remittedAmount,
+            TrueFalseIndicatorXmlAsyncWriter familyMedicalInsuranceIndicator,
+            TrueFalseIndicatorXmlAsyncWriter employeeTerminationIndicator
         )
         {
             this.type = type;

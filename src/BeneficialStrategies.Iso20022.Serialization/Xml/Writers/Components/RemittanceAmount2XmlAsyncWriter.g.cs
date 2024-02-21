@@ -19,24 +19,24 @@ namespace BeneficialStrategies.Iso20022.Serialization.Xml.Writers.Components
     public class RemittanceAmount2XmlAsyncWriter : ISubordinateXmlAsyncWriter<RemittanceAmount2>
     {
         // Injected dependencies for serialization of each member data type
-        private readonly IActiveOrHistoricCurrencyAndAmountXmlAsyncWriter duePayableAmount;
+        private readonly ActiveOrHistoricCurrencyAndAmountXmlAsyncWriter duePayableAmount;
         private readonly ISubordinateXmlAsyncWriter<DiscountAmountAndType1> discountAppliedAmount;
-        private readonly IActiveOrHistoricCurrencyAndAmountXmlAsyncWriter creditNoteAmount;
+        private readonly ActiveOrHistoricCurrencyAndAmountXmlAsyncWriter creditNoteAmount;
         private readonly ISubordinateXmlAsyncWriter<TaxAmountAndType1> taxAmount;
         private readonly ISubordinateXmlAsyncWriter<DocumentAdjustment1> adjustmentAmountAndReason;
-        private readonly IActiveOrHistoricCurrencyAndAmountXmlAsyncWriter remittedAmount;
+        private readonly ActiveOrHistoricCurrencyAndAmountXmlAsyncWriter remittedAmount;
         
         /// <summary>
         /// Construct using an injected writer for each member.
         /// </summary>
         public RemittanceAmount2XmlAsyncWriter
         (
-            IActiveOrHistoricCurrencyAndAmountXmlAsyncWriter duePayableAmount,
+            ActiveOrHistoricCurrencyAndAmountXmlAsyncWriter duePayableAmount,
             ISubordinateXmlAsyncWriter<DiscountAmountAndType1> discountAppliedAmount,
-            IActiveOrHistoricCurrencyAndAmountXmlAsyncWriter creditNoteAmount,
+            ActiveOrHistoricCurrencyAndAmountXmlAsyncWriter creditNoteAmount,
             ISubordinateXmlAsyncWriter<TaxAmountAndType1> taxAmount,
             ISubordinateXmlAsyncWriter<DocumentAdjustment1> adjustmentAmountAndReason,
-            IActiveOrHistoricCurrencyAndAmountXmlAsyncWriter remittedAmount
+            ActiveOrHistoricCurrencyAndAmountXmlAsyncWriter remittedAmount
         )
         {
             this.duePayableAmount = duePayableAmount;

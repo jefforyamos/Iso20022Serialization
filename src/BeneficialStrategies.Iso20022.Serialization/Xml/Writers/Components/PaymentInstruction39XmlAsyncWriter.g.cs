@@ -19,14 +19,14 @@ namespace BeneficialStrategies.Iso20022.Serialization.Xml.Writers.Components
     public class PaymentInstruction39XmlAsyncWriter : ISubordinateXmlAsyncWriter<PaymentInstruction39>
     {
         // Injected dependencies for serialization of each member data type
-        private readonly IMax35TextXmlAsyncWriter paymentInformationIdentification;
+        private readonly Max35TextXmlAsyncWriter paymentInformationIdentification;
         private readonly IEnumXmlAsyncWriter<PaymentMethod2Code> paymentMethod;
         private readonly ISubordinateXmlAsyncWriter<AdviceType1> requestedAdviceType;
-        private readonly IBatchBookingIndicatorXmlAsyncWriter batchBooking;
-        private readonly IMax15NumericTextXmlAsyncWriter numberOfTransactions;
-        private readonly IDecimalNumberXmlAsyncWriter controlSum;
+        private readonly BatchBookingIndicatorXmlAsyncWriter batchBooking;
+        private readonly Max15NumericTextXmlAsyncWriter numberOfTransactions;
+        private readonly DecimalNumberXmlAsyncWriter controlSum;
         private readonly ISubordinateXmlAsyncWriter<PaymentTypeInformation29> paymentTypeInformation;
-        private readonly IISODateXmlAsyncWriter requestedCollectionDate;
+        private readonly ISODateXmlAsyncWriter requestedCollectionDate;
         private readonly ISubordinateXmlAsyncWriter<PartyIdentification135> creditor;
         private readonly ISubordinateXmlAsyncWriter<CashAccount40> creditorAccount;
         private readonly ISubordinateXmlAsyncWriter<BranchAndFinancialInstitutionIdentification6> creditorAgent;
@@ -43,14 +43,14 @@ namespace BeneficialStrategies.Iso20022.Serialization.Xml.Writers.Components
         /// </summary>
         public PaymentInstruction39XmlAsyncWriter
         (
-            IMax35TextXmlAsyncWriter paymentInformationIdentification,
+            Max35TextXmlAsyncWriter paymentInformationIdentification,
             IEnumXmlAsyncWriter<PaymentMethod2Code> paymentMethod,
             ISubordinateXmlAsyncWriter<AdviceType1> requestedAdviceType,
-            IBatchBookingIndicatorXmlAsyncWriter batchBooking,
-            IMax15NumericTextXmlAsyncWriter numberOfTransactions,
-            IDecimalNumberXmlAsyncWriter controlSum,
+            BatchBookingIndicatorXmlAsyncWriter batchBooking,
+            Max15NumericTextXmlAsyncWriter numberOfTransactions,
+            DecimalNumberXmlAsyncWriter controlSum,
             ISubordinateXmlAsyncWriter<PaymentTypeInformation29> paymentTypeInformation,
-            IISODateXmlAsyncWriter requestedCollectionDate,
+            ISODateXmlAsyncWriter requestedCollectionDate,
             ISubordinateXmlAsyncWriter<PartyIdentification135> creditor,
             ISubordinateXmlAsyncWriter<CashAccount40> creditorAccount,
             ISubordinateXmlAsyncWriter<BranchAndFinancialInstitutionIdentification6> creditorAgent,

@@ -19,9 +19,9 @@ namespace BeneficialStrategies.Iso20022.Serialization.Xml.Writers.Components
     public class TaxParty2XmlAsyncWriter : ISubordinateXmlAsyncWriter<TaxParty2>
     {
         // Injected dependencies for serialization of each member data type
-        private readonly IMax35TextXmlAsyncWriter taxIdentification;
-        private readonly IMax35TextXmlAsyncWriter registrationIdentification;
-        private readonly IMax35TextXmlAsyncWriter taxType;
+        private readonly Max35TextXmlAsyncWriter taxIdentification;
+        private readonly Max35TextXmlAsyncWriter registrationIdentification;
+        private readonly Max35TextXmlAsyncWriter taxType;
         private readonly ISubordinateXmlAsyncWriter<TaxAuthorisation1> authorisation;
         
         /// <summary>
@@ -29,9 +29,9 @@ namespace BeneficialStrategies.Iso20022.Serialization.Xml.Writers.Components
         /// </summary>
         public TaxParty2XmlAsyncWriter
         (
-            IMax35TextXmlAsyncWriter taxIdentification,
-            IMax35TextXmlAsyncWriter registrationIdentification,
-            IMax35TextXmlAsyncWriter taxType,
+            Max35TextXmlAsyncWriter taxIdentification,
+            Max35TextXmlAsyncWriter registrationIdentification,
+            Max35TextXmlAsyncWriter taxType,
             ISubordinateXmlAsyncWriter<TaxAuthorisation1> authorisation
         )
         {

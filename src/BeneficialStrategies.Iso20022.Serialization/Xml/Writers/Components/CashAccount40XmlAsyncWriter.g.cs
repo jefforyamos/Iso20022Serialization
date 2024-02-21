@@ -21,8 +21,8 @@ namespace BeneficialStrategies.Iso20022.Serialization.Xml.Writers.Components
         // Injected dependencies for serialization of each member data type
         private readonly ISubordinateXmlAsyncWriter<AccountIdentification4Choice_> identification;
         private readonly ISubordinateXmlAsyncWriter<CashAccountType2Choice_> type;
-        private readonly IActiveOrHistoricCurrencyCodeXmlAsyncWriter currency;
-        private readonly IMax70TextXmlAsyncWriter name;
+        private readonly ActiveOrHistoricCurrencyCodeXmlAsyncWriter currency;
+        private readonly Max70TextXmlAsyncWriter name;
         private readonly ISubordinateXmlAsyncWriter<ProxyAccountIdentification1> proxy;
         
         /// <summary>
@@ -32,8 +32,8 @@ namespace BeneficialStrategies.Iso20022.Serialization.Xml.Writers.Components
         (
             ISubordinateXmlAsyncWriter<AccountIdentification4Choice_> identification,
             ISubordinateXmlAsyncWriter<CashAccountType2Choice_> type,
-            IActiveOrHistoricCurrencyCodeXmlAsyncWriter currency,
-            IMax70TextXmlAsyncWriter name,
+            ActiveOrHistoricCurrencyCodeXmlAsyncWriter currency,
+            Max70TextXmlAsyncWriter name,
             ISubordinateXmlAsyncWriter<ProxyAccountIdentification1> proxy
         )
         {

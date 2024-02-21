@@ -19,16 +19,16 @@ namespace BeneficialStrategies.Iso20022.Serialization.Xml.Writers.Components
     public class InstructionForDebtorAgent1XmlAsyncWriter : ISubordinateXmlAsyncWriter<InstructionForDebtorAgent1>
     {
         // Injected dependencies for serialization of each member data type
-        private readonly IExternalDebtorAgentInstruction1CodeXmlAsyncWriter code;
-        private readonly IMax140TextXmlAsyncWriter instructionInformation;
+        private readonly ExternalDebtorAgentInstruction1CodeXmlAsyncWriter code;
+        private readonly Max140TextXmlAsyncWriter instructionInformation;
         
         /// <summary>
         /// Construct using an injected writer for each member.
         /// </summary>
         public InstructionForDebtorAgent1XmlAsyncWriter
         (
-            IExternalDebtorAgentInstruction1CodeXmlAsyncWriter code,
-            IMax140TextXmlAsyncWriter instructionInformation
+            ExternalDebtorAgentInstruction1CodeXmlAsyncWriter code,
+            Max140TextXmlAsyncWriter instructionInformation
         )
         {
             this.code = code;

@@ -19,9 +19,9 @@ namespace BeneficialStrategies.Iso20022.Serialization.Xml.Writers.Components
     public class TaxAmount3XmlAsyncWriter : ISubordinateXmlAsyncWriter<TaxAmount3>
     {
         // Injected dependencies for serialization of each member data type
-        private readonly IPercentageRateXmlAsyncWriter rate;
-        private readonly IActiveOrHistoricCurrencyAndAmountXmlAsyncWriter taxableBaseAmount;
-        private readonly IActiveOrHistoricCurrencyAndAmountXmlAsyncWriter totalAmount;
+        private readonly PercentageRateXmlAsyncWriter rate;
+        private readonly ActiveOrHistoricCurrencyAndAmountXmlAsyncWriter taxableBaseAmount;
+        private readonly ActiveOrHistoricCurrencyAndAmountXmlAsyncWriter totalAmount;
         private readonly ISubordinateXmlAsyncWriter<TaxRecordDetails3> details;
         
         /// <summary>
@@ -29,9 +29,9 @@ namespace BeneficialStrategies.Iso20022.Serialization.Xml.Writers.Components
         /// </summary>
         public TaxAmount3XmlAsyncWriter
         (
-            IPercentageRateXmlAsyncWriter rate,
-            IActiveOrHistoricCurrencyAndAmountXmlAsyncWriter taxableBaseAmount,
-            IActiveOrHistoricCurrencyAndAmountXmlAsyncWriter totalAmount,
+            PercentageRateXmlAsyncWriter rate,
+            ActiveOrHistoricCurrencyAndAmountXmlAsyncWriter taxableBaseAmount,
+            ActiveOrHistoricCurrencyAndAmountXmlAsyncWriter totalAmount,
             ISubordinateXmlAsyncWriter<TaxRecordDetails3> details
         )
         {

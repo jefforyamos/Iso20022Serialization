@@ -20,21 +20,21 @@ namespace BeneficialStrategies.Iso20022.Serialization.Xml.Writers.Components
     {
         // Injected dependencies for serialization of each member data type
         private readonly ISubordinateXmlAsyncWriter<AddressType3Choice_> addressType;
-        private readonly IMax70TextXmlAsyncWriter department;
-        private readonly IMax70TextXmlAsyncWriter subDepartment;
-        private readonly IMax70TextXmlAsyncWriter streetName;
-        private readonly IMax16TextXmlAsyncWriter buildingNumber;
-        private readonly IMax35TextXmlAsyncWriter buildingName;
-        private readonly IMax70TextXmlAsyncWriter floor;
-        private readonly IMax16TextXmlAsyncWriter postBox;
-        private readonly IMax70TextXmlAsyncWriter room;
-        private readonly IMax16TextXmlAsyncWriter postCode;
-        private readonly IMax35TextXmlAsyncWriter townName;
-        private readonly IMax35TextXmlAsyncWriter townLocationName;
-        private readonly IMax35TextXmlAsyncWriter districtName;
-        private readonly IMax35TextXmlAsyncWriter countrySubDivision;
-        private readonly ICountryCodeXmlAsyncWriter country;
-        private readonly IMax70TextXmlAsyncWriter addressLine;
+        private readonly Max70TextXmlAsyncWriter department;
+        private readonly Max70TextXmlAsyncWriter subDepartment;
+        private readonly Max70TextXmlAsyncWriter streetName;
+        private readonly Max16TextXmlAsyncWriter buildingNumber;
+        private readonly Max35TextXmlAsyncWriter buildingName;
+        private readonly Max70TextXmlAsyncWriter floor;
+        private readonly Max16TextXmlAsyncWriter postBox;
+        private readonly Max70TextXmlAsyncWriter room;
+        private readonly Max16TextXmlAsyncWriter postCode;
+        private readonly Max35TextXmlAsyncWriter townName;
+        private readonly Max35TextXmlAsyncWriter townLocationName;
+        private readonly Max35TextXmlAsyncWriter districtName;
+        private readonly Max35TextXmlAsyncWriter countrySubDivision;
+        private readonly CountryCodeXmlAsyncWriter country;
+        private readonly Max70TextXmlAsyncWriter addressLine;
         
         /// <summary>
         /// Construct using an injected writer for each member.
@@ -42,21 +42,21 @@ namespace BeneficialStrategies.Iso20022.Serialization.Xml.Writers.Components
         public PostalAddress24XmlAsyncWriter
         (
             ISubordinateXmlAsyncWriter<AddressType3Choice_> addressType,
-            IMax70TextXmlAsyncWriter department,
-            IMax70TextXmlAsyncWriter subDepartment,
-            IMax70TextXmlAsyncWriter streetName,
-            IMax16TextXmlAsyncWriter buildingNumber,
-            IMax35TextXmlAsyncWriter buildingName,
-            IMax70TextXmlAsyncWriter floor,
-            IMax16TextXmlAsyncWriter postBox,
-            IMax70TextXmlAsyncWriter room,
-            IMax16TextXmlAsyncWriter postCode,
-            IMax35TextXmlAsyncWriter townName,
-            IMax35TextXmlAsyncWriter townLocationName,
-            IMax35TextXmlAsyncWriter districtName,
-            IMax35TextXmlAsyncWriter countrySubDivision,
-            ICountryCodeXmlAsyncWriter country,
-            IMax70TextXmlAsyncWriter addressLine
+            Max70TextXmlAsyncWriter department,
+            Max70TextXmlAsyncWriter subDepartment,
+            Max70TextXmlAsyncWriter streetName,
+            Max16TextXmlAsyncWriter buildingNumber,
+            Max35TextXmlAsyncWriter buildingName,
+            Max70TextXmlAsyncWriter floor,
+            Max16TextXmlAsyncWriter postBox,
+            Max70TextXmlAsyncWriter room,
+            Max16TextXmlAsyncWriter postCode,
+            Max35TextXmlAsyncWriter townName,
+            Max35TextXmlAsyncWriter townLocationName,
+            Max35TextXmlAsyncWriter districtName,
+            Max35TextXmlAsyncWriter countrySubDivision,
+            CountryCodeXmlAsyncWriter country,
+            Max70TextXmlAsyncWriter addressLine
         )
         {
             this.addressType = addressType;

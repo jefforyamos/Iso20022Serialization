@@ -19,16 +19,16 @@ namespace BeneficialStrategies.Iso20022.Serialization.Xml.Writers.Components
     public class OtherContact1XmlAsyncWriter : ISubordinateXmlAsyncWriter<OtherContact1>
     {
         // Injected dependencies for serialization of each member data type
-        private readonly IMax4TextXmlAsyncWriter channelType;
-        private readonly IMax128TextXmlAsyncWriter identification;
+        private readonly Max4TextXmlAsyncWriter channelType;
+        private readonly Max128TextXmlAsyncWriter identification;
         
         /// <summary>
         /// Construct using an injected writer for each member.
         /// </summary>
         public OtherContact1XmlAsyncWriter
         (
-            IMax4TextXmlAsyncWriter channelType,
-            IMax128TextXmlAsyncWriter identification
+            Max4TextXmlAsyncWriter channelType,
+            Max128TextXmlAsyncWriter identification
         )
         {
             this.channelType = channelType;

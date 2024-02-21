@@ -21,7 +21,7 @@ namespace BeneficialStrategies.Iso20022.Serialization.Xml.Writers.Components
         // Injected dependencies for serialization of each member data type
         private readonly ISubordinateXmlAsyncWriter<PaymentIdentification6> paymentIdentification;
         private readonly ISubordinateXmlAsyncWriter<PaymentTypeInformation29> paymentTypeInformation;
-        private readonly IActiveOrHistoricCurrencyAndAmountXmlAsyncWriter instructedAmount;
+        private readonly ActiveOrHistoricCurrencyAndAmountXmlAsyncWriter instructedAmount;
         private readonly IEnumXmlAsyncWriter<ChargeBearerType1Code> chargeBearer;
         private readonly ISubordinateXmlAsyncWriter<DirectDebitTransaction11> directDebitTransaction;
         private readonly ISubordinateXmlAsyncWriter<PartyIdentification135> ultimateCreditor;
@@ -30,7 +30,7 @@ namespace BeneficialStrategies.Iso20022.Serialization.Xml.Writers.Components
         private readonly ISubordinateXmlAsyncWriter<PartyIdentification135> debtor;
         private readonly ISubordinateXmlAsyncWriter<CashAccount40> debtorAccount;
         private readonly ISubordinateXmlAsyncWriter<PartyIdentification135> ultimateDebtor;
-        private readonly IMax140TextXmlAsyncWriter instructionForCreditorAgent;
+        private readonly Max140TextXmlAsyncWriter instructionForCreditorAgent;
         private readonly ISubordinateXmlAsyncWriter<Purpose2Choice_> purpose;
         private readonly ISubordinateXmlAsyncWriter<RegulatoryReporting3> regulatoryReporting;
         private readonly ISubordinateXmlAsyncWriter<TaxInformation10> tax;
@@ -45,7 +45,7 @@ namespace BeneficialStrategies.Iso20022.Serialization.Xml.Writers.Components
         (
             ISubordinateXmlAsyncWriter<PaymentIdentification6> paymentIdentification,
             ISubordinateXmlAsyncWriter<PaymentTypeInformation29> paymentTypeInformation,
-            IActiveOrHistoricCurrencyAndAmountXmlAsyncWriter instructedAmount,
+            ActiveOrHistoricCurrencyAndAmountXmlAsyncWriter instructedAmount,
             IEnumXmlAsyncWriter<ChargeBearerType1Code> chargeBearer,
             ISubordinateXmlAsyncWriter<DirectDebitTransaction11> directDebitTransaction,
             ISubordinateXmlAsyncWriter<PartyIdentification135> ultimateCreditor,
@@ -54,7 +54,7 @@ namespace BeneficialStrategies.Iso20022.Serialization.Xml.Writers.Components
             ISubordinateXmlAsyncWriter<PartyIdentification135> debtor,
             ISubordinateXmlAsyncWriter<CashAccount40> debtorAccount,
             ISubordinateXmlAsyncWriter<PartyIdentification135> ultimateDebtor,
-            IMax140TextXmlAsyncWriter instructionForCreditorAgent,
+            Max140TextXmlAsyncWriter instructionForCreditorAgent,
             ISubordinateXmlAsyncWriter<Purpose2Choice_> purpose,
             ISubordinateXmlAsyncWriter<RegulatoryReporting3> regulatoryReporting,
             ISubordinateXmlAsyncWriter<TaxInformation10> tax,

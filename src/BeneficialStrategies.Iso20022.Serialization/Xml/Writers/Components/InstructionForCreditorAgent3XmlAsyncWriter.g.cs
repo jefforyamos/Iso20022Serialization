@@ -20,7 +20,7 @@ namespace BeneficialStrategies.Iso20022.Serialization.Xml.Writers.Components
     {
         // Injected dependencies for serialization of each member data type
         private readonly IEnumXmlAsyncWriter<ExternalCreditorAgentInstruction1Code> code;
-        private readonly IMax140TextXmlAsyncWriter instructionInformation;
+        private readonly Max140TextXmlAsyncWriter instructionInformation;
         
         /// <summary>
         /// Construct using an injected writer for each member.
@@ -28,7 +28,7 @@ namespace BeneficialStrategies.Iso20022.Serialization.Xml.Writers.Components
         public InstructionForCreditorAgent3XmlAsyncWriter
         (
             IEnumXmlAsyncWriter<ExternalCreditorAgentInstruction1Code> code,
-            IMax140TextXmlAsyncWriter instructionInformation
+            Max140TextXmlAsyncWriter instructionInformation
         )
         {
             this.code = code;
