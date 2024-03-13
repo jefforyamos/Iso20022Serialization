@@ -8,9 +8,12 @@
 using BeneficialStrategies.Iso20022.Choices;
 using BeneficialStrategies.Iso20022.Choices.GarnishmentType1Choice;
 using BeneficialStrategies.Iso20022.Codesets;
+using BeneficialStrategies.Iso20022.Components;
 using BeneficialStrategies.Iso20022.Serialization.Xml.Codesets;
 using BeneficialStrategies.Iso20022.Serialization.Xml.Writers.SimpleTypes;
 using System.Xml;
+
+using Proprietary = BeneficialStrategies.Iso20022.Choices.GarnishmentType1Choice.Proprietary;
 
 namespace BeneficialStrategies.Iso20022.Serialization.Xml.Writers.Choices.GarnishmentType1Choice
 {

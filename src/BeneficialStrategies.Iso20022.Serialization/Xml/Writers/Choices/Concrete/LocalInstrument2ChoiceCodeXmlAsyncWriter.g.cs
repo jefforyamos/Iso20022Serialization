@@ -8,9 +8,12 @@
 using BeneficialStrategies.Iso20022.Choices;
 using BeneficialStrategies.Iso20022.Choices.LocalInstrument2Choice;
 using BeneficialStrategies.Iso20022.Codesets;
+using BeneficialStrategies.Iso20022.Components;
 using BeneficialStrategies.Iso20022.Serialization.Xml.Codesets;
 using BeneficialStrategies.Iso20022.Serialization.Xml.Writers.SimpleTypes;
 using System.Xml;
+
+using Code = BeneficialStrategies.Iso20022.Choices.LocalInstrument2Choice.Code;
 
 namespace BeneficialStrategies.Iso20022.Serialization.Xml.Writers.Choices.LocalInstrument2Choice
 {

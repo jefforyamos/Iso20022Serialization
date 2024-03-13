@@ -8,9 +8,12 @@
 using BeneficialStrategies.Iso20022.Choices;
 using BeneficialStrategies.Iso20022.Choices.AmountType4Choice;
 using BeneficialStrategies.Iso20022.Codesets;
+using BeneficialStrategies.Iso20022.Components;
 using BeneficialStrategies.Iso20022.Serialization.Xml.Codesets;
 using BeneficialStrategies.Iso20022.Serialization.Xml.Writers.SimpleTypes;
 using System.Xml;
+
+using EquivalentAmount = BeneficialStrategies.Iso20022.Choices.AmountType4Choice.EquivalentAmount;
 
 namespace BeneficialStrategies.Iso20022.Serialization.Xml.Writers.Choices.AmountType4Choice
 {

@@ -6,7 +6,6 @@
 //
 
 using BeneficialStrategies.Iso20022.Choices;
-using BeneficialStrategies.Iso20022.Choices.DocumentLineType1Choice;
 using BeneficialStrategies.Iso20022.Serialization.Xml.Writers.Choices.DocumentLineType1Choice;
 using System.Xml;
 
@@ -36,8 +35,8 @@ namespace BeneficialStrategies.Iso20022.Serialization.Xml.Choices
         {
             return valueBeingSerialized switch
             {
-                Code _code => this.code.WriteAsync( writer, _code, isoNamespace ),
-                Proprietary _proprietary => this.proprietary.WriteAsync( writer, _proprietary, isoNamespace ),
+                BeneficialStrategies.Iso20022.Choices.DocumentLineType1Choice.Code _code => this.code.WriteAsync( writer, _code, isoNamespace ),
+                BeneficialStrategies.Iso20022.Choices.DocumentLineType1Choice.Proprietary _proprietary => this.proprietary.WriteAsync( writer, _proprietary, isoNamespace ),
                 _ => throw new InvalidCastException( $"Data type of {valueBeingSerialized.GetType().FullName} has no corresponding serializer.")
             };
         }

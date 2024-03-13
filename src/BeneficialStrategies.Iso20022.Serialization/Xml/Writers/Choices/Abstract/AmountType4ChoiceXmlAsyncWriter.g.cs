@@ -6,7 +6,6 @@
 //
 
 using BeneficialStrategies.Iso20022.Choices;
-using BeneficialStrategies.Iso20022.Choices.AmountType4Choice;
 using BeneficialStrategies.Iso20022.Serialization.Xml.Writers.Choices.AmountType4Choice;
 using System.Xml;
 
@@ -36,8 +35,8 @@ namespace BeneficialStrategies.Iso20022.Serialization.Xml.Choices
         {
             return valueBeingSerialized switch
             {
-                InstructedAmount _instructedAmount => this.instructedAmount.WriteAsync( writer, _instructedAmount, isoNamespace ),
-                EquivalentAmount _equivalentAmount => this.equivalentAmount.WriteAsync( writer, _equivalentAmount, isoNamespace ),
+                BeneficialStrategies.Iso20022.Choices.AmountType4Choice.InstructedAmount _instructedAmount => this.instructedAmount.WriteAsync( writer, _instructedAmount, isoNamespace ),
+                BeneficialStrategies.Iso20022.Choices.AmountType4Choice.EquivalentAmount _equivalentAmount => this.equivalentAmount.WriteAsync( writer, _equivalentAmount, isoNamespace ),
                 _ => throw new InvalidCastException( $"Data type of {valueBeingSerialized.GetType().FullName} has no corresponding serializer.")
             };
         }

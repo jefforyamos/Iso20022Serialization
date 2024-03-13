@@ -6,7 +6,6 @@
 //
 
 using BeneficialStrategies.Iso20022.Choices;
-using BeneficialStrategies.Iso20022.Choices.Frequency36Choice;
 using BeneficialStrategies.Iso20022.Serialization.Xml.Writers.Choices.Frequency36Choice;
 using System.Xml;
 
@@ -39,9 +38,9 @@ namespace BeneficialStrategies.Iso20022.Serialization.Xml.Choices
         {
             return valueBeingSerialized switch
             {
-                Type _type => this.type.WriteAsync( writer, _type, isoNamespace ),
-                Period _period => this.period.WriteAsync( writer, _period, isoNamespace ),
-                PointInTime _pointInTime => this.pointInTime.WriteAsync( writer, _pointInTime, isoNamespace ),
+                BeneficialStrategies.Iso20022.Choices.Frequency36Choice.Type _type => this.type.WriteAsync( writer, _type, isoNamespace ),
+                BeneficialStrategies.Iso20022.Choices.Frequency36Choice.Period _period => this.period.WriteAsync( writer, _period, isoNamespace ),
+                BeneficialStrategies.Iso20022.Choices.Frequency36Choice.PointInTime _pointInTime => this.pointInTime.WriteAsync( writer, _pointInTime, isoNamespace ),
                 _ => throw new InvalidCastException( $"Data type of {valueBeingSerialized.GetType().FullName} has no corresponding serializer.")
             };
         }

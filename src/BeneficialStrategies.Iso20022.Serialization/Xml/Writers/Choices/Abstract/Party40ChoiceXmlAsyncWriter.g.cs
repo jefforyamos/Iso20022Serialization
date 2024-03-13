@@ -6,7 +6,6 @@
 //
 
 using BeneficialStrategies.Iso20022.Choices;
-using BeneficialStrategies.Iso20022.Choices.Party40Choice;
 using BeneficialStrategies.Iso20022.Serialization.Xml.Writers.Choices.Party40Choice;
 using System.Xml;
 
@@ -36,8 +35,8 @@ namespace BeneficialStrategies.Iso20022.Serialization.Xml.Choices
         {
             return valueBeingSerialized switch
             {
-                Party _party => this.party.WriteAsync( writer, _party, isoNamespace ),
-                Agent _agent => this.agent.WriteAsync( writer, _agent, isoNamespace ),
+                BeneficialStrategies.Iso20022.Choices.Party40Choice.Party _party => this.party.WriteAsync( writer, _party, isoNamespace ),
+                BeneficialStrategies.Iso20022.Choices.Party40Choice.Agent _agent => this.agent.WriteAsync( writer, _agent, isoNamespace ),
                 _ => throw new InvalidCastException( $"Data type of {valueBeingSerialized.GetType().FullName} has no corresponding serializer.")
             };
         }

@@ -8,9 +8,12 @@
 using BeneficialStrategies.Iso20022.Choices;
 using BeneficialStrategies.Iso20022.Choices.MandateRelatedData2Choice;
 using BeneficialStrategies.Iso20022.Codesets;
+using BeneficialStrategies.Iso20022.Components;
 using BeneficialStrategies.Iso20022.Serialization.Xml.Codesets;
 using BeneficialStrategies.Iso20022.Serialization.Xml.Writers.SimpleTypes;
 using System.Xml;
+
+using CreditTransferMandate = BeneficialStrategies.Iso20022.Choices.MandateRelatedData2Choice.CreditTransferMandate;
 
 namespace BeneficialStrategies.Iso20022.Serialization.Xml.Writers.Choices.MandateRelatedData2Choice
 {

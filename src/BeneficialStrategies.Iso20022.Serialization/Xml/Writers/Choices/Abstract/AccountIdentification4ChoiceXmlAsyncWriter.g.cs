@@ -6,7 +6,6 @@
 //
 
 using BeneficialStrategies.Iso20022.Choices;
-using BeneficialStrategies.Iso20022.Choices.AccountIdentification4Choice;
 using BeneficialStrategies.Iso20022.Serialization.Xml.Writers.Choices.AccountIdentification4Choice;
 using System.Xml;
 
@@ -36,8 +35,8 @@ namespace BeneficialStrategies.Iso20022.Serialization.Xml.Choices
         {
             return valueBeingSerialized switch
             {
-                IBAN _iBAN => this.iBAN.WriteAsync( writer, _iBAN, isoNamespace ),
-                Other _other => this.other.WriteAsync( writer, _other, isoNamespace ),
+                BeneficialStrategies.Iso20022.Choices.AccountIdentification4Choice.IBAN _iBAN => this.iBAN.WriteAsync( writer, _iBAN, isoNamespace ),
+                BeneficialStrategies.Iso20022.Choices.AccountIdentification4Choice.Other _other => this.other.WriteAsync( writer, _other, isoNamespace ),
                 _ => throw new InvalidCastException( $"Data type of {valueBeingSerialized.GetType().FullName} has no corresponding serializer.")
             };
         }

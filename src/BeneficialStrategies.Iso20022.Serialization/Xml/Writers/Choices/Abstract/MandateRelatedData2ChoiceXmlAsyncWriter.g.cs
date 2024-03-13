@@ -6,7 +6,6 @@
 //
 
 using BeneficialStrategies.Iso20022.Choices;
-using BeneficialStrategies.Iso20022.Choices.MandateRelatedData2Choice;
 using BeneficialStrategies.Iso20022.Serialization.Xml.Writers.Choices.MandateRelatedData2Choice;
 using System.Xml;
 
@@ -36,8 +35,8 @@ namespace BeneficialStrategies.Iso20022.Serialization.Xml.Choices
         {
             return valueBeingSerialized switch
             {
-                DirectDebitMandate _directDebitMandate => this.directDebitMandate.WriteAsync( writer, _directDebitMandate, isoNamespace ),
-                CreditTransferMandate _creditTransferMandate => this.creditTransferMandate.WriteAsync( writer, _creditTransferMandate, isoNamespace ),
+                BeneficialStrategies.Iso20022.Choices.MandateRelatedData2Choice.DirectDebitMandate _directDebitMandate => this.directDebitMandate.WriteAsync( writer, _directDebitMandate, isoNamespace ),
+                BeneficialStrategies.Iso20022.Choices.MandateRelatedData2Choice.CreditTransferMandate _creditTransferMandate => this.creditTransferMandate.WriteAsync( writer, _creditTransferMandate, isoNamespace ),
                 _ => throw new InvalidCastException( $"Data type of {valueBeingSerialized.GetType().FullName} has no corresponding serializer.")
             };
         }

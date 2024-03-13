@@ -6,7 +6,6 @@
 //
 
 using BeneficialStrategies.Iso20022.Choices;
-using BeneficialStrategies.Iso20022.Choices.DateAndDateTime2Choice;
 using BeneficialStrategies.Iso20022.Serialization.Xml.Writers.Choices.DateAndDateTime2Choice;
 using System.Xml;
 
@@ -36,8 +35,8 @@ namespace BeneficialStrategies.Iso20022.Serialization.Xml.Choices
         {
             return valueBeingSerialized switch
             {
-                Date _date => this.date.WriteAsync( writer, _date, isoNamespace ),
-                DateTime _dateTime => this.dateTime.WriteAsync( writer, _dateTime, isoNamespace ),
+                BeneficialStrategies.Iso20022.Choices.DateAndDateTime2Choice.Date _date => this.date.WriteAsync( writer, _date, isoNamespace ),
+                BeneficialStrategies.Iso20022.Choices.DateAndDateTime2Choice.DateTime _dateTime => this.dateTime.WriteAsync( writer, _dateTime, isoNamespace ),
                 _ => throw new InvalidCastException( $"Data type of {valueBeingSerialized.GetType().FullName} has no corresponding serializer.")
             };
         }
