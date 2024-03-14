@@ -17,7 +17,21 @@ namespace BeneficialStrategies.Iso20022.Serialization.Xml.Writers.SimpleTypes
     /// but is instead maintaned externally. Details:
     /// A code allocated to a currency by a Maintenance Agency under an international identification scheme, as described in the latest edition of the international standard ISO 4217 &quot;Codes for the representation of currencies and funds&quot;.
     /// </summary>
-    public interface ActiveOrHistoricCurrencyCodeXmlAsyncWriter : ISimpleTypeSubordinateXmlAsyncWriter<System.String>
+    public class ActiveOrHistoricCurrencyCodeXmlAsyncWriter : ISimpleTypeSubordinateXmlAsyncWriter<System.String>
     {
+        
+        // Create a constructor with an injected logger if contents are modified during serialization.
+        
+        /// <summary>
+        /// Write the value to the output the way ISO20022 says a &apos;ActiveOrHistoricCurrencyCode&apos; should be formatted.
+        /// Coerce the value when possible or truncate text that is too long.
+        /// Can be overridden by subclass with inheritance.
+        /// </summary>
+        public virtual Task WriteAsync(XmlWriter writer, string value, string isoNamespace)
+        {
+            // If changes are made to the serialized output, be sure and create a debug log entry.
+            writer.WriteValue( value );
+            return Task.CompletedTask;
+        }
     }
 }

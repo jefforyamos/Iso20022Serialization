@@ -17,7 +17,21 @@ namespace BeneficialStrategies.Iso20022.Serialization.Xml.Writers.SimpleTypes
     /// but is instead maintaned externally. Details:
     /// Specifies further instructions concerning the processing of a payment instruction, as provided to the creditor agent.
     /// </summary>
-    public interface ExternalDebtorAgentInstruction1CodeXmlAsyncWriter : ISimpleTypeSubordinateXmlAsyncWriter<System.String>
+    public class ExternalDebtorAgentInstruction1CodeXmlAsyncWriter : ISimpleTypeSubordinateXmlAsyncWriter<System.String>
     {
+        
+        // Create a constructor with an injected logger if contents are modified during serialization.
+        
+        /// <summary>
+        /// Write the value to the output the way ISO20022 says a &apos;ExternalDebtorAgentInstruction1Code&apos; should be formatted.
+        /// Coerce the value when possible or truncate text that is too long.
+        /// Can be overridden by subclass with inheritance.
+        /// </summary>
+        public virtual Task WriteAsync(XmlWriter writer, string value, string isoNamespace)
+        {
+            // If changes are made to the serialized output, be sure and create a debug log entry.
+            writer.WriteValue( value );
+            return Task.CompletedTask;
+        }
     }
 }

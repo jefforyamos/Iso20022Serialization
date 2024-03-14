@@ -17,7 +17,21 @@ namespace BeneficialStrategies.Iso20022.Serialization.Xml.Writers.SimpleTypes
     /// but is instead maintaned externally. Details:
     /// Code to identify a country, a dependency, or another area of particular geopolitical interest, on the basis of country names obtained from the United Nations (ISO 3166, Alpha-2 code).
     /// </summary>
-    public interface CountryCodeXmlAsyncWriter : ISimpleTypeSubordinateXmlAsyncWriter<System.String>
+    public class CountryCodeXmlAsyncWriter : ISimpleTypeSubordinateXmlAsyncWriter<System.String>
     {
+        
+        // Create a constructor with an injected logger if contents are modified during serialization.
+        
+        /// <summary>
+        /// Write the value to the output the way ISO20022 says a &apos;CountryCode&apos; should be formatted.
+        /// Coerce the value when possible or truncate text that is too long.
+        /// Can be overridden by subclass with inheritance.
+        /// </summary>
+        public virtual Task WriteAsync(XmlWriter writer, string value, string isoNamespace)
+        {
+            // If changes are made to the serialized output, be sure and create a debug log entry.
+            writer.WriteValue( value );
+            return Task.CompletedTask;
+        }
     }
 }

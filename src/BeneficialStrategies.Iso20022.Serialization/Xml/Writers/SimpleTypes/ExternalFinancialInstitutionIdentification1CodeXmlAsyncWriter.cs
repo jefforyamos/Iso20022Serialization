@@ -19,7 +19,21 @@ namespace BeneficialStrategies.Iso20022.Serialization.Xml.Writers.SimpleTypes
     /// The list of valid codes is an external code list published separately.
     /// External code sets can be downloaded from www.iso20022.org.
     /// </summary>
-    public interface ExternalFinancialInstitutionIdentification1CodeXmlAsyncWriter : ISimpleTypeSubordinateXmlAsyncWriter<System.String>
+    public class ExternalFinancialInstitutionIdentification1CodeXmlAsyncWriter : ISimpleTypeSubordinateXmlAsyncWriter<System.String>
     {
+        
+        // Create a constructor with an injected logger if contents are modified during serialization.
+        
+        /// <summary>
+        /// Write the value to the output the way ISO20022 says a &apos;ExternalFinancialInstitutionIdentification1Code&apos; should be formatted.
+        /// Coerce the value when possible or truncate text that is too long.
+        /// Can be overridden by subclass with inheritance.
+        /// </summary>
+        public virtual Task WriteAsync(XmlWriter writer, string value, string isoNamespace)
+        {
+            // If changes are made to the serialized output, be sure and create a debug log entry.
+            writer.WriteValue( value );
+            return Task.CompletedTask;
+        }
     }
 }
