@@ -5,7 +5,9 @@ VisualStudioVersion = 17.0.31903.59
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BeneficialStrategies.Iso20022.Serialization", "BeneficialStrategies.Iso20022.Serialization\BeneficialStrategies.Iso20022.Serialization.csproj", "{D051972A-8CDE-4200-807D-5741AB1137AA}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SerializerTestConsole", "SerializerTestConsole\SerializerTestConsole.csproj", "{E4EF32EF-DC16-4FF7-892E-A50E7D67F27A}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SerializerTestConsole", "..\test\SerializerTestConsole\SerializerTestConsole.csproj", "{A59761C4-B562-46CD-9CC8-60889CC7BE77}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BeneficialStrategies.Iso20022.SchemaValidation", "..\test\BeneficialStrategies.Iso20022.SchemaValidation\BeneficialStrategies.Iso20022.SchemaValidation.csproj", "{AFA2F323-429C-4804-9874-508220D4C972}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -20,9 +22,13 @@ Global
 		{D051972A-8CDE-4200-807D-5741AB1137AA}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{D051972A-8CDE-4200-807D-5741AB1137AA}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{D051972A-8CDE-4200-807D-5741AB1137AA}.Release|Any CPU.Build.0 = Release|Any CPU
-		{E4EF32EF-DC16-4FF7-892E-A50E7D67F27A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{E4EF32EF-DC16-4FF7-892E-A50E7D67F27A}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{E4EF32EF-DC16-4FF7-892E-A50E7D67F27A}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{E4EF32EF-DC16-4FF7-892E-A50E7D67F27A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A59761C4-B562-46CD-9CC8-60889CC7BE77}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A59761C4-B562-46CD-9CC8-60889CC7BE77}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A59761C4-B562-46CD-9CC8-60889CC7BE77}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A59761C4-B562-46CD-9CC8-60889CC7BE77}.Release|Any CPU.Build.0 = Release|Any CPU
+		{AFA2F323-429C-4804-9874-508220D4C972}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AFA2F323-429C-4804-9874-508220D4C972}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AFA2F323-429C-4804-9874-508220D4C972}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AFA2F323-429C-4804-9874-508220D4C972}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal

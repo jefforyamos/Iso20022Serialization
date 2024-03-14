@@ -1,7 +1,8 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <ItemGroup>
-    <ProjectReference Include="..\BeneficialStrategies.Iso20022.Serialization\BeneficialStrategies.Iso20022.Serialization.csproj" />
+    <ProjectReference Include="..\..\src\BeneficialStrategies.Iso20022.Serialization\BeneficialStrategies.Iso20022.Serialization.csproj" />
+    <ProjectReference Include="..\BeneficialStrategies.Iso20022.SchemaValidation\BeneficialStrategies.Iso20022.SchemaValidation.csproj" />
   </ItemGroup>
 
   <ItemGroup>
