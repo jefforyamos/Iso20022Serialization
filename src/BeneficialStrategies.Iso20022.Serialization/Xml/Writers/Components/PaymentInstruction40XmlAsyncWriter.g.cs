@@ -198,18 +198,11 @@ namespace BeneficialStrategies.Iso20022.Serialization.Xml.Writers.Components
                 await writer.WriteEndElementAsync();
             }
             // CreditTransferTransactionInformation Unknown CreditTransferTransaction54 CreditTransferTransaction54
-            // Because multiplicity is not known, implementation tolerates both optional and multiple
-            IEnumerable<CreditTransferTransaction54> listOfCreditTransferTransactionInformation = valueBeingSerialized.CreditTransferTransactionInformation switch
-            {
-                IEnumerable<CreditTransferTransaction54> list => list,
-                CreditTransferTransaction54 singleCreditTransferTransactionInformation => [ singleCreditTransferTransactionInformation ],
-                _ => []
-            };
-            
-            foreach( var populatedCreditTransferTransactionInformation in listOfCreditTransferTransactionInformation )
+            // Warning: Multiplicity unknown
+            foreach ( var item in valueBeingSerialized.CreditTransferTransactionInformation)
             {
                 await writer.WriteStartElementAsync(null, "CdtTrfTxInf", isoNamespace );
-                await creditTransferTransactionInformation.WriteAsync(writer, populatedCreditTransferTransactionInformation , isoNamespace);
+                await creditTransferTransactionInformation.WriteAsync(writer, item , isoNamespace);
                 await writer.WriteEndElementAsync();
             }
         }
