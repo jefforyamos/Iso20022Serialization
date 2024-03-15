@@ -1,28 +1,16 @@
 Validation of CustomerCreditTransferInitiationV11.gen.xml
 ========================================================================================================================================================================================================
-Object:   <Dt xmlns="urn:iso:std:iso:20022:tech:xsd:pain.001.001.11">2012-09-29</Dt>
-Severity: Error
-Error:    System.Xml.Schema.XmlSchemaValidationException: The element 'urn:iso:std:iso:20022:tech:xsd:pain.001.001.11:Dt' cannot contain child element 'urn:iso:std:iso:20022:tech:xsd:pain.001.001.11:Dt' because the parent element's content model is text only.
-Message:  The element 'urn:iso:std:iso:20022:tech:xsd:pain.001.001.11:Dt' cannot contain child element 'urn:iso:std:iso:20022:tech:xsd:pain.001.001.11:Dt' because the parent element's content model is text only.
-========================================================================================================================================================================================================
-Object:   <InstdAmt xmlns="urn:iso:std:iso:20022:tech:xsd:pain.001.001.11">
-  <InstdAmt>10000000</InstdAmt>
-</InstdAmt>
+Object:   <InstdAmt xmlns="urn:iso:std:iso:20022:tech:xsd:pain.001.001.11">10000000</InstdAmt>
 Severity: Error
 Error:    System.Xml.Schema.XmlSchemaValidationException: The required attribute 'Ccy' is missing.
 Message:  The required attribute 'Ccy' is missing.
 ========================================================================================================================================================================================================
-Object:   <InstdAmt xmlns="urn:iso:std:iso:20022:tech:xsd:pain.001.001.11">10000000</InstdAmt>
+Object:   <InstdAmt xmlns="urn:iso:std:iso:20022:tech:xsd:pain.001.001.11">500000</InstdAmt>
 Severity: Error
-Error:    System.Xml.Schema.XmlSchemaValidationException: The element 'urn:iso:std:iso:20022:tech:xsd:pain.001.001.11:InstdAmt' cannot contain child element 'urn:iso:std:iso:20022:tech:xsd:pain.001.001.11:InstdAmt' because the parent element's content model is text only.
-Message:  The element 'urn:iso:std:iso:20022:tech:xsd:pain.001.001.11:InstdAmt' cannot contain child element 'urn:iso:std:iso:20022:tech:xsd:pain.001.001.11:InstdAmt' because the parent element's content model is text only.
+Error:    System.Xml.Schema.XmlSchemaValidationException: The required attribute 'Ccy' is missing.
+Message:  The required attribute 'Ccy' is missing.
 ========================================================================================================================================================================================================
-Object:   <Cd xmlns="urn:iso:std:iso:20022:tech:xsd:pain.001.001.11">IPDO</Cd>
+Object:   <InstdAmt xmlns="urn:iso:std:iso:20022:tech:xsd:pain.001.001.11">1000000</InstdAmt>
 Severity: Error
-Error:    System.Xml.Schema.XmlSchemaValidationException: The element 'urn:iso:std:iso:20022:tech:xsd:pain.001.001.11:Cd' cannot contain child element 'urn:iso:std:iso:20022:tech:xsd:pain.001.001.11:Cd' because the parent element's content model is text only.
-Message:  The element 'urn:iso:std:iso:20022:tech:xsd:pain.001.001.11:Cd' cannot contain child element 'urn:iso:std:iso:20022:tech:xsd:pain.001.001.11:Cd' because the parent element's content model is text only.
-========================================================================================================================================================================================================
-Object:   <Cd xmlns="urn:iso:std:iso:20022:tech:xsd:pain.001.001.11">CINV</Cd>
-Severity: Error
-Error:    System.Xml.Schema.XmlSchemaValidationException: The element 'urn:iso:std:iso:20022:tech:xsd:pain.001.001.11:Cd' cannot contain child element 'urn:iso:std:iso:20022:tech:xsd:pain.001.001.11:Cd' because the parent element's content model is text only.
-Message:  The element 'urn:iso:std:iso:20022:tech:xsd:pain.001.001.11:Cd' cannot contain child element 'urn:iso:std:iso:20022:tech:xsd:pain.001.001.11:Cd' because the parent element's content model is text only.
+Error:    System.Xml.Schema.XmlSchemaValidationException: The required attribute 'Ccy' is missing.
+Message:  The required attribute 'Ccy' is missing.
