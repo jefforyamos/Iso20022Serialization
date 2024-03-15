@@ -40,6 +40,7 @@ namespace BeneficialStrategies.Iso20022.Serialization.Xml.Writers.Choices.Party4
         }
         public async Task WriteAsync(XmlWriter writer, Agent valueBeingSerialized, string isoNamespace)
         {
+            await writer.WriteStartElementAsync(null, "Agt", isoNamespace); // ConcreteChoiceIndicator
             // FinancialInstitutionIdentification Required FinancialInstitutionIdentification18 FinancialInstitutionIdentification18
             await writer.WriteStartElementAsync(null, "FinInstnId", isoNamespace );
             await financialInstitutionIdentification.WriteAsync(writer, valueBeingSerialized.FinancialInstitutionIdentification, isoNamespace);
@@ -51,6 +52,7 @@ namespace BeneficialStrategies.Iso20022.Serialization.Xml.Writers.Choices.Party4
                 await branchIdentification.WriteAsync(writer, populatedBranchIdentification, isoNamespace);
                 await writer.WriteEndElementAsync();
             }
+            await writer.WriteEndElementAsync(); // Concrete choice indicator
         }
     }
 }

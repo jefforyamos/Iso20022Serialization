@@ -40,6 +40,7 @@ namespace BeneficialStrategies.Iso20022.Serialization.Xml.Writers.Choices.Party3
         }
         public async Task WriteAsync(XmlWriter writer, PrivateIdentification valueBeingSerialized, string isoNamespace)
         {
+            await writer.WriteStartElementAsync(null, "PrvtId", isoNamespace); // ConcreteChoiceIndicator
             // DateAndPlaceOfBirth Optional DateAndPlaceOfBirth1 DateAndPlaceOfBirth1
             if ( valueBeingSerialized.DateAndPlaceOfBirth is DateAndPlaceOfBirth1 populatedDateAndPlaceOfBirth)
             {
@@ -54,6 +55,7 @@ namespace BeneficialStrategies.Iso20022.Serialization.Xml.Writers.Choices.Party3
                 await other.WriteAsync(writer, populatedOther, isoNamespace);
                 await writer.WriteEndElementAsync();
             }
+            await writer.WriteEndElementAsync(); // Concrete choice indicator
         }
     }
 }

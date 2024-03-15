@@ -43,6 +43,7 @@ namespace BeneficialStrategies.Iso20022.Serialization.Xml.Writers.Choices.Accoun
         }
         public async Task WriteAsync(XmlWriter writer, Other valueBeingSerialized, string isoNamespace)
         {
+            await writer.WriteStartElementAsync(null, "Othr", isoNamespace); // ConcreteChoiceIndicator
             // Identification Required Max34Text System.String
             await writer.WriteStartElementAsync(null, "Id", isoNamespace );
             await identification.WriteAsync(writer, valueBeingSerialized.Identification, isoNamespace);
@@ -61,6 +62,7 @@ namespace BeneficialStrategies.Iso20022.Serialization.Xml.Writers.Choices.Accoun
                 await issuer.WriteAsync(writer, populatedIssuer, isoNamespace);
                 await writer.WriteEndElementAsync();
             }
+            await writer.WriteEndElementAsync(); // Concrete choice indicator
         }
     }
 }

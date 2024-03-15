@@ -49,6 +49,7 @@ namespace BeneficialStrategies.Iso20022.Serialization.Xml.Writers.Choices.Party4
         }
         public async Task WriteAsync(XmlWriter writer, Party valueBeingSerialized, string isoNamespace)
         {
+            await writer.WriteStartElementAsync(null, "Pty", isoNamespace); // ConcreteChoiceIndicator
             // Name Optional Max140Text System.String
             if ( valueBeingSerialized.Name is System.String populatedName)
             {
@@ -84,6 +85,7 @@ namespace BeneficialStrategies.Iso20022.Serialization.Xml.Writers.Choices.Party4
                 await contactDetails.WriteAsync(writer, populatedContactDetails, isoNamespace);
                 await writer.WriteEndElementAsync();
             }
+            await writer.WriteEndElementAsync(); // Concrete choice indicator
         }
     }
 }

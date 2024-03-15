@@ -37,10 +37,12 @@ namespace BeneficialStrategies.Iso20022.Serialization.Xml.Writers.Choices.DateAn
         }
         public async Task WriteAsync(XmlWriter writer, DateTime valueBeingSerialized, string isoNamespace)
         {
+            await writer.WriteStartElementAsync(null, "DtTm", isoNamespace); // ConcreteChoiceIndicator
             // Value Required ISODateTime System.DateTime
             await writer.WriteStartElementAsync(null, "DtTm", isoNamespace );
             await value.WriteAsync(writer, valueBeingSerialized.Value, isoNamespace);
             await writer.WriteEndElementAsync();
+            await writer.WriteEndElementAsync(); // Concrete choice indicator
         }
     }
 }

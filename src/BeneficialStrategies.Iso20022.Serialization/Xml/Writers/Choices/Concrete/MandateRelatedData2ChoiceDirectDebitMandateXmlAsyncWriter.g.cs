@@ -64,6 +64,7 @@ namespace BeneficialStrategies.Iso20022.Serialization.Xml.Writers.Choices.Mandat
         }
         public async Task WriteAsync(XmlWriter writer, DirectDebitMandate valueBeingSerialized, string isoNamespace)
         {
+            await writer.WriteStartElementAsync(null, "DrctDbtMndt", isoNamespace); // ConcreteChoiceIndicator
             // MandateIdentification Optional Max35Text System.String
             if ( valueBeingSerialized.MandateIdentification is System.String populatedMandateIdentification)
             {
@@ -134,6 +135,7 @@ namespace BeneficialStrategies.Iso20022.Serialization.Xml.Writers.Choices.Mandat
                 await trackingDays.WriteAsync(writer, populatedTrackingDays, isoNamespace);
                 await writer.WriteEndElementAsync();
             }
+            await writer.WriteEndElementAsync(); // Concrete choice indicator
         }
     }
 }

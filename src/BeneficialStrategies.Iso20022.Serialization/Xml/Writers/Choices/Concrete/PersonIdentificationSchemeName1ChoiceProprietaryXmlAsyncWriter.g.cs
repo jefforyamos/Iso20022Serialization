@@ -37,10 +37,12 @@ namespace BeneficialStrategies.Iso20022.Serialization.Xml.Writers.Choices.Person
         }
         public async Task WriteAsync(XmlWriter writer, Proprietary valueBeingSerialized, string isoNamespace)
         {
+            await writer.WriteStartElementAsync(null, "Prtry", isoNamespace); // ConcreteChoiceIndicator
             // Value Required Max35Text System.String
             await writer.WriteStartElementAsync(null, "Prtry", isoNamespace );
             await value.WriteAsync(writer, valueBeingSerialized.Value, isoNamespace);
             await writer.WriteEndElementAsync();
+            await writer.WriteEndElementAsync(); // Concrete choice indicator
         }
     }
 }

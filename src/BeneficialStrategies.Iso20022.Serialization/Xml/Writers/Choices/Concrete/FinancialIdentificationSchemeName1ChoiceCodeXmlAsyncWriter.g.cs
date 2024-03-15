@@ -37,10 +37,12 @@ namespace BeneficialStrategies.Iso20022.Serialization.Xml.Writers.Choices.Financ
         }
         public async Task WriteAsync(XmlWriter writer, Code valueBeingSerialized, string isoNamespace)
         {
+            await writer.WriteStartElementAsync(null, "Cd", isoNamespace); // ConcreteChoiceIndicator
             // Value Required ExternalFinancialInstitutionIdentification1Code string
             await writer.WriteStartElementAsync(null, "Cd", isoNamespace );
             await value.WriteAsync(writer, valueBeingSerialized.Value, isoNamespace);
             await writer.WriteEndElementAsync();
+            await writer.WriteEndElementAsync(); // Concrete choice indicator
         }
     }
 }

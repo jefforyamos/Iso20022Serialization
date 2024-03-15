@@ -37,10 +37,12 @@ namespace BeneficialStrategies.Iso20022.Serialization.Xml.Writers.Choices.Accoun
         }
         public async Task WriteAsync(XmlWriter writer, IBAN valueBeingSerialized, string isoNamespace)
         {
+            await writer.WriteStartElementAsync(null, "IBAN", isoNamespace); // ConcreteChoiceIndicator
             // Value Required IBAN2007Identifier System.String
             await writer.WriteStartElementAsync(null, "IBAN", isoNamespace );
             await value.WriteAsync(writer, valueBeingSerialized.Value, isoNamespace);
             await writer.WriteEndElementAsync();
+            await writer.WriteEndElementAsync(); // Concrete choice indicator
         }
     }
 }

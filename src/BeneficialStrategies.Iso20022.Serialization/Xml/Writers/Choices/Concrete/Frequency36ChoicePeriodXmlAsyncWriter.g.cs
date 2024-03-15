@@ -40,6 +40,7 @@ namespace BeneficialStrategies.Iso20022.Serialization.Xml.Writers.Choices.Freque
         }
         public async Task WriteAsync(XmlWriter writer, Period valueBeingSerialized, string isoNamespace)
         {
+            await writer.WriteStartElementAsync(null, "Prd", isoNamespace); // ConcreteChoiceIndicator
             // Type Required Frequency6Code Frequency6Code
             await writer.WriteStartElementAsync(null, "Tp", isoNamespace );
             await type.WriteAsync(writer, valueBeingSerialized.Type, isoNamespace);
@@ -48,6 +49,7 @@ namespace BeneficialStrategies.Iso20022.Serialization.Xml.Writers.Choices.Freque
             await writer.WriteStartElementAsync(null, "CntPerPrd", isoNamespace );
             await countPerPeriod.WriteAsync(writer, valueBeingSerialized.CountPerPeriod, isoNamespace);
             await writer.WriteEndElementAsync();
+            await writer.WriteEndElementAsync(); // Concrete choice indicator
         }
     }
 }

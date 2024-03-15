@@ -61,6 +61,7 @@ namespace BeneficialStrategies.Iso20022.Serialization.Xml.Writers.Choices.Mandat
         }
         public async Task WriteAsync(XmlWriter writer, CreditTransferMandate valueBeingSerialized, string isoNamespace)
         {
+            await writer.WriteStartElementAsync(null, "CdtTrfMndt", isoNamespace); // ConcreteChoiceIndicator
             // MandateIdentification Optional Max35Text System.String
             if ( valueBeingSerialized.MandateIdentification is System.String populatedMandateIdentification)
             {
@@ -124,6 +125,7 @@ namespace BeneficialStrategies.Iso20022.Serialization.Xml.Writers.Choices.Mandat
                 await reason.WriteAsync(writer, populatedReason, isoNamespace);
                 await writer.WriteEndElementAsync();
             }
+            await writer.WriteEndElementAsync(); // Concrete choice indicator
         }
     }
 }

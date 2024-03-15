@@ -37,10 +37,12 @@ namespace BeneficialStrategies.Iso20022.Serialization.Xml.Writers.Choices.Amount
         }
         public async Task WriteAsync(XmlWriter writer, InstructedAmount valueBeingSerialized, string isoNamespace)
         {
+            await writer.WriteStartElementAsync(null, "InstdAmt", isoNamespace); // ConcreteChoiceIndicator
             // Value Required ActiveOrHistoricCurrencyAndAmount System.Decimal
             await writer.WriteStartElementAsync(null, "InstdAmt", isoNamespace );
             await value.WriteAsync(writer, valueBeingSerialized.Value, isoNamespace);
             await writer.WriteEndElementAsync();
+            await writer.WriteEndElementAsync(); // Concrete choice indicator
         }
     }
 }

@@ -40,6 +40,7 @@ namespace BeneficialStrategies.Iso20022.Serialization.Xml.Writers.Choices.Amount
         }
         public async Task WriteAsync(XmlWriter writer, EquivalentAmount valueBeingSerialized, string isoNamespace)
         {
+            await writer.WriteStartElementAsync(null, "EqvtAmt", isoNamespace); // ConcreteChoiceIndicator
             // Amount Required ActiveOrHistoricCurrencyAndAmount System.Decimal
             await writer.WriteStartElementAsync(null, "Amt", isoNamespace );
             await amount.WriteAsync(writer, valueBeingSerialized.Amount, isoNamespace);
@@ -48,6 +49,7 @@ namespace BeneficialStrategies.Iso20022.Serialization.Xml.Writers.Choices.Amount
             await writer.WriteStartElementAsync(null, "CcyOfTrf", isoNamespace );
             await currencyOfTransfer.WriteAsync(writer, valueBeingSerialized.CurrencyOfTransfer, isoNamespace);
             await writer.WriteEndElementAsync();
+            await writer.WriteEndElementAsync(); // Concrete choice indicator
         }
     }
 }
