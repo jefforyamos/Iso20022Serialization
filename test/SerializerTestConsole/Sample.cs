@@ -29,7 +29,7 @@ public static class Sample
     {
         PaymentInformationIdentification = "ABC/086",
         PaymentMethod = PaymentMethod3Code.CreditTransfer,
-        BatchBooking = "FALSE",
+        BatchBooking = "false",
         RequestedExecutionDate = new Beneficial.Choices.DateAndDateTime2Choice.Date { Value = new DateOnly(2012, 09, 29) },
         Debtor = new()
         {

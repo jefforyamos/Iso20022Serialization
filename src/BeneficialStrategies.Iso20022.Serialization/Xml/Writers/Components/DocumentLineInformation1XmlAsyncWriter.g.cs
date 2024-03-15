@@ -42,6 +42,20 @@ namespace BeneficialStrategies.Iso20022.Serialization.Xml.Writers.Components
         public async Task WriteAsync(XmlWriter writer, DocumentLineInformation1 valueBeingSerialized, string isoNamespace)
         {
             // Identification Unknown DocumentLineIdentification1 DocumentLineIdentification1
+            // Because multiplicity is not known, implementation tolerates both optional and multiple
+            IEnumerable<DocumentLineIdentification1> listOfIdentification = valueBeingSerialized.Identification switch
+            {
+                IEnumerable<DocumentLineIdentification1> list => list,
+                DocumentLineIdentification1 singleIdentification => [ singleIdentification ],
+                _ => []
+            };
+            
+            foreach( var populatedIdentification in listOfIdentification )
+            {
+                await writer.WriteStartElementAsync(null, "Id", isoNamespace );
+                await identification.WriteAsync(writer, populatedIdentification , isoNamespace);
+                await writer.WriteEndElementAsync();
+            }
             // Description Optional Max2048Text System.String
             if ( valueBeingSerialized.Description is System.String populatedDescription)
             {

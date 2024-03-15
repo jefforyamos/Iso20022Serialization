@@ -188,6 +188,20 @@ namespace BeneficialStrategies.Iso20022.Serialization.Xml.Writers.Components
                 await writer.WriteEndElementAsync();
             }
             // DirectDebitTransactionInformation Unknown DirectDebitTransactionInformation28 DirectDebitTransactionInformation28
+            // Because multiplicity is not known, implementation tolerates both optional and multiple
+            IEnumerable<DirectDebitTransactionInformation28> listOfDirectDebitTransactionInformation = valueBeingSerialized.DirectDebitTransactionInformation switch
+            {
+                IEnumerable<DirectDebitTransactionInformation28> list => list,
+                DirectDebitTransactionInformation28 singleDirectDebitTransactionInformation => [ singleDirectDebitTransactionInformation ],
+                _ => []
+            };
+            
+            foreach( var populatedDirectDebitTransactionInformation in listOfDirectDebitTransactionInformation )
+            {
+                await writer.WriteStartElementAsync(null, "DrctDbtTxInf", isoNamespace );
+                await directDebitTransactionInformation.WriteAsync(writer, populatedDirectDebitTransactionInformation , isoNamespace);
+                await writer.WriteEndElementAsync();
+            }
         }
     }
 }

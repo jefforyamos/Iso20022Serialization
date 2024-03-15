@@ -33,7 +33,7 @@ using ( var errorWriter = new StreamWriter(errorsFileName))
     errorWriter.WriteLine($@"Validation of {fileName}");
     xdoc.Validate(iso20022SchemaSet, (obj, eventArgs) => 
             { 
-                errorWriter.WriteLine("".PadLeft(50, '='));
+                errorWriter.WriteLine("".PadLeft(200, '='));
                 errorWriter.WriteLine( $@"Object:   {obj}"); 
                 errorWriter.WriteLine( $@"Severity: {eventArgs.Severity}");
                 errorWriter.WriteLine( $@"Error:    {eventArgs.Exception}");

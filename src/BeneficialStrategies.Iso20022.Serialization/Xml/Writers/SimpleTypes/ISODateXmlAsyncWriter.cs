@@ -25,7 +25,7 @@ namespace BeneficialStrategies.Iso20022.Serialization.Xml.Writers.SimpleTypes
         /// </summary>
         public virtual Task WriteAsync(XmlWriter writer, System.DateOnly value, string isoNamespace)
         {
-            writer.WriteValue( value.ToString() );
+            writer.WriteValue( value.ToString("yyyy-MM-dd") );
             return Task.CompletedTask;
         }
     }

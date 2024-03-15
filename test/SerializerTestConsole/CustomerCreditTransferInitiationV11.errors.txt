@@ -1,52 +1,28 @@
 Validation of CustomerCreditTransferInitiationV11.gen.xml
-==================================================
-Object:   <BtchBookg xmlns="urn:iso:std:iso:20022:tech:xsd:pain.001.001.11">FALSE</BtchBookg>
+========================================================================================================================================================================================================
+Object:   <Dt xmlns="urn:iso:std:iso:20022:tech:xsd:pain.001.001.11">2012-09-29</Dt>
 Severity: Error
-Error:    System.Xml.Schema.XmlSchemaValidationException: The 'urn:iso:std:iso:20022:tech:xsd:pain.001.001.11:BtchBookg' element is invalid - The value 'FALSE' is invalid according to its datatype 'urn:iso:std:iso:20022:tech:xsd:pain.001.001.11:BatchBookingIndicator' - The string 'FALSE' is not a valid Boolean value.
- ---> System.FormatException: The string 'FALSE' is not a valid Boolean value.
-   --- End of inner exception stack trace ---
-Message:  The 'urn:iso:std:iso:20022:tech:xsd:pain.001.001.11:BtchBookg' element is invalid - The value 'FALSE' is invalid according to its datatype 'urn:iso:std:iso:20022:tech:xsd:pain.001.001.11:BatchBookingIndicator' - The string 'FALSE' is not a valid Boolean value.
-==================================================
-Object:   <Dt xmlns="urn:iso:std:iso:20022:tech:xsd:pain.001.001.11">9/29/2012</Dt>
+Error:    System.Xml.Schema.XmlSchemaValidationException: The element 'urn:iso:std:iso:20022:tech:xsd:pain.001.001.11:Dt' cannot contain child element 'urn:iso:std:iso:20022:tech:xsd:pain.001.001.11:Dt' because the parent element's content model is text only.
+Message:  The element 'urn:iso:std:iso:20022:tech:xsd:pain.001.001.11:Dt' cannot contain child element 'urn:iso:std:iso:20022:tech:xsd:pain.001.001.11:Dt' because the parent element's content model is text only.
+========================================================================================================================================================================================================
+Object:   <InstdAmt xmlns="urn:iso:std:iso:20022:tech:xsd:pain.001.001.11">
+  <InstdAmt>10000000</InstdAmt>
+</InstdAmt>
 Severity: Error
-Error:    System.Xml.Schema.XmlSchemaValidationException: The 'urn:iso:std:iso:20022:tech:xsd:pain.001.001.11:Dt' element is invalid - The value '9/29/2012' is invalid according to its datatype 'urn:iso:std:iso:20022:tech:xsd:pain.001.001.11:ISODate' - The string '9/29/2012' is not a valid Date value.
- ---> System.FormatException: The string '9/29/2012' is not a valid Date value.
-   --- End of inner exception stack trace ---
-Message:  The 'urn:iso:std:iso:20022:tech:xsd:pain.001.001.11:Dt' element is invalid - The value '9/29/2012' is invalid according to its datatype 'urn:iso:std:iso:20022:tech:xsd:pain.001.001.11:ISODate' - The string '9/29/2012' is not a valid Date value.
-==================================================
-Object:   <Id xmlns="urn:iso:std:iso:20022:tech:xsd:pain.001.001.11">00125574999</Id>
+Error:    System.Xml.Schema.XmlSchemaValidationException: The required attribute 'Ccy' is missing.
+Message:  The required attribute 'Ccy' is missing.
+========================================================================================================================================================================================================
+Object:   <InstdAmt xmlns="urn:iso:std:iso:20022:tech:xsd:pain.001.001.11">10000000</InstdAmt>
 Severity: Error
-Error:    System.Xml.Schema.XmlSchemaValidationException: The element 'Id' in namespace 'urn:iso:std:iso:20022:tech:xsd:pain.001.001.11' has invalid child element 'Id' in namespace 'urn:iso:std:iso:20022:tech:xsd:pain.001.001.11'. List of possible elements expected: 'IBAN, Othr' in namespace 'urn:iso:std:iso:20022:tech:xsd:pain.001.001.11'.
-Message:  The element 'Id' in namespace 'urn:iso:std:iso:20022:tech:xsd:pain.001.001.11' has invalid child element 'Id' in namespace 'urn:iso:std:iso:20022:tech:xsd:pain.001.001.11'. List of possible elements expected: 'IBAN, Othr' in namespace 'urn:iso:std:iso:20022:tech:xsd:pain.001.001.11'.
-==================================================
-Object:   <PmtInf xmlns="urn:iso:std:iso:20022:tech:xsd:pain.001.001.11">
-  <PmtInfId>ABC/086</PmtInfId>
-  <PmtMtd>TRF</PmtMtd>
-  <BtchBookg>FALSE</BtchBookg>
-  <ReqdExctnDt>
-    <Dt>9/29/2012</Dt>
-  </ReqdExctnDt>
-  <Dbtr>
-    <Nm>ABC Corporation</Nm>
-    <PstlAdr>
-      <StrtNm>Times Square</StrtNm>
-      <BldgNb>7</BldgNb>
-      <PstCd>NY 10036</PstCd>
-      <TwnNm>New York</TwnNm>
-      <Ctry>US</Ctry>
-    </PstlAdr>
-  </Dbtr>
-  <DbtrAcct>
-    <Id>
-      <Id>00125574999</Id>
-    </Id>
-  </DbtrAcct>
-  <DbtrAgt>
-    <FinInstnId>
-      <BICFI>BBBBUS33</BICFI>
-    </FinInstnId>
-  </DbtrAgt>
-</PmtInf>
+Error:    System.Xml.Schema.XmlSchemaValidationException: The element 'urn:iso:std:iso:20022:tech:xsd:pain.001.001.11:InstdAmt' cannot contain child element 'urn:iso:std:iso:20022:tech:xsd:pain.001.001.11:InstdAmt' because the parent element's content model is text only.
+Message:  The element 'urn:iso:std:iso:20022:tech:xsd:pain.001.001.11:InstdAmt' cannot contain child element 'urn:iso:std:iso:20022:tech:xsd:pain.001.001.11:InstdAmt' because the parent element's content model is text only.
+========================================================================================================================================================================================================
+Object:   <Cd xmlns="urn:iso:std:iso:20022:tech:xsd:pain.001.001.11">IPDO</Cd>
 Severity: Error
-Error:    System.Xml.Schema.XmlSchemaValidationException: The element 'PmtInf' in namespace 'urn:iso:std:iso:20022:tech:xsd:pain.001.001.11' has incomplete content. List of possible elements expected: 'DbtrAgtAcct, InstrForDbtrAgt, UltmtDbtr, ChrgBr, ChrgsAcct, ChrgsAcctAgt, CdtTrfTxInf' in namespace 'urn:iso:std:iso:20022:tech:xsd:pain.001.001.11'.
-Message:  The element 'PmtInf' in namespace 'urn:iso:std:iso:20022:tech:xsd:pain.001.001.11' has incomplete content. List of possible elements expected: 'DbtrAgtAcct, InstrForDbtrAgt, UltmtDbtr, ChrgBr, ChrgsAcct, ChrgsAcctAgt, CdtTrfTxInf' in namespace 'urn:iso:std:iso:20022:tech:xsd:pain.001.001.11'.
+Error:    System.Xml.Schema.XmlSchemaValidationException: The element 'urn:iso:std:iso:20022:tech:xsd:pain.001.001.11:Cd' cannot contain child element 'urn:iso:std:iso:20022:tech:xsd:pain.001.001.11:Cd' because the parent element's content model is text only.
+Message:  The element 'urn:iso:std:iso:20022:tech:xsd:pain.001.001.11:Cd' cannot contain child element 'urn:iso:std:iso:20022:tech:xsd:pain.001.001.11:Cd' because the parent element's content model is text only.
+========================================================================================================================================================================================================
+Object:   <Cd xmlns="urn:iso:std:iso:20022:tech:xsd:pain.001.001.11">CINV</Cd>
+Severity: Error
+Error:    System.Xml.Schema.XmlSchemaValidationException: The element 'urn:iso:std:iso:20022:tech:xsd:pain.001.001.11:Cd' cannot contain child element 'urn:iso:std:iso:20022:tech:xsd:pain.001.001.11:Cd' because the parent element's content model is text only.
+Message:  The element 'urn:iso:std:iso:20022:tech:xsd:pain.001.001.11:Cd' cannot contain child element 'urn:iso:std:iso:20022:tech:xsd:pain.001.001.11:Cd' because the parent element's content model is text only.
