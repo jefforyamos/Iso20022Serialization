@@ -14,3 +14,26 @@ Object:   <InstdAmt xmlns="urn:iso:std:iso:20022:tech:xsd:pain.001.001.11">10000
 Severity: Error
 Error:    System.Xml.Schema.XmlSchemaValidationException: The required attribute 'Ccy' is missing.
 Message:  The required attribute 'Ccy' is missing.
+
+
+    <topLevelDictionaryEntry xsi:type="iso20022:Amount" xmi:id="_YYB_9tp-Ed-ak6NoX_4Aeg_-1587763373" 
+        name="ActiveOrHistoricCurrencyAndAmount" 
+        definition="A number of monetary units specified in an active or a historic currency where the unit of currency is explicit and compliant with ISO 4217." 
+        registrationStatus="Registered" 
+        minInclusive="0" 
+        totalDigits="18" 
+        fractionDigits="5" 
+        currencyIdentifierSet="_bqIp6tp-Ed-ak6NoX_4Aeg_1823330336">
+      <example>6284534</example>
+      <constraint xmi:id="_YYB_-Np-Ed-ak6NoX_4Aeg_-1124157641" name="CurrencyAmount" definition="The number of fractional digits (or minor unit of currency) must comply with ISO 4217.&#xA;Note: The decimal separator is a dot." registrationStatus="Provisionally Registered"/>
+    </topLevelDictionaryEntry>
+
+
+    CurrencyIdentifierSet is here:
+
+    <topLevelDictionaryEntry xsi:type="iso20022:CodeSet" xmi:id="_bqIp6tp-Ed-ak6NoX_4Aeg_1823330336" name="ActiveOrHistoricCurrencyCode" definition="A code allocated to a currency by a Maintenance Agency under an international identification scheme, as described in the latest edition of the international standard ISO 4217 &quot;Codes for the representation of currencies and funds&quot;." registrationStatus="Registered" pattern="[A-Z]{3,3}" trace="_VFizcvS0EeirnowYkPlyRw">
+      <example>USD</example>
+      <constraint xmi:id="_bqSa4Np-Ed-ak6NoX_4Aeg_1908295246" name="ActiveOrHistoricCurrency" definition="The Currency Code must be registered, or have already been registered. Valid active or historic currency codes are registered with the ISO 4217 Maintenance Agency, consist of three (3) contiguous letters, and may be or not be withdrawn on the day the message containing the Currency is exchanged." registrationStatus="Provisionally Registered"/>
+    </topLevelDictionaryEntry>
+
+

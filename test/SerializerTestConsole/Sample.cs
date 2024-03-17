@@ -3,6 +3,8 @@ using Beneficial = BeneficialStrategies.Iso20022;
 using BeneficialStrategies.Iso20022.Codesets;
 using BeneficialStrategies.Iso20022.Serialization.Xml.Writers.Choices.AccountIdentification4Choice;
 using BeneficialStrategies.Iso20022.Choices;
+using BeneficialStrategies.Iso20022.Choices.ReportParameter2Choice;
+using BeneficialStrategies.Iso20022.Choices.AmountAndRateFormat2Choice;
 
 public static class Sample
 {
@@ -71,7 +73,7 @@ public static class Sample
 						InstructionIdentification = "ABC/120928/CCT001/01",
 						EndToEndIdentification = "ABC/4562/2012-09-08",
 					},
-					Amount = new Beneficial.Choices.AmountType4Choice.InstructedAmount { Value = 10_000_000m },
+					Amount = new Beneficial.Choices.AmountType4Choice.InstructedAmount{ Currency = "JPY", Amount = 10_000_000m }, // {    = 10_000_000m },
 					ChargeBearer = ChargeBearerType1Code.Shared,
 					CreditorAgent = new()
 					{
@@ -142,7 +144,7 @@ public static class Sample
 						InstructionIdentification = "ABC/120928/CCT001/2",
 						EndToEndIdentification = "ABC/ABC-13679/2012-09-15"
 					},
-					Amount = new Beneficial.Choices.AmountType4Choice.InstructedAmount { Value = 500_000m },
+					Amount = new Beneficial.Choices.AmountType4Choice.InstructedAmount{ Currency = "EUR", Amount = 500_000m }, 
 					ChargeBearer = ChargeBearerType1Code.BorneByCreditor,
 					CreditorAgent = new()
 					{
@@ -199,7 +201,7 @@ public static class Sample
 						InstructionIdentification = "ABC/120928/CCT001/3",
 						EndToEndIdentification = "ABC/987-AC/2012-09-27"
 					},
-					Amount = new Beneficial.Choices.AmountType4Choice.InstructedAmount { Value = 1_000_000m },
+					Amount = new Beneficial.Choices.AmountType4Choice.InstructedAmount{ Currency = "USD", Amount = 1_000_000m }, 
 					ChargeBearer = ChargeBearerType1Code.Shared,
 					CreditorAgent = new()
 					{
