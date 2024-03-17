@@ -5,6 +5,7 @@
 // Copyright 2024 Jeff Ward, Beneficial Strategies. Usage subject to license of enclosing library.
 //
 
+using BeneficialStrategies.Iso20022.Amounts;
 using BeneficialStrategies.Iso20022.Choices;
 using BeneficialStrategies.Iso20022.Codesets;
 using BeneficialStrategies.Iso20022.Components;
@@ -26,7 +27,7 @@ namespace BeneficialStrategies.Iso20022.Serialization.Xml.Writers.Components
         private readonly ISubordinateXmlAsyncWriter<PartyIdentification135> garnishmentAdministrator;
         private readonly Max140TextXmlAsyncWriter referenceNumber;
         private readonly ISODateXmlAsyncWriter date;
-        private readonly ActiveOrHistoricCurrencyAndAmountXmlAsyncWriter remittedAmount;
+        private readonly ISubordinateXmlAsyncWriter<ActiveOrHistoricCurrencyAndAmount> remittedAmount;
         private readonly TrueFalseIndicatorXmlAsyncWriter familyMedicalInsuranceIndicator;
         private readonly TrueFalseIndicatorXmlAsyncWriter employeeTerminationIndicator;
         
@@ -40,7 +41,7 @@ namespace BeneficialStrategies.Iso20022.Serialization.Xml.Writers.Components
             ISubordinateXmlAsyncWriter<PartyIdentification135> garnishmentAdministrator,
             Max140TextXmlAsyncWriter referenceNumber,
             ISODateXmlAsyncWriter date,
-            ActiveOrHistoricCurrencyAndAmountXmlAsyncWriter remittedAmount,
+            ISubordinateXmlAsyncWriter<ActiveOrHistoricCurrencyAndAmount> remittedAmount,
             TrueFalseIndicatorXmlAsyncWriter familyMedicalInsuranceIndicator,
             TrueFalseIndicatorXmlAsyncWriter employeeTerminationIndicator
         )
@@ -88,8 +89,8 @@ namespace BeneficialStrategies.Iso20022.Serialization.Xml.Writers.Components
                 await date.WriteAsync(writer, populatedDate, isoNamespace);
                 await writer.WriteEndElementAsync();
             }
-            // RemittedAmount Optional ActiveOrHistoricCurrencyAndAmount System.Decimal
-            if ( valueBeingSerialized.RemittedAmount is System.Decimal populatedRemittedAmount)
+            // RemittedAmount Optional ActiveOrHistoricCurrencyAndAmount ActiveOrHistoricCurrencyAndAmount
+            if ( valueBeingSerialized.RemittedAmount is ActiveOrHistoricCurrencyAndAmount populatedRemittedAmount)
             {
                 await writer.WriteStartElementAsync(null, "RmtdAmt", isoNamespace );
                 await remittedAmount.WriteAsync(writer, populatedRemittedAmount, isoNamespace);

@@ -5,6 +5,7 @@
 // Copyright 2024 Jeff Ward, Beneficial Strategies. Usage subject to license of enclosing library.
 //
 
+using BeneficialStrategies.Iso20022.Amounts;
 using BeneficialStrategies.Iso20022.Choices;
 using BeneficialStrategies.Iso20022.Codesets;
 using BeneficialStrategies.Iso20022.Components;
@@ -21,24 +22,24 @@ namespace BeneficialStrategies.Iso20022.Serialization.Xml.Writers.Components
     public class RemittanceAmount3XmlAsyncWriter : ISubordinateXmlAsyncWriter<RemittanceAmount3>
     {
         // Injected dependencies for serialization of each member data type
-        private readonly ActiveOrHistoricCurrencyAndAmountXmlAsyncWriter duePayableAmount;
+        private readonly ISubordinateXmlAsyncWriter<ActiveOrHistoricCurrencyAndAmount> duePayableAmount;
         private readonly ISubordinateXmlAsyncWriter<DiscountAmountAndType1> discountAppliedAmount;
-        private readonly ActiveOrHistoricCurrencyAndAmountXmlAsyncWriter creditNoteAmount;
+        private readonly ISubordinateXmlAsyncWriter<ActiveOrHistoricCurrencyAndAmount> creditNoteAmount;
         private readonly ISubordinateXmlAsyncWriter<TaxAmountAndType1> taxAmount;
         private readonly ISubordinateXmlAsyncWriter<DocumentAdjustment1> adjustmentAmountAndReason;
-        private readonly ActiveOrHistoricCurrencyAndAmountXmlAsyncWriter remittedAmount;
+        private readonly ISubordinateXmlAsyncWriter<ActiveOrHistoricCurrencyAndAmount> remittedAmount;
         
         /// <summary>
         /// Construct using an injected writer for each member.
         /// </summary>
         public RemittanceAmount3XmlAsyncWriter
         (
-            ActiveOrHistoricCurrencyAndAmountXmlAsyncWriter duePayableAmount,
+            ISubordinateXmlAsyncWriter<ActiveOrHistoricCurrencyAndAmount> duePayableAmount,
             ISubordinateXmlAsyncWriter<DiscountAmountAndType1> discountAppliedAmount,
-            ActiveOrHistoricCurrencyAndAmountXmlAsyncWriter creditNoteAmount,
+            ISubordinateXmlAsyncWriter<ActiveOrHistoricCurrencyAndAmount> creditNoteAmount,
             ISubordinateXmlAsyncWriter<TaxAmountAndType1> taxAmount,
             ISubordinateXmlAsyncWriter<DocumentAdjustment1> adjustmentAmountAndReason,
-            ActiveOrHistoricCurrencyAndAmountXmlAsyncWriter remittedAmount
+            ISubordinateXmlAsyncWriter<ActiveOrHistoricCurrencyAndAmount> remittedAmount
         )
         {
             this.duePayableAmount = duePayableAmount;
@@ -50,8 +51,8 @@ namespace BeneficialStrategies.Iso20022.Serialization.Xml.Writers.Components
         }
         public async Task WriteAsync(XmlWriter writer, RemittanceAmount3 valueBeingSerialized, string isoNamespace)
         {
-            // DuePayableAmount Optional ActiveOrHistoricCurrencyAndAmount System.Decimal
-            if ( valueBeingSerialized.DuePayableAmount is System.Decimal populatedDuePayableAmount)
+            // DuePayableAmount Optional ActiveOrHistoricCurrencyAndAmount ActiveOrHistoricCurrencyAndAmount
+            if ( valueBeingSerialized.DuePayableAmount is ActiveOrHistoricCurrencyAndAmount populatedDuePayableAmount)
             {
                 await writer.WriteStartElementAsync(null, "DuePyblAmt", isoNamespace );
                 await duePayableAmount.WriteAsync(writer, populatedDuePayableAmount, isoNamespace);
@@ -64,8 +65,8 @@ namespace BeneficialStrategies.Iso20022.Serialization.Xml.Writers.Components
                 await discountAppliedAmount.WriteAsync(writer, populatedDiscountAppliedAmount, isoNamespace);
                 await writer.WriteEndElementAsync();
             }
-            // CreditNoteAmount Optional ActiveOrHistoricCurrencyAndAmount System.Decimal
-            if ( valueBeingSerialized.CreditNoteAmount is System.Decimal populatedCreditNoteAmount)
+            // CreditNoteAmount Optional ActiveOrHistoricCurrencyAndAmount ActiveOrHistoricCurrencyAndAmount
+            if ( valueBeingSerialized.CreditNoteAmount is ActiveOrHistoricCurrencyAndAmount populatedCreditNoteAmount)
             {
                 await writer.WriteStartElementAsync(null, "CdtNoteAmt", isoNamespace );
                 await creditNoteAmount.WriteAsync(writer, populatedCreditNoteAmount, isoNamespace);
@@ -85,8 +86,8 @@ namespace BeneficialStrategies.Iso20022.Serialization.Xml.Writers.Components
                 await adjustmentAmountAndReason.WriteAsync(writer, populatedAdjustmentAmountAndReason, isoNamespace);
                 await writer.WriteEndElementAsync();
             }
-            // RemittedAmount Optional ActiveOrHistoricCurrencyAndAmount System.Decimal
-            if ( valueBeingSerialized.RemittedAmount is System.Decimal populatedRemittedAmount)
+            // RemittedAmount Optional ActiveOrHistoricCurrencyAndAmount ActiveOrHistoricCurrencyAndAmount
+            if ( valueBeingSerialized.RemittedAmount is ActiveOrHistoricCurrencyAndAmount populatedRemittedAmount)
             {
                 await writer.WriteStartElementAsync(null, "RmtdAmt", isoNamespace );
                 await remittedAmount.WriteAsync(writer, populatedRemittedAmount, isoNamespace);

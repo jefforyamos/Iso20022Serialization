@@ -5,6 +5,7 @@
 // Copyright 2024 Jeff Ward, Beneficial Strategies. Usage subject to license of enclosing library.
 //
 
+using BeneficialStrategies.Iso20022.Amounts;
 using BeneficialStrategies.Iso20022.Choices;
 using BeneficialStrategies.Iso20022.Codesets;
 using BeneficialStrategies.Iso20022.Components;
@@ -23,7 +24,7 @@ namespace BeneficialStrategies.Iso20022.Serialization.Xml.Writers.Components
         // Injected dependencies for serialization of each member data type
         private readonly ISubordinateXmlAsyncWriter<AccountIdentification4Choice_> identification;
         private readonly ISubordinateXmlAsyncWriter<CashAccountType2Choice_> type;
-        private readonly ActiveOrHistoricCurrencyCodeXmlAsyncWriter currency;
+        private readonly ISubordinateXmlAsyncWriter<System.String> currency;
         private readonly Max70TextXmlAsyncWriter name;
         private readonly ISubordinateXmlAsyncWriter<ProxyAccountIdentification1> proxy;
         
@@ -34,7 +35,7 @@ namespace BeneficialStrategies.Iso20022.Serialization.Xml.Writers.Components
         (
             ISubordinateXmlAsyncWriter<AccountIdentification4Choice_> identification,
             ISubordinateXmlAsyncWriter<CashAccountType2Choice_> type,
-            ActiveOrHistoricCurrencyCodeXmlAsyncWriter currency,
+            ISubordinateXmlAsyncWriter<System.String> currency,
             Max70TextXmlAsyncWriter name,
             ISubordinateXmlAsyncWriter<ProxyAccountIdentification1> proxy
         )

@@ -5,6 +5,7 @@
 // Copyright 2024 Jeff Ward, Beneficial Strategies. Usage subject to license of enclosing library.
 //
 
+using BeneficialStrategies.Iso20022.Amounts;
 using BeneficialStrategies.Iso20022.Choices;
 using BeneficialStrategies.Iso20022.Codesets;
 using BeneficialStrategies.Iso20022.Components;
@@ -21,7 +22,7 @@ namespace BeneficialStrategies.Iso20022.Serialization.Xml.Writers.Components
     public class DocumentAdjustment1XmlAsyncWriter : ISubordinateXmlAsyncWriter<DocumentAdjustment1>
     {
         // Injected dependencies for serialization of each member data type
-        private readonly ActiveOrHistoricCurrencyAndAmountXmlAsyncWriter amount;
+        private readonly ISubordinateXmlAsyncWriter<ActiveOrHistoricCurrencyAndAmount> amount;
         private readonly CreditDebitCodeXmlAsyncWriter creditDebitIndicator;
         private readonly Max4TextXmlAsyncWriter reason;
         private readonly Max140TextXmlAsyncWriter additionalInformation;
@@ -31,7 +32,7 @@ namespace BeneficialStrategies.Iso20022.Serialization.Xml.Writers.Components
         /// </summary>
         public DocumentAdjustment1XmlAsyncWriter
         (
-            ActiveOrHistoricCurrencyAndAmountXmlAsyncWriter amount,
+            ISubordinateXmlAsyncWriter<ActiveOrHistoricCurrencyAndAmount> amount,
             CreditDebitCodeXmlAsyncWriter creditDebitIndicator,
             Max4TextXmlAsyncWriter reason,
             Max140TextXmlAsyncWriter additionalInformation
@@ -44,7 +45,7 @@ namespace BeneficialStrategies.Iso20022.Serialization.Xml.Writers.Components
         }
         public async Task WriteAsync(XmlWriter writer, DocumentAdjustment1 valueBeingSerialized, string isoNamespace)
         {
-            // Amount Required ActiveOrHistoricCurrencyAndAmount System.Decimal
+            // Amount Required ActiveOrHistoricCurrencyAndAmount ActiveOrHistoricCurrencyAndAmount
             await writer.WriteStartElementAsync(null, "Amt", isoNamespace );
             await amount.WriteAsync(writer, valueBeingSerialized.Amount, isoNamespace);
             await writer.WriteEndElementAsync();

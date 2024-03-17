@@ -5,6 +5,7 @@
 // Copyright 2024 Jeff Ward, Beneficial Strategies. Usage subject to license of enclosing library.
 //
 
+using BeneficialStrategies.Iso20022.Amounts;
 using BeneficialStrategies.Iso20022.Choices;
 using BeneficialStrategies.Iso20022.Codesets;
 using BeneficialStrategies.Iso20022.Components;
@@ -21,7 +22,7 @@ namespace BeneficialStrategies.Iso20022.Serialization.Xml.Writers.Components
     public class OriginalTransactionReference35XmlAsyncWriter : ISubordinateXmlAsyncWriter<OriginalTransactionReference35>
     {
         // Injected dependencies for serialization of each member data type
-        private readonly ActiveOrHistoricCurrencyAndAmountXmlAsyncWriter interbankSettlementAmount;
+        private readonly ISubordinateXmlAsyncWriter<ActiveOrHistoricCurrencyAndAmount> interbankSettlementAmount;
         private readonly ISubordinateXmlAsyncWriter<AmountType4Choice_> amount;
         private readonly ISODateXmlAsyncWriter interbankSettlementDate;
         private readonly ISODateXmlAsyncWriter requestedCollectionDate;
@@ -49,7 +50,7 @@ namespace BeneficialStrategies.Iso20022.Serialization.Xml.Writers.Components
         /// </summary>
         public OriginalTransactionReference35XmlAsyncWriter
         (
-            ActiveOrHistoricCurrencyAndAmountXmlAsyncWriter interbankSettlementAmount,
+            ISubordinateXmlAsyncWriter<ActiveOrHistoricCurrencyAndAmount> interbankSettlementAmount,
             ISubordinateXmlAsyncWriter<AmountType4Choice_> amount,
             ISODateXmlAsyncWriter interbankSettlementDate,
             ISODateXmlAsyncWriter requestedCollectionDate,
@@ -98,8 +99,8 @@ namespace BeneficialStrategies.Iso20022.Serialization.Xml.Writers.Components
         }
         public async Task WriteAsync(XmlWriter writer, OriginalTransactionReference35 valueBeingSerialized, string isoNamespace)
         {
-            // InterbankSettlementAmount Optional ActiveOrHistoricCurrencyAndAmount System.Decimal
-            if ( valueBeingSerialized.InterbankSettlementAmount is System.Decimal populatedInterbankSettlementAmount)
+            // InterbankSettlementAmount Optional ActiveOrHistoricCurrencyAndAmount ActiveOrHistoricCurrencyAndAmount
+            if ( valueBeingSerialized.InterbankSettlementAmount is ActiveOrHistoricCurrencyAndAmount populatedInterbankSettlementAmount)
             {
                 await writer.WriteStartElementAsync(null, "IntrBkSttlmAmt", isoNamespace );
                 await interbankSettlementAmount.WriteAsync(writer, populatedInterbankSettlementAmount, isoNamespace);

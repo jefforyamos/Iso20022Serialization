@@ -5,6 +5,7 @@
 // Copyright 2024 Jeff Ward, Beneficial Strategies. Usage subject to license of enclosing library.
 //
 
+using BeneficialStrategies.Iso20022.Amounts;
 using BeneficialStrategies.Iso20022.Choices;
 using BeneficialStrategies.Iso20022.Codesets;
 using BeneficialStrategies.Iso20022.Components;
@@ -23,7 +24,7 @@ namespace BeneficialStrategies.Iso20022.Serialization.Xml.Writers.Components
         // Injected dependencies for serialization of each member data type
         private readonly ISubordinateXmlAsyncWriter<PaymentIdentification6> paymentIdentification;
         private readonly ISubordinateXmlAsyncWriter<PaymentTypeInformation29> paymentTypeInformation;
-        private readonly ActiveOrHistoricCurrencyAndAmountXmlAsyncWriter instructedAmount;
+        private readonly ISubordinateXmlAsyncWriter<ActiveOrHistoricCurrencyAndAmount> instructedAmount;
         private readonly ChargeBearerType1CodeXmlAsyncWriter chargeBearer;
         private readonly ISubordinateXmlAsyncWriter<DirectDebitTransaction11> directDebitTransaction;
         private readonly ISubordinateXmlAsyncWriter<PartyIdentification135> ultimateCreditor;
@@ -47,7 +48,7 @@ namespace BeneficialStrategies.Iso20022.Serialization.Xml.Writers.Components
         (
             ISubordinateXmlAsyncWriter<PaymentIdentification6> paymentIdentification,
             ISubordinateXmlAsyncWriter<PaymentTypeInformation29> paymentTypeInformation,
-            ActiveOrHistoricCurrencyAndAmountXmlAsyncWriter instructedAmount,
+            ISubordinateXmlAsyncWriter<ActiveOrHistoricCurrencyAndAmount> instructedAmount,
             ChargeBearerType1CodeXmlAsyncWriter chargeBearer,
             ISubordinateXmlAsyncWriter<DirectDebitTransaction11> directDebitTransaction,
             ISubordinateXmlAsyncWriter<PartyIdentification135> ultimateCreditor,
@@ -97,7 +98,7 @@ namespace BeneficialStrategies.Iso20022.Serialization.Xml.Writers.Components
                 await paymentTypeInformation.WriteAsync(writer, populatedPaymentTypeInformation, isoNamespace);
                 await writer.WriteEndElementAsync();
             }
-            // InstructedAmount Required ActiveOrHistoricCurrencyAndAmount System.Decimal
+            // InstructedAmount Required ActiveOrHistoricCurrencyAndAmount ActiveOrHistoricCurrencyAndAmount
             await writer.WriteStartElementAsync(null, "InstdAmt", isoNamespace );
             await instructedAmount.WriteAsync(writer, valueBeingSerialized.InstructedAmount, isoNamespace);
             await writer.WriteEndElementAsync();

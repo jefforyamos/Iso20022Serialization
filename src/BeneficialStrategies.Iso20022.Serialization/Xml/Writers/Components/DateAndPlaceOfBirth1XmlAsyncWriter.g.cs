@@ -5,6 +5,7 @@
 // Copyright 2024 Jeff Ward, Beneficial Strategies. Usage subject to license of enclosing library.
 //
 
+using BeneficialStrategies.Iso20022.Amounts;
 using BeneficialStrategies.Iso20022.Choices;
 using BeneficialStrategies.Iso20022.Codesets;
 using BeneficialStrategies.Iso20022.Components;
@@ -24,7 +25,7 @@ namespace BeneficialStrategies.Iso20022.Serialization.Xml.Writers.Components
         private readonly ISODateXmlAsyncWriter birthDate;
         private readonly Max35TextXmlAsyncWriter provinceOfBirth;
         private readonly Max35TextXmlAsyncWriter cityOfBirth;
-        private readonly CountryCodeXmlAsyncWriter countryOfBirth;
+        private readonly ISubordinateXmlAsyncWriter<System.String> countryOfBirth;
         
         /// <summary>
         /// Construct using an injected writer for each member.
@@ -34,7 +35,7 @@ namespace BeneficialStrategies.Iso20022.Serialization.Xml.Writers.Components
             ISODateXmlAsyncWriter birthDate,
             Max35TextXmlAsyncWriter provinceOfBirth,
             Max35TextXmlAsyncWriter cityOfBirth,
-            CountryCodeXmlAsyncWriter countryOfBirth
+            ISubordinateXmlAsyncWriter<System.String> countryOfBirth
         )
         {
             this.birthDate = birthDate;

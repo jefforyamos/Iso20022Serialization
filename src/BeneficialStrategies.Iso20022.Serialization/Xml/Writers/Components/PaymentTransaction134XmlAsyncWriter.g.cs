@@ -5,6 +5,7 @@
 // Copyright 2024 Jeff Ward, Beneficial Strategies. Usage subject to license of enclosing library.
 //
 
+using BeneficialStrategies.Iso20022.Amounts;
 using BeneficialStrategies.Iso20022.Choices;
 using BeneficialStrategies.Iso20022.Codesets;
 using BeneficialStrategies.Iso20022.Components;
@@ -25,8 +26,8 @@ namespace BeneficialStrategies.Iso20022.Serialization.Xml.Writers.Components
         private readonly Max35TextXmlAsyncWriter originalInstructionIdentification;
         private readonly Max35TextXmlAsyncWriter originalEndToEndIdentification;
         private readonly UUIDv4IdentifierXmlAsyncWriter originalUETR;
-        private readonly ActiveOrHistoricCurrencyAndAmountXmlAsyncWriter originalInstructedAmount;
-        private readonly ActiveOrHistoricCurrencyAndAmountXmlAsyncWriter reversedInstructedAmount;
+        private readonly ISubordinateXmlAsyncWriter<ActiveOrHistoricCurrencyAndAmount> originalInstructedAmount;
+        private readonly ISubordinateXmlAsyncWriter<ActiveOrHistoricCurrencyAndAmount> reversedInstructedAmount;
         private readonly ChargeBearerType1CodeXmlAsyncWriter chargeBearer;
         private readonly ISubordinateXmlAsyncWriter<PaymentReversalReason9> reversalReasonInformation;
         private readonly ISubordinateXmlAsyncWriter<OriginalTransactionReference35> originalTransactionReference;
@@ -41,8 +42,8 @@ namespace BeneficialStrategies.Iso20022.Serialization.Xml.Writers.Components
             Max35TextXmlAsyncWriter originalInstructionIdentification,
             Max35TextXmlAsyncWriter originalEndToEndIdentification,
             UUIDv4IdentifierXmlAsyncWriter originalUETR,
-            ActiveOrHistoricCurrencyAndAmountXmlAsyncWriter originalInstructedAmount,
-            ActiveOrHistoricCurrencyAndAmountXmlAsyncWriter reversedInstructedAmount,
+            ISubordinateXmlAsyncWriter<ActiveOrHistoricCurrencyAndAmount> originalInstructedAmount,
+            ISubordinateXmlAsyncWriter<ActiveOrHistoricCurrencyAndAmount> reversedInstructedAmount,
             ChargeBearerType1CodeXmlAsyncWriter chargeBearer,
             ISubordinateXmlAsyncWriter<PaymentReversalReason9> reversalReasonInformation,
             ISubordinateXmlAsyncWriter<OriginalTransactionReference35> originalTransactionReference,
@@ -90,15 +91,15 @@ namespace BeneficialStrategies.Iso20022.Serialization.Xml.Writers.Components
                 await originalUETR.WriteAsync(writer, populatedOriginalUETR, isoNamespace);
                 await writer.WriteEndElementAsync();
             }
-            // OriginalInstructedAmount Optional ActiveOrHistoricCurrencyAndAmount System.Decimal
-            if ( valueBeingSerialized.OriginalInstructedAmount is System.Decimal populatedOriginalInstructedAmount)
+            // OriginalInstructedAmount Optional ActiveOrHistoricCurrencyAndAmount ActiveOrHistoricCurrencyAndAmount
+            if ( valueBeingSerialized.OriginalInstructedAmount is ActiveOrHistoricCurrencyAndAmount populatedOriginalInstructedAmount)
             {
                 await writer.WriteStartElementAsync(null, "OrgnlInstdAmt", isoNamespace );
                 await originalInstructedAmount.WriteAsync(writer, populatedOriginalInstructedAmount, isoNamespace);
                 await writer.WriteEndElementAsync();
             }
-            // ReversedInstructedAmount Optional ActiveOrHistoricCurrencyAndAmount System.Decimal
-            if ( valueBeingSerialized.ReversedInstructedAmount is System.Decimal populatedReversedInstructedAmount)
+            // ReversedInstructedAmount Optional ActiveOrHistoricCurrencyAndAmount ActiveOrHistoricCurrencyAndAmount
+            if ( valueBeingSerialized.ReversedInstructedAmount is ActiveOrHistoricCurrencyAndAmount populatedReversedInstructedAmount)
             {
                 await writer.WriteStartElementAsync(null, "RvsdInstdAmt", isoNamespace );
                 await reversedInstructedAmount.WriteAsync(writer, populatedReversedInstructedAmount, isoNamespace);

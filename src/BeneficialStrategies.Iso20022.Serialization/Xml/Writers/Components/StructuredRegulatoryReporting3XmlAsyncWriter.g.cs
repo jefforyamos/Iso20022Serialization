@@ -5,6 +5,7 @@
 // Copyright 2024 Jeff Ward, Beneficial Strategies. Usage subject to license of enclosing library.
 //
 
+using BeneficialStrategies.Iso20022.Amounts;
 using BeneficialStrategies.Iso20022.Choices;
 using BeneficialStrategies.Iso20022.Codesets;
 using BeneficialStrategies.Iso20022.Components;
@@ -23,9 +24,9 @@ namespace BeneficialStrategies.Iso20022.Serialization.Xml.Writers.Components
         // Injected dependencies for serialization of each member data type
         private readonly Max35TextXmlAsyncWriter type;
         private readonly ISODateXmlAsyncWriter date;
-        private readonly CountryCodeXmlAsyncWriter country;
+        private readonly ISubordinateXmlAsyncWriter<System.String> country;
         private readonly Max10TextXmlAsyncWriter code;
-        private readonly ActiveOrHistoricCurrencyAndAmountXmlAsyncWriter amount;
+        private readonly ISubordinateXmlAsyncWriter<ActiveOrHistoricCurrencyAndAmount> amount;
         private readonly Max35TextXmlAsyncWriter information;
         
         /// <summary>
@@ -35,9 +36,9 @@ namespace BeneficialStrategies.Iso20022.Serialization.Xml.Writers.Components
         (
             Max35TextXmlAsyncWriter type,
             ISODateXmlAsyncWriter date,
-            CountryCodeXmlAsyncWriter country,
+            ISubordinateXmlAsyncWriter<System.String> country,
             Max10TextXmlAsyncWriter code,
-            ActiveOrHistoricCurrencyAndAmountXmlAsyncWriter amount,
+            ISubordinateXmlAsyncWriter<ActiveOrHistoricCurrencyAndAmount> amount,
             Max35TextXmlAsyncWriter information
         )
         {
@@ -78,8 +79,8 @@ namespace BeneficialStrategies.Iso20022.Serialization.Xml.Writers.Components
                 await code.WriteAsync(writer, populatedCode, isoNamespace);
                 await writer.WriteEndElementAsync();
             }
-            // Amount Optional ActiveOrHistoricCurrencyAndAmount System.Decimal
-            if ( valueBeingSerialized.Amount is System.Decimal populatedAmount)
+            // Amount Optional ActiveOrHistoricCurrencyAndAmount ActiveOrHistoricCurrencyAndAmount
+            if ( valueBeingSerialized.Amount is ActiveOrHistoricCurrencyAndAmount populatedAmount)
             {
                 await writer.WriteStartElementAsync(null, "Amt", isoNamespace );
                 await amount.WriteAsync(writer, populatedAmount, isoNamespace);

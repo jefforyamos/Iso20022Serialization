@@ -5,6 +5,7 @@
 // Copyright 2024 Jeff Ward, Beneficial Strategies. Usage subject to license of enclosing library.
 //
 
+using BeneficialStrategies.Iso20022.Amounts;
 using BeneficialStrategies.Iso20022.Choices;
 using BeneficialStrategies.Iso20022.Codesets;
 using BeneficialStrategies.Iso20022.Components;
@@ -22,7 +23,7 @@ namespace BeneficialStrategies.Iso20022.Serialization.Xml.Writers.Components
     {
         // Injected dependencies for serialization of each member data type
         private readonly ISubordinateXmlAsyncWriter<TaxAmountType1Choice_> type;
-        private readonly ActiveOrHistoricCurrencyAndAmountXmlAsyncWriter amount;
+        private readonly ISubordinateXmlAsyncWriter<ActiveOrHistoricCurrencyAndAmount> amount;
         
         /// <summary>
         /// Construct using an injected writer for each member.
@@ -30,7 +31,7 @@ namespace BeneficialStrategies.Iso20022.Serialization.Xml.Writers.Components
         public TaxAmountAndType1XmlAsyncWriter
         (
             ISubordinateXmlAsyncWriter<TaxAmountType1Choice_> type,
-            ActiveOrHistoricCurrencyAndAmountXmlAsyncWriter amount
+            ISubordinateXmlAsyncWriter<ActiveOrHistoricCurrencyAndAmount> amount
         )
         {
             this.type = type;
@@ -45,7 +46,7 @@ namespace BeneficialStrategies.Iso20022.Serialization.Xml.Writers.Components
                 await type.WriteAsync(writer, populatedType, isoNamespace);
                 await writer.WriteEndElementAsync();
             }
-            // Amount Required ActiveOrHistoricCurrencyAndAmount System.Decimal
+            // Amount Required ActiveOrHistoricCurrencyAndAmount ActiveOrHistoricCurrencyAndAmount
             await writer.WriteStartElementAsync(null, "Amt", isoNamespace );
             await amount.WriteAsync(writer, valueBeingSerialized.Amount, isoNamespace);
             await writer.WriteEndElementAsync();

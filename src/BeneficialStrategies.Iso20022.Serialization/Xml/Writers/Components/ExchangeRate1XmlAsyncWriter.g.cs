@@ -5,6 +5,7 @@
 // Copyright 2024 Jeff Ward, Beneficial Strategies. Usage subject to license of enclosing library.
 //
 
+using BeneficialStrategies.Iso20022.Amounts;
 using BeneficialStrategies.Iso20022.Choices;
 using BeneficialStrategies.Iso20022.Codesets;
 using BeneficialStrategies.Iso20022.Components;
@@ -21,7 +22,7 @@ namespace BeneficialStrategies.Iso20022.Serialization.Xml.Writers.Components
     public class ExchangeRate1XmlAsyncWriter : ISubordinateXmlAsyncWriter<ExchangeRate1>
     {
         // Injected dependencies for serialization of each member data type
-        private readonly ActiveOrHistoricCurrencyCodeXmlAsyncWriter unitCurrency;
+        private readonly ISubordinateXmlAsyncWriter<System.String> unitCurrency;
         private readonly BaseOneRateXmlAsyncWriter exchangeRate;
         private readonly ExchangeRateType1CodeXmlAsyncWriter rateType;
         private readonly Max35TextXmlAsyncWriter contractIdentification;
@@ -31,7 +32,7 @@ namespace BeneficialStrategies.Iso20022.Serialization.Xml.Writers.Components
         /// </summary>
         public ExchangeRate1XmlAsyncWriter
         (
-            ActiveOrHistoricCurrencyCodeXmlAsyncWriter unitCurrency,
+            ISubordinateXmlAsyncWriter<System.String> unitCurrency,
             BaseOneRateXmlAsyncWriter exchangeRate,
             ExchangeRateType1CodeXmlAsyncWriter rateType,
             Max35TextXmlAsyncWriter contractIdentification

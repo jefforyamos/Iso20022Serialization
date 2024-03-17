@@ -5,6 +5,7 @@
 // Copyright 2024 Jeff Ward, Beneficial Strategies. Usage subject to license of enclosing library.
 //
 
+using BeneficialStrategies.Iso20022.Amounts;
 using BeneficialStrategies.Iso20022.Choices;
 using BeneficialStrategies.Iso20022.Codesets;
 using BeneficialStrategies.Iso20022.Components;
@@ -22,7 +23,7 @@ namespace BeneficialStrategies.Iso20022.Serialization.Xml.Writers.Components
     {
         // Injected dependencies for serialization of each member data type
         private readonly Max140TextXmlAsyncWriter name;
-        private readonly CountryCodeXmlAsyncWriter country;
+        private readonly ISubordinateXmlAsyncWriter<System.String> country;
         
         /// <summary>
         /// Construct using an injected writer for each member.
@@ -30,7 +31,7 @@ namespace BeneficialStrategies.Iso20022.Serialization.Xml.Writers.Components
         public RegulatoryAuthority2XmlAsyncWriter
         (
             Max140TextXmlAsyncWriter name,
-            CountryCodeXmlAsyncWriter country
+            ISubordinateXmlAsyncWriter<System.String> country
         )
         {
             this.name = name;

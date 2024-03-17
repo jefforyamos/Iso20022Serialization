@@ -5,6 +5,7 @@
 // Copyright 2024 Jeff Ward, Beneficial Strategies. Usage subject to license of enclosing library.
 //
 
+using BeneficialStrategies.Iso20022.Amounts;
 using BeneficialStrategies.Iso20022.Choices;
 using BeneficialStrategies.Iso20022.Codesets;
 using BeneficialStrategies.Iso20022.Components;
@@ -26,8 +27,8 @@ namespace BeneficialStrategies.Iso20022.Serialization.Xml.Writers.Components
         private readonly Max35TextXmlAsyncWriter administrationZone;
         private readonly Max140TextXmlAsyncWriter referenceNumber;
         private readonly Max35TextXmlAsyncWriter method;
-        private readonly ActiveOrHistoricCurrencyAndAmountXmlAsyncWriter totalTaxableBaseAmount;
-        private readonly ActiveOrHistoricCurrencyAndAmountXmlAsyncWriter totalTaxAmount;
+        private readonly ISubordinateXmlAsyncWriter<ActiveOrHistoricCurrencyAndAmount> totalTaxableBaseAmount;
+        private readonly ISubordinateXmlAsyncWriter<ActiveOrHistoricCurrencyAndAmount> totalTaxAmount;
         private readonly ISODateXmlAsyncWriter date;
         private readonly NumberXmlAsyncWriter sequenceNumber;
         private readonly ISubordinateXmlAsyncWriter<TaxRecord3> record;
@@ -42,8 +43,8 @@ namespace BeneficialStrategies.Iso20022.Serialization.Xml.Writers.Components
             Max35TextXmlAsyncWriter administrationZone,
             Max140TextXmlAsyncWriter referenceNumber,
             Max35TextXmlAsyncWriter method,
-            ActiveOrHistoricCurrencyAndAmountXmlAsyncWriter totalTaxableBaseAmount,
-            ActiveOrHistoricCurrencyAndAmountXmlAsyncWriter totalTaxAmount,
+            ISubordinateXmlAsyncWriter<ActiveOrHistoricCurrencyAndAmount> totalTaxableBaseAmount,
+            ISubordinateXmlAsyncWriter<ActiveOrHistoricCurrencyAndAmount> totalTaxAmount,
             ISODateXmlAsyncWriter date,
             NumberXmlAsyncWriter sequenceNumber,
             ISubordinateXmlAsyncWriter<TaxRecord3> record
@@ -97,15 +98,15 @@ namespace BeneficialStrategies.Iso20022.Serialization.Xml.Writers.Components
                 await method.WriteAsync(writer, populatedMethod, isoNamespace);
                 await writer.WriteEndElementAsync();
             }
-            // TotalTaxableBaseAmount Optional ActiveOrHistoricCurrencyAndAmount System.Decimal
-            if ( valueBeingSerialized.TotalTaxableBaseAmount is System.Decimal populatedTotalTaxableBaseAmount)
+            // TotalTaxableBaseAmount Optional ActiveOrHistoricCurrencyAndAmount ActiveOrHistoricCurrencyAndAmount
+            if ( valueBeingSerialized.TotalTaxableBaseAmount is ActiveOrHistoricCurrencyAndAmount populatedTotalTaxableBaseAmount)
             {
                 await writer.WriteStartElementAsync(null, "TtlTaxblBaseAmt", isoNamespace );
                 await totalTaxableBaseAmount.WriteAsync(writer, populatedTotalTaxableBaseAmount, isoNamespace);
                 await writer.WriteEndElementAsync();
             }
-            // TotalTaxAmount Optional ActiveOrHistoricCurrencyAndAmount System.Decimal
-            if ( valueBeingSerialized.TotalTaxAmount is System.Decimal populatedTotalTaxAmount)
+            // TotalTaxAmount Optional ActiveOrHistoricCurrencyAndAmount ActiveOrHistoricCurrencyAndAmount
+            if ( valueBeingSerialized.TotalTaxAmount is ActiveOrHistoricCurrencyAndAmount populatedTotalTaxAmount)
             {
                 await writer.WriteStartElementAsync(null, "TtlTaxAmt", isoNamespace );
                 await totalTaxAmount.WriteAsync(writer, populatedTotalTaxAmount, isoNamespace);

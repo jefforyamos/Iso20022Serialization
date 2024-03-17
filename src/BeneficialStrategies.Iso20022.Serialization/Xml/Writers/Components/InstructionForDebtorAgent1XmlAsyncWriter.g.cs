@@ -5,6 +5,7 @@
 // Copyright 2024 Jeff Ward, Beneficial Strategies. Usage subject to license of enclosing library.
 //
 
+using BeneficialStrategies.Iso20022.Amounts;
 using BeneficialStrategies.Iso20022.Choices;
 using BeneficialStrategies.Iso20022.Codesets;
 using BeneficialStrategies.Iso20022.Components;
@@ -21,7 +22,7 @@ namespace BeneficialStrategies.Iso20022.Serialization.Xml.Writers.Components
     public class InstructionForDebtorAgent1XmlAsyncWriter : ISubordinateXmlAsyncWriter<InstructionForDebtorAgent1>
     {
         // Injected dependencies for serialization of each member data type
-        private readonly ExternalDebtorAgentInstruction1CodeXmlAsyncWriter code;
+        private readonly ISubordinateXmlAsyncWriter<System.String> code;
         private readonly Max140TextXmlAsyncWriter instructionInformation;
         
         /// <summary>
@@ -29,7 +30,7 @@ namespace BeneficialStrategies.Iso20022.Serialization.Xml.Writers.Components
         /// </summary>
         public InstructionForDebtorAgent1XmlAsyncWriter
         (
-            ExternalDebtorAgentInstruction1CodeXmlAsyncWriter code,
+            ISubordinateXmlAsyncWriter<System.String> code,
             Max140TextXmlAsyncWriter instructionInformation
         )
         {
