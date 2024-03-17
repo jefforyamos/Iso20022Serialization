@@ -5,6 +5,7 @@
 // Copyright 2024 Jeff Ward, Beneficial Strategies. Usage subject to license of enclosing library.
 //
 
+using BeneficialStrategies.Iso20022.Amounts;
 using BeneficialStrategies.Iso20022.Choices;
 using BeneficialStrategies.Iso20022.Choices.AmountType4Choice;
 using BeneficialStrategies.Iso20022.Codesets;
@@ -23,25 +24,18 @@ namespace BeneficialStrategies.Iso20022.Serialization.Xml.Writers.Choices.Amount
     public class AmountType4ChoiceInstructedAmountXmlAsyncWriter : ISubordinateXmlAsyncWriter<InstructedAmount>
     {
         // Injected dependencies for serialization of each member data type
-        private readonly ActiveOrHistoricCurrencyAndAmountXmlAsyncWriter value;
         
         /// <summary>
         /// Construct using an injected writer for each member.
         /// </summary>
         public AmountType4ChoiceInstructedAmountXmlAsyncWriter
         (
-            ActiveOrHistoricCurrencyAndAmountXmlAsyncWriter value
         )
         {
-            this.value = value;
         }
         public async Task WriteAsync(XmlWriter writer, InstructedAmount valueBeingSerialized, string isoNamespace)
         {
             await writer.WriteStartElementAsync(null, "InstdAmt", isoNamespace); // ConcreteChoiceIndicator
-            // Value Required ActiveOrHistoricCurrencyAndAmount System.Decimal
-            await writer.WriteStartElementAsync(null, "InstdAmt", isoNamespace );
-            await value.WriteAsync(writer, valueBeingSerialized.Value, isoNamespace);
-            await writer.WriteEndElementAsync();
             await writer.WriteEndElementAsync(); // Concrete choice indicator
         }
     }

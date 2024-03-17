@@ -5,6 +5,7 @@
 // Copyright 2024 Jeff Ward, Beneficial Strategies. Usage subject to license of enclosing library.
 //
 
+using BeneficialStrategies.Iso20022.Amounts;
 using BeneficialStrategies.Iso20022.Choices;
 using BeneficialStrategies.Iso20022.Choices.Frequency36Choice;
 using BeneficialStrategies.Iso20022.Codesets;
@@ -46,9 +47,7 @@ namespace BeneficialStrategies.Iso20022.Serialization.Xml.Writers.Choices.Freque
             await type.WriteAsync(writer, valueBeingSerialized.Type, isoNamespace);
             await writer.WriteEndElementAsync();
             // Value Required Exact2NumericText System.String
-            await writer.WriteStartElementAsync(null, "PtInTm", isoNamespace );
             await value.WriteAsync(writer, valueBeingSerialized.Value, isoNamespace);
-            await writer.WriteEndElementAsync();
             await writer.WriteEndElementAsync(); // Concrete choice indicator
         }
     }

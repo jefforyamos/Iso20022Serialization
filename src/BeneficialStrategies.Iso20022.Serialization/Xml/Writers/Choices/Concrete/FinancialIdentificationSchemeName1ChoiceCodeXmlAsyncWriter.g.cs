@@ -5,6 +5,7 @@
 // Copyright 2024 Jeff Ward, Beneficial Strategies. Usage subject to license of enclosing library.
 //
 
+using BeneficialStrategies.Iso20022.Amounts;
 using BeneficialStrategies.Iso20022.Choices;
 using BeneficialStrategies.Iso20022.Choices.FinancialIdentificationSchemeName1Choice;
 using BeneficialStrategies.Iso20022.Codesets;
@@ -23,14 +24,14 @@ namespace BeneficialStrategies.Iso20022.Serialization.Xml.Writers.Choices.Financ
     public class FinancialIdentificationSchemeName1ChoiceCodeXmlAsyncWriter : ISubordinateXmlAsyncWriter<Code>
     {
         // Injected dependencies for serialization of each member data type
-        private readonly ExternalFinancialInstitutionIdentification1CodeXmlAsyncWriter value;
+        private readonly ISubordinateXmlAsyncWriter<System.String> value;
         
         /// <summary>
         /// Construct using an injected writer for each member.
         /// </summary>
         public FinancialIdentificationSchemeName1ChoiceCodeXmlAsyncWriter
         (
-            ExternalFinancialInstitutionIdentification1CodeXmlAsyncWriter value
+            ISubordinateXmlAsyncWriter<System.String> value
         )
         {
             this.value = value;
@@ -39,9 +40,7 @@ namespace BeneficialStrategies.Iso20022.Serialization.Xml.Writers.Choices.Financ
         {
             await writer.WriteStartElementAsync(null, "Cd", isoNamespace); // ConcreteChoiceIndicator
             // Value Required ExternalFinancialInstitutionIdentification1Code string
-            await writer.WriteStartElementAsync(null, "Cd", isoNamespace );
             await value.WriteAsync(writer, valueBeingSerialized.Value, isoNamespace);
-            await writer.WriteEndElementAsync();
             await writer.WriteEndElementAsync(); // Concrete choice indicator
         }
     }

@@ -5,6 +5,7 @@
 // Copyright 2024 Jeff Ward, Beneficial Strategies. Usage subject to license of enclosing library.
 //
 
+using BeneficialStrategies.Iso20022.Amounts;
 using BeneficialStrategies.Iso20022.Choices;
 using BeneficialStrategies.Iso20022.Choices.DateAndDateTime2Choice;
 using BeneficialStrategies.Iso20022.Codesets;
@@ -39,9 +40,7 @@ namespace BeneficialStrategies.Iso20022.Serialization.Xml.Writers.Choices.DateAn
         {
             await writer.WriteStartElementAsync(null, "Dt", isoNamespace); // ConcreteChoiceIndicator
             // Value Required ISODate System.DateOnly
-            await writer.WriteStartElementAsync(null, "Dt", isoNamespace );
             await value.WriteAsync(writer, valueBeingSerialized.Value, isoNamespace);
-            await writer.WriteEndElementAsync();
             await writer.WriteEndElementAsync(); // Concrete choice indicator
         }
     }

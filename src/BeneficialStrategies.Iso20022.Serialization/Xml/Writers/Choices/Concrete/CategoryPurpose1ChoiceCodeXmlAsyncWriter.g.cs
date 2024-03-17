@@ -5,6 +5,7 @@
 // Copyright 2024 Jeff Ward, Beneficial Strategies. Usage subject to license of enclosing library.
 //
 
+using BeneficialStrategies.Iso20022.Amounts;
 using BeneficialStrategies.Iso20022.Choices;
 using BeneficialStrategies.Iso20022.Choices.CategoryPurpose1Choice;
 using BeneficialStrategies.Iso20022.Codesets;
@@ -39,9 +40,7 @@ namespace BeneficialStrategies.Iso20022.Serialization.Xml.Writers.Choices.Catego
         {
             await writer.WriteStartElementAsync(null, "Cd", isoNamespace); // ConcreteChoiceIndicator
             // Value Required ExternalCategoryPurpose1Code ExternalCategoryPurpose1Code
-            await writer.WriteStartElementAsync(null, "Cd", isoNamespace );
             await value.WriteAsync(writer, valueBeingSerialized.Value, isoNamespace);
-            await writer.WriteEndElementAsync();
             await writer.WriteEndElementAsync(); // Concrete choice indicator
         }
     }

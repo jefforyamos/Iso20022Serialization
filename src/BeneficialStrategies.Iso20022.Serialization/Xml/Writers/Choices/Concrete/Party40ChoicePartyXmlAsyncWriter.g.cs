@@ -5,6 +5,7 @@
 // Copyright 2024 Jeff Ward, Beneficial Strategies. Usage subject to license of enclosing library.
 //
 
+using BeneficialStrategies.Iso20022.Amounts;
 using BeneficialStrategies.Iso20022.Choices;
 using BeneficialStrategies.Iso20022.Choices.Party40Choice;
 using BeneficialStrategies.Iso20022.Codesets;
@@ -26,7 +27,7 @@ namespace BeneficialStrategies.Iso20022.Serialization.Xml.Writers.Choices.Party4
         private readonly Max140TextXmlAsyncWriter name;
         private readonly ISubordinateXmlAsyncWriter<PostalAddress24> postalAddress;
         private readonly ISubordinateXmlAsyncWriter<Party38Choice_> identification;
-        private readonly CountryCodeXmlAsyncWriter countryOfResidence;
+        private readonly ISubordinateXmlAsyncWriter<System.String> countryOfResidence;
         private readonly ISubordinateXmlAsyncWriter<Contact4> contactDetails;
         
         /// <summary>
@@ -37,7 +38,7 @@ namespace BeneficialStrategies.Iso20022.Serialization.Xml.Writers.Choices.Party4
             Max140TextXmlAsyncWriter name,
             ISubordinateXmlAsyncWriter<PostalAddress24> postalAddress,
             ISubordinateXmlAsyncWriter<Party38Choice_> identification,
-            CountryCodeXmlAsyncWriter countryOfResidence,
+            ISubordinateXmlAsyncWriter<System.String> countryOfResidence,
             ISubordinateXmlAsyncWriter<Contact4> contactDetails
         )
         {

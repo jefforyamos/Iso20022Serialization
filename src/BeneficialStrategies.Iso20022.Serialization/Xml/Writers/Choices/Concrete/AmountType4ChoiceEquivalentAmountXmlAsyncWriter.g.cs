@@ -5,6 +5,7 @@
 // Copyright 2024 Jeff Ward, Beneficial Strategies. Usage subject to license of enclosing library.
 //
 
+using BeneficialStrategies.Iso20022.Amounts;
 using BeneficialStrategies.Iso20022.Choices;
 using BeneficialStrategies.Iso20022.Choices.AmountType4Choice;
 using BeneficialStrategies.Iso20022.Codesets;
@@ -23,16 +24,16 @@ namespace BeneficialStrategies.Iso20022.Serialization.Xml.Writers.Choices.Amount
     public class AmountType4ChoiceEquivalentAmountXmlAsyncWriter : ISubordinateXmlAsyncWriter<EquivalentAmount>
     {
         // Injected dependencies for serialization of each member data type
-        private readonly ActiveOrHistoricCurrencyAndAmountXmlAsyncWriter amount;
-        private readonly ActiveOrHistoricCurrencyCodeXmlAsyncWriter currencyOfTransfer;
+        private readonly ISubordinateXmlAsyncWriter<ActiveOrHistoricCurrencyAndAmount> amount;
+        private readonly ISubordinateXmlAsyncWriter<System.String> currencyOfTransfer;
         
         /// <summary>
         /// Construct using an injected writer for each member.
         /// </summary>
         public AmountType4ChoiceEquivalentAmountXmlAsyncWriter
         (
-            ActiveOrHistoricCurrencyAndAmountXmlAsyncWriter amount,
-            ActiveOrHistoricCurrencyCodeXmlAsyncWriter currencyOfTransfer
+            ISubordinateXmlAsyncWriter<ActiveOrHistoricCurrencyAndAmount> amount,
+            ISubordinateXmlAsyncWriter<System.String> currencyOfTransfer
         )
         {
             this.amount = amount;
@@ -41,7 +42,7 @@ namespace BeneficialStrategies.Iso20022.Serialization.Xml.Writers.Choices.Amount
         public async Task WriteAsync(XmlWriter writer, EquivalentAmount valueBeingSerialized, string isoNamespace)
         {
             await writer.WriteStartElementAsync(null, "EqvtAmt", isoNamespace); // ConcreteChoiceIndicator
-            // Amount Required ActiveOrHistoricCurrencyAndAmount System.Decimal
+            // Amount Required ActiveOrHistoricCurrencyAndAmount ActiveOrHistoricCurrencyAndAmount
             await writer.WriteStartElementAsync(null, "Amt", isoNamespace );
             await amount.WriteAsync(writer, valueBeingSerialized.Amount, isoNamespace);
             await writer.WriteEndElementAsync();
