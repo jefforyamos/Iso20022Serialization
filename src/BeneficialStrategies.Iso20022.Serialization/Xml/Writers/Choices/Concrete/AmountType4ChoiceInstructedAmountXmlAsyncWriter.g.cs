@@ -20,23 +20,16 @@ namespace BeneficialStrategies.Iso20022.Serialization.Xml.Writers.Choices.Amount
 {
     /// <summary>
     /// Performs the XML serialization faithful to ISO20002 standards for <seealso cref="InstructedAmount"/>.
+    /// Serialization is specific to amount type ActiveOrHistoricCurrencyAndAmount.
     /// </summary>
     public class AmountType4ChoiceInstructedAmountXmlAsyncWriter : ISubordinateXmlAsyncWriter<InstructedAmount>
     {
-        // Injected dependencies for serialization of each member data type
-        
-        /// <summary>
-        /// Construct using an injected writer for each member.
-        /// </summary>
-        public AmountType4ChoiceInstructedAmountXmlAsyncWriter
-        (
-        )
-        {
-        }
         public async Task WriteAsync(XmlWriter writer, InstructedAmount valueBeingSerialized, string isoNamespace)
         {
-            await writer.WriteStartElementAsync(null, "InstdAmt", isoNamespace); // ConcreteChoiceIndicator
-            await writer.WriteEndElementAsync(); // Concrete choice indicator
+            await writer.WriteStartElementAsync( null, "InstdAmt", isoNamespace );
+            await writer.WriteAttributeStringAsync( null, "Ccy", null, valueBeingSerialized.Currency.ToString() );
+            await writer.WriteStringAsync( valueBeingSerialized.Amount.ToString());
+            await writer.WriteEndElementAsync();
         }
     }
 }
