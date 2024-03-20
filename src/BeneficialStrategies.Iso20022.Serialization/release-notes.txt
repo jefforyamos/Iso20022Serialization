@@ -1,0 +1,7 @@
+Beneficial Strategies ISO20022 Serialization Release Notes
+
+0.1.0-alpha
+    Serialization for a subset of messages including a PAIN 001 credit initiation.
+    Serialized output passes XSD validation.
+    Includes automated DI registration.
+
